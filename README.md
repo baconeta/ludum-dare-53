@@ -1,4 +1,5 @@
-# ludum-dare-template
+# Ludum Dare 53
+####  Note the following description is about the template this project is based off and will need updating
 
 A template project used primarily for ludum dare game jams.
 
@@ -13,13 +14,26 @@ Contains a few preset up functionality and systems, including:
 
 ## Tools and dependencies
 - [Unity 2022.2.17f1](https://unity3d.com/unity/whats-new/2022.2.17)
-- [git LFS](https://git-lfs.github.com/) _Note, not used in the template as git does not support lfs templating, so needs to be manually enabled_
+- [git LFS](https://git-lfs.github.com/)
 
 ## Links
-- Game Jam entry: XXX
+- Game Jam entry: https://ldjam.com/events/ludum-dare/53/$333034
 - Itch link to play: XXX
 
 ## Development team
+- Josh - Producer / Project Manager
+- Bray - Lead Programmer
+- James - Game Programmer
+- Saad - Game Programmer
+- Tomas - Game Programmer
+- Tessa - Game Programmer
+- Veera - Graphic Designer and Art Lead
+- Adele - 2D Game Artist
+- Tanya - 2D Game Artist
+- Jakob - Music and Music Design
+- John - Sound Effects and Sound Design
+- Amruth - Game and Narrative Designer
+- Luke - Marketing / PR
 
 ## Deploying Infrastructure
 Sign up for [Google Cloud](https://cloud.google.com/free)
