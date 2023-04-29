@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a3cca6ecf4ed643bc141502a610396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 15
+  maxSpeed: 5
   currentSpeed: 0
-  acceleration: 5
-  rotationSpeed: 50
+  acceleration: 1
+  rotationSpeed: 10
   rotationLimits: {x: 50, y: -50}
   currentDirection: {x: 0, y: 0, z: 0}
   isMoving: 0
