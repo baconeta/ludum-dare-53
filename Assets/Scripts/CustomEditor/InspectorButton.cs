@@ -8,18 +8,17 @@ using UnityEngine.Events;
 [UnityEditor.CustomEditor(typeof(InspectorButton))]
 public class InspectorButtonEditor : Editor
 {
-    public string buttonLabel = "Button";
 
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
-
-        if (GUILayout.Button(buttonLabel))
+        
+        //Get MonoBehaviour script
+        InspectorButton inspectorButton = (InspectorButton)target;
+        
+        if (GUILayout.Button(inspectorButton.buttonLabel))
         {
-            // Get the target MyMonoBehaviour script
-            InspectorButton inspectorButton = (InspectorButton)target;
-
-            // Invoke the MyEvent event
+            // Invoke the onClickEvent event
             inspectorButton.onClickEvent.Invoke();
         }
     }
@@ -27,6 +26,6 @@ public class InspectorButtonEditor : Editor
 
 public class InspectorButton : MonoBehaviour
 {
+    public string buttonLabel = "Button";
     public UnityEvent onClickEvent;
-
 }
