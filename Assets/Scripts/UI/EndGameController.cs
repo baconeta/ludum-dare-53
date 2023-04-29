@@ -16,13 +16,6 @@ public class EndGameController : MonoBehaviour
         GameStateManager.OnEndEnter -= ShowUi;
     }
 
-    private void Start()
-    {
-        //TODO Remove and integrate into GameState system.
-        //Currently disables UI to stop it showing :)
-        _ui.SetActive(false);
-    }
-
     private void ShowUi()
     {
         ui.SetActive(true);
