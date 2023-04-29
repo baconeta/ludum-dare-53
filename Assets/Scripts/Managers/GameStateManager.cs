@@ -60,6 +60,8 @@ public class GameStateManager : MonoBehaviour
         //Filter double executions
         if (newState == _currentState) return;
 
+        Debug.Log($"Transitioning from {_currentState} to {newState}");
+
         //Update state
         _previousState = _currentState;
         _currentState = newState;
