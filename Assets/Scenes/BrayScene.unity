@@ -302,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1308247678}
   m_Layer: 0
-  m_Name: Left Limit
+  m_Name: LeftLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -364,7 +364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1622767588}
   m_Layer: 0
-  m_Name: Right Limit
+  m_Name: RightLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
