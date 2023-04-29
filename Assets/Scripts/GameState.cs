@@ -14,21 +14,12 @@ public class GameState : MonoBehaviour
         Pause,
         End,
     }
-
-    public delegate void OnStartEnter();
-    public static event  OnStartEnter onStartEnter;
     
-    public delegate void OnFerryingEnter();
-    public static event  OnFerryingEnter onFerryingEnter;
-    
-    public delegate void OnReturningEnter();
-    public static event  OnReturningEnter onReturningEnter;
-    
-    public delegate void OnPauseEnter();
-    public static event  OnPauseEnter onPauseEnter;
-    
-    public delegate void OnEndEnter();
-    public static event  OnEndEnter onEndEnter;
+    public static event Action OnStartEnter;
+    public static event Action OnFerryingEnter;
+    public static event Action OnReturningEnter;
+    public static event Action OnPauseEnter;
+    public static event Action OnEndEnter;
     
     private GameStates _currentState;
 
@@ -51,28 +42,29 @@ public class GameState : MonoBehaviour
         
         //Update state
         _currentState = newState;
-        //Changes current from A to B
+        
+        //Invoke GameState event.
         switch (_currentState)
         {
             //Initial State, start of game.
             case GameStates.Start:
-                onStartEnter?.Invoke();
+                OnStartEnter?.Invoke();
                 break;
             //Upon reaching the shore of Gaia/Over-world/Living/Left/Pickup
             case GameStates.Ferrying:
-                onFerryingEnter?.Invoke();
+                OnFerryingEnter?.Invoke();
                 break;
             //Upon reaching the shore of Underworld/Right/Dropoff
             case GameStates.Returning:
-                onReturningEnter?.Invoke();
+                OnReturningEnter?.Invoke();
                 break;
             //Upon reaching the shore of Underworld/Right/Dropoff
             case GameStates.Pause:
-                onPauseEnter?.Invoke();
+                OnPauseEnter?.Invoke();
                 break;
             //Upon reaching the shore of Underworld/Right/Dropoff
             case GameStates.End:
-                onEndEnter?.Invoke();
+                OnEndEnter?.Invoke();
                 break;
         }
     }
