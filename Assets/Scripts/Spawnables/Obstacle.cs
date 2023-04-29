@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Spawnables
 {
-    public class Obstacle : MonoBehaviour
+    public class Obstacle : MonoBehaviour, IPoolableExecution, IRecyclable
     {
         // TODO: decide on appropriate values for these fields
         [SerializeField] private float speed = 0.1f;
@@ -12,18 +12,20 @@ namespace Spawnables
         private float _bottomBound;
         private Poolable _poolable;
 
-        private void Start() {
-            _bottomBound = GameObject.Find("BottomBound").transform.position.y;
+        private void Start()
+        {
+            _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
             _poolable = GetComponent<Poolable>();
         }
 
-        private void Update() {
+        private void Update()
+        {
             // Slowly move the obstacle down the screen
             transform.position += Vector3.down * (speed * Time.deltaTime);
             // if the obstacle goes off screen, recycle it
             if (transform.position.y < _bottomBound)
             {
-                _poolable.Recycle();
+                RemoveFromScene();
             }
         }
         
@@ -36,16 +38,43 @@ namespace Spawnables
             }
         }
 
+        /**
+         * Change the speed of this obstacle by the given multiplier.
+         */
         public void MultiplySpeed(float multiplier)
         {
             speed *= multiplier;
         }
 
+        /**
+         * Change the amount of damage this obstacle inflicts by the given multiplier.
+         */
         public void MultiplyDamage(float multiplier)
         {
             damage *= multiplier;
         }
 
+        /**
+         * The amount of damage this obstacle inflicts.
+         */
         public float Damage => damage;
+        
+        public void PoolableExecution(Poolable p)
+        {
+            _poolable = p;
+        }
+
+        public void Recycle()
+        {
+            RemoveFromScene();
+        }
+
+        private void RemoveFromScene()
+        {
+            if (_poolable)
+                _poolable.Recycle();
+            else
+                Destroy(gameObject);
+        }
     }
 }

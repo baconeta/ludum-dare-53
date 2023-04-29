@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ferry
+  - Obstacle
   layers:
   - Default
   - TransparentFX
