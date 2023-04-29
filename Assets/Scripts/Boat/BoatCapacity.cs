@@ -16,6 +16,10 @@ public class BoatCapacity : MonoBehaviour
 
     public int currentLoad { get; private set; }
 
+
+    public static event Action OnBoatDestroyed;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +35,11 @@ public class BoatCapacity : MonoBehaviour
     public int ReduceCapacity(int amount = 1)
     {
         actualCapacity = actualCapacity - amount;
-        if (actualCapacity < 0)
+        if (actualCapacity == 0)
+        {
+            OnBoatDestroyed?.Invoke();
+        }
+        else if (actualCapacity < 0)
         {
             actualCapacity = 0;
         }
