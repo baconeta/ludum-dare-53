@@ -7,7 +7,8 @@ namespace Spawnables
     {
         // TODO: decide on appropriate values for these fields
         [SerializeField] private float speed = 0.1f;
-        [SerializeField] private float damage = 5.0f;
+        //Changed to integer as souls are always whole numbers.
+        [SerializeField] private int damage = 5;
 
         private float _bottomBound;
         private Poolable _poolable;
@@ -51,13 +52,13 @@ namespace Spawnables
          */
         public void MultiplyDamage(float multiplier)
         {
-            damage *= multiplier;
+            damage *= Mathf.FloorToInt(multiplier);
         }
 
         /**
          * The amount of damage this obstacle inflicts.
          */
-        public float Damage => damage;
+        public int Damage => damage;
         
         public void PoolableExecution(Poolable p)
         {
