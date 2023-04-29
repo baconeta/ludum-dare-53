@@ -7,7 +7,7 @@ public class BoatCapacity : MonoBehaviour
     [Header("Variables")]
     [Tooltip("The amount of souls that can fit at the boat when the game starts.")]
     [SerializeField]
-    private int startingCapacity = 6;
+    private int startingCapacity = 50;
     
     [Tooltip("The amount of capacity restored upon ferrying souls successfully.")]
     [SerializeField]

@@ -6,9 +6,9 @@ namespace Spawnables
     public class Obstacle : MonoBehaviour, IPoolableExecution, IRecyclable
     {
         // TODO: decide on appropriate values for these fields
-        [SerializeField] private float speed = 0.1f;
+        [SerializeField] private float speed = 1f;
         //Changed to integer as souls are always whole numbers.
-        [SerializeField] private int damage = 5;
+        [SerializeField] private int damage = 1;
 
         private float _bottomBound;
         private Poolable _poolable;
@@ -67,6 +67,8 @@ namespace Spawnables
 
         public void Recycle()
         {
+            speed = 1;
+            damage = 1;
             RemoveFromScene();
         }
 
