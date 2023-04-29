@@ -102,10 +102,6 @@ public class BoatCapacity : MonoBehaviour
         {
             OnBoatDestroyed?.Invoke();
         }
-        else if (CurrentCapacity < 0)
-        {
-            CurrentCapacity = 0;
-        }
         return ReduceLoadToFitCapacity();
     }
 
