@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1939487853103538211
 MonoBehaviour:
@@ -60,4 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da31f05749ba09540a722f81a604930e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allSoundData: []
+  allSoundData:
+  - name: game-background-music
+    sound: {fileID: 8300000, guid: f54790cf00703744881fd615b562db9e, type: 3}
+    mixer: {fileID: 0}
+    loop: 1
+    volume: 0
