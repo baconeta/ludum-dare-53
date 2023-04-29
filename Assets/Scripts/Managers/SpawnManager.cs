@@ -50,7 +50,11 @@ namespace Managers
         private void Spawn()
         {
             var obstacle = _obstacles.GetRecyclable();
-            obstacle.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), _topLimit, 0.0f);
+
+            var length = obstacle.GetComponent<Renderer>().bounds.size.y;
+            var topOffset = _topLimit + length;
+
+            obstacle.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
             
             obstacle.GetComponent<Obstacle>().MultiplySpeed(_speedMultiplier);
             obstacle.GetComponent<Obstacle>().MultiplyDamage(_damageMultiplier);
