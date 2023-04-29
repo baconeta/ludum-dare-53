@@ -30,8 +30,8 @@ namespace Managers
         private void Start()
         {
             _topLimit = GameObject.Find("TopLimit").transform.position.y;
-            _leftLimit = GameObject.Find("LeftLimit").transform.position.x;
-            _rightLimit = GameObject.Find("RightLimit").transform.position.x;
+            _leftLimit = GameObject.Find("Left Shore").transform.position.x;
+            _rightLimit = GameObject.Find("Right Shore").transform.position.x;
             
             StartSpawn(1.0f, 1.0f, 1.0f);
         }
