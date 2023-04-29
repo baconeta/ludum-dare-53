@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5257897951344812538}
-  - component: {fileID: 1708205306265590225}
   - component: {fileID: 4486503782103681789}
   m_Layer: 0
   m_Name: PauseScreen
@@ -34,19 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1708205306265590225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 674584607196892934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ba27497d859554bbf9e3d312daedcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ui: {fileID: 7926596075252342901}
 --- !u!114 &4486503782103681789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,8 +733,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1708205306265590225}
-        m_TargetAssemblyTypeName: EndGameController, Assembly-CSharp
+      - m_Target: {fileID: 4486503782103681789}
+        m_TargetAssemblyTypeName: PauseScreenController, Assembly-CSharp
         m_MethodName: NavigateHome
         m_Mode: 1
         m_Arguments:
