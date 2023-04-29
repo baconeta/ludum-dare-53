@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 5955720895935086287}
   - component: {fileID: 1697175914585957441}
   - component: {fileID: 1111834849364648188}
+  - component: {fileID: 2083176290002880285}
   - component: {fileID: 680462521803698966}
   - component: {fileID: 5216902998985527531}
   - component: {fileID: 2353201922784562286}
+  - component: {fileID: 1199094870266899385}
   m_Layer: 0
   m_Name: Charon's Ferry
   m_TagString: Ferry
@@ -34,7 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1697175914585957441
 MonoBehaviour:
@@ -48,13 +50,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a3cca6ecf4ed643bc141502a610396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 5
+  maxSpeed: 10
   currentSpeed: 0
-  acceleration: 1
-  rotationSpeed: 10
+  acceleration: 10
+  rotationSpeed: 50
   rotationLimits: {x: 50, y: -50}
   currentDirection: {x: 0, y: 0, z: 0}
   isMoving: 0
+  verticalLimit: {x: 0, y: 0}
+  limitBorderPercentage: 0.9
+  limitRotationMultiplier: 2
   rotateLeftKeyCode: 119
   rotateRightKeyCode: 115
 --- !u!114 &1111834849364648188
@@ -73,6 +78,26 @@ MonoBehaviour:
   leftDock: {fileID: 0}
   rightDock: {fileID: 0}
   voyageStartKey: 32
+--- !u!114 &2083176290002880285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925401137294428039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be0dd6e0864c004b9f93728ec858e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingCapacity: 50
+  capacityRestoredOnSuccessfulFerry: 1
+  doesStartLoaded: 0
+  doesLoseCapacityWhileContainsSouls: 0
+  _currentCapacity: 0
+  _currentLoad: 0
+  _soulsSaved: 0
+  _soulsDamned: 0
 --- !u!50 &680462521803698966
 Rigidbody2D:
   serializedVersion: 4
@@ -132,18 +157,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.103307724, y: -2.4277983}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.9, y: 2}
+    oldSize: {x: 13.88, y: 10.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.9, y: 2}
+  m_Size: {x: 12.1648445, y: 3.75628}
   m_EdgeRadius: 0
 --- !u!212 &2353201922784562286
 SpriteRenderer:
@@ -186,9 +211,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a42473ef4856fdb47a67dc9fa8ddd04e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5588f01e436d7d4478ae30be23e47f2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -197,3 +222,31 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1199094870266899385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925401137294428039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a15058aa21f7f674b8657059ea63dc69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonLabel: Take Damage!
+  onClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2083176290002880285}
+        m_TargetAssemblyTypeName: BoatCapacity, Assembly-CSharp
+        m_MethodName: DealDamageToBoat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
