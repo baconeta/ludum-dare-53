@@ -1,31 +1,84 @@
 using System;
+using Unity.Collections;
 using UnityEngine;
 
 public class BoatCapacity : MonoBehaviour
 {
+    [Header("Variables")]
     [Tooltip("The amount of souls that can fit at the boat when the game starts.")]
     [SerializeField]
     private int startingCapacity = 6;
-
-    [Tooltip("Does the boat start loaded to capacity? or does it start empty?")]
+    
+    [Tooltip("The amount of capacity restored upon ferrying souls successfully.")]
     [SerializeField]
+    private int capacityRestoredOnSuccessfulFerry = 1;
+    
+    [Tooltip("**Currently Disabled: See Start Method** Does the boat start loaded to capacity? or does it start empty?")]
+    [SerializeField] [ReadOnlyAttribute]
     private bool doesStartLoaded = false;
 
     [Tooltip("Does the boat capacity get reduced when taking damage while the boat contains souls?")]
     [SerializeField]
     private bool doesLoseCapacityWhileContainsSouls = false;
+    
+    
 
-    public int currentCapacity { get; private set; }
-    public int currentLoad { get; private set; }
+    [Header("Statistics")]
+    
+    [SerializeField] private int _currentCapacity;
+    public int CurrentCapacity
+    {
+        get { return _currentCapacity;}
+        private set { _currentCapacity = value; }
+
+    }
+    [SerializeField] private int _currentLoad;
+
+    public int CurrentLoad { 
+        get { return _currentLoad;}
+        private set { _currentLoad = value; }
+    }
+    
+    [SerializeField] private int _soulsSaved;
+
+    public int SoulsSaved { 
+        get { return _soulsSaved;}
+        private set { _soulsSaved += value; }
+    }
+    
+    [SerializeField] private int _soulsDamned;
+
+    public int SoulsDamned { 
+        get { return _soulsDamned;}
+        private set { _soulsDamned += value; }
+    }
+    
 
     public static event Action OnBoatDestroyed;
     public static event Action OnAllSoulsLost;
+
+    private void OnEnable()
+    {
+        GameStateManager.OnReturningEnter += SaveAllSouls;
+        GameStateManager.OnReturningEnter += IncreaseCapacity;
+        GameStateManager.OnFerryingEnter += FillSouls;
+    }
+
+    private void OnDisable()
+    {
+        GameStateManager.OnReturningEnter -= SaveAllSouls;
+        GameStateManager.OnReturningEnter -= IncreaseCapacity;
+        GameStateManager.OnFerryingEnter -= FillSouls;
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         ResetCapacity();
-        currentLoad = doesStartLoaded ? startingCapacity : 0;
+        
+        //TODO Fix
+        //Weird math happens here, because GameStateManager.OnFerryingEnter calls FillSouls when the game starts. True results in initial load being -Int.MaxValue.
+        //CurrentLoad = doesStartLoaded ? startingCapacity : 0;
     }
 
     /// <summary>
@@ -34,19 +87,24 @@ public class BoatCapacity : MonoBehaviour
     /// <param name="amount">By how many units should the maximum capacity be increased.</param>
     public void IncreaseCapacity(int amount = 1)
     {
-        currentCapacity += amount;
+        CurrentCapacity += amount;
+    }
+
+    public void IncreaseCapacity()
+    {
+        IncreaseCapacity(capacityRestoredOnSuccessfulFerry);
     }
 
     private int DecreaseCapacity(int amount = 1)
     {
-        currentCapacity = currentCapacity - amount;
-        if (currentCapacity == 0)
+        CurrentCapacity = CurrentCapacity - amount;
+        if (CurrentCapacity == 0)
         {
             OnBoatDestroyed?.Invoke();
         }
-        else if (currentCapacity < 0)
+        else if (CurrentCapacity < 0)
         {
-            currentCapacity = 0;
+            CurrentCapacity = 0;
         }
         return ReduceLoadToFitCapacity();
     }
@@ -57,7 +115,7 @@ public class BoatCapacity : MonoBehaviour
     /// </summary>
     public int ResetCapacity()
     {
-        currentCapacity = startingCapacity;
+        CurrentCapacity = startingCapacity;
         return ReduceLoadToFitCapacity();
     }
 
@@ -68,23 +126,25 @@ public class BoatCapacity : MonoBehaviour
     public void DealDamageToBoat(int damageToTake)
     {
         // If we have no souls on the ferry, and the game is still running, we must be Returning.
-        if (currentLoad == 0)
+        if (CurrentLoad == 0)
         {
             DecreaseCapacity(); 
         }
         // Otherwise, we must be Ferrying.
         else
         {
-            DecreaseSouls(damageToTake);
+            //Add the Souls Lost to the SoulsDamned statistic
+            SoulsDamned = DecreaseSouls(damageToTake);
+            
             // If we reduce the number of souls to zero by taking damage, end the game.
-            if (currentLoad == 0) { OnAllSoulsLost?.Invoke(); }
+            if (CurrentLoad == 0) { OnAllSoulsLost?.Invoke(); }
 
             if (doesLoseCapacityWhileContainsSouls)
             {
                 DecreaseCapacity(damageToTake);
             }
         }
-        if (currentCapacity == 0) { OnBoatDestroyed?.Invoke(); }
+        if (CurrentCapacity == 0) { OnBoatDestroyed?.Invoke(); }
     }
 
     /// <summary>
@@ -92,30 +152,45 @@ public class BoatCapacity : MonoBehaviour
     /// </summary>
     /// <param name="loadToAdd">How many units are we trying to add to the load.</param>
     /// <returns>The number of units that were not able to fit onto the boat due to load capacity limits.</returns>
-    public int IncreaseSouls(int loadToAdd)
+    public int IncreaseSouls(int loadToAdd=int.MaxValue)
     {
-        currentLoad += loadToAdd;
+        CurrentLoad += loadToAdd;
         return ReduceLoadToFitCapacity();
     }
 
+    //The set up event actions requires no return type and no parameters. This function just fulfills that requirement.
+    //TODO replace with Delegates might work?
+    public void FillSouls()
+    {
+        IncreaseSouls();
+    }
+    
     private int DecreaseSouls(int loadToRemove)
     {
-        if (currentLoad <= loadToRemove)
+        if (CurrentLoad <= loadToRemove)
         {
-
             return UnloadAll();
         }
         else
         {
-            currentLoad -= loadToRemove;
+            CurrentLoad -= loadToRemove;
             return loadToRemove;
         }
+    }
+
+    //The set up event actions requires no return type and no parameters. This function just fulfills that requirement.
+    //TODO replace with Delegates might work?
+    //This is run via the event Action GameStateManager.OnReturningEnter
+    public void SaveAllSouls()
+    {
+        //Add the Souls Lost to the SoulsDamned statistic
+        SoulsSaved = UnloadAll();
     }
     
     public int UnloadAll()
     {
-        int load = currentLoad;
-        currentLoad = 0;
+        int load = CurrentLoad;
+        CurrentLoad = 0;
         return load;
     }
 
@@ -126,10 +201,10 @@ public class BoatCapacity : MonoBehaviour
     private int ReduceLoadToFitCapacity()
     {
         // Excess load is lost.
-        if (currentLoad > currentCapacity)
+        if (CurrentLoad > CurrentCapacity)
         {
-            int excess = currentLoad - currentCapacity;
-            currentLoad = currentCapacity;
+            int excess = CurrentLoad - CurrentCapacity;
+            CurrentLoad = CurrentCapacity;
             return excess;
         }
         else

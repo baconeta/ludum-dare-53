@@ -26,6 +26,20 @@ public class BoatController : MonoBehaviour
         currentDock = leftDock;
     }
     
+    private void OnEnable()
+    {
+        //Subscribe to Loss Condition Events
+        BoatCapacity.OnBoatDestroyed += VoyageLost;
+        BoatCapacity.OnAllSoulsLost += VoyageLost;
+    }
+    
+    private void OnDisable()
+    {
+        //Subscribe to Loss Condition Events
+        BoatCapacity.OnBoatDestroyed -= VoyageLost;
+        BoatCapacity.OnAllSoulsLost -= VoyageLost;
+    }
+    
     void Update()
     {
         //If game is inactive, return.
