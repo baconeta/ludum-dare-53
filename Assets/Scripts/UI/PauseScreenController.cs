@@ -20,6 +20,12 @@ public class PauseScreenController : MonoBehaviour
         _ui.SetActive(true);
     }
 
+    public void ResumePlaying()
+    {
+        _ui.SetActive(false);
+        GameStateManager.Instance.Resume();
+    }
+
     public void NavigateHome()
     {
         SceneManager.LoadScene("Scenes/MainMenu");
