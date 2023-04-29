@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f58290ec189830a42a6e3c18ca6731ed, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   simultaneousObstacleLimit: 20
   obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
 --- !u!4 &666187612
@@ -396,7 +396,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1308247677
 GameObject:
@@ -610,8 +610,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c31d3cc716625949852598c46163ee2, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   _currentState: 0
 --- !u!4 &1707495884
 Transform:
@@ -626,7 +626,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8249115434510323195
 PrefabInstance:
@@ -638,28 +638,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1111834849364648188, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: leftDock
-      value:
+      value: 
       objectReference: {fileID: 1308247678}
     - target: {fileID: 1111834849364648188, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: rightDock
-      value:
+      value: 
       objectReference: {fileID: 1622767588}
-    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-      propertyPath: maxSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-      propertyPath: acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-      propertyPath: rotationSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-      propertyPath: limitBoarderPercentage
-      value: 0.908
-      objectReference: {fileID: 0}
     - target: {fileID: 5955720895935086287, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_RootOrder
       value: 1
