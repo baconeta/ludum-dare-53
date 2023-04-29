@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndGameController : MonoBehaviour
 {
@@ -17,5 +18,10 @@ public class EndGameController : MonoBehaviour
     private void ShowUi()
     {
         _ui.SetActive(true);
+    }
+
+    public void NavigateHome()
+    {
+        SceneManager.LoadScene("Scenes/MainMenu");
     }
 }
