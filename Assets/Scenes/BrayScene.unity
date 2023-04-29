@@ -967,7 +967,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charon's Ferry
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1199094870266899385, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
