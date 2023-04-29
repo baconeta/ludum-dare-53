@@ -30,9 +30,9 @@ public class GameStateManager : MonoBehaviour
     
     //Game Start - Run intros/Dialogue etc
     public static event Action OnStartEnter;
-    //Starting to ferry, fill up on Souls.
+    //Starting to ferry, fill up on Souls, Run Dialogue
     public static event Action OnFerryingEnter;
-    //Drop off souls, Repair ship.
+    //Drop off souls, Repair ship, Run Dialogue
     public static event Action OnReturningEnter;
     //Game Paused
     public static event Action OnPauseEnter;
