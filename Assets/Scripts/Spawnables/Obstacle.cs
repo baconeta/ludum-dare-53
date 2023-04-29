@@ -11,11 +11,13 @@ namespace Spawnables
 
         private float _bottomBound;
         private Poolable _poolable;
+        private float _length;
 
         private void Start()
         {
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
             _poolable = GetComponent<Poolable>();
+            _length = GetComponent<Renderer>().bounds.size.y;
         }
 
         private void Update()
@@ -23,7 +25,7 @@ namespace Spawnables
             // Slowly move the obstacle down the screen
             transform.position += Vector3.down * (speed * Time.deltaTime);
             // if the obstacle goes off screen, recycle it
-            if (transform.position.y < _bottomBound)
+            if (transform.position.y + _length < _bottomBound)
             {
                 RemoveFromScene();
             }
