@@ -50,6 +50,8 @@ namespace Managers
 
         private void Spawn()
         {
+            if (!GameStateManager.Instance.IsGameActive()) return; //TODO: This will mean an random spawn delay after pausing as the timer keeps running.
+
             var obstacle = _obstacles.GetRecyclable();
 
             var length = obstacle.GetComponent<Renderer>().bounds.size.y;

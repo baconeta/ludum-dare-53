@@ -15,19 +15,21 @@ public class GameStateManager : MonoBehaviour
         Pause,
         End,
     }
-    
-    
+
+
     [SerializeField] private GameStates _currentState;
     public GameStates CurrentState
     {
         get { return _currentState; }
-        set {ChangeState(value); }
+        set { ChangeState(value); }
     }
-    
+
+    [SerializeField] private GameStates _previousState;
+
     //Event Actions for GameStates
     //Subscribe to these to launch other mechanics
     //Subscribe via `GameState.OnStartEnter += MethodToRun`
-    
+
     //Game Start - Run intros/Dialogue etc
     public static event Action OnStartEnter;
     //Starting to ferry, fill up on Souls.
@@ -38,7 +40,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnPauseEnter;
     //Game Ended / Ship Destroyed
     public static event Action OnEndEnter;
-    
+
 
     private void Awake()
     {
@@ -57,10 +59,13 @@ public class GameStateManager : MonoBehaviour
     {
         //Filter double executions
         if (newState == _currentState) return;
-        
+
+        Debug.Log($"Transitioning from {_currentState} to {newState}");
+
         //Update state
+        _previousState = _currentState;
         _currentState = newState;
-        
+
         //Invoke GameState event.
         switch (_currentState)
         {
@@ -85,6 +90,17 @@ public class GameStateManager : MonoBehaviour
                 OnEndEnter?.Invoke();
                 break;
         }
+    }
+
+    public void Resume()
+    {
+        if (_currentState != GameStates.Pause)
+        {
+            Debug.LogError($"Cannot resume playing from the {_currentState} state");
+            return;
+        }
+
+        ChangeState(_previousState);
     }
 
     public bool IsGameActive()
