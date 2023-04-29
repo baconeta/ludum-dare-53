@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Spawnables;
 using UnityEngine;
 
 public class BoatController : MonoBehaviour
 {
     
     private BoatMovement _boatMovement;
+    private BoatCapacity _boatCapacity;
     public Transform currentDock;
     
     public Transform leftDock;
@@ -19,11 +21,26 @@ public class BoatController : MonoBehaviour
     void Awake()
     {
         _boatMovement = GetComponent<BoatMovement>();
+        _boatCapacity = GetComponent<BoatCapacity>();
     }
 
     private void Start()
     {
         currentDock = leftDock;
+    }
+    
+    private void OnEnable()
+    {
+        //Subscribe to Loss Condition Events
+        BoatCapacity.OnBoatDestroyed += VoyageLost;
+        BoatCapacity.OnAllSoulsLost += VoyageLost;
+    }
+    
+    private void OnDisable()
+    {
+        //Subscribe to Loss Condition Events
+        BoatCapacity.OnBoatDestroyed -= VoyageLost;
+        BoatCapacity.OnAllSoulsLost -= VoyageLost;
     }
     
     void Update()
@@ -89,6 +106,10 @@ public class BoatController : MonoBehaviour
             if (other.gameObject.CompareTag("Shore"))
             {
                 CompleteVoyage();
+            }
+            else if (other.gameObject.CompareTag("Obstacle"))
+            {
+                _boatCapacity.DealDamageToBoat(other.GetComponent<Obstacle>().Damage);
             }
         }
         
