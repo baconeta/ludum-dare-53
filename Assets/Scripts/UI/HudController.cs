@@ -32,4 +32,21 @@ public class HudController : MonoBehaviour
     {
         GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Pause;
     }
+
+    /// <summary>
+    /// Pause / Resume game when Escape is pressed
+    /// </summary>
+    void OnGUI()
+    {
+        Event e = Event.current;
+        if (!e.isKey || e.type != EventType.KeyUp || e.keyCode != KeyCode.Escape) return;
+
+        if (GameStateManager.Instance.CurrentState == GameStateManager.GameStates.Pause)
+        {
+            GameStateManager.Instance.Resume();
+        } else if (GameStateManager.Instance.IsGameActive())
+        {
+            PauseGame();
+        }
+    }
 }

@@ -8,11 +8,15 @@ public class PauseScreenController : MonoBehaviour
     private void OnEnable()
     {
         GameStateManager.OnPauseEnter += ShowUi;
+        GameStateManager.OnFerryingEnter += HideUi;
+        GameStateManager.OnReturningEnter += HideUi;
     }
 
     private void OnDisable()
     {
         GameStateManager.OnPauseEnter -= ShowUi;
+        GameStateManager.OnFerryingEnter -= HideUi;
+        GameStateManager.OnReturningEnter -= HideUi;
     }
 
     private void ShowUi()
@@ -20,9 +24,14 @@ public class PauseScreenController : MonoBehaviour
         _ui.SetActive(true);
     }
 
-    public void ResumePlaying()
+    private void HideUi()
     {
         _ui.SetActive(false);
+    }
+
+    public void ResumePlaying()
+    {
+        HideUi();
         GameStateManager.Instance.Resume();
     }
 
