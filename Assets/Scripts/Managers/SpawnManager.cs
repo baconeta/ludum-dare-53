@@ -52,7 +52,7 @@ namespace Managers
             var obstacle = _obstacles.GetRecyclable();
 
             var length = obstacle.GetComponent<Renderer>().bounds.size.y;
-            var topOffset = _topLimit + length;
+            var topOffset = _topLimit + length / 2;
 
             obstacle.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
             
