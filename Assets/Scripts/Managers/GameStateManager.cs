@@ -76,11 +76,11 @@ public class GameStateManager : MonoBehaviour
             case GameStates.Returning:
                 OnReturningEnter?.Invoke();
                 break;
-            //Upon reaching the shore of Underworld/Right/Dropoff
+            //Upon UI pause
             case GameStates.Pause:
                 OnPauseEnter?.Invoke();
                 break;
-            //Upon reaching the shore of Underworld/Right/Dropoff
+            //Upon game over
             case GameStates.End:
                 OnEndEnter?.Invoke();
                 break;
