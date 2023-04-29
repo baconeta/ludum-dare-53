@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BoatCapacity : MonoBehaviour
@@ -10,15 +8,11 @@ public class BoatCapacity : MonoBehaviour
 
     [Tooltip("Does the boat start loaded to capacity? or does it start empty?")]
     private Boolean doesStartLoaded = false;
-
-
     public int actualCapacity { get; private set; }
 
     public int currentLoad { get; private set; }
 
-
     public static event Action OnBoatDestroyed;
-
 
     // Start is called before the first frame update
     void Start()
@@ -86,7 +80,7 @@ public class BoatCapacity : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Remove excess load 
     /// </summary>
     /// <returns>The number of units that were lost.</returns>
     private int TrimLoad()
