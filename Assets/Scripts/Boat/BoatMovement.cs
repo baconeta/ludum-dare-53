@@ -30,6 +30,9 @@ public class BoatMovement : MonoBehaviour
     
     [Range(0f,1f)][Tooltip("What the vertical limits will be multiplied by. E.g. 90% will mean a screen space of 50 units will have a play space of 45 units.")]
     public float limitBorderPercentage = 0.9f;
+
+    [Range(0, 10f)][Tooltip("When approaching a vertical limit, the rotational speed is multiplied by this to correct.")]
+    public float limitRotationMultiplier = 2f;
     
     public KeyCode rotateLeftKeyCode;
     public KeyCode rotateRightKeyCode;
@@ -148,7 +151,7 @@ public class BoatMovement : MonoBehaviour
                 else
                     targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
             }
-            else calculatedRotationSpeed *= 2;
+            else calculatedRotationSpeed *= limitRotationMultiplier;
         }
 
         //Rotate Right/Starboard/Upwards
@@ -164,7 +167,7 @@ public class BoatMovement : MonoBehaviour
                 else
                     targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.x);
             }
-            else calculatedRotationSpeed *= 2;
+            else calculatedRotationSpeed *= limitRotationMultiplier;
         }
         
         //Set rotation
