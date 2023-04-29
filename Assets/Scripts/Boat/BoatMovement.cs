@@ -28,6 +28,8 @@ public class BoatMovement : MonoBehaviour
     public KeyCode rotateLeftKeyCode;
     public KeyCode rotateRightKeyCode;
     
+    
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +42,6 @@ public class BoatMovement : MonoBehaviour
         if (isMoving)
         {
             CalculateBoatRotation();
-            
             CalculateBoatMovement();
         }
     }
