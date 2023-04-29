@@ -24,6 +24,8 @@ namespace Spawnables
 
         private void Update()
         {
+            if (!GameStateManager.Instance.IsGameActive()) return;
+
             // Slowly move the obstacle down the screen
             transform.position += Vector3.down * (_currentSpeed * Time.deltaTime);
             // if the obstacle goes off screen, recycle it
@@ -32,7 +34,7 @@ namespace Spawnables
                 RemoveFromScene();
             }
         }
-        
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Ferry"))
@@ -62,12 +64,12 @@ namespace Spawnables
          * The amount of damage this obstacle inflicts.
          */
         public int Damage => damage;
-        
+
         public void PoolableExecution(Poolable p)
         {
             _poolable = p;
         }
-        
+
         private void RemoveFromScene()
         {
             _currentSpeed = initialSpeed;
