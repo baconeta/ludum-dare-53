@@ -11,11 +11,9 @@ namespace Managers
         [SerializeField][Min(5)] private float spawnInterval = 3f;
         [Tooltip("The obstacle that is be spawned in the game scene.")]
         [SerializeField] private GameObject obstacleObject;
-
-        //In Seconds, time between spawns
-        [SerializeField] private float _timeBetweenSpawns = .2f;
-        [SerializeField] private float _speedMultiplier = 2;
-        [SerializeField] private float _damageMultiplier = 1.0f;
+        
+        [SerializeField] private float _speedMultiplier = 1f;
+        [SerializeField] private float _damageMultiplier = 1f;
 
         private ObjectPool _obstacles;
 
@@ -36,7 +34,7 @@ namespace Managers
             _leftLimit = GameObject.Find("Left Shore").transform.position.x;
             _rightLimit = GameObject.Find("Right Shore").transform.position.x;
 
-            StartSpawn(_timeBetweenSpawns, _damageMultiplier, _speedMultiplier);
+            StartSpawn(spawnInterval, _damageMultiplier, _speedMultiplier);
         }
 
         /**

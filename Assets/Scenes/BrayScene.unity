@@ -184,9 +184,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simultaneousObstacleLimit: 30
+  spawnInterval: 3
   obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
-  _secondsBetweenSpawns: 0.2
-  _speedMultiplier: 5
+  _speedMultiplier: 1
   _damageMultiplier: 1
 --- !u!4 &666187612
 Transform:

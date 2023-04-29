@@ -1,21 +1,22 @@
+using CustomEditor;
 using ObjectPooling;
 using UnityEngine;
 
 namespace Spawnables
 {
-    public class Obstacle : MonoBehaviour, IPoolableExecution, IRecyclable
+    public class Obstacle : MonoBehaviour, IPoolableExecution
     {
-        // TODO: decide on appropriate values for these fields
-        [SerializeField] private float speed = 1f;
-        //Changed to integer as souls are always whole numbers.
+        [SerializeField] private float initialSpeed = 1f;
         [SerializeField] private int damage = 1;
 
         private float _bottomBound;
         private Poolable _poolable;
         private float _length;
+        [ReadOnly] public float _currentSpeed;
 
         private void Start()
         {
+            _currentSpeed = initialSpeed;
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
             _poolable = GetComponent<Poolable>();
             _length = GetComponent<Renderer>().bounds.size.y;
@@ -24,7 +25,7 @@ namespace Spawnables
         private void Update()
         {
             // Slowly move the obstacle down the screen
-            transform.position += Vector3.down * (speed * Time.deltaTime);
+            transform.position += Vector3.down * (_currentSpeed * Time.deltaTime);
             // if the obstacle goes off screen, recycle it
             if (transform.position.y + _length < _bottomBound)
             {
@@ -46,7 +47,7 @@ namespace Spawnables
          */
         public void MultiplySpeed(float multiplier)
         {
-            speed *= multiplier;
+            _currentSpeed *= multiplier;
         }
 
         /**
@@ -66,16 +67,11 @@ namespace Spawnables
         {
             _poolable = p;
         }
-
-        public void Recycle()
-        {
-            speed = 1;
-            damage = 1;
-            RemoveFromScene();
-        }
-
+        
         private void RemoveFromScene()
         {
+            _currentSpeed = initialSpeed;
+            damage = 1;
             if (_poolable)
                 _poolable.Recycle();
             else
