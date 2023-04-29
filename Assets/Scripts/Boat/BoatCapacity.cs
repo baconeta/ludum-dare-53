@@ -72,7 +72,7 @@ public class BoatCapacity : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         ResetCapacity();
         
@@ -85,7 +85,7 @@ public class BoatCapacity : MonoBehaviour
     /// Increase the capacity of the boat.
     /// </summary>
     /// <param name="amount">By how many units should the maximum capacity be increased.</param>
-    public void IncreaseCapacity(int amount = 1)
+    public void IncreaseCapacity(int amount)
     {
         CurrentCapacity += amount;
     }
@@ -97,8 +97,8 @@ public class BoatCapacity : MonoBehaviour
 
     private int DecreaseCapacity(int amount = 1)
     {
-        CurrentCapacity = CurrentCapacity - amount;
-        if (CurrentCapacity == 0)
+        CurrentCapacity -= amount;
+        if (CurrentCapacity <= 0)
         {
             OnBoatDestroyed?.Invoke();
         }
@@ -137,14 +137,14 @@ public class BoatCapacity : MonoBehaviour
             SoulsDamned = DecreaseSouls(damageToTake);
             
             // If we reduce the number of souls to zero by taking damage, end the game.
-            if (CurrentLoad == 0) { OnAllSoulsLost?.Invoke(); }
+            if (CurrentLoad <= 0) { OnAllSoulsLost?.Invoke(); }
 
             if (doesLoseCapacityWhileContainsSouls)
             {
                 DecreaseCapacity(damageToTake);
             }
         }
-        if (CurrentCapacity == 0) { OnBoatDestroyed?.Invoke(); }
+        if (CurrentCapacity <= 0) { OnBoatDestroyed?.Invoke(); }
     }
 
     /// <summary>
