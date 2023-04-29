@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class HudController : MonoBehaviour
 {
-    [SerializeField] private GameObject _ui;
+    [SerializeField] private GameObject ui;
 
     private void OnEnable()
     {
@@ -20,12 +20,12 @@ public class HudController : MonoBehaviour
 
     private void ShowHud()
     {
-        _ui.SetActive(true);
+        ui.SetActive(true);
     }
 
     private void HideHud()
     {
-        _ui.SetActive(false);
+        ui.SetActive(false);
     }
 
     public void PauseGame()

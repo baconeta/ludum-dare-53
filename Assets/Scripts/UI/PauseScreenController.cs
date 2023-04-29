@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseScreenController : MonoBehaviour
 {
-    [SerializeField] private GameObject _ui;
+    [SerializeField] private GameObject ui;
 
     private void OnEnable()
     {
@@ -21,12 +21,12 @@ public class PauseScreenController : MonoBehaviour
 
     private void ShowUi()
     {
-        _ui.SetActive(true);
+        ui.SetActive(true);
     }
 
     private void HideUi()
     {
-        _ui.SetActive(false);
+        ui.SetActive(false);
     }
 
     public void ResumePlaying()
