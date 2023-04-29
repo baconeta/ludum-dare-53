@@ -3,9 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : MonoBehaviour
+public class GameStateManager : MonoBehaviour
 {
-    public static GameState Instance;
+    public static GameStateManager Instance;
     [Serializable]
     public enum GameStates
     {

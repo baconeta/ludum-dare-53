@@ -54,14 +54,14 @@ public class BoatMovement : MonoBehaviour
             isMoving = true;
             
             //Set direction to left/right based on the current GameState
-            switch (GameState.Instance.CurrentState)
+            switch (GameStateManager.Instance.CurrentState)
             {
-                case GameState.GameStates.Ferrying:
+                case GameStateManager.GameStates.Ferrying:
                     currentDirection = Vector3.right;
                     //UnFlip Body
                     transform.localScale = Vector3.one;
                     break;
-                case GameState.GameStates.Returning:
+                case GameStateManager.GameStates.Returning:
                     currentDirection = Vector3.left;
                     //Flip Body
                     Vector3 flipScale = new Vector3(-1, 1, 1);

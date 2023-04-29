@@ -29,7 +29,7 @@ public class BoatController : MonoBehaviour
     void Update()
     {
         //If game is inactive, return.
-        if (!GameState.Instance.IsGameActive()) return;
+        if (!GameStateManager.Instance.IsGameActive()) return;
         
         //If Not docked, don't check for launches.
         if (currentDock is null) return;
@@ -54,18 +54,18 @@ public class BoatController : MonoBehaviour
         //Completes the current voyage
         
         //Informs the GameState that it has reached its destination
-        switch (GameState.Instance.CurrentState)
+        switch (GameStateManager.Instance.CurrentState)
         {
             //Completed Ferrying - Dropped off all Souls.
-            case GameState.GameStates.Ferrying:
+            case GameStateManager.GameStates.Ferrying:
                 currentDock = rightDock;
-                GameState.Instance.CurrentState = GameState.GameStates.Returning;
+                GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Returning;
                 break;
             
             //Completed Returning - Picking up new Souls.
-            case GameState.GameStates.Returning:
+            case GameStateManager.GameStates.Returning:
                 currentDock = leftDock;
-                GameState.Instance.CurrentState = GameState.GameStates.Ferrying;
+                GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Ferrying;
                 break;
         }
         
@@ -77,7 +77,7 @@ public class BoatController : MonoBehaviour
     void VoyageLost()
     {
         //When a lose condition is met.
-        GameState.Instance.CurrentState = GameState.GameStates.End;
+        GameStateManager.Instance.CurrentState = GameStateManager.GameStates.End;
     }
 
     public void OnTriggerEnter2D(Collider2D other)
