@@ -36,31 +36,41 @@ public class BoatMovement : MonoBehaviour
     
     public KeyCode rotateLeftKeyCode;
     public KeyCode rotateRightKeyCode;
+
+    private Camera _mainCamera;
+    private float _screenHeight;
     
     
     
     // Start is called before the first frame update
     void Start()
     {
+        _mainCamera = Camera.main;
         SetVerticalBoundsBasedOnScreenSize();
     }
 
     private void SetVerticalBoundsBasedOnScreenSize()
     {
-        Vector2 screenDimensions = new Vector2(0, Screen.height);
+        //Abort check if screen height hasnt changed
+        if (_screenHeight == Screen.height) return;
+        
+        _screenHeight = Screen.height;
 
         //Lower Limit
-        verticalLimit.x = Camera.main.ScreenToWorldPoint(new Vector2(0, screenDimensions.x)).y;
+        verticalLimit.x = _mainCamera.ScreenToWorldPoint(new Vector2(0, 0)).y;
 
         //Upper Limit
-        verticalLimit.y = Camera.main.ScreenToWorldPoint(new Vector2(0, screenDimensions.y)).y;
-
+        verticalLimit.y = _mainCamera.ScreenToWorldPoint(new Vector2(0, _screenHeight)).y;
+        
         verticalLimit *= limitBorderPercentage;
     }
 
-    // Update is called once per frame
+    // Update is called once per Frame
     void Update()
     {
+        //TODO Remove from Update and place on an event.
+        SetVerticalBoundsBasedOnScreenSize();
+        
         //Is the game currently active? If not, break update.
         if (!GameStateManager.Instance.IsGameActive()) return;
         
