@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class GameState : MonoBehaviour
 {
-    public static GameState _instance;
+    public static GameState Instance;
+    [Serializable]
     public enum GameStates
     {
         Start,
@@ -15,25 +16,42 @@ public class GameState : MonoBehaviour
         End,
     }
     
-    public static event Action OnStartEnter;
-    public static event Action OnFerryingEnter;
-    public static event Action OnReturningEnter;
-    public static event Action OnPauseEnter;
-    public static event Action OnEndEnter;
     
-    private GameStates _currentState;
-
-    private void Awake()
-    {
-        if (!_instance) _instance = this;
-        else Destroy(this);
-    }
-
+    [SerializeField] private GameStates _currentState;
     public GameStates CurrentState
     {
         get { return _currentState; }
-        private set {ChangeState(value); }
+        set {ChangeState(value); }
     }
+    
+    //Event Actions for GameStates
+    //Subscribe to these to launch other mechanics
+    //Subscribe via `GameState.OnStartEnter += MethodToRun`
+    
+    //Game Start - Run intros/Dialogue etc
+    public static event Action OnStartEnter;
+    //Starting to ferry, fill up on Souls.
+    public static event Action OnFerryingEnter;
+    //Drop off souls, Repair ship.
+    public static event Action OnReturningEnter;
+    //Game Paused
+    public static event Action OnPauseEnter;
+    //Game Ended / Ship Destroyed
+    public static event Action OnEndEnter;
+    
+
+    private void Awake()
+    {
+        if (!Instance) Instance = this;
+        else Destroy(this);
+    }
+
+    private void Start()
+    {
+        //TODO Remove for actual game start.
+        CurrentState = GameStates.Ferrying;
+    }
+
 
     void ChangeState(GameStates newState)
     {
@@ -67,5 +85,12 @@ public class GameState : MonoBehaviour
                 OnEndEnter?.Invoke();
                 break;
         }
+    }
+
+    public bool IsGameActive()
+    {
+        //Active game modes are Ferrying and Returning
+        //Inactive Game Modes are Start, Pause, and End.
+        return _currentState == GameStates.Ferrying || _currentState == GameStates.Returning;
     }
 }

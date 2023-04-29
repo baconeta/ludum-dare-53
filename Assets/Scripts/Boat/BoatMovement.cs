@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class BoatMovement : MonoBehaviour
@@ -21,10 +22,9 @@ public class BoatMovement : MonoBehaviour
     [Tooltip("Boat rotational limits in degrees. X: Clockwise Limit, Y: AntiClockwise Limit")]
     public Vector2 rotationLimits;
 
-    //TODO Replace with gamestate
-    [Tooltip("Is the boat currently moving? To be replaced by GameState")]
-    public bool isMoving;
-
+    public Vector3 currentDirection;
+    [SerializeField] private bool isMoving = false;
+    
     public KeyCode rotateLeftKeyCode;
     public KeyCode rotateRightKeyCode;
     
@@ -39,6 +39,7 @@ public class BoatMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Only move if the current state is ferrying or returning
         if (isMoving)
         {
             CalculateBoatRotation();
@@ -46,6 +47,40 @@ public class BoatMovement : MonoBehaviour
         }
     }
 
+    public void EnableMovement()
+    {
+        if (!isMoving)
+        {
+            isMoving = true;
+            
+            //Set direction to left/right based on the current GameState
+            switch (GameState.Instance.CurrentState)
+            {
+                case GameState.GameStates.Ferrying:
+                    currentDirection = Vector3.right;
+                    //UnFlip Body
+                    transform.localScale = Vector3.one;
+                    break;
+                case GameState.GameStates.Returning:
+                    currentDirection = Vector3.left;
+                    //Flip Body
+                    Vector3 flipScale = new Vector3(-1, 1, 1);
+                    transform.localScale = flipScale;
+                    break;
+            }
+            
+            transform.rotation = quaternion.Euler(0,0,0);
+            
+            
+        }
+        
+    }
+
+    public void DisableMovement()
+    {
+        if (isMoving) isMoving = false;
+    }
+    
     private void CalculateBoatMovement()
     {
         //If not at max speed
@@ -57,11 +92,8 @@ public class BoatMovement : MonoBehaviour
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
         }
 
-        //TODO Change direction based on current GameState
-        Vector3 moveDirection = Vector3.right;
-
         //Move forwards
-        transform.Translate(currentSpeed * Time.deltaTime * moveDirection);
+        transform.Translate(currentSpeed * Time.deltaTime * currentDirection);
     }
 
     private void CalculateBoatRotation()
@@ -71,16 +103,24 @@ public class BoatMovement : MonoBehaviour
         //Rotation to
         Quaternion targetRotation = Quaternion.identity;
         
-        //Rotate Left
+        //Rotate Left/Port/Downwards
         if (Input.GetKey(rotateLeftKeyCode))
         {
-            targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.x);
+            //Flip rotations based on direction, this ensures that controls stay the same depending on direction.
+            if(currentDirection == Vector3.right)
+                targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.x);
+            else
+                targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
         }
 
-        //Rotate Right
+        //Rotate Right/Starboard/Upwards
         if (Input.GetKey(rotateRightKeyCode))
         {
-            targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
+            //Flip rotations based on direction, this ensures that controls stay the same depending on direction.
+            if(currentDirection == Vector3.right)
+                targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
+            else
+                targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.x);
         }
         
         //Set rotation
