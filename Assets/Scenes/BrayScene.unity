@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 412331527}
   m_Layer: 0
-  m_Name: ButtomLimit
+  m_Name: BottomLimit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,63 +148,58 @@ Transform:
   m_GameObject: {fileID: 412331526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -28, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.99116, y: 0.99116, z: 0.99116}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &959304624 stripped
+--- !u!1 &666187610
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-  m_PrefabInstance: {fileID: 8249115434510323195}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &959304631
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666187612}
+  - component: {fileID: 666187611}
+  m_Layer: 0
+  m_Name: SpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &666187611
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959304624}
+  m_GameObject: {fileID: 666187610}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9be0dd6e0864c004b9f93728ec858e57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingCapacity: 50
-  doesStartLoaded: 0
-  doesLoseCapacityWhileContainsSouls: 0
-  _currentCapacity: 0
-  _currentLoad: 0
-  _soulsSaved: 0
-  _soulsDamned: 0
---- !u!114 &959304632
-MonoBehaviour:
+  m_Script: {fileID: 11500000, guid: f58290ec189830a42a6e3c18ca6731ed, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
+  simultaneousObstacleLimit: 20
+  obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
+--- !u!4 &666187612
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959304624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a15058aa21f7f674b8657059ea63dc69, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onClickEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 959304631}
-        m_TargetAssemblyTypeName: BoatCapacity, Assembly-CSharp
-        m_MethodName: DealDamageToBoat
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  m_GameObject: {fileID: 666187610}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.9463494, y: 0.42147654, z: -0.026672363}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059926971
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,8 +610,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7c31d3cc716625949852598c46163ee2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   _currentState: 0
 --- !u!4 &1707495884
 Transform:
@@ -643,11 +638,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1111834849364648188, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: leftDock
-      value: 
+      value:
       objectReference: {fileID: 1308247678}
     - target: {fileID: 1111834849364648188, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: rightDock
-      value: 
+      value:
       objectReference: {fileID: 1622767588}
     - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: maxSpeed
@@ -716,11 +711,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-      insertIndex: 3
-      addedObject: {fileID: 959304631}
-    - targetCorrespondingSourceObject: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 959304632}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
