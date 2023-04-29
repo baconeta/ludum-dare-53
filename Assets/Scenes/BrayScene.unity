@@ -600,15 +600,19 @@ PrefabInstance:
       objectReference: {fileID: 1622767588}
     - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: maxSpeed
-      value: 15
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: acceleration
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: rotationSpeed
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: limitBoarderPercentage
+      value: 0.908
       objectReference: {fileID: 0}
     - target: {fileID: 5955720895935086287, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_RootOrder
