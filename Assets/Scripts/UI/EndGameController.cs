@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class EndGameController : MonoBehaviour
 {
-    [SerializeField] private GameObject _ui;
+    [SerializeField] private GameObject ui;
 
     private void OnEnable()
     {
@@ -25,7 +25,7 @@ public class EndGameController : MonoBehaviour
 
     private void ShowUi()
     {
-        _ui.SetActive(true);
+        ui.SetActive(true);
     }
 
     
