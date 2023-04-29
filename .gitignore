@@ -76,3 +76,4 @@ crashlytics-build.properties
 /[Ii]nfrastructure/.terraform/*
 .terraform.lock.hcl
 terraform.tfstate*
+.vsconfig
