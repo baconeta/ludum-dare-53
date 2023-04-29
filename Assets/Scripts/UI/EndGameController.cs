@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -20,8 +21,16 @@ public class EndGameController : MonoBehaviour
         ui.SetActive(true);
     }
 
+    
+    //TODO Move this logic into a SceneManager class.
     public void NavigateHome()
     {
         SceneManager.LoadScene("Scenes/MainMenu");
+    }
+    
+    //TODO Move this logic into a SceneManager class.
+    public void Replay()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
