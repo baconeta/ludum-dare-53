@@ -9,11 +9,11 @@ public class BoatCapacity : MonoBehaviour
     [Tooltip("The amount of souls that can fit at the boat when the game starts.")]
     [SerializeField]
     private int startingCapacity = 50;
-    
+
     [Tooltip("The amount of capacity restored upon ferrying souls successfully.")]
     [SerializeField]
     private int capacityRestoredOnSuccessfulFerry = 1;
-    
+
     [Tooltip("**Currently Disabled: See Start Method** Does the boat start loaded to capacity? or does it start empty?")]
     [SerializeField] [ReadOnlyAttribute]
     private bool doesStartLoaded = false;
@@ -21,42 +21,44 @@ public class BoatCapacity : MonoBehaviour
     [Tooltip("Does the boat capacity get reduced when taking damage while the boat contains souls?")]
     [SerializeField]
     private bool doesLoseCapacityWhileContainsSouls = false;
-    
-    
+
+
 
     [Header("Statistics")]
-    
+
     [SerializeField] private int _currentCapacity;
     public int CurrentCapacity
     {
-        get { return _currentCapacity;}
+        get { return _currentCapacity; }
         private set { _currentCapacity = value; }
 
     }
-    [SerializeField] private int _currentLoad;
 
-    public int CurrentLoad { 
-        get { return _currentLoad;}
+    [SerializeField] private int _currentLoad;
+    public int CurrentLoad
+    {
+        get { return _currentLoad; }
         private set { _currentLoad = value; }
     }
-    
-    [SerializeField] private int _soulsSaved;
 
-    public int SoulsSaved { 
-        get { return _soulsSaved;}
+    [SerializeField] private int _soulsSaved;
+    public int SoulsSaved
+    {
+        get { return _soulsSaved; }
         private set { _soulsSaved += value; }
     }
-    
-    [SerializeField] private int _soulsDamned;
 
-    public int SoulsDamned { 
-        get { return _soulsDamned;}
+    [SerializeField] private int _soulsDamned;
+    public int SoulsDamned
+    {
+        get { return _soulsDamned; }
         private set { _soulsDamned += value; }
     }
-    
+
 
     public static event Action OnBoatDestroyed;
     public static event Action OnAllSoulsLost;
+    public static event SoulsChanged OnSoulsChanged;
 
     private void OnEnable()
     {
@@ -76,22 +78,25 @@ public class BoatCapacity : MonoBehaviour
     private void Start()
     {
         ResetCapacity();
-        
+
         //TODO Fix
         //Weird math happens here, because GameStateManager.OnFerryingEnter calls FillSouls when the game starts. True results in initial load being -Int.MaxValue.
         //CurrentLoad = doesStartLoaded ? startingCapacity : 0;
+
+        NotifySoulsChanged();
     }
 
     /// <summary>
     /// Increase the capacity of the boat.
     /// </summary>
     /// <param name="amount">By how many units should the maximum capacity be increased.</param>
-    public void IncreaseCapacity(int amount)
+    private void IncreaseCapacity(int amount)
     {
         CurrentCapacity += amount;
+        NotifySoulsChanged();
     }
 
-    public void IncreaseCapacity()
+    private void IncreaseCapacity()
     {
         IncreaseCapacity(capacityRestoredOnSuccessfulFerry);
     }
@@ -110,7 +115,7 @@ public class BoatCapacity : MonoBehaviour
     /// Reset the currentCapacity to the startingCapacity. Trim excess currentLoad to match new capacity.
     /// <returns>The number of units that were lost.</returns>
     /// </summary>
-    public int ResetCapacity()
+    private int ResetCapacity()
     {
         CurrentCapacity = startingCapacity;
         return ReduceLoadToFitCapacity();
@@ -125,14 +130,14 @@ public class BoatCapacity : MonoBehaviour
         // If we have no souls on the ferry, and the game is still running, we must be Returning.
         if (CurrentLoad == 0)
         {
-            DecreaseCapacity(); 
+            DecreaseCapacity();
         }
         // Otherwise, we must be Ferrying.
         else
         {
             //Add the Souls Lost to the SoulsDamned statistic
             SoulsDamned = DecreaseSouls(damageToTake);
-            
+
             // If we reduce the number of souls to zero by taking damage, end the game.
             if (CurrentLoad <= 0) { OnAllSoulsLost?.Invoke(); }
 
@@ -141,7 +146,12 @@ public class BoatCapacity : MonoBehaviour
                 DecreaseCapacity(damageToTake);
             }
         }
-        if (CurrentCapacity <= 0) { OnBoatDestroyed?.Invoke(); }
+        NotifySoulsChanged();
+
+        if (CurrentCapacity <= 0) {
+            OnBoatDestroyed?.Invoke();
+        }
+
     }
 
     /// <summary>
@@ -149,19 +159,18 @@ public class BoatCapacity : MonoBehaviour
     /// </summary>
     /// <param name="loadToAdd">How many units are we trying to add to the load.</param>
     /// <returns>The number of units that were not able to fit onto the boat due to load capacity limits.</returns>
-    public int IncreaseSouls(int loadToAdd=int.MaxValue)
+    private int IncreaseSouls(int loadToAdd = int.MaxValue)
     {
         CurrentLoad += loadToAdd;
         return ReduceLoadToFitCapacity();
     }
 
-    //The set up event actions requires no return type and no parameters. This function just fulfills that requirement.
-    //TODO replace with Delegates might work?
-    public void FillSouls()
+    private void FillSouls()
     {
         IncreaseSouls();
+        NotifySoulsChanged();
     }
-    
+
     private int DecreaseSouls(int loadToRemove)
     {
         if (CurrentLoad <= loadToRemove)
@@ -175,16 +184,15 @@ public class BoatCapacity : MonoBehaviour
         }
     }
 
-    //The set up event actions requires no return type and no parameters. This function just fulfills that requirement.
-    //TODO replace with Delegates might work?
     //This is run via the event Action GameStateManager.OnReturningEnter
-    public void SaveAllSouls()
+    private void SaveAllSouls()
     {
         //Add the Souls Lost to the SoulsDamned statistic
         SoulsSaved = UnloadAll();
+        NotifySoulsChanged();
     }
-    
-    public int UnloadAll()
+
+    private int UnloadAll()
     {
         int load = CurrentLoad;
         CurrentLoad = 0;
@@ -210,4 +218,19 @@ public class BoatCapacity : MonoBehaviour
         }
 
     }
+
+    private void NotifySoulsChanged()
+    {
+        var amounts = new SoulAmounts { CurrentLoad = CurrentLoad, CurrentCapacity = CurrentCapacity, SoulsSaved = SoulsSaved };
+        OnSoulsChanged(amounts);
+    }
+}
+
+public delegate void SoulsChanged(SoulAmounts soulAmounts);
+
+public struct SoulAmounts
+{
+    public int CurrentLoad;
+    public int CurrentCapacity;
+    public int SoulsSaved;
 }
