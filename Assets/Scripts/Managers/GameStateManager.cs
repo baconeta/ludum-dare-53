@@ -117,6 +117,7 @@ namespace Managers {
                         OnFirstFerry?.Invoke();
                     }
                     //Increment successful ferries.
+                    Debug.Log(PlayerPrefs.GetInt("Successful Ferries"));
                     PlayerPrefs.SetInt("Successful Ferries", PlayerPrefs.GetInt("Successful Ferries") + 1);
                     break;
                 //Upon UI pause

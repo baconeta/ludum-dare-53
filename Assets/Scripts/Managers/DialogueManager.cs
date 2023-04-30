@@ -111,9 +111,10 @@ public class DialogueManager : MonoBehaviour
         //Get a random dialogue group
         DialogueGroup randomGroup;
         //If its their first play-through, choose the first DialogueGroup
-        if (PlayerPrefs.GetInt("SuccessfulFerries") == 0) randomGroup = DialogueGroups[0];
+        if (PlayerPrefs.GetInt("Successful Ferries") == 0) randomGroup = DialogueGroups[0];
+        //Else get a random dialogue (Excluding Element 0)
         else randomGroup = DialogueGroups[Random.Range(1, DialogueGroups.Count)];
-        
+
         DialogueStart = randomGroup.DialogueStart;
         DialogueMid  = randomGroup.DialogueMid;
         DialogueEnd = randomGroup.DialogueEnd;
