@@ -17,6 +17,8 @@ namespace Managers
 
         private ObjectPool _obstacles;
 
+        private Seeker _ghoul;
+
         private float _topLimit;
         private float _leftLimit;
         private float _rightLimit;
