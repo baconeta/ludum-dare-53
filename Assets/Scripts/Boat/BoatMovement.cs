@@ -12,16 +12,16 @@ public class BoatMovement : MonoBehaviour
     public Transform PrefabTransform;
     [Tooltip("Boat Movement Speed in m/s")]
     public float maxSpeed;
-    
+
     [ReadOnly(true)][Tooltip("The current speed the boat is moving in m/s")]
     public float currentSpeed;
 
     [Tooltip("Boat Acceleration in m/s")]
     public float acceleration;
-    
+
     [Tooltip("Boat rotational speed in degrees per second.")]
     public float rotationSpeed;
-    
+
     [Tooltip("Boat rotational limits in degrees. X: Top facing Limit, Y: Bottom facing Limit" +
              "\n***Different limits are currently unsupported due to flipping math.")]
     public Vector2 rotationLimits;
@@ -31,13 +31,13 @@ public class BoatMovement : MonoBehaviour
 
     [Tooltip("SET AT RUNTIME. The vertical limit on the screen in WORLD SPACE. X: LowerLimit, Y: UpperLimit")]
     public Vector2 verticalLimit;
-    
+
     [Range(0f,1f)][Tooltip("What the vertical limits will be multiplied by. E.g. 90% will mean a screen space of 50 units will have a play space of 45 units.")]
     public float limitBorderPercentage = 0.9f;
 
     [Range(0, 10f)][Tooltip("When approaching a vertical limit, the rotational speed is multiplied by this to correct.")]
     public float limitRotationMultiplier = 2f;
-    
+
     public KeyCode rotateUpwardsKeyCode;
     public KeyCode rotateDownwardsKeyCode;
 
@@ -60,7 +60,7 @@ public class BoatMovement : MonoBehaviour
     {
         //Abort check if screen height hasnt changed
         if (_screenHeight == Screen.height) return;
-        
+
         _screenHeight = Screen.height;
 
         //Lower Limit
@@ -68,7 +68,7 @@ public class BoatMovement : MonoBehaviour
 
         //Upper Limit
         verticalLimit.y = _mainCamera.ScreenToWorldPoint(new Vector2(0, _screenHeight)).y;
-        
+
         verticalLimit *= limitBorderPercentage;
     }
 
@@ -77,10 +77,10 @@ public class BoatMovement : MonoBehaviour
     {
         //TODO Remove from Update and place on an event.
         SetVerticalBoundsBasedOnScreenSize();
-        
+
         //Is the game currently active? If not, break update.
         if (!GameStateManager.Instance.IsGameActive()) return;
-        
+
         //Only move if the current state is ferrying or returning
         if (isMoving)
         {
@@ -95,7 +95,7 @@ public class BoatMovement : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-            
+
             //Set direction to left/right based on the current GameState
             switch (GameStateManager.Instance.CurrentState)
             {
@@ -106,12 +106,12 @@ public class BoatMovement : MonoBehaviour
                     currentDirection = Vector3.left;
                     break;
             }
-            
+
             //Reset Rotation (You've just launched!)
-            transform.rotation = quaternion.Euler(0,0,0);
+            transform.rotation = quaternion.Euler(0, 0, 0);
 
         }
-        
+
     }
 
     public void DisableMovement()
@@ -119,7 +119,7 @@ public class BoatMovement : MonoBehaviour
         //This check is to avoid double calls of DisableMovement.
         if (isMoving) isMoving = false;
     }
-    
+
     private void CalculateBoatMovement()
     {
         //If not at max speed
@@ -150,13 +150,13 @@ public class BoatMovement : MonoBehaviour
         Quaternion targetRotation = Quaternion.identity;
         //Rotation Speed with Calculations
         float calculatedRotationSpeed = rotationSpeed;
-        
+
         //Rotate towards bottom of screen
         if (Input.GetKey(rotateDownwardsKeyCode))
         {
             //Allow this rotation if the vertical limit has not been met.
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.
-            if (transform.position.y < verticalLimit.y * limitBorderPercentage)
+            if (transform.position.y > verticalLimit.x)
             {
                 //Flip rotations based on direction, this ensures that controls stay the same depending on direction.
                 if (currentDirection == Vector3.right)
@@ -172,7 +172,7 @@ public class BoatMovement : MonoBehaviour
         {
             //Allow this rotation if the vertical limit has not been met
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.
-            if (transform.position.y > verticalLimit.x * limitBorderPercentage)
+            if (transform.position.y < verticalLimit.y)
             {
                 //Flip rotations based on direction, this ensures that controls stay the same depending on direction.
                 if (currentDirection == Vector3.right)
@@ -182,9 +182,9 @@ public class BoatMovement : MonoBehaviour
             }
             else calculatedRotationSpeed *= limitRotationMultiplier;
         }
-        
+
         //Set rotation
         transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
-        
+
     }
 }
