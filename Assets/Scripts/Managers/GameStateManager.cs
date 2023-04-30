@@ -102,6 +102,7 @@ public class GameStateManager : MonoBehaviour
                 break;
             //Upon reaching the shore of Underworld/Right/Dropoff
             case GameStates.Returning:
+                
                 //Calls OnFirstFerry for the first time a ferry trip is successful.
                 OnReturningEnter?.Invoke();
                 if (_previousState == GameStates.Ferrying && !firstFerryCompleted)
@@ -109,6 +110,8 @@ public class GameStateManager : MonoBehaviour
                     firstFerryCompleted = true;
                     OnFirstFerry?.Invoke();
                 }
+                //Increment successful ferries.
+                PlayerPrefs.SetInt("Successful Ferries", PlayerPrefs.GetInt("Successful Ferries") + 1);
                 break;
             //Upon UI pause
             case GameStates.Pause:

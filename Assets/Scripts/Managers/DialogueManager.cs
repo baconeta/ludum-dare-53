@@ -137,6 +137,7 @@ public class DialogueManager : MonoBehaviour
                 case GameStateManager.GameStates.Ferrying:
                     if (currentState != GameStateManager.GameStates.Returning) break;
                     //Only occurs on the first play through
+                    if (PlayerPrefs.GetInt("Successful Ferries") > 0) return;
                     //Only occurs once on first successful ferry
                     if (GameStateManager.Instance.firstFerryCompleted) return;
                     //Play mid-game dialogue
