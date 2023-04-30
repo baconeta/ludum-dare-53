@@ -7,6 +7,7 @@ Shader "Custom/RiverWater" {
         _Speed ("Speed", Range(0, 10)) = 1
         _WaveSpeed ("Wave Speed", Range(0, 10)) = 1
         _WaveAmplitude ("Wave Amplitude", Range(0, 1)) = 0.1
+        _Pause("Pause", Range(0,1)) = 0
     }
 
     SubShader {
@@ -22,6 +23,8 @@ Shader "Custom/RiverWater" {
         float _Speed;
         float _WaveSpeed;
         float _WaveAmplitude;
+        int _Pause;
+        float4 _CustomTime;
 
         struct Input {
             float2 uv_MainTex;
@@ -31,14 +34,28 @@ Shader "Custom/RiverWater" {
         void surf (Input IN, inout SurfaceOutput o) {
             float2 uv = IN.uv_MainTex;
 
-            // Calculate the texture coordinate offset based on flow direction and time
-            float2 offset = uv + _FlowDirection * _Time.y * _Speed;
+            // Paused
+            if(_Pause == 1)
+            {
+                // Calculate the texture coordinate offset based on flow direction and time
+                uv += _FlowDirection * _CustomTime.y * _Speed;
+                
+                // Add a time-based animation to the texture coordinate offset to make the texture move
+                uv += float2(0, sin(_CustomTime.y * _WaveSpeed + IN.worldPos.x) * _WaveAmplitude);
+            }
+            else //Not paused
+            {
+                _CustomTime = _Time;
+                // Calculate the texture coordinate offset based on flow direction and time
+                uv += _FlowDirection * _CustomTime.y * _Speed;
+                
+                // Add a time-based animation to the texture coordinate offset to make the texture move
+                uv += float2(0, sin(_CustomTime.y * _WaveSpeed + IN.worldPos.x) * _WaveAmplitude);
+            }
             
-            // Add a time-based animation to the texture coordinate offset to make the texture move
-            offset += float2(0, sin(_Time.y * _WaveSpeed + IN.worldPos.x) * _WaveAmplitude);
 
             // Sample the texture at the offset coordinate and use the red channel as height
-            float noise = tex2D(_MainTex, offset).r;
+            float noise = tex2D(_MainTex, uv).r;
 
             // Calculate the height based on the sampled noise
             float height = noise * 0.1;
