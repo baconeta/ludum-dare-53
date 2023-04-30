@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BarksController : MonoBehaviour
@@ -7,7 +8,7 @@ public class BarksController : MonoBehaviour
     [SerializeField] private float minTimeBetweenBarks;
 
     private bool _isBarkOnScreen;
-    private float _timeSinceBarkClosed;
+    private float _timeLastBarkClosed;
 
     private void OnEnable()
     {
@@ -42,7 +43,7 @@ public class BarksController : MonoBehaviour
 
     private void TryBark(bool damageBark)
     {
-        if (_isBarkOnScreen || _timeSinceBarkClosed < Time.time - minTimeBetweenBarks)
+        if (_isBarkOnScreen || minTimeBetweenBarks < Time.time - _timeLastBarkClosed)
         {
             return;
         }
@@ -51,6 +52,8 @@ public class BarksController : MonoBehaviour
         {
             // Get a new bark and speaker from the soul factory
             // Get a return quip for Charon 
+
+            // calculate the bark time showing length
             // Set up bark popups and show it on screen
         }
         else
@@ -58,5 +61,17 @@ public class BarksController : MonoBehaviour
             // Get an atmospheric bark and speaker
             // Set up and show back popup
         }
+    }
+
+    private IEnumerator ShowPopup(BarkPopup popup, int timeOnScreen)
+    {
+        // Fade popup in
+        // Show for timeOnScreenSeconds
+
+        yield return new WaitForSeconds(timeOnScreen);
+
+        // Fade Out
+
+        _timeLastBarkClosed = Time.time;
     }
 }
