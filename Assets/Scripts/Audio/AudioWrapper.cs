@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Managers;
@@ -10,7 +9,7 @@ namespace Audio
     public class AudioWrapper : EverlastingSingleton<AudioWrapper>
     {
         [SerializeField] private List<SoundData> allSoundData;
-        private Dictionary<string, SoundData> _soundDict;
+        private readonly Dictionary<string, SoundData> _soundDict = new();
 
         private bool _dictionaryInitialised;
 
