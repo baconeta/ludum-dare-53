@@ -1093,6 +1093,18 @@ PrefabInstance:
       propertyPath: rightDock
       value: 
       objectReference: {fileID: 1622767588}
+    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: rotationLimits.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697175914585957441, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: rotationLimits.y
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2353201922784562286, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5955720895935086287, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1145,5 +1157,34 @@ PrefabInstance:
     - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8249115434510323197}
   m_SourcePrefab: {fileID: 100100000, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+--- !u!1 &8249115434510323196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+  m_PrefabInstance: {fileID: 8249115434510323195}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8249115434510323197
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249115434510323196}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 211b5a03b6bbcf54a90d95f5ed445abe, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

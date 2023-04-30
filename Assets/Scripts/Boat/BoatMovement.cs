@@ -181,7 +181,7 @@ public class BoatMovement : MonoBehaviour
         }
         
         //Set rotation
-        transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);;
+        transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
         
     }
 }

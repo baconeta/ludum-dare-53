@@ -3,12 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Spawnables;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BoatController : MonoBehaviour
 {
     
     private BoatMovement _boatMovement;
     private BoatCapacity _boatCapacity;
+    private Animator _animator;
     public Transform currentDock;
     
     public Transform leftDock;
@@ -22,6 +24,7 @@ public class BoatController : MonoBehaviour
     {
         _boatMovement = GetComponent<BoatMovement>();
         _boatCapacity = GetComponent<BoatCapacity>();
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -47,6 +50,8 @@ public class BoatController : MonoBehaviour
     {
         //If game is inactive, return.
         if (!GameStateManager.Instance.IsGameActive()) return;
+
+        UpdateAnimations();
         
         //If Not docked, don't check for launches.
         if (currentDock is null) return;
@@ -55,6 +60,24 @@ public class BoatController : MonoBehaviour
         {
             StartVoyage();
         }
+    }
+
+    private void UpdateAnimations()
+    {
+        //TODO FIX! .EulerAngles returns mathematically different value to the inspector.
+        //It works for now and seems to be okay.
+        float angle = transform.rotation.eulerAngles.z;
+        
+        float angleNormalized = 0;
+        
+        //If in a negative angle
+        if (angle >= 360 - Mathf.Abs(_boatMovement.rotationLimits.y))
+        {
+            angleNormalized = (angle - 360) / Mathf.Abs(_boatMovement.rotationLimits.y);
+        }
+        else angleNormalized = angle / _boatMovement.rotationLimits.x;
+        
+        _animator.SetFloat("BoatAngleNormalized", angleNormalized);
     }
 
     void StartVoyage()
