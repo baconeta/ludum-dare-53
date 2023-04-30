@@ -869,7 +869,7 @@ Transform:
   m_Children:
   - {fileID: 2601935640159628669}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5932732319228821038
 MonoBehaviour:
@@ -884,6 +884,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 4279238502445317858}
+  totalSoulsLabel: {fileID: 2168839797952688955}
+  carriedSoulsLabel: {fileID: 1254998876894561860}
+  soulCapacityLabel: {fileID: 3486442872382758539}
 --- !u!1 &8411115440985607286
 GameObject:
   m_ObjectHideFlags: 0
