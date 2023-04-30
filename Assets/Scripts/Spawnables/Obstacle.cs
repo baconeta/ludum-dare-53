@@ -7,17 +7,17 @@ namespace Spawnables
 {
     public class Obstacle : MonoBehaviour, IPoolableExecution
     {
-        [SerializeField] private float initialSpeed = 1f;
+        [SerializeField] private float initialSpeed = 1.0f;
         [SerializeField] private int damage = 1;
 
         private float _bottomBound;
         private Poolable _poolable;
         private float _length;
-        [ReadOnly] public float _currentSpeed;
+        [ReadOnly] public float currentSpeed;
 
         private void Start()
         {
-            _currentSpeed = initialSpeed;
+            currentSpeed = initialSpeed;
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
             _poolable = GetComponent<Poolable>();
             _length = GetComponent<Renderer>().bounds.size.y;
@@ -28,7 +28,7 @@ namespace Spawnables
             if (!GameStateManager.Instance.IsGameActive()) return;
 
             // Slowly move the obstacle down the screen
-            transform.position += Vector3.down * (_currentSpeed * Time.deltaTime);
+            transform.position += Vector3.down * (currentSpeed * Time.deltaTime);
             // if the obstacle goes off screen, recycle it
             if (transform.position.y + _length < _bottomBound)
             {
@@ -50,7 +50,7 @@ namespace Spawnables
          */
         public void MultiplySpeed(float multiplier)
         {
-            _currentSpeed *= multiplier;
+            currentSpeed *= multiplier;
         }
 
         /**
@@ -73,7 +73,7 @@ namespace Spawnables
 
         private void RemoveFromScene()
         {
-            _currentSpeed = initialSpeed;
+            currentSpeed = initialSpeed;
             damage = 1;
             if (_poolable)
                 _poolable.Recycle();
