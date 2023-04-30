@@ -40,6 +40,7 @@ namespace Managers
 
             // Pause spawning in response to game state changes
             GameStateManager.OnPauseEnter += StopSpawn;
+            GameStateManager.OnPauseExit += StartSpawn;
 
             // Stop spawning in response to game over or restarting the game
             GameStateManager.OnEndEnter += StopSpawn;
@@ -50,6 +51,7 @@ namespace Managers
             GameStateManager.OnFerryingEnter -= StartSpawn;
             GameStateManager.OnDialogueEnter -= StopSpawn;
             GameStateManager.OnPauseEnter -= StopSpawn;
+            GameStateManager.OnPauseExit -= StartSpawn;
             GameStateManager.OnEndEnter -= StopSpawn;
         }
 
