@@ -35,9 +35,4 @@ public class PauseScreenController : MonoBehaviour
         HideUi();
         GameStateManager.Instance.Resume();
     }
-
-    public void NavigateHome()
-    {
-        SceneManager.LoadScene("Scenes/MainMenu");
-    }
 }
