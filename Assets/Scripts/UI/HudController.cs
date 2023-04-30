@@ -11,7 +11,9 @@ public class HudController : MonoBehaviour
 
     private void OnEnable()
     {
+        GameStateManager.OnDialogueEnter += HideHud;
         GameStateManager.OnPauseEnter += HideHud;
+        GameStateManager.OnPauseExit += ShowHud;
         GameStateManager.OnFerryingEnter += ShowHud;
         GameStateManager.OnReturningEnter += ShowHud;
         BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
@@ -19,7 +21,9 @@ public class HudController : MonoBehaviour
 
     private void OnDisable()
     {
+        GameStateManager.OnDialogueEnter -= HideHud;
         GameStateManager.OnPauseEnter -= HideHud;
+        GameStateManager.OnPauseExit -= ShowHud;
         GameStateManager.OnFerryingEnter -= ShowHud;
         GameStateManager.OnReturningEnter -= ShowHud;
         BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
