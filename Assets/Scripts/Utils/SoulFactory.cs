@@ -1,21 +1,55 @@
+using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class SoulFactory : MonoBehaviour
 {
-    [Tooltip("The comma-separated list of descriptors to generate names from.")]
-    [SerializeField] private NameGenerator _nameGenerator;
+    [Header("Managers")]
+
+    [Tooltip("The name generator that is to be used to generate names for normal souls.")]
+    [SerializeField] private NameGenerator _soulNameGenerator;
+
+    [Tooltip("The bark manager that is to be used to generate barks.")]
+    [SerializeField] private BarkManager _barkManager;
+
+    [Header("Delimiters")]
+
+    [Tooltip("The pair-pair delimiter.")]
+    [SerializeField] private string delimiter1 = ",";
     
-    [Tooltip("The comma-separated list of descriptors to generate names from.")]
+    [Tooltip("The name-bark delimiter.")]
+    [SerializeField] private string delimiter2 = ",";
+
+    [Header("Other")]
+
+    [Tooltip("The 2D delimited list of name-bark pairs to generate special souls from.")]
     [SerializeField] private TextAsset _specials;
 
     [Tooltip("The comma-separated list of descriptors to generate names from.")]
     [SerializeField] private double _specialSoulChance = 0.05;
 
-    public Soul GenerateSoul()
+    private string[,] specialSoulData;
+
+    public void Start()
+    {
+        // Split the 2D delimited list once.
+        string[] pairs = _specials.text.Split(delimiter1);
+        string[,] soulData = new string[pairs.Length, 2];
+        // Split each pair again.
+        for (int i = 0; i < pairs.Length; i++)
+        {
+            string[] items = pairs[i].Split(delimiter2);
+            soulData[i, 0] = items[0];
+            soulData[i, 1] = items[1];
+        }
+        // Save the result.
+        specialSoulData = soulData;
+    }
+
+    public Soul GenerateRandomSoul()
     {
         System.Random random = new System.Random();
-        double roll = random.NextDouble();
-        if (roll < _specialSoulChance)
+        if (random.NextDouble() < _specialSoulChance)
         {
             return GenerateSpecialSoul(); 
         }
@@ -27,17 +61,45 @@ public class SoulFactory : MonoBehaviour
 
     public Soul GenerateSpecialSoul()
     {
-        Object info = ;
-        if (name == "%player_name%")
-            name = PlayerPrefs.GetString("Name");
-        name = (name == "") ? "You" : name;
-        return new Soul(name, false, info.);
+        // Check if all special souls have been used. If they have been, reset them.
+        if (PlayerPrefs.GetInt("SpecialSoulUsedCount") >= specialSoulData.GetLength(0))
+            ResetSouls(specialSoulData.GetLength(0));
+
+        while (true)
+        {
+            // Select a random special soul pair.
+            int index = Random.Range(0, specialSoulData.GetLength(0));
+            // Check if it has been used.
+            if (PlayerPrefs.GetInt("SpecialSoulBeenUsed" + index) == 1)
+            {
+                // The special soul has been used. Select another one.
+                continue;
+            }
+            // Extract data for special soul.
+            string name = specialSoulData[index,0];
+            string ambienceBark = specialSoulData[index,1];
+
+            // Replace special name with player name.
+            if (name == "%player_name%")
+                name = PlayerPrefs.GetString("Name");
+            name = (name == "") ? "You" : name;
+
+            return new Soul(name, true, _barkManager, ambienceBark);
+        }
     }
 
     public Soul GenerateNormalSoul()
     {
-        string name = _nameGenerator.GenerateName();
-        return new Soul(name, true, barks);
+        return new Soul(_soulNameGenerator.GenerateName(), false, _barkManager);
+    }
+
+    private void ResetSouls(int length)
+    {
+        PlayerPrefs.SetInt("SpecialSoulUsedCount", 0);
+        for (int i = 0; i < length; i++)
+        {
+            PlayerPrefs.DeleteKey("SpecialSoulBeenUsed" + i);
+        }
     }
 }
 
@@ -45,19 +107,28 @@ public class Soul
 {
     public readonly string Name;
     public readonly bool IsSpecial;
-    private readonly string[] Barks;
+    private readonly BarkManager BarkManager;
+    private readonly string AmbienceBarkOverride;
 
-    public Soul(string name, bool isSpecial, string[] barks)
+    public Soul(string name, bool isSpecial, BarkManager barkManager, string ambienceBarkOverride = "")
     {
         Name = name;
         IsSpecial = isSpecial;
-        Barks = barks;
+        BarkManager = barkManager;
+        AmbienceBarkOverride = ambienceBarkOverride;
     }
 
-    public string GetBark()
+    public string GetDamageBark()
     {
-        System.Random random = new System.Random();
-        int index = random.Next(0, Barks.Length);
-        return Barks[index];
+        return BarkManager.GetDamageBark();
+    }
+
+    public string GetAmbienceBark()
+    {
+        if (IsSpecial)
+        {
+            return AmbienceBarkOverride;
+        }
+        return BarkManager.GetAmbienceBark();
     }
 }
