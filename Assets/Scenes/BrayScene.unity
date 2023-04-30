@@ -375,9 +375,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f58290ec189830a42a6e3c18ca6731ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simultaneousObstacleLimit: 30
-  spawnInterval: 3
+  simultaneousObstacleLimit: 20
+  simultaneousSeekerLimit: 10
+  spawnInterval: 5
   obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
+  seekerObject: {fileID: 7031394477568430888, guid: 159c7a3bb8cfe8f40b20f2f56d4c093a, type: 3}
   speedMultiplier: 1
   damageMultiplier: 1
 --- !u!4 &666187612
