@@ -61,14 +61,14 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     
-    //TODO Expand dialogues to include event specific dialogues: e.g. Returning/Ferrying/Start/End
-    public DialogueStruct DialogueStart;
-    public DialogueStruct DialogueMid;
-    public DialogueStruct DialogueEnd;
-    public List<DialogueStruct> Dialogues;
+    [Tooltip("Groups of dialogue that are selected at RANDOM at game start.")]
     public List<DialogueGroup> DialogueGroups;
-    public DialogueStruct currentDialogue = new DialogueStruct();
-    public int currentDialogueLine;
+    
+    private DialogueStruct DialogueStart;
+    private DialogueStruct DialogueMid;
+    private DialogueStruct DialogueEnd;
+    private DialogueStruct currentDialogue = new DialogueStruct();
+    private int currentDialogueLine;
     public bool isDialogueActive;
     public Color inactiveSpeakerColor;
     public float inactiveSpeakerSize;
