@@ -33,7 +33,7 @@ public class BarkManager : MonoBehaviour
         while (true)
         {
             // Select a random bark.
-            int index = UnityEngine.Random.Range(0, barks.Length);
+            int index = Random.Range(0, barks.Length);
             // Check if it has been used.
             if (PlayerPrefs.GetInt(prefix + "BarkBeenUsed" + index) == 1)
             {
@@ -49,12 +49,8 @@ public class BarkManager : MonoBehaviour
         PlayerPrefs.SetInt(prefix + "BarksUsedCount", 0);
         for (int i = 0; i < length; i++)
         {
-            PlayerPrefs.SetInt(prefix + "BarkBeenUsed" + i, 0);
+            PlayerPrefs.DeleteKey(prefix + "BarkBeenUsed" + i);
         }
     }
 
 }
-// TODO BARK COUNT PLAYER PREFS
-// TODO IF BARK HAS BEEN USED OR NOT
-// TODO RESET BARK USAGE WHEN ALL BARKS HAVE BEEN USED
-// TODO ALSO SAVE SPECIAL BARKS
