@@ -1,3 +1,4 @@
+using Managers;
 using UnityEngine;
 
 public class HudController : MonoBehaviour
