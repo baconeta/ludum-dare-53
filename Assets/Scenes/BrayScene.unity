@@ -406,7 +406,6 @@ GameObject:
   - component: {fileID: 1059926974}
   - component: {fileID: 1059926973}
   - component: {fileID: 1059926972}
-  - component: {fileID: 1059926975}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -432,7 +431,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -457,7 +456,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 22
+  orthographic size: 28
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -480,32 +479,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059926971}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 29.46, y: 0, z: -10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1059926975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1059926971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9aac22c158f242afb9d7dedfac0bf827, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  followSpeed: 3
-  posOffset: {x: 0, y: 0}
-  leftLimit: -74
-  rightLimit: 73.5
-  bottomLimit: -27
-  topLimit: 27
 --- !u!1 &1164934417
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,7 +587,7 @@ Transform:
   m_GameObject: {fileID: 1164934417}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 1, z: 6}
+  m_LocalScale: {x: 10, y: 1, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -704,7 +685,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1308247677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -65, y: -0.07, z: 0}
+  m_LocalPosition: {x: -40.55, y: -0.07, z: 0}
   m_LocalScale: {x: 5.2, y: 5.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -943,7 +924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622767587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63, y: -0.07, z: 0}
+  m_LocalPosition: {x: 38.9, y: -0.07, z: 0}
   m_LocalScale: {x: 5.2, y: 5.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1077,6 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: 0
+  firstFerryCompleted: 0
   _previousState: 0
 --- !u!4 &1707495884
 Transform:
@@ -1280,67 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84174fa32cb211c4cae561a274125408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogueStart:
-    linesOfDialogue: []
-    participants: []
-  DialogueMid:
-    linesOfDialogue: []
-    participants: []
-  DialogueEnd:
-    linesOfDialogue: []
-    participants: []
-  Dialogues:
-  - linesOfDialogue:
-    - line: I am Charon, the Ferryman of the River Styx.
-      dialogueSide: 0
-      participantSpeaking: 0
-    - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you think
-        there was just one of us?
-      dialogueSide: 0
-      participantSpeaking: 1
-    - line: I am Persephone, Queen of the Underworld!
-      dialogueSide: 1
-      participantSpeaking: 0
-    - line: Conversation can flow in any direction
-      dialogueSide: 0
-      participantSpeaking: 1
-    - line: And the current speaker will be highlighted
-      dialogueSide: 1
-      participantSpeaking: 0
-    - line: Although only one of us can speak at a time right now
-      dialogueSide: 0
-      participantSpeaking: 0
-    participants:
-    - name: Kharon
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Kharon2
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Percephone
-      dialogueSide: 1
-      portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
-  - linesOfDialogue:
-    - line: I am Charon, the Ferryman of the River Styx.
-      dialogueSide: 0
-      participantSpeaking: 0
-    - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you think
-        there was just one of us?
-      dialogueSide: 0
-      participantSpeaking: 1
-    - line: I am Persephone, Queen of the Underworld!
-      dialogueSide: 1
-      participantSpeaking: 0
-    participants:
-    - name: Kharon
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Kharon2
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Percephone
-      dialogueSide: 1
-      portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
   DialogueGroups:
   - DialogueStart:
       linesOfDialogue:
@@ -1360,17 +1281,17 @@ MonoBehaviour:
       - line: And the current speaker will be highlighted
         dialogueSide: 1
         participantSpeaking: 0
-      - line: Although only one of us can speak at a time right now
+      - line: And we can even both speak at once!
         dialogueSide: 0
-        participantSpeaking: 0
+        participantSpeaking: -1
       - line: 'These narratives occur at OnStartEnter, OnFirstFerry, and OnEndEnter. '
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Kharon
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Kharon2
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
       - name: Percephone
@@ -1382,7 +1303,7 @@ MonoBehaviour:
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Kharon
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
       - name: Percephone
@@ -1394,13 +1315,55 @@ MonoBehaviour:
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Kharon
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-  currentDialogue:
-    linesOfDialogue: []
-    participants: []
-  currentDialogueLine: 0
+  - DialogueStart:
+      linesOfDialogue:
+      - line: I am Charon, the Ferryman of the River Styx.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you
+          think there was just one of us?
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: I am Persephone, Queen of the Underworld!
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Conversation can flow in any direction
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: And the current speaker will be highlighted
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: And we can even both speak at once!
+        dialogueSide: 0
+        participantSpeaking: -1
+      - line: 'These narratives occur at OnStartEnter, OnFirstFerry, and OnEndEnter. '
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Percephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Game over! No souls left
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   inactiveSpeakerSize: 0.7
@@ -1815,7 +1778,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5955720895935086287, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -56
+      value: -32.1
       objectReference: {fileID: 0}
     - target: {fileID: 5955720895935086287, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_LocalPosition.y
