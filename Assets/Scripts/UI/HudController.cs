@@ -1,15 +1,20 @@
 using Managers;
+using TMPro;
 using UnityEngine;
 
 public class HudController : MonoBehaviour
 {
     [SerializeField] private GameObject ui;
+    [SerializeField] private TMP_Text totalSoulsLabel;
+    [SerializeField] private TMP_Text carriedSoulsLabel;
+    [SerializeField] private TMP_Text soulCapacityLabel;
 
     private void OnEnable()
     {
         GameStateManager.OnPauseEnter += HideHud;
         GameStateManager.OnFerryingEnter += ShowHud;
         GameStateManager.OnReturningEnter += ShowHud;
+        BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
     }
 
     private void OnDisable()
@@ -17,6 +22,7 @@ public class HudController : MonoBehaviour
         GameStateManager.OnPauseEnter -= HideHud;
         GameStateManager.OnFerryingEnter -= ShowHud;
         GameStateManager.OnReturningEnter -= ShowHud;
+        BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
     }
 
     private void ShowHud()
@@ -49,5 +55,12 @@ public class HudController : MonoBehaviour
         {
             PauseGame();
         }
+    }
+
+    private void UpdateSoulDisplays(SoulAmounts soulAmounts)
+    {
+        totalSoulsLabel.text = soulAmounts.SoulsSaved.ToString();
+        carriedSoulsLabel.text = soulAmounts.CurrentLoad.ToString();
+        soulCapacityLabel.text = soulAmounts.CurrentCapacity.ToString();
     }
 }
