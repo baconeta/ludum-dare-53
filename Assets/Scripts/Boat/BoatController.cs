@@ -7,24 +7,30 @@ using UnityEngine.UIElements;
 
 public class BoatController : MonoBehaviour
 {
-    
+    [Header("Components")]
     private BoatMovement _boatMovement;
     private BoatCapacity _boatCapacity;
     private Animator _animator;
+    private SpriteRenderer _spriteRenderer;
+    public GameObject scriptsGameObject;
+    public GameObject animatorGameObject;
+
+    [Header("Dock/Shore Information")]
     public Transform currentDock;
-    
     public Transform leftDock;
     public Transform rightDock;
 
+    [Header("Temp")]
     public KeyCode voyageStartKey;
  
 
     // Start is called before the first frame update
     void Awake()
     {
-        _boatMovement = GetComponent<BoatMovement>();
-        _boatCapacity = GetComponent<BoatCapacity>();
-        _animator = GetComponent<Animator>();
+        _boatMovement = GetComponentInChildren<BoatMovement>();
+        _boatCapacity = GetComponentInChildren<BoatCapacity>();
+        _animator = GetComponentInChildren<Animator>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void Start()
@@ -66,9 +72,10 @@ public class BoatController : MonoBehaviour
     {
         //TODO FIX! .EulerAngles returns mathematically different value to the inspector.
         //It works for now and seems to be okay.
-        float angle = transform.rotation.eulerAngles.z;
+        //Get the angle of the SCRIPTS game object. This is separate from Animations to avoid rotational visual glitches.
+        float angle = scriptsGameObject.transform.rotation.eulerAngles.z;
         
-        float angleNormalized = 0;
+        float angleNormalized;
         
         //If in a negative angle
         if (angle >= 360 - Mathf.Abs(_boatMovement.rotationLimits.y))
@@ -77,6 +84,22 @@ public class BoatController : MonoBehaviour
         }
         else angleNormalized = angle / _boatMovement.rotationLimits.x;
         
+        //Flip sprite depending on current heading.
+        //TODO Animator bool is currently unused.
+        if (_boatMovement.currentDirection == Vector3.left)
+        {
+            _animator.SetBool("FlipX", true);
+            _spriteRenderer.flipX = true;
+            //Flip angle to correct sprite
+            angleNormalized *= -1;
+        }
+        else
+        {
+            _animator.SetBool("FlipX", false);
+            _spriteRenderer.flipX = false;
+        }
+        
+        //Update animator float so the animations change based on the boat angle.
         _animator.SetFloat("BoatAngleNormalized", angleNormalized);
     }
 
