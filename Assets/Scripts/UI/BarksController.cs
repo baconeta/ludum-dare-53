@@ -120,41 +120,21 @@ public class BarksController : MonoBehaviour
         }
 
         var returning = GameStateManager.Instance.CurrentState == GameStateManager.GameStates.Returning;
-        var soloBark = false;
-        if (returning)
+        var soloBark = returning || Random.Range(0, 100) < percentChanceToBeSoloBark;
+
+        _isBarkOnScreen = true;
+        if (!soloBark && damageBark)
         {
-            soloBark = true;
+            ResponseDamageBark();
+        }
+
+        else if (returning)
+        {
+            CharonOnlyBark(damageBark);
         }
         else
         {
-            soloBark = Random.Range(0, 100) < percentChanceToBeSoloBark;
-        }
-
-        // _isBarkOnScreen = true;
-
-        if (damageBark)
-        {
-            _isBarkOnScreen = true;
-            if (!soloBark)
-            {
-                ResponseDamageBark();
-                return;
-            }
-
-            if (returning)
-            {
-                CharonOnlyBark();
-            }
-            else
-            {
-                SoulOnlyBark();
-            }
-        }
-        else
-        {
-            // Get an atmospheric bark and speaker
-
-            // Set up and show back popup
+            SoulOnlyBark(damageBark);
         }
     }
 
@@ -177,7 +157,7 @@ public class BarksController : MonoBehaviour
         StartCoroutine(ShowPopup(barkPopupRight, timeOnScreen, responseDelaySeconds));
     }
 
-    private void SoulOnlyBark()
+    private void SoulOnlyBark(bool hit = false)
     {
         // TODO get soul bark
         var soulName = "James";
@@ -191,7 +171,7 @@ public class BarksController : MonoBehaviour
         StartCoroutine(ShowPopup(barkPopupLeft, timeOnScreen));
     }
 
-    private void CharonOnlyBark()
+    private void CharonOnlyBark(bool hit = false)
     {
         // TODO get charon bark
         var bark = "How dare you.";
