@@ -1281,17 +1281,17 @@ MonoBehaviour:
       - line: And the current speaker will be highlighted
         dialogueSide: 1
         participantSpeaking: 0
-      - line: Although only one of us can speak at a time right now
+      - line: And we can even both speak at once!
         dialogueSide: 0
-        participantSpeaking: 0
+        participantSpeaking: -1
       - line: 'These narratives occur at OnStartEnter, OnFirstFerry, and OnEndEnter. '
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Kharon
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Kharon2
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
       - name: Percephone
@@ -1303,7 +1303,7 @@ MonoBehaviour:
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Kharon
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
       - name: Percephone

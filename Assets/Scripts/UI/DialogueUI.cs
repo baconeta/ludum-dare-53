@@ -122,54 +122,125 @@ public class DialogueUI : MonoBehaviour
     {
         GameObject activeParticipant = null;
 
-        //Update the current active speaker
-        //TODO Edge case for multiple speakers
-        switch (nextLine.dialogueSide)
+        //Single speaker cases
+        if (nextLine.participantSpeaking >= 0)
         {
-            //Left side, get the current speaker.
-            case DialogueSides.Left:
-                activeParticipant = leftSideParticipants[nextLine.participantSpeaking];
-                break;
-            case DialogueSides.Right:
-                activeParticipant = rightSideParticipants[nextLine.participantSpeaking];
-                break;
+            //Update the current active speaker
+            switch (nextLine.dialogueSide)
+            {
+                //Left side, get the current speaker.
+                case DialogueSides.Left:
+                    activeParticipant = leftSideParticipants[nextLine.participantSpeaking];
+                    break;
+                case DialogueSides.Right:
+                    activeParticipant = rightSideParticipants[nextLine.participantSpeaking];
+                    break;
+            }
+
+            //Set color to white (The original Colour)
+            activeParticipant.GetComponent<Image>().color = Color.white;
+            //Set active participant size to 1,1,1
+            activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
+
+
+            //Update the current text with the Syntax "~"Name: Text"
+            dialogueText.text = activeParticipant.name + ": " + nextLine.line;
+
+            //Deactivate all leftSideParticipants except activeParticipant
+            foreach (GameObject participant in leftSideParticipants)
+            {
+                //Check against active participant, don't alter if it is.
+                if (participant == activeParticipant) continue;
+
+                //Inactive participants
+                //Set colour to inactive
+                participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                //Set size to inactive size
+                participant.GetComponent<RectTransform>().localScale =
+                    Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+            }
+            
+            //Deactivate all rightSideParticipants except activeParticipant
+            foreach (GameObject participant in rightSideParticipants)
+            {
+                //Check against active participant, don't alter if it is.
+                if (participant == activeParticipant) continue;
+
+                //Inactive participants
+                //Set colour to inactive
+                participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                //Set size to inactive size
+                participant.GetComponent<RectTransform>().localScale =
+                    Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+            }
         }
-
-        //Set color to white (The original Colour)
-        activeParticipant.GetComponent<Image>().color = Color.white;
-        //Set active participant size to 1,1,1
-        activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
-
-
-        //Update the current text with the Syntax "~"Name: Text"
-        dialogueText.text = activeParticipant.name + ": " + nextLine.line;
-
-        //Deactive all leftSideParticipants
-        foreach (GameObject participant in leftSideParticipants)
+        else //All of one side speaking case
         {
-            //Check against active participant, don't alter if it is.
-            if (participant == activeParticipant) continue;
+            List<GameObject> activeParticipants = new List<GameObject>();
 
-            //Inactive participants
-            //Set colour to inactive
-            participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
-            //Set size to inactive size
-            participant.GetComponent<RectTransform>().localScale =
-                Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+            //Update the current active speaker
+            switch (nextLine.dialogueSide)
+            {
+                //Left side, get the current speaker.
+                case DialogueSides.Left:
+                    activeParticipants = leftSideParticipants;
+                    //Active all leftSideParticipants
+                    foreach (GameObject participant in leftSideParticipants)
+                    {
+                        //Set colour to Active
+                        participant.GetComponent<Image>().color = Color.white;
+                        //Set size to inactive size
+                        participant.GetComponent<RectTransform>().localScale =
+                            Vector3.one;
+                    }
+                    
+                    //Deactive all rightSideParticipants
+                    foreach (GameObject participant in rightSideParticipants)
+                    {
+                        //Set colour to inactive
+                        participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                        //Set size to inactive size
+                        participant.GetComponent<RectTransform>().localScale =
+                            Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+                    }
+                    break;
+                
+                case DialogueSides.Right:
+                    activeParticipants = rightSideParticipants;
+                    //Active all rightSideParticipants
+                    foreach (GameObject participant in rightSideParticipants)
+                    {
+                        //Set colour to Active
+                        participant.GetComponent<Image>().color = Color.white;
+                        //Set size to inactive size
+                        participant.GetComponent<RectTransform>().localScale =
+                            Vector3.one;
+                    }
+                    //Deactive all leftSideParticipants
+                    foreach (GameObject participant in leftSideParticipants)
+                    {
+                        //Set colour to inactive
+                        participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                        //Set size to inactive size
+                        participant.GetComponent<RectTransform>().localScale =
+                            Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+                    }
+                    break;
+            }
+
+            string names = "";
+            foreach (GameObject participant in activeParticipants)
+            {
+                if (names == "")
+                    names = participant.name;
+                else
+                {
+                    names = names + " & " + participant.name;
+                }
+            }
+            //Update the current text with the Syntax "Name: Text"
+            dialogueText.text = names + ": " + nextLine.line;
         }
         
-        //Deactive all rightSideParticipants
-        foreach (GameObject participant in rightSideParticipants)
-        {
-            //Check against active participant, don't alter if it is.
-            if (participant == activeParticipant) continue;
-
-            //Inactive participants
-            //Set colour to inactive
-            participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
-            //Set size to inactive size
-            participant.GetComponent<RectTransform>().localScale =
-                Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
-        }
     }
 }
