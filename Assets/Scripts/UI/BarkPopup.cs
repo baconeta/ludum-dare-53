@@ -17,4 +17,9 @@ public class BarkPopup : MonoBehaviour
     {
         barkText.SetText(text);
     }
+    
+    public void SetSpeakerPic(Sprite profilePic)
+    {
+        barkPortrait.sprite = profilePic;
+    }
 }

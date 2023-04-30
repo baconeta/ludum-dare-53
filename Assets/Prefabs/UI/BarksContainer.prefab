@@ -49,6 +49,10 @@ MonoBehaviour:
   barkPopupLeft: {fileID: 4612427180419555860}
   barkPopupRight: {fileID: 289304363337905131}
   minTimeBetweenBarks: 4
+  percentChanceToBarkPerSecond: 8
+  charonImage: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+  soulImage: {fileID: 21300000, guid: ffbfd7ac331c29d40a6fb71435437471, type: 3}
+  responseDelaySeconds: 1
 --- !u!114 &482286615933334566
 MonoBehaviour:
   m_ObjectHideFlags: 0
