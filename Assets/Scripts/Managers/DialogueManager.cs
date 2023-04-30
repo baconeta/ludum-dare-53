@@ -85,6 +85,9 @@ public class DialogueManager : MonoBehaviour
     {
         //Dont run dialogue if the game was just paused.
         if(GameStateManager.Instance.PreviousState == GameStateManager.GameStates.Pause) return;
+
+        //If there are no more dialogues, dont start dialogue.
+        if (currentDialogueIndex > Dialogues.Count) return;
         
         //Get the current dialogue
         currentDialogue = Dialogues[currentDialogueIndex];
@@ -97,6 +100,7 @@ public class DialogueManager : MonoBehaviour
 
     public List<Participant> GetCurrentParticipants()
     {
+        
         return currentDialogue.participants;
     }
 
@@ -122,7 +126,8 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         currentDialogueIndex++;
-        //Has we exhausted all lines of dialogue?
+        
+        //Has we exhausted  dialogues?
         if (currentDialogueIndex >= Dialogues.Count)
         {
             //TODO Create logic for reusing dialogue.

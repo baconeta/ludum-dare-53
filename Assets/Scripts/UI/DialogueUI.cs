@@ -144,7 +144,22 @@ public class DialogueUI : MonoBehaviour
         //Update the current text with the Syntax "~"Name: Text"
         dialogueText.text = activeParticipant.name + ": " + nextLine.line;
 
+        //Deactive all leftSideParticipants
         foreach (GameObject participant in leftSideParticipants)
+        {
+            //Check against active participant, don't alter if it is.
+            if (participant == activeParticipant) continue;
+
+            //Inactive participants
+            //Set colour to inactive
+            participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+            //Set size to inactive size
+            participant.GetComponent<RectTransform>().localScale =
+                Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+        }
+        
+        //Deactive all rightSideParticipants
+        foreach (GameObject participant in rightSideParticipants)
         {
             //Check against active participant, don't alter if it is.
             if (participant == activeParticipant) continue;
