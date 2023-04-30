@@ -10,7 +10,7 @@ public enum DialogueSides
 {
     Left = 0,
     Right = 1,
-        
+
 }
 [Serializable]
 public struct Participant
@@ -58,18 +58,18 @@ public struct DialogueGroup
              "/n DialogueMid is ran on First Ferry")]
     public DialogueStruct DialogueMid;
     [Tooltip("DialogueStart is ran on Game End")]
-    public DialogueStruct DialogueEnd; 
+    public DialogueStruct DialogueEnd;
 }
 
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
-    
+
     [Tooltip("Groups of dialogue that are selected at game start." +
              "\nElement 0 is played on the Player's very first run" +
              "\nOther elements are selected at random")]
     public List<DialogueGroup> DialogueGroups;
-    
+
     private DialogueStruct DialogueStart;
     private DialogueStruct DialogueMid;
     private DialogueStruct DialogueEnd;
@@ -81,15 +81,15 @@ public class DialogueManager : MonoBehaviour
 
     public KeyCode nextLine;
 
-    public static event Action OnDialogueStart; 
-    public static event Action OnDialogueEnd; 
+    public static event Action OnDialogueStart;
+    public static event Action OnDialogueEnd;
 
     private void Awake()
     {
         if (!instance) instance = this;
         else Destroy(this);
     }
-    
+
     private void OnEnable()
     {
         GameStateManager.OnStartEnter += StartDialogue;
@@ -101,8 +101,8 @@ public class DialogueManager : MonoBehaviour
 
     private void OnDisable()
     {
-        // GameStateManager.OnStartEnter -= SelectDialogueGroup;
-        GameStateManager.OnFerryingEnter -= StartDialogue;
+        GameStateManager.OnStartEnter -= StartDialogue;
+        //GameStateManager.OnFerryingEnter -= StartDialogue;
         GameStateManager.OnReturningEnter -= StartDialogue;
         GameStateManager.OnEndEnter -= StartDialogue;
     }
@@ -123,7 +123,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         DialogueStart = newDialogueGroup.DialogueStart;
-        DialogueMid  = newDialogueGroup.DialogueMid;
+        DialogueMid = newDialogueGroup.DialogueMid;
         DialogueEnd = newDialogueGroup.DialogueEnd;
     }
     public void StartDialogue()
@@ -131,15 +131,15 @@ public class DialogueManager : MonoBehaviour
         //On Start, Get a new Dialogue Group
         if (GameStateManager.Instance.CurrentState == GameStateManager.GameStates.Start)
             SelectDialogueGroup();
-        
+
         //Clear current dialogue.
         currentDialogue = new DialogueStruct();
-        
+
         GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
         GameStateManager.GameStates currentState = GameStateManager.Instance.CurrentState;
-        
+
         //Dont run dialogue if the game was just paused.
-        if(previousState == GameStateManager.GameStates.Pause) return;
+        if (previousState == GameStateManager.GameStates.Pause) return;
 
         //If the game is not ending
         if (currentState != GameStateManager.GameStates.End)
@@ -152,7 +152,7 @@ public class DialogueManager : MonoBehaviour
                     //Play intro dialogue
                     currentDialogue = DialogueStart;
                     break;
-            
+
                 //Ferried souls successfully
                 case GameStateManager.GameStates.Ferrying:
                     if (currentState != GameStateManager.GameStates.Returning) break;
@@ -206,15 +206,17 @@ public class DialogueManager : MonoBehaviour
         //return the current line
         return GetCurrentLine();
     }
-    
-    public void EndDialogue() {
+
+    public void EndDialogue()
+    {
         //Hide UI
         OnDialogueEnd?.Invoke();
         isDialogueActive = false;
     }
 
-    public bool IsDialogueActive() {
+    public bool IsDialogueActive()
+    {
         return isDialogueActive;
     }
-    
+
 }
