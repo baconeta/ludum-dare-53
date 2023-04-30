@@ -15,6 +15,7 @@ namespace ObjectPooling
         private void Awake()
         {
             InstantiationGuard();
+            DontDestroyOnLoad(this); // Hack: Keep objects around in cache between scenes... this isn't very efficient
             ExecuteEvents.Execute<IPoolableExecution>(gameObject, null,
                 (script, ignored) => script.PoolableExecution(this));
         }
