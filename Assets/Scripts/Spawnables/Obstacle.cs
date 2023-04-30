@@ -7,8 +7,8 @@ namespace Spawnables
 {
     public class Obstacle : MonoBehaviour, IPoolableExecution
     {
-        [SerializeField] private float initialSpeed = 1.0f;
-        [SerializeField] private int damage = 1;
+        [SerializeField] private float initialSpeed = 3.0f;
+        [SerializeField] private int damage = 5;
 
         private float _bottomBound;
         private Poolable _poolable;

@@ -75,6 +75,7 @@ namespace Managers
             var length = obstacle.GetComponent<Renderer>().bounds.size.y;
             var topOffset = _topLimit + length / 2.0f;
 
+            // Set the obstacle's position to a random position at the top of the screen
             obstacle.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
 
             obstacle.GetComponent<Obstacle>().MultiplySpeed(speedMultiplier);
