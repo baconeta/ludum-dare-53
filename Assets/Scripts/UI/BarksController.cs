@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,15 +17,24 @@ public class BarksController : MonoBehaviour
     private bool _isBarkOnScreen;
     private float _timeLastBarkClosed;
     private float _secondTimer;
+    private bool _canBark;
 
     private void OnEnable()
     {
         BoatController.OnDamageTaken += HitSomething;
+        BoatController.OnVoyageStart += StartBarkTimers;
+        BoatController.OnVoyageComplete += StopBarkTimers;
+        GameStateManager.OnPauseEnter += StartBarkTimers;
+        GameStateManager.OnPauseExit += StopBarkTimers;
     }
 
     private void OnDisable()
     {
         BoatController.OnDamageTaken -= HitSomething;
+        BoatController.OnVoyageStart -= StartBarkTimers;
+        BoatController.OnVoyageComplete -= StartBarkTimers;
+        GameStateManager.OnPauseEnter -= StartBarkTimers;
+        GameStateManager.OnPauseExit -= StopBarkTimers;
     }
 
     private void Start()
@@ -34,6 +44,8 @@ public class BarksController : MonoBehaviour
 
     private void Update()
     {
+        if (!_canBark) return;
+
         _secondTimer += Time.deltaTime;
 
         // Every second roll a die
@@ -45,6 +57,16 @@ public class BarksController : MonoBehaviour
                 _secondTimer = 0f;
             }
         }
+    }
+
+    private void StartBarkTimers()
+    {
+        _canBark = true;
+    }
+
+    private void StopBarkTimers()
+    {
+        _canBark = false;
     }
 
     private void SetLeftSpeaker(string speaker, string bark)
@@ -80,7 +102,7 @@ public class BarksController : MonoBehaviour
     {
         // We decide if solo bark or duo bark
         // On return journey, all barks are solo
-        
+
         var secondsSinceLastBark = Time.time - _timeLastBarkClosed;
         if (_isBarkOnScreen || secondsSinceLastBark < minTimeBetweenBarks)
         {
@@ -111,7 +133,7 @@ public class BarksController : MonoBehaviour
         else
         {
             // Get an atmospheric bark and speaker
-            
+
             // Set up and show back popup
         }
     }
