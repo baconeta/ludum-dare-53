@@ -13,6 +13,7 @@ public class BarksController : MonoBehaviour
     [SerializeField] private Sprite charonImage;
     [SerializeField] private Sprite soulImage;
     [SerializeField] private float responseDelaySeconds = 1f;
+    [SerializeField] private int percentChanceToBeSoloBark = 50;
 
     private bool _isBarkOnScreen;
     private float _timeLastBarkClosed;
@@ -112,35 +113,41 @@ public class BarksController : MonoBehaviour
 
     private void TryBark(bool damageBark)
     {
-        // We decide if solo bark or duo bark
-        // On return journey, all barks are solo
-
         var secondsSinceLastBark = Time.time - _timeLastBarkClosed;
         if (_isBarkOnScreen || secondsSinceLastBark < minTimeBetweenBarks)
         {
             return;
         }
 
+        var returning = GameStateManager.Instance.CurrentState == GameStateManager.GameStates.Returning;
+        var soloBark = false;
+        if (returning)
+        {
+            soloBark = true;
+        }
+        else
+        {
+            soloBark = Random.Range(0, 100) < percentChanceToBeSoloBark;
+        }
+
         _isBarkOnScreen = true;
 
         if (damageBark)
         {
-            //TODO handle solo barks
-            // Get a new bark and speaker from the soul factory
-            var soulName = "James";
-            var soulBark = "How dare you.";
+            if (!soloBark)
+            {
+                ResponseDamageBark();
+                return;
+            }
 
-            // Get a return quip for Charon 
-            var charonBark = "Okay bro";
-
-            // calculate the bark time showing length
-            var timeOnScreen = Math.Max(CalculateTimeOnScreen(charonBark), CalculateTimeOnScreen(soulBark));
-
-            // Set up bark popups and show it on screen
-            SetLeftSpeaker(soulName, soulBark);
-            SetRightSpeaker("Charon", charonBark);
-            StartCoroutine(ShowPopup(barkPopupLeft, timeOnScreen));
-            StartCoroutine(ShowPopup(barkPopupRight, timeOnScreen, responseDelaySeconds));
+            if (returning)
+            {
+                CharonOnlyBark();
+            }
+            else
+            {
+                SoulOnlyBark();
+            }
         }
         else
         {
@@ -148,6 +155,52 @@ public class BarksController : MonoBehaviour
 
             // Set up and show back popup
         }
+    }
+
+    private void ResponseDamageBark()
+    {
+        // TODO get soul data
+        var soulName = "James";
+        var soulBark = "How dare you.";
+
+        // TODO get charon response
+        var charonBark = "Okay bro";
+
+        // calculate the bark time showing length
+        var timeOnScreen = Math.Max(CalculateTimeOnScreen(charonBark), CalculateTimeOnScreen(soulBark));
+
+        // Set up bark popups and show it on screen
+        SetLeftSpeaker(soulName, soulBark);
+        SetRightSpeaker("Charon", charonBark);
+        StartCoroutine(ShowPopup(barkPopupLeft, timeOnScreen));
+        StartCoroutine(ShowPopup(barkPopupRight, timeOnScreen, responseDelaySeconds));
+    }
+
+    private void SoulOnlyBark()
+    {
+        // TODO get soul bark
+        var soulName = "James";
+        var soulBark = "How dare you.";
+
+        // calculate the bark time showing length
+        var timeOnScreen = CalculateTimeOnScreen(soulBark);
+
+        // Set up bark popups and show it on screen
+        SetLeftSpeaker(soulName, soulBark);
+        StartCoroutine(ShowPopup(barkPopupLeft, timeOnScreen));
+    }
+
+    private void CharonOnlyBark()
+    {
+        // TODO get charon bark
+        var bark = "How dare you.";
+
+        // calculate the bark time showing length
+        var timeOnScreen = CalculateTimeOnScreen(bark);
+
+        // Set up bark popups and show it on screen
+        SetLeftSpeaker("Charon", bark);
+        StartCoroutine(ShowPopup(barkPopupLeft, timeOnScreen));
     }
 
     private IEnumerator ShowPopup(BarkPopup popup, float timeOnScreen, float delay = 0f)
