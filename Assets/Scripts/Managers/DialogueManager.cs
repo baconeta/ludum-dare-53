@@ -44,6 +44,9 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue()
     {
+        //Dont run dialogue if the game was just paused.
+        if(GameStateManager.Instance.PreviousState == GameStateManager.GameStates.Pause) return;
+        
         //Get the current dialogue
         currentDialogue = Dialogues[currentDialogueIndex];
         currentDialogueLine = 0;
