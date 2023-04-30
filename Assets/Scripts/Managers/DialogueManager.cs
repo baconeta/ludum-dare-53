@@ -2,15 +2,29 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+
+[Serializable]
+public struct Participant
+{
+    public string name;
+    public Sprite portrait;
+}
 
 [Serializable]
 public struct DialogueStruct
 {
     public List<string> linesOfDialogue;
+    [Tooltip("Element 0 is the left portrait. Element 1 is the right portrait.")]
+    public List<Participant> participants;
 }
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
+    [Tooltip("The ")]
+    public GameObject LeftSide;
+    public GameObject rightSide;
+    
     
     //TODO Expand dialogues to include event specific dialogues: e.g. Returning/Ferrying/Start/End
     public List<DialogueStruct> Dialogues;
