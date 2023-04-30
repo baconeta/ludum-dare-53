@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 8f4cef717a48f5e4ca854b1a56fdb040
   - enabled: 1
-    path: Assets/Scenes/BrayScene.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 9600188d5754db549b4d410cc52953fd
   m_configObjects: {}
