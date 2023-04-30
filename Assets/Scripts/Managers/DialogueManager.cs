@@ -92,39 +92,48 @@ public class DialogueManager : MonoBehaviour
     
     private void OnEnable()
     {
-        GameStateManager.OnStartEnter += SelectRandomDialogueGroup;
-        GameStateManager.OnFerryingEnter += StartDialogue;
+        GameStateManager.OnStartEnter += StartDialogue;
+        //I think this is never used?
+        //GameStateManager.OnFerryingEnter += StartDialogue;
         GameStateManager.OnReturningEnter += StartDialogue;
         GameStateManager.OnEndEnter += StartDialogue;
     }
 
     private void OnDisable()
     {
-        GameStateManager.OnStartEnter -= SelectRandomDialogueGroup;
+        // GameStateManager.OnStartEnter -= SelectDialogueGroup;
         GameStateManager.OnFerryingEnter -= StartDialogue;
         GameStateManager.OnReturningEnter -= StartDialogue;
         GameStateManager.OnEndEnter -= StartDialogue;
     }
 
-    private void SelectRandomDialogueGroup()
+    private void SelectDialogueGroup()
     {
-        //Get a random dialogue group
-        DialogueGroup randomGroup;
-        //If its their first play-through, choose the first DialogueGroup
-        if (PlayerPrefs.GetInt("Successful Ferries") == 0) randomGroup = DialogueGroups[0];
-        //Else get a random dialogue (Excluding Element 0)
-        else randomGroup = DialogueGroups[Random.Range(1, DialogueGroups.Count)];
+        DialogueGroup newDialogueGroup;
 
-        DialogueStart = randomGroup.DialogueStart;
-        DialogueMid  = randomGroup.DialogueMid;
-        DialogueEnd = randomGroup.DialogueEnd;
-        
-        StartDialogue();
+        //If its their first play-through, choose the first DialogueGroup
+        if (PlayerPrefs.GetInt("Successful Ferries") == 0)
+        {
+            newDialogueGroup = DialogueGroups[0];
+        }
+        else
+        {
+            // Get a random dialogue group (Excluding element 0). 
+            newDialogueGroup = DialogueGroups[Random.Range(1, DialogueGroups.Count)];
+        }
+
+        DialogueStart = newDialogueGroup.DialogueStart;
+        DialogueMid  = newDialogueGroup.DialogueMid;
+        DialogueEnd = newDialogueGroup.DialogueEnd;
     }
     public void StartDialogue()
     {
+        //On Start, Get a new Dialogue Group
+        if (GameStateManager.Instance.CurrentState == GameStateManager.GameStates.Start)
+            SelectDialogueGroup();
+        
         //Clear current dialogue.
-            currentDialogue = new DialogueStruct();
+        currentDialogue = new DialogueStruct();
         
         GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
         GameStateManager.GameStates currentState = GameStateManager.Instance.CurrentState;

@@ -45,7 +45,7 @@ Shader "Custom/RiverWater" {
             }
             else //Not paused
             {
-                _CustomTime = _Time;
+                _CustomTime += _Time;
                 // Calculate the texture coordinate offset based on flow direction and time
                 uv += _FlowDirection * _CustomTime.y * _Speed;
                 
