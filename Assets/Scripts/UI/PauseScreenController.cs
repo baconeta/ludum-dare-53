@@ -9,15 +9,13 @@ public class PauseScreenController : MonoBehaviour
     private void OnEnable()
     {
         GameStateManager.OnPauseEnter += ShowUi;
-        GameStateManager.OnFerryingEnter += HideUi;
-        GameStateManager.OnReturningEnter += HideUi;
+        GameStateManager.OnPauseExit += HideUi;
     }
 
     private void OnDisable()
     {
         GameStateManager.OnPauseEnter -= ShowUi;
-        GameStateManager.OnFerryingEnter -= HideUi;
-        GameStateManager.OnReturningEnter -= HideUi;
+        GameStateManager.OnPauseExit -= HideUi;
     }
 
     private void ShowUi()

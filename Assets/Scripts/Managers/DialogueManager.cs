@@ -138,9 +138,6 @@ public class DialogueManager : MonoBehaviour
         GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
         GameStateManager.GameStates currentState = GameStateManager.Instance.CurrentState;
 
-        //Dont run dialogue if the game was just paused.
-        if (previousState == GameStateManager.GameStates.Pause) return;
-
         //If the game is not ending
         if (currentState != GameStateManager.GameStates.End)
         {
