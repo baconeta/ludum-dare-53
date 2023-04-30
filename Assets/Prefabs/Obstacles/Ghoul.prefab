@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3203467663491902659}
   - component: {fileID: 5259848977962458518}
   - component: {fileID: 7420436445539448903}
-  - component: {fileID: 8842317189164934356}
   - component: {fileID: 2347569106271627889}
   m_Layer: 0
   m_Name: Ghoul
@@ -33,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 130.443}
 --- !u!212 &5259848977962458518
 SpriteRenderer:
@@ -104,33 +103,6 @@ MonoBehaviour:
   currentSpeed: 0
   seekDuration: 1
   idleDuration: 1
---- !u!50 &8842317189164934356
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7031394477568430888}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &2347569106271627889
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -160,9 +132,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.21133338}
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.6
