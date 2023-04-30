@@ -130,10 +130,11 @@ public class BarksController : MonoBehaviour
             soloBark = Random.Range(0, 100) < percentChanceToBeSoloBark;
         }
 
-        _isBarkOnScreen = true;
+        // _isBarkOnScreen = true;
 
         if (damageBark)
         {
+            _isBarkOnScreen = true;
             if (!soloBark)
             {
                 ResponseDamageBark();
