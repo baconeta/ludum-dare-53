@@ -34,7 +34,7 @@ public class BarksController : MonoBehaviour
     {
         BoatController.OnDamageTaken -= HitSomething;
         BoatController.OnVoyageStart -= StartBarkTimers;
-        BoatController.OnVoyageComplete -= StartBarkTimers;
+        BoatController.OnVoyageComplete -= StopBarkTimers;
         GameStateManager.OnPauseEnter -= StopBarkTimers;
         GameStateManager.OnPauseExit -= StartBarkTimers;
         DialogueManager.OnDialogueStart -= CloseAllPopups;
