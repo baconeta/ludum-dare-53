@@ -16,6 +16,7 @@ public class HudController : MonoBehaviour
         GameStateManager.OnPauseExit += ShowHud;
         GameStateManager.OnFerryingEnter += ShowHud;
         GameStateManager.OnReturningEnter += ShowHud;
+        GameStateManager.OnEndEnter += HideHud;
         BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
     }
 
@@ -26,6 +27,7 @@ public class HudController : MonoBehaviour
         GameStateManager.OnPauseExit -= ShowHud;
         GameStateManager.OnFerryingEnter -= ShowHud;
         GameStateManager.OnReturningEnter -= ShowHud;
+        GameStateManager.OnEndEnter -= HideHud;
         BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
     }
 
