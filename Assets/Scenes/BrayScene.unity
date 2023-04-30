@@ -1058,6 +1058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _currentState: 0
+  firstFerryCompleted: 0
   _previousState: 0
 --- !u!4 &1707495884
 Transform:
@@ -1261,67 +1262,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84174fa32cb211c4cae561a274125408, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DialogueStart:
-    linesOfDialogue: []
-    participants: []
-  DialogueMid:
-    linesOfDialogue: []
-    participants: []
-  DialogueEnd:
-    linesOfDialogue: []
-    participants: []
-  Dialogues:
-  - linesOfDialogue:
-    - line: I am Charon, the Ferryman of the River Styx.
-      dialogueSide: 0
-      participantSpeaking: 0
-    - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you think
-        there was just one of us?
-      dialogueSide: 0
-      participantSpeaking: 1
-    - line: I am Persephone, Queen of the Underworld!
-      dialogueSide: 1
-      participantSpeaking: 0
-    - line: Conversation can flow in any direction
-      dialogueSide: 0
-      participantSpeaking: 1
-    - line: And the current speaker will be highlighted
-      dialogueSide: 1
-      participantSpeaking: 0
-    - line: Although only one of us can speak at a time right now
-      dialogueSide: 0
-      participantSpeaking: 0
-    participants:
-    - name: Kharon
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Kharon2
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Percephone
-      dialogueSide: 1
-      portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
-  - linesOfDialogue:
-    - line: I am Charon, the Ferryman of the River Styx.
-      dialogueSide: 0
-      participantSpeaking: 0
-    - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you think
-        there was just one of us?
-      dialogueSide: 0
-      participantSpeaking: 1
-    - line: I am Persephone, Queen of the Underworld!
-      dialogueSide: 1
-      participantSpeaking: 0
-    participants:
-    - name: Kharon
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Kharon2
-      dialogueSide: 0
-      portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-    - name: Percephone
-      dialogueSide: 1
-      portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
   DialogueGroups:
   - DialogueStart:
       linesOfDialogue:
@@ -1375,13 +1315,9 @@ MonoBehaviour:
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Kharon
+      - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-  currentDialogue:
-    linesOfDialogue: []
-    participants: []
-  currentDialogueLine: 0
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   inactiveSpeakerSize: 0.7
