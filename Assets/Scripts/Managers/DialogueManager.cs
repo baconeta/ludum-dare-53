@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using Managers;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -111,9 +111,10 @@ public class DialogueManager : MonoBehaviour
         //Get a random dialogue group
         DialogueGroup randomGroup;
         //If its their first play-through, choose the first DialogueGroup
-        if (PlayerPrefs.GetInt("SuccessfulFerries") == 0) randomGroup = DialogueGroups[0];
+        if (PlayerPrefs.GetInt("Successful Ferries") == 0) randomGroup = DialogueGroups[0];
+        //Else get a random dialogue (Excluding Element 0)
         else randomGroup = DialogueGroups[Random.Range(1, DialogueGroups.Count)];
-        
+
         DialogueStart = randomGroup.DialogueStart;
         DialogueMid  = randomGroup.DialogueMid;
         DialogueEnd = randomGroup.DialogueEnd;
@@ -181,6 +182,7 @@ public class DialogueManager : MonoBehaviour
     {
         return (currentDialogue.linesOfDialogue[currentDialogueLine]);
     }
+
     public DialogueLine NextLine()
     {
         //Increment currentDialogueLine
@@ -195,18 +197,15 @@ public class DialogueManager : MonoBehaviour
         //return the current line
         return GetCurrentLine();
     }
-
-    public void EndDialogue()
-    {//Clear current dialogue.
-        currentDialogue = new DialogueStruct();
-        
+    
+    public void EndDialogue() {
         //Hide UI
         OnDialogueEnd?.Invoke();
         isDialogueActive = false;
     }
 
-    public bool IsDialogueActive()
-    {
+    public bool IsDialogueActive() {
         return isDialogueActive;
     }
+    
 }
