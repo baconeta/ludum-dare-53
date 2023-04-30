@@ -13,6 +13,9 @@ public class NameGenerator : MonoBehaviour
     [Tooltip("The comma-separated list of nouns to generate names from.")]
     private TextAsset listOfNouns;
     [SerializeField]
+    [Tooltip("The character sequence to use to split the adjectives and nouns with.")]
+    private string delimiter = ",";
+    [SerializeField]
     [Tooltip("The character sequence to add between the adjective and the noun.")]
     private string separator = "";
 
@@ -29,13 +32,13 @@ public class NameGenerator : MonoBehaviour
 
     private string GetRandomAdjectiveFromFile()
     {
-        string[] words = listOfAdjectives.text.Split(",");
+        string[] words = listOfAdjectives.text.Split(delimiter);
         return words[Random.Range(0, words.Length)];
     }
 
     private string GetRandomNounFromFile()
     {
-        string[] words = listOfNouns.text.Split(",");
+        string[] words = listOfNouns.text.Split(delimiter);
         return words[Random.Range(0, words.Length)];
     }
 }
