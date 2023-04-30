@@ -6,147 +6,42 @@ namespace Managers {
         public static GameStateManager Instance;
 
         [Serializable]
-        public enum GameStates {
+        public enum GameStates
+        {
             Start,
             Dialogue,
             Ferrying,
             Returning,
             Pause,
             End,
-
-    [SerializeField] private GameStates _currentState;
-    public GameStates CurrentState
-    {
-        get { return _currentState; }
-        set { ChangeState(value); }
-    }
-
-    public bool firstFerryCompleted = false;
-
-    [SerializeField] private GameStates _previousState;
-    public GameStates PreviousState { get { return _previousState; } }
-
-    //Event Actions for GameStates
-    //Subscribe to these to launch other mechanics
-    //Subscribe via `GameState.OnStartEnter += MethodToRun`
-
-    //Game Start - Run intros/Dialogue etc
-    public static event Action OnStartEnter;
-    //Starting to ferry, fill up on Souls, Run Dialogue
-    public static event Action OnFerryingEnter;
-    public static event Action OnFirstFerry;
-    //Drop off souls, Repair ship, Run Dialogue
-    public static event Action OnReturningEnter;
-    //Game Paused
-    public static event Action OnPauseEnter;
-    //Game Ended / Ship Destroyed
-    public static event Action OnEndEnter;
-
-
-    
-    private void Awake()
-    {
-        if (!Instance) Instance = this;
-        else Destroy(this);
-    }
-
-    private void OnEnable()
-    {
-        DialogueManager.OnDialogueEnd += GameStart;
-    }
-
-    private void OnDisable()
-    {
-        DialogueManager.OnDialogueEnd -= GameStart;
-
-    }
-
-    private void Start()
-    {
-        //TODO Remove for actual game start.
-        CurrentState = GameStates.Start;
-    }
-
-    private void GameStart()
-    {
-        if(_currentState == GameStates.Start)
-            ChangeState(GameStates.Ferrying);
-    }
-
-
-    void ChangeState(GameStates newState)
-    {
-        //Filter double executions
-        if (newState == _currentState && _currentState != GameStates.Start) return;
-
-        Debug.Log($"Transitioning from {_currentState} to {newState}");
-
-        //Update state
-        _previousState = _currentState;
-        _currentState = newState;
-
-        //Invoke GameState event.
-        switch (_currentState)
-        {
-            //Initial State, start of game.
-            case GameStates.Start:
-                OnStartEnter?.Invoke();
-                break;
-            //Upon reaching the shore of Gaia/Over-world/Living/Left/Pickup
-            case GameStates.Ferrying:
-                OnFerryingEnter?.Invoke();
-                break;
-            //Upon reaching the shore of Underworld/Right/Dropoff
-            case GameStates.Returning:
-                
-                //Calls OnFirstFerry for the first time a ferry trip is successful.
-                OnReturningEnter?.Invoke();
-                if (_previousState == GameStates.Ferrying && !firstFerryCompleted)
-                {
-                    firstFerryCompleted = true;
-                    OnFirstFerry?.Invoke();
-                }
-                //Increment successful ferries.
-                PlayerPrefs.SetInt("Successful Ferries", PlayerPrefs.GetInt("Successful Ferries") + 1);
-                break;
-            //Upon UI pause
-            case GameStates.Pause:
-                OnPauseEnter?.Invoke();
-                break;
-            //Upon game over
-            case GameStates.End:
-                OnEndEnter?.Invoke();
-                break;
         }
-    }
-
-
 
         [SerializeField] private GameStates _currentState;
-
-        public GameStates CurrentState {
+        public GameStates CurrentState
+        {
             get { return _currentState; }
             set { ChangeState(value); }
         }
 
-        [SerializeField] private GameStates _previousState;
+        public bool firstFerryCompleted = false;
 
-        public GameStates PreviousState {
-            get { return _previousState; }
-        }
+        [SerializeField] private GameStates _previousState;
+        public GameStates PreviousState { get { return _previousState; } }
 
         //Event Actions for GameStates
         //Subscribe to these to launch other mechanics
         //Subscribe via `GameState.OnStartEnter += MethodToRun`
 
-        //Game Start - Run intros/Dialogue etc
+        // When the scene is loaded
         public static event Action OnStartEnter;
-
+        
         // Showing a dialogue overlay
         public static event Action OnDialogueEnter;
 
         //Starting to ferry, fill up on Souls, Run Dialogue
         public static event Action OnFerryingEnter;
+        
+        public static event Action OnFirstFerry;
 
         //Drop off souls, Repair ship, Run Dialogue
         public static event Action OnReturningEnter;
@@ -157,20 +52,42 @@ namespace Managers {
         //Game Ended / Ship Destroyed
         public static event Action OnEndEnter;
 
-        private void Awake() {
+
+    
+        private void Awake()
+        {
             if (!Instance) Instance = this;
             else Destroy(this);
         }
 
-        private void Start() {
+        private void OnEnable()
+        {
+            DialogueManager.OnDialogueEnd += GameStart;
+        }
+
+        private void OnDisable()
+        {
+            DialogueManager.OnDialogueEnd -= GameStart;
+
+        }
+
+        private void Start()
+        {
             //TODO Remove for actual game start.
-            CurrentState = GameStates.Ferrying;
+            CurrentState = GameStates.Start;
+        }
+
+        private void GameStart()
+        {
+            if(_currentState == GameStates.Start)
+                ChangeState(GameStates.Ferrying);
         }
 
 
-        void ChangeState(GameStates newState) {
+        void ChangeState(GameStates newState)
+        {
             //Filter double executions
-            if (newState == _currentState) return;
+            if (newState == _currentState && _currentState != GameStates.Start) return;
 
             Debug.Log($"Transitioning from {_currentState} to {newState}");
 
@@ -189,13 +106,18 @@ namespace Managers {
                 case GameStates.Ferrying:
                     OnFerryingEnter?.Invoke();
                     break;
-                // Whenever the dialogue overlay is displayed
-                case GameStates.Dialogue:
-                    OnDialogueEnter?.Invoke();
-                    break;
                 //Upon reaching the shore of Underworld/Right/Dropoff
                 case GameStates.Returning:
+                    
+                    //Calls OnFirstFerry for the first time a ferry trip is successful.
                     OnReturningEnter?.Invoke();
+                    if (_previousState == GameStates.Ferrying && !firstFerryCompleted)
+                    {
+                        firstFerryCompleted = true;
+                        OnFirstFerry?.Invoke();
+                    }
+                    //Increment successful ferries.
+                    PlayerPrefs.SetInt("Successful Ferries", PlayerPrefs.GetInt("Successful Ferries") + 1);
                     break;
                 //Upon UI pause
                 case GameStates.Pause:
@@ -207,6 +129,7 @@ namespace Managers {
                     break;
             }
         }
+
 
         public void Resume() {
             if (_currentState != GameStates.Pause)

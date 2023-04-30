@@ -181,6 +181,7 @@ public class DialogueManager : MonoBehaviour
     {
         return (currentDialogue.linesOfDialogue[currentDialogueLine]);
     }
+
     public DialogueLine NextLine()
     {
         //Increment currentDialogueLine
@@ -192,76 +193,18 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return new DialogueLine();
         }
-
-        private void OnEnable() {
-            GameStateManager.OnFerryingEnter += StartDialogue;
-            GameStateManager.OnReturningEnter += StartDialogue;
-        }
-
-        private void OnDisable() {
-            GameStateManager.OnFerryingEnter -= StartDialogue;
-            GameStateManager.OnReturningEnter -= StartDialogue;
-        }
-    public void EndDialogue()
-    {//Clear current dialogue.
-        currentDialogue = new DialogueStruct();
-        
+        //return the current line
+        return GetCurrentLine();
+    }
+    
+    public void EndDialogue() {
         //Hide UI
         OnDialogueEnd?.Invoke();
         isDialogueActive = false;
     }
 
-        public void StartDialogue() {
-            //Dont run dialogue if the game was just paused.
-            if (GameStateManager.Instance.PreviousState == GameStateManager.GameStates.Pause) return;
-
-            //Get the current dialogue
-            currentDialogue = Dialogues[currentDialogueIndex];
-            currentDialogueLine = 0;
-
-
-            //Show UI/Update Text
-            OnDialogueStart?.Invoke();
-            isDialogueActive = true;
-        }
-
-        public string GetCurrentLine() {
-            return (currentDialogue.linesOfDialogue[currentDialogueLine]);
-        }
-
-        public string NextLine() {
-            //Increment currentDialogueLine
-            currentDialogueLine++;
-            //Has it passed the last line?
-            if (currentDialogueLine >= currentDialogue.linesOfDialogue.Count)
-            {
-                //Yes, dialogue exhausted. End Dialogue.
-                EndDialogue();
-                return "";
-            }
-
-            //return the current line
-            return GetCurrentLine();
-        }
-
-        public void EndDialogue() {
-            currentDialogueIndex++;
-            //Has we exhausted all lines of dialogue?
-            if (currentDialogueIndex >= Dialogues.Count)
-            {
-                //TODO Create logic for reusing dialogue.
-                //TEMP** Reset to first dialogue.
-                currentDialogueIndex = 0;
-            }
-
-            //Hide UI
-            OnDialogueEnd?.Invoke();
-            isDialogueActive = false;
-
-        }
-
-        public bool IsDialogueActive() {
-            return isDialogueActive;
-        }
+    public bool IsDialogueActive() {
+        return isDialogueActive;
     }
+    
 }
