@@ -101,8 +101,8 @@ public class DialogueManager : MonoBehaviour
 
     private void OnDisable()
     {
-        // GameStateManager.OnStartEnter -= SelectDialogueGroup;
-        GameStateManager.OnFerryingEnter -= StartDialogue;
+         GameStateManager.OnStartEnter -= StartDialogue;
+        //GameStateManager.OnFerryingEnter -= StartDialogue;
         GameStateManager.OnReturningEnter -= StartDialogue;
         GameStateManager.OnEndEnter -= StartDialogue;
     }
@@ -189,13 +189,13 @@ public class DialogueManager : MonoBehaviour
 
     public DialogueLine GetCurrentLine()
     {
-        return (currentDialogue.linesOfDialogue[currentDialogueLine]);
+                   return (currentDialogue.linesOfDialogue[currentDialogueLine]);
     }
 
     public DialogueLine NextLine()
     {
         //Increment currentDialogueLine
-        currentDialogueLine++;
+         currentDialogueLine++;
         //Has it passed the last line?
         if (currentDialogueLine >= currentDialogue.linesOfDialogue.Count)
         {
