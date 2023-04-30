@@ -252,8 +252,8 @@ MonoBehaviour:
   simultaneousObstacleLimit: 30
   spawnInterval: 3
   obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
-  _speedMultiplier: 1
-  _damageMultiplier: 1
+  speedMultiplier: 1
+  damageMultiplier: 1
 --- !u!4 &666187612
 Transform:
   m_ObjectHideFlags: 0
@@ -652,7 +652,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: af2193ebc6a73c146bc9e73b537d332c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9dce6fb4a5750094b9068e029689d535, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -891,7 +891,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 1946aa9dc5694814995cc8c43ba2fb70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6d2867ecf11e1d746888ee0a1114577f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
