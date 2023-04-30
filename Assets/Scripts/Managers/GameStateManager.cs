@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Managers {
@@ -73,6 +74,12 @@ namespace Managers {
 
         private void Start()
         {
+            StartCoroutine(DelayedStart());
+        }
+
+        private IEnumerator DelayedStart()
+        {
+            yield return new WaitForSeconds(1);
             OnStartEnter?.Invoke();
         }
 
