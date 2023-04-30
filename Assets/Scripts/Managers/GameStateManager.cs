@@ -25,6 +25,8 @@ public class GameStateManager : MonoBehaviour
         set { ChangeState(value); }
     }
 
+    public bool firstFerryCompleted = false;
+
     [SerializeField] private GameStates _previousState;
     public GameStates PreviousState { get { return _previousState; } }
 
@@ -36,6 +38,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnStartEnter;
     //Starting to ferry, fill up on Souls, Run Dialogue
     public static event Action OnFerryingEnter;
+    public static event Action OnFirstFerry;
     //Drop off souls, Repair ship, Run Dialogue
     public static event Action OnReturningEnter;
     //Game Paused
@@ -51,17 +54,34 @@ public class GameStateManager : MonoBehaviour
         else Destroy(this);
     }
 
+    private void OnEnable()
+    {
+        DialogueManager.OnDialogueEnd += GameStart;
+    }
+
+    private void OnDisable()
+    {
+        DialogueManager.OnDialogueEnd -= GameStart;
+
+    }
+
     private void Start()
     {
         //TODO Remove for actual game start.
-        CurrentState = GameStates.Ferrying;
+        CurrentState = GameStates.Start;
+    }
+
+    private void GameStart()
+    {
+        if(_currentState == GameStates.Start)
+            ChangeState(GameStates.Ferrying);
     }
 
 
     void ChangeState(GameStates newState)
     {
         //Filter double executions
-        if (newState == _currentState) return;
+        if (newState == _currentState && _currentState != GameStates.Start) return;
 
         Debug.Log($"Transitioning from {_currentState} to {newState}");
 
@@ -82,7 +102,13 @@ public class GameStateManager : MonoBehaviour
                 break;
             //Upon reaching the shore of Underworld/Right/Dropoff
             case GameStates.Returning:
+                //Calls OnFirstFerry for the first time a ferry trip is successful.
                 OnReturningEnter?.Invoke();
+                if (_previousState == GameStates.Ferrying && !firstFerryCompleted)
+                {
+                    firstFerryCompleted = true;
+                    OnFirstFerry?.Invoke();
+                }
                 break;
             //Upon UI pause
             case GameStates.Pause:

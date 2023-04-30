@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 [Serializable][Tooltip("The side the dialogue will appear on")]
 public enum DialogueSides
@@ -25,9 +26,11 @@ public struct Participant
                        "\nThe participant saying the line.")]
 public struct DialogueLine
 {
-    public override bool Equals(object obj)
+    public bool IsEqual(DialogueLine lineToTestAgainst)
     {
-        return base.Equals(obj);
+        return line == lineToTestAgainst.line &&
+               lineToTestAgainst.dialogueSide == dialogueSide &&
+               lineToTestAgainst.participantSpeaking == participantSpeaking;
     }
 
     public string line;
@@ -45,14 +48,26 @@ public struct DialogueStruct
     [Tooltip("Element 0 is the left portrait. Element 1 is the right portrait.")]
     public List<Participant> participants;
 }
+
+[Serializable]
+public struct DialogueGroup
+{
+    public DialogueStruct DialogueStart;
+    public DialogueStruct DialogueMid;
+    public DialogueStruct DialogueEnd; 
+}
+
 public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     
     //TODO Expand dialogues to include event specific dialogues: e.g. Returning/Ferrying/Start/End
+    public DialogueStruct DialogueStart;
+    public DialogueStruct DialogueMid;
+    public DialogueStruct DialogueEnd;
     public List<DialogueStruct> Dialogues;
-    public DialogueStruct currentDialogue;
-    public int currentDialogueIndex;
+    public List<DialogueGroup> DialogueGroups;
+    public DialogueStruct currentDialogue = new DialogueStruct();
     public int currentDialogueLine;
     public bool isDialogueActive;
     public Color inactiveSpeakerColor;
@@ -71,26 +86,74 @@ public class DialogueManager : MonoBehaviour
     
     private void OnEnable()
     {
+        GameStateManager.OnStartEnter += SelectRandomDialogueGroup;
         GameStateManager.OnFerryingEnter += StartDialogue;
         GameStateManager.OnReturningEnter += StartDialogue;
+        GameStateManager.OnEndEnter += StartDialogue;
     }
 
     private void OnDisable()
     {
+        GameStateManager.OnStartEnter -= SelectRandomDialogueGroup;
         GameStateManager.OnFerryingEnter -= StartDialogue;
         GameStateManager.OnReturningEnter -= StartDialogue;
+        GameStateManager.OnEndEnter -= StartDialogue;
     }
 
+    private void SelectRandomDialogueGroup()
+    {
+        //Get a random dialogue group
+        DialogueGroup randomGroup = DialogueGroups[Random.Range(0, DialogueGroups.Count)];
+        DialogueStart = randomGroup.DialogueStart;
+        DialogueMid  = randomGroup.DialogueMid;
+        DialogueEnd = randomGroup.DialogueEnd;
+        
+        StartDialogue();
+    }
     public void StartDialogue()
     {
-        //Dont run dialogue if the game was just paused.
-        if(GameStateManager.Instance.PreviousState == GameStateManager.GameStates.Pause) return;
-
-        //If there are no more dialogues, dont start dialogue.
-        if (currentDialogueIndex > Dialogues.Count) return;
+        //Clear current dialogue.
+            currentDialogue = new DialogueStruct();
         
-        //Get the current dialogue
-        currentDialogue = Dialogues[currentDialogueIndex];
+        GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
+        GameStateManager.GameStates currentState = GameStateManager.Instance.CurrentState;
+        
+        //Dont run dialogue if the game was just paused.
+        if(previousState == GameStateManager.GameStates.Pause) return;
+
+        //If the game is not ending
+        if (currentState != GameStateManager.GameStates.End)
+        {
+            switch (previousState)
+            {
+                //Game just started
+                case GameStateManager.GameStates.Start:
+                    if (currentState == GameStateManager.GameStates.Ferrying) return;
+                    //Play intro dialogue
+                    currentDialogue = DialogueStart;
+                    break;
+            
+                //Ferried souls successfully
+                case GameStateManager.GameStates.Ferrying:
+                    if (currentState != GameStateManager.GameStates.Returning) break;
+                    //Only occurs on the first play through
+                    //Only occurs once on first successful ferry
+                    if (GameStateManager.Instance.firstFerryCompleted) return;
+                    //Play mid-game dialogue
+                    currentDialogue = DialogueMid;
+                    break;
+            }
+        }
+        else
+        {
+            //Play ending dialogue.
+            currentDialogue = DialogueEnd;
+        }
+
+        //If a dialogue wasn't selected/IsEmpty, abort StartDialogue.
+        if (currentDialogue.linesOfDialogue is null) return;
+
+        //Set the current dialogue line to 0
         currentDialogueLine = 0;
 
         //Show UI/Update Text
@@ -100,7 +163,6 @@ public class DialogueManager : MonoBehaviour
 
     public List<Participant> GetCurrentParticipants()
     {
-        
         return currentDialogue.participants;
     }
 
@@ -124,20 +186,12 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void EndDialogue()
-    {
-        currentDialogueIndex++;
+    {//Clear current dialogue.
+        currentDialogue = new DialogueStruct();
         
-        //Has we exhausted  dialogues?
-        if (currentDialogueIndex >= Dialogues.Count)
-        {
-            //TODO Create logic for reusing dialogue.
-            //TEMP** Reset to first dialogue.
-            currentDialogueIndex = 0;
-        }
         //Hide UI
         OnDialogueEnd?.Invoke();
         isDialogueActive = false;
-
     }
 
     public bool IsDialogueActive()
