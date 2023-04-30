@@ -52,8 +52,12 @@ public struct DialogueStruct
 [Serializable]
 public struct DialogueGroup
 {
+    [Tooltip("DialogueStart is ran on Game Start")]
     public DialogueStruct DialogueStart;
+    [Tooltip("DialogueMid is only used in Element 0 of DialogueGroups (Player's very first run)" +
+             "/n DialogueMid is ran on First Ferry")]
     public DialogueStruct DialogueMid;
+    [Tooltip("DialogueStart is ran on Game End")]
     public DialogueStruct DialogueEnd; 
 }
 
