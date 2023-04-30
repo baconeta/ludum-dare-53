@@ -1318,6 +1318,52 @@ MonoBehaviour:
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: I am Charon, the Ferryman of the River Styx.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you
+          think there was just one of us?
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: I am Persephone, Queen of the Underworld!
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Conversation can flow in any direction
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: And the current speaker will be highlighted
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: And we can even both speak at once!
+        dialogueSide: 0
+        participantSpeaking: -1
+      - line: 'These narratives occur at OnStartEnter, OnFirstFerry, and OnEndEnter. '
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Percephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Game over! No souls left
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   inactiveSpeakerSize: 0.7

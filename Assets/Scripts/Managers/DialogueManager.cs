@@ -65,7 +65,9 @@ public class DialogueManager : MonoBehaviour
 {
     public static DialogueManager instance;
     
-    [Tooltip("Groups of dialogue that are selected at RANDOM at game start.")]
+    [Tooltip("Groups of dialogue that are selected at game start." +
+             "\nElement 0 is played on the Player's very first run" +
+             "\nOther elements are selected at random")]
     public List<DialogueGroup> DialogueGroups;
     
     private DialogueStruct DialogueStart;
