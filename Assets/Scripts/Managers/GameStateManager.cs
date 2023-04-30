@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ObjectPooling;
 using UnityEngine;
 
 public class GameStateManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class GameStateManager : MonoBehaviour
     }
 
     [SerializeField] private GameStates _previousState;
+    public GameStates PreviousState { get { return _previousState; } }
 
     //Event Actions for GameStates
     //Subscribe to these to launch other mechanics
@@ -32,9 +34,9 @@ public class GameStateManager : MonoBehaviour
 
     //Game Start - Run intros/Dialogue etc
     public static event Action OnStartEnter;
-    //Starting to ferry, fill up on Souls.
+    //Starting to ferry, fill up on Souls, Run Dialogue
     public static event Action OnFerryingEnter;
-    //Drop off souls, Repair ship.
+    //Drop off souls, Repair ship, Run Dialogue
     public static event Action OnReturningEnter;
     //Game Paused
     public static event Action OnPauseEnter;
@@ -42,6 +44,7 @@ public class GameStateManager : MonoBehaviour
     public static event Action OnEndEnter;
 
 
+    
     private void Awake()
     {
         if (!Instance) Instance = this;
@@ -107,6 +110,14 @@ public class GameStateManager : MonoBehaviour
     {
         //Active game modes are Ferrying and Returning
         //Inactive Game Modes are Start, Pause, and End.
-        return _currentState == GameStates.Ferrying || _currentState == GameStates.Returning;
+        bool isActive = _currentState == GameStates.Ferrying || _currentState == GameStates.Returning;
+        
+        //TODO Do we want this here? This causes obstacles to pause during dialogue (The river still flows)
+        if (isActive)
+        {
+            //Check if dialogue is open, if so, pause game.
+            if (DialogueManager.instance.isDialogueActive) isActive = false;
+        }
+        return isActive;
     }
 }

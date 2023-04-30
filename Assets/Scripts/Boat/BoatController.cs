@@ -15,6 +15,9 @@ public class BoatController : MonoBehaviour
     public Transform rightDock;
 
     public KeyCode voyageStartKey;
+
+    public static event Action OnVoyageStart;
+    public static event Action OnVoyageComplete;
  
 
     // Start is called before the first frame update
@@ -64,6 +67,8 @@ public class BoatController : MonoBehaviour
         
         //Enable movement
         _boatMovement.EnableMovement();
+        
+        OnVoyageStart?.Invoke();
     }
     
     void CompleteVoyage()
@@ -88,12 +93,14 @@ public class BoatController : MonoBehaviour
         
         //Disable movement
         _boatMovement.DisableMovement();
-        
+        OnVoyageComplete?.Invoke();
+
     }
 
     void VoyageLost()
     {
         //When a lose condition is met.
+        //Calls the OnEndEnter event Action. 
         GameStateManager.Instance.CurrentState = GameStateManager.GameStates.End;
     }
 
