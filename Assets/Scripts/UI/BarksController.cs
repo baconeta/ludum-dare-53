@@ -24,8 +24,9 @@ public class BarksController : MonoBehaviour
         BoatController.OnDamageTaken += HitSomething;
         BoatController.OnVoyageStart += StartBarkTimers;
         BoatController.OnVoyageComplete += StopBarkTimers;
-        GameStateManager.OnPauseEnter += StartBarkTimers;
-        GameStateManager.OnPauseExit += StopBarkTimers;
+        GameStateManager.OnPauseEnter += StopBarkTimers;
+        GameStateManager.OnPauseExit += StartBarkTimers;
+        DialogueManager.OnDialogueStart += CloseAllPopups;
     }
 
     private void OnDisable()
@@ -33,8 +34,9 @@ public class BarksController : MonoBehaviour
         BoatController.OnDamageTaken -= HitSomething;
         BoatController.OnVoyageStart -= StartBarkTimers;
         BoatController.OnVoyageComplete -= StartBarkTimers;
-        GameStateManager.OnPauseEnter -= StartBarkTimers;
-        GameStateManager.OnPauseExit -= StopBarkTimers;
+        GameStateManager.OnPauseEnter -= StopBarkTimers;
+        GameStateManager.OnPauseExit -= StartBarkTimers;
+        DialogueManager.OnDialogueStart -= CloseAllPopups;
     }
 
     private void Start()
@@ -67,6 +69,16 @@ public class BarksController : MonoBehaviour
     private void StopBarkTimers()
     {
         _canBark = false;
+    }
+
+
+    private void CloseAllPopups()
+    {
+        StopAllCoroutines();
+        _timeLastBarkClosed = Time.time;
+        _isBarkOnScreen = false;
+        barkPopupLeft.gameObject.SetActive(false);
+        barkPopupRight.gameObject.SetActive(false);
     }
 
     private void SetLeftSpeaker(string speaker, string bark)
