@@ -87,4 +87,9 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FlowDirection: {r: 0, g: -0.4, b: 0, a: 0}
     - _MainColour: {r: 0.3019608, g: 0.2901961, b: 0.3529412, a: 1}
+    - _MainColourBright: {r: 0.13608047, g: 0.15394714, b: 0.20754719, a: 1}
+    - _MainColourDark: {r: 0, g: 0, b: 0, a: 1}
+    - _MainColourGradients: {r: 0.3, g: 0.5, b: 0.8, a: 0.9}
+    - _MainColourLight: {r: 0.13781595, g: 0.14702249, b: 0.1792453, a: 1}
+    - _MainColourMid: {r: 0.08957815, g: 0.08986829, b: 0.103773594, a: 1}
   m_BuildTextureStacks: []
