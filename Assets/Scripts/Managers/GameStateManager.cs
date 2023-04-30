@@ -8,6 +8,7 @@ namespace Managers {
         [Serializable]
         public enum GameStates {
             Start,
+            Dialogue,
             Ferrying,
             Returning,
             Pause,
@@ -34,6 +35,9 @@ namespace Managers {
 
         //Game Start - Run intros/Dialogue etc
         public static event Action OnStartEnter;
+
+        // Showing a dialogue overlay
+        public static event Action OnDialogueEnter;
 
         //Starting to ferry, fill up on Souls, Run Dialogue
         public static event Action OnFerryingEnter;
@@ -78,6 +82,10 @@ namespace Managers {
                 //Upon reaching the shore of Gaia/Over-world/Living/Left/Pickup
                 case GameStates.Ferrying:
                     OnFerryingEnter?.Invoke();
+                    break;
+                // Whenever the dialogue overlay is displayed
+                case GameStates.Dialogue:
+                    OnDialogueEnter?.Invoke();
                     break;
                 //Upon reaching the shore of Underworld/Right/Dropoff
                 case GameStates.Returning:

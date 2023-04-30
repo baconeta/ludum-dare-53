@@ -35,6 +35,9 @@ namespace Managers
             // Start spawning in response to game state changes
             GameStateManager.OnFerryingEnter += StartSpawn;
 
+            // Stop spawning while dialogue is being displayed
+            GameStateManager.OnDialogueEnter += StopSpawn;
+
             // Pause spawning in response to game state changes
             GameStateManager.OnPauseEnter += StopSpawn;
 
@@ -45,6 +48,7 @@ namespace Managers
         private void OnDestroy() {
             // Deregister all of the delegates
             GameStateManager.OnFerryingEnter -= StartSpawn;
+            GameStateManager.OnDialogueEnter -= StopSpawn;
             GameStateManager.OnPauseEnter -= StopSpawn;
             GameStateManager.OnEndEnter -= StopSpawn;
         }
