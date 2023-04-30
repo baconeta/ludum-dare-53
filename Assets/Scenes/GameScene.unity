@@ -1419,14 +1419,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarksContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 4006331052736414828, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: m_text
-      value: 'Speaker:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 4006331052736414828, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: m_margin.w
-      value: 120.31243
-      objectReference: {fileID: 0}
     - target: {fileID: 4081218319016412354, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1470,22 +1462,6 @@ PrefabInstance:
     - target: {fileID: 4081218319016412354, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4519728231762400959, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: m_margin.y
-      value: 46.101013
-      objectReference: {fileID: 0}
-    - target: {fileID: 6341079644551480204, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: m_fontSize
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 6341079644551480204, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: m_fontSizeMax
-      value: 36
-      objectReference: {fileID: 0}
-    - target: {fileID: 8906751614042367217, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: minTimeBetweenBarks
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

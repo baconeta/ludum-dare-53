@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4081218319016412354}
   - component: {fileID: 8906751614042367217}
+  - component: {fileID: 482286615933334566}
   m_Layer: 0
   m_Name: BarksContainer
   m_TagString: Untagged
@@ -47,6 +48,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barkPopupLeft: {fileID: 4612427180419555860}
   barkPopupRight: {fileID: 8242946643548082283}
+  minTimeBetweenBarks: 4
+--- !u!114 &482286615933334566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3330392648339135595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7661df05fb6e95741b0e79b12936dcfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonLabel: Bark
+  onClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8906751614042367217}
+        m_TargetAssemblyTypeName: BarksController, Assembly-CSharp
+        m_MethodName: HitSomething
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6226333321580202036
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,6 +193,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BarksPopupRight
       objectReference: {fileID: 0}
+    - target: {fileID: 2822209093674432074, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -239,6 +273,14 @@ PrefabInstance:
     - target: {fileID: 2822209093674432074, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
       propertyPath: m_Name
       value: BarksPopupLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822209093674432074, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3857155759781925797, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
+      propertyPath: m_fontSize
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
       propertyPath: m_RootOrder
