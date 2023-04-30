@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using ObjectPooling;
 using Spawnables;
 using UnityEngine;
@@ -7,15 +8,24 @@ namespace Managers
 {
     public sealed class SpawnManager : MonoBehaviour
     {
+        [Header("Spawn Settings")]
         [SerializeField][Min(5)] private int simultaneousObstacleLimit = 20;
+        [SerializeField][Min(5)] private int simultaneousSeekerLimit = 20;
         [SerializeField][Min(5)] private float spawnInterval = 5.0f;
+        
         [Tooltip("The obstacle that is be spawned in the game scene.")]
         [SerializeField] private GameObject obstacleObject;
+        [Tooltip("Creepy seeker that follows the player.")]
+        [SerializeField] private GameObject seekerObject;
+        [Tooltip("Percentage of the time that a seeker will spawn instead of an obstacle.")]
+        [SerializeField][Range(0, 100)] private int seekerSpawnChance = 20;
         
+        [Header("Spawn Multipliers")]
         [SerializeField] private float speedMultiplier = 1.0f;
         [SerializeField] private float damageMultiplier = 1.0f;
 
         private ObjectPool _obstacles;
+        private ObjectPool _seekers;
 
         private float _topLimit;
         private float _leftLimit;
@@ -24,6 +34,7 @@ namespace Managers
 
         private void Awake() {
             _obstacles = ObjectPool.Build(obstacleObject, simultaneousObstacleLimit, simultaneousObstacleLimit);
+            _seekers = ObjectPool.Build(seekerObject, simultaneousSeekerLimit, simultaneousSeekerLimit);
         }
 
         private void Start() {
@@ -40,6 +51,7 @@ namespace Managers
 
             // Pause spawning in response to game state changes
             GameStateManager.OnPauseEnter += StopSpawn;
+            GameStateManager.OnPauseExit += StartSpawn;
 
             // Stop spawning in response to game over or restarting the game
             GameStateManager.OnEndEnter += StopSpawn;
@@ -50,6 +62,7 @@ namespace Managers
             GameStateManager.OnFerryingEnter -= StartSpawn;
             GameStateManager.OnDialogueEnter -= StopSpawn;
             GameStateManager.OnPauseEnter -= StopSpawn;
+            GameStateManager.OnPauseExit -= StartSpawn;
             GameStateManager.OnEndEnter -= StopSpawn;
         }
 
@@ -66,15 +79,19 @@ namespace Managers
          */
         private void Spawn()
         {
-            var obstacle = _obstacles.GetRecyclable();
+            // TODO This is fragile! What happens if I pop the last object from the pool?
+            var spawnable = Random.Range(0, 100) > seekerSpawnChance
+                ? _obstacles.GetRecyclable()
+                : _seekers.GetRecyclable();
 
-            var length = obstacle.GetComponent<Renderer>().bounds.size.y;
+            var length = spawnable.GetComponent<Renderer>().bounds.size.y;
             var topOffset = _topLimit + length / 2.0f;
 
-            obstacle.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
-
-            obstacle.GetComponent<Obstacle>().MultiplySpeed(speedMultiplier);
-            obstacle.GetComponent<Obstacle>().MultiplyDamage(damageMultiplier);
+            // Set the object's position to a random position at the top of the screen
+            spawnable.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
+            // Set the object's speed and damage multipliers
+            spawnable.GetComponent<Obstacle>().MultiplySpeed(speedMultiplier);
+            spawnable.GetComponent<Obstacle>().MultiplyDamage(damageMultiplier);
         }
 
         /**

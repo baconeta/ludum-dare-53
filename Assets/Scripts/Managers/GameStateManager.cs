@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-namespace Managers {
-    public class GameStateManager : MonoBehaviour {
+namespace Managers
+{
+    public class GameStateManager : MonoBehaviour
+    {
         public static GameStateManager Instance;
 
         [Serializable]
@@ -35,13 +37,13 @@ namespace Managers {
 
         // When the scene is loaded
         public static event Action OnStartEnter;
-        
+
         // Showing a dialogue overlay
         public static event Action OnDialogueEnter;
 
         //Starting to ferry, fill up on Souls, Run Dialogue
         public static event Action OnFerryingEnter;
-        
+
         public static event Action OnFirstFerry;
 
         //Drop off souls, Repair ship, Run Dialogue
@@ -49,12 +51,13 @@ namespace Managers {
 
         //Game Paused
         public static event Action OnPauseEnter;
+        public static event Action OnPauseExit;
 
         //Game Ended / Ship Destroyed
         public static event Action OnEndEnter;
 
 
-    
+
         private void Awake()
         {
             if (!Instance) Instance = this;
@@ -85,7 +88,7 @@ namespace Managers {
 
         private void GameStart()
         {
-            if(_currentState == GameStates.Start)
+            if (_currentState == GameStates.Start)
                 ChangeState(GameStates.Ferrying);
         }
 
@@ -101,6 +104,13 @@ namespace Managers {
             _previousState = _currentState;
             _currentState = newState;
 
+
+            if (_previousState == GameStates.Pause)
+            {
+                OnPauseExit?.Invoke();
+                return;
+            }
+
             //Invoke GameState event.
             switch (_currentState)
             {
@@ -114,7 +124,6 @@ namespace Managers {
                     break;
                 //Upon reaching the shore of Underworld/Right/Dropoff
                 case GameStates.Returning:
-                    
                     //Calls OnFirstFerry for the first time a ferry trip is successful.
                     OnReturningEnter?.Invoke();
                     if (_previousState == GameStates.Ferrying && !firstFerryCompleted)
@@ -138,7 +147,8 @@ namespace Managers {
         }
 
 
-        public void Resume() {
+        public void Resume()
+        {
             if (_currentState != GameStates.Pause)
             {
                 Debug.LogError($"Cannot resume playing from the {_currentState} state");
@@ -148,7 +158,8 @@ namespace Managers {
             ChangeState(_previousState);
         }
 
-        public bool IsGameActive() {
+        public bool IsGameActive()
+        {
             //Active game modes are Ferrying and Returning
             //Inactive Game Modes are Start, Pause, and End.
             bool isActive = _currentState == GameStates.Ferrying || _currentState == GameStates.Returning;
