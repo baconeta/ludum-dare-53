@@ -73,8 +73,7 @@ namespace Managers {
 
         private void Start()
         {
-            //TODO Remove for actual game start.
-            CurrentState = GameStates.Start;
+            OnStartEnter?.Invoke();
         }
 
         private void GameStart()
@@ -100,7 +99,7 @@ namespace Managers {
             {
                 //Initial State, start of game.
                 case GameStates.Start:
-                    OnStartEnter?.Invoke();
+                    //OnStartEnter.Invoke Occurs in GameStateManager Start()
                     break;
                 //Upon reaching the shore of Gaia/Over-world/Living/Left/Pickup
                 case GameStates.Ferrying:
