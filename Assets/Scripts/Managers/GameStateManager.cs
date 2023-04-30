@@ -105,7 +105,7 @@ namespace Managers
             _currentState = newState;
 
 
-            if (_previousState != GameStates.Pause)
+            if (_previousState == GameStates.Pause)
             {
                 OnPauseExit?.Invoke();
                 return;
