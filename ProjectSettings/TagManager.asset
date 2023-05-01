@@ -7,6 +7,8 @@ TagManager:
   - Ferry
   - Shore
   - Obstacle
+  - No Spawn Area
+  - Spawn Area
   layers:
   - Default
   - TransparentFX
