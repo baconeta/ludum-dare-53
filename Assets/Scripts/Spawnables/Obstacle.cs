@@ -71,7 +71,7 @@ namespace Spawnables
             _poolable = p;
         }
 
-        private void RemoveFromScene()
+        protected void RemoveFromScene()
         {
             currentSpeed = initialSpeed;
             damage = 1;

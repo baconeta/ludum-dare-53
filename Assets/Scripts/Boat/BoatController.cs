@@ -12,6 +12,7 @@ public class BoatController : MonoBehaviour
     [Header("Components")]
     public GameObject boatGameObject;
     public GameObject scriptsGameObject;
+    public Transform seekerAttach;
     private BoatMovement _boatMovement;
     private BoatCapacity _boatCapacity;
     
@@ -199,6 +200,12 @@ public class BoatController : MonoBehaviour
             {
                 OnDamageTaken?.Invoke();
                 _boatCapacity.DealDamageToBoat(other.GetComponent<Obstacle>().Damage);
+
+                var seeker = other.gameObject.GetComponent<Seeker>();
+                if (seeker != null)
+                    seeker.StartAttackAnimation(seekerAttach);
+
+
             }
         }
     }
