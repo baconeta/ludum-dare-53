@@ -598,7 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 08ce24394b9428c4b9f3a0a01065088e, type: 3}
   m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
+  m_UIInputModule: {fileID: 1048162675}
   m_DeviceLostEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -613,7 +613,7 @@ MonoBehaviour:
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
   m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1059926973}
 --- !u!114 &1048162678
 MonoBehaviour:
   m_ObjectHideFlags: 0
