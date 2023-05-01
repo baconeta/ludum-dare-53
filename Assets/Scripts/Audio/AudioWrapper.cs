@@ -34,7 +34,7 @@ namespace Audio
         {
             if (_soundDict.TryGetValue(soundName, out SoundData sound))
             {
-                playingSounds.Add(sound.name, AudioManager.Instance.Play(sound.sound, sound.mixer, sound.loop));
+                playingSounds.TryAdd(sound.name, AudioManager.Instance.Play(sound.sound, sound.mixer, sound.loop));
             }
             else
             {
@@ -66,6 +66,7 @@ namespace Audio
             if (playingSounds.TryGetValue(soundName, out AudioSourcePoolable source))
             {
                 AudioManager.Instance.TryStopSound(source);
+                playingSounds.Remove(soundName);
             }
         }
     }
