@@ -177,8 +177,7 @@ public class BoatCapacity : MonoBehaviour
     private int DecreaseSouls(int loadToRemove)
     {
         // Play the SFX.
-        SoundData SFX = new(); // How do I actually get the SFX that the AudioWrapper now holds?
-        AudioManager.Instance.Play(SFX.sound, SFX.mixer, SFX.loop);
+        AudioWrapper.Instance.PlaySound("damned-soul-sfx");
         // Reduce souls.
         if (CurrentLoad <= loadToRemove)
         {
