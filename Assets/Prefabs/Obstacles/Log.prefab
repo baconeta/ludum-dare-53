@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6818224479640003969}
   - component: {fileID: 3867678336767937353}
   - component: {fileID: 3741103505995689802}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Log
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -162,5 +162,5 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.19, y: 0.63}
+  m_Size: {x: 1.19, y: 0.3}
   m_Direction: 1

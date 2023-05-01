@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - No Spawn Area
   - Spawn Area
+  - OutOfBounds
   layers:
   - Default
   - TransparentFX
@@ -16,9 +17,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ferry
+  - Obstacle
+  - OutOfBounds
   - 
   - 
   - 
