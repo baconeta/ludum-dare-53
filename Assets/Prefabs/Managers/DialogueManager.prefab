@@ -47,6 +47,69 @@ MonoBehaviour:
   DialogueGroups:
   - DialogueStart:
       linesOfDialogue:
+      - line: Charon, sweetheart, sorry it took us so long to visit!
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Not at all, Lady Persephone.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: See, Persy? The lad is fine..
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: You gave my father your word.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I've taken him under my wing haven't I?
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: Don't mind my husband, dear.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I'll make sure he checks in on you.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, you don't have to do that.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Nonsense, I'll be doing the same myself.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Enough chatter. Show us what you can do, boy.
+        dialogueSide: 0
+        participantSpeaking: 1
+      participants:
+      - name: Persephone
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+      - name: Charon
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+    DialogueMid:
+      linesOfDialogue:
+      - line: This is the middle story
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Percephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Game over! No souls left
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
       - line: I am Charon, the Ferryman of the River Styx.
         dialogueSide: 0
         participantSpeaking: 0
@@ -76,54 +139,6 @@ MonoBehaviour:
       - name: Percephone
         dialogueSide: 1
         portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
-    DialogueMid:
-      linesOfDialogue:
-      - line: This is the middle story
-        dialogueSide: 0
-        participantSpeaking: 0
-      participants:
-      - name: Charon
-        dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Percephone
-        dialogueSide: 1
-        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
-    DialogueEnd:
-      linesOfDialogue:
-      - line: Game over! No souls left
-        dialogueSide: 0
-        participantSpeaking: 0
-      participants:
-      - name: Charon
-        dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-  - DialogueStart:
-      linesOfDialogue:
-      - line: Mom, you gotta stop showing up here.
-        dialogueSide: 0
-        participantSpeaking: 0
-      - line: The souls keep asking me if you're single.
-        dialogueSide: 0
-        participantSpeaking: 0
-      - line: Oh? And what do you tell them?
-        dialogueSide: 1
-        participantSpeaking: 0
-      - line: I tell them you have over 20 children.
-        dialogueSide: 0
-        participantSpeaking: 0
-      - line: Some people are into that ;)
-        dialogueSide: 1
-        participantSpeaking: 0
-      - line: Oh my god, mom, go away, I have work to do.
-        dialogueSide: 0
-        participantSpeaking: 0
-      participants:
-      - name: Charon
-        dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Nyx
-        dialogueSide: 1
-        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
     DialogueMid:
       linesOfDialogue:
       - line: This is the middle story
