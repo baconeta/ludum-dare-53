@@ -9,6 +9,9 @@ public class BarkManager : MonoBehaviour
     [Tooltip("The comma-separated list of ambience-provoked barks to pull from.")]
     private TextAsset listOfAmbienceBarks;
     [SerializeField]
+    [Tooltip("The comma-separated list of DUET damage-provoked barks to pull from. These will be played with Charon.")]
+    private TextAsset listOfDuetDamageBarks;
+    [SerializeField]
     [Tooltip("The character sequence to use to split barks by.")]
     private string delimiter = ",";
 
@@ -18,6 +21,11 @@ public class BarkManager : MonoBehaviour
     }
 
     public string GetAmbienceBark()
+    {
+        return GetBark(listOfAmbienceBarks, "Ambience");
+    }
+
+    public string GetDuetDamageBark()
     {
         return GetBark(listOfAmbienceBarks, "Ambience");
     }

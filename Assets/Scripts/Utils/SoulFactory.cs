@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 public class SoulFactory : MonoBehaviour
@@ -39,8 +37,10 @@ public class SoulFactory : MonoBehaviour
         for (int i = 0; i < pairs.Length; i++)
         {
             string[] items = pairs[i].Split(delimiter2);
-            soulData[i, 0] = items[0];
-            soulData[i, 1] = items[1];
+            if (items.Length != 2)
+                continue;
+            soulData[i, 0] = items[0].Trim();
+            soulData[i, 1] = items[1].Trim();
         }
         // Save the result.
         specialSoulData = soulData;
@@ -130,5 +130,10 @@ public class Soul
             return AmbienceBarkOverride;
         }
         return BarkManager.GetAmbienceBark();
+    }
+
+    public string GetDuetDamageBark()
+    {
+        return BarkManager.GetDuetDamageBark();
     }
 }
