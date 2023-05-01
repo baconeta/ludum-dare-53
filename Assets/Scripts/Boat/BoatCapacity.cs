@@ -1,4 +1,5 @@
 using System;
+using Audio;
 using Managers;
 using Unity.Collections;
 using UnityEngine;
@@ -22,17 +23,6 @@ public class BoatCapacity : MonoBehaviour
     [Tooltip("Does the boat capacity get reduced when taking damage while the boat contains souls?")]
     [SerializeField]
     private bool doesLoseCapacityWhileContainsSouls = false;
-
-
-    [Header("Assets")]
-
-    [Tooltip("The sound to play when soul is damned.")]
-    [SerializeField]
-    private AudioSource damnedSFX = null;
-
-    [Tooltip("Delay between taking damage and the soul hitting the water.")]
-    [SerializeField]
-    private float damnedSFXDelay = 0.09f;
 
 
     [Header("Statistics")]
@@ -186,8 +176,9 @@ public class BoatCapacity : MonoBehaviour
 
     private int DecreaseSouls(int loadToRemove)
     {
-        // Queue the SFX.
-        damnedSFX.PlayDelayed(damnedSFXDelay);
+        // Play the SFX.
+        SoundData SFX = new(); // How do I actually get the SFX that the AudioWrapper now holds?
+        AudioManager.Instance.Play(SFX.sound, SFX.mixer, SFX.loop);
         // Reduce souls.
         if (CurrentLoad <= loadToRemove)
         {
