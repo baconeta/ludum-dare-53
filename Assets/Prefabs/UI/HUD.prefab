@@ -1122,7 +1122,7 @@ Transform:
   m_Children:
   - {fileID: 2601935640159628669}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5932732319228821038
 MonoBehaviour:
@@ -1153,6 +1153,7 @@ GameObject:
   - component: {fileID: 6110026558588961501}
   - component: {fileID: 4493471075869477017}
   - component: {fileID: 5061503976665842689}
+  - component: {fileID: 8649937294869734747}
   m_Layer: 0
   m_Name: PauseButton
   m_TagString: Untagged
@@ -1262,6 +1263,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 8649937294869734747}
+        m_TargetAssemblyTypeName: Audio.MusicController, Assembly-CSharp
+        m_MethodName: PlayManually
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 5932732319228821038}
         m_TargetAssemblyTypeName: HudController, Assembly-CSharp
         m_MethodName: PauseGame
@@ -1274,6 +1287,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8649937294869734747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8411115440985607286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebda73d80c42c38468443e9a85b16be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trackToPlay: ui-button
+  playOnStart: 0
 --- !u!1 &8605702877293509918
 GameObject:
   m_ObjectHideFlags: 0
