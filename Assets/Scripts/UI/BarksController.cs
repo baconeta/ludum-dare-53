@@ -144,11 +144,11 @@ public class BarksController : MonoBehaviour
     {
         Soul soul = soulFactory.GenerateRandomSoul();
         var soulName = soul.Name;
-        var soulBark = soul.GetDamageBark();
+        var soulBark = soul.GetDuetDamageBark();
 
         var charonBark = charonBarkManager.GetCharonDuetDamageBark();
 
-        // calculate the bark time showing length
+        // Calculate the bark time showing length
         var timeOnScreen = Math.Max(CalculateTimeOnScreen(charonBark), CalculateTimeOnScreen(soulBark));
 
         // Set up bark popups and show it on screen
