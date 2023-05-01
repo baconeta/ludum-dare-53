@@ -1,7 +1,6 @@
-using System;
 using Managers;
-using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spawnables
 {
@@ -10,11 +9,11 @@ namespace Spawnables
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Animator animator;
         private GameObject _target;
-        private Transform attackAttach;
+        private Transform _attackAttach;
         private const float RotationSpeed = 5.0f;
         [SerializeField] private bool isAttacking;
         [SerializeField]private int attackSortingOrder;
-        private int defaultSortingOrder;
+        private int _defaultSortingOrder;
 
         [Tooltip("The amount of time in seconds to spend seeking the target.")] [SerializeField]
         private float seekDuration = 1.0f;
@@ -22,37 +21,43 @@ namespace Spawnables
         [Tooltip("The amount of time in seconds to spend idly going with the river flow")] [SerializeField]
         private float idleDuration = 1.0f;
 
+        private const float MaxJitter = 0.7f;
+        private float _jitter;
+
+        private static readonly int SwimSpeed = Animator.StringToHash("SwimSpeed");
+        private static readonly int IsAttacking = Animator.StringToHash("IsAttacking");
+        private static readonly int AttackSpeed = Animator.StringToHash("AttackSpeed");
+
         private new void Start()
         {
             base.Start();
             //cache sorting order.
-            defaultSortingOrder = spriteRenderer.sortingOrder;
+            _defaultSortingOrder = spriteRenderer.sortingOrder;
             if (!animator) animator = GetComponentInChildren<Animator>();
             if (!spriteRenderer) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             
             // Get a lock on the player so we can follow them
             _target = GameObject.FindWithTag("Ferry");
+            
+            // Add random jitter to stop all instance from moving in sync
+            _jitter = Random.Range(0.0f, MaxJitter);
         }
+        
         private void Update() {
             
             if (!GameStateManager.Instance.IsGameActive()) return;
             if (isAttacking)
             {
-                transform.position = attackAttach.position;
+                transform.position = _attackAttach.position;
                 transform.rotation = Quaternion.identity;
             }
             else //Not attacking - Move/Rotate
             {
-                // If the target is null, find it
-                //_target ??= GameObject.FindWithTag("Ferry");
-
                 var dir = Vector3.forward;
                 if (_target is not null)
                 {
-                    // Rotate to face the target
                     dir = (_target.transform.position - transform.position).normalized;
                 }
-            
                 RotateTowardTarget(dir);
                 Move(dir);
             }
@@ -71,9 +76,8 @@ namespace Spawnables
             // Set the rotation on the z axis only (because 2D)
             transform.eulerAngles = new Vector3(0, 0, rot.eulerAngles.z);
 
-            if (rot.eulerAngles.z > 135 || rot.eulerAngles.z < -45) spriteRenderer.flipX = true;
-            else spriteRenderer.flipX = false;
-
+            // Flip the sprite to face the right way
+            spriteRenderer.flipX = rot.eulerAngles.z is > 135 or < -45;
         }
 
         /**
@@ -83,10 +87,9 @@ namespace Spawnables
             
             // Figure out amount to move this frame
             var step = currentSpeed * Time.deltaTime;
-            float animSpeed = 0;
-            
-            
-            if (Time.time % (idleDuration + seekDuration) < idleDuration)
+            var animSpeed = 0.0f;
+
+            if ((Time.time + _jitter) % (idleDuration + seekDuration) < idleDuration)
             {
                 // Slowly move the obstacle down the screen with the river flow
                 transform.position += Vector3.down * step;
@@ -94,11 +97,10 @@ namespace Spawnables
             else
             {
                 // Move toward the target
-                //dir += Vector3.down;
                 transform.position += dir * step;
-                animSpeed = 1;
+                animSpeed = 1.0f;
             }
-            animator.SetFloat("SwimSpeed", animSpeed);
+            animator.SetFloat(SwimSpeed, animSpeed);
         }
 
         public void StartAttackAnimation(Transform attach)
@@ -106,9 +108,9 @@ namespace Spawnables
             isAttacking = true;
             GetComponent<CircleCollider2D>().enabled = false;
             spriteRenderer.sortingOrder = attackSortingOrder;
-            animator.SetBool("IsAttacking", true);
-            animator.SetFloat("AttackSpeed", 1);
-            attackAttach = attach;
+            animator.SetBool(IsAttacking, true);
+            animator.SetFloat(AttackSpeed, 1);
+            _attackAttach = attach;
         }
 
         public void EndAttackAnimation()
@@ -116,9 +118,9 @@ namespace Spawnables
             //Reset anims
             isAttacking = false;
             GetComponent<CircleCollider2D>().enabled = true;
-            spriteRenderer.sortingOrder = defaultSortingOrder;
-            animator.SetBool("IsAttacking", false);
-            animator.SetFloat("AttackSpeed", 0);
+            spriteRenderer.sortingOrder = _defaultSortingOrder;
+            animator.SetBool(IsAttacking, false);
+            animator.SetFloat(AttackSpeed, 0);
             
             RemoveFromScene();
         }
