@@ -25,19 +25,14 @@ namespace Spawnables
             // If the target is null, find it
             //_target ??= GameObject.FindWithTag("Ferry");
 
-            var dir = Quaternion.identity.eulerAngles;
+            var dir = new Vector3(0,0,90);
             if (_target != null)
             {
                 // Rotate to face the target
                 dir = (_target.transform.position - transform.position).normalized;
-                RotateTowardTarget(dir);
-            }
-            else
-            {
-                //Rotate towards 0,0,0
-                RotateTowardTarget(dir);
             }
             
+            RotateTowardTarget(dir);
             Move(dir);
         }
         

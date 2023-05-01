@@ -12,6 +12,7 @@ public class HudController : MonoBehaviour
     [SerializeField] private TMP_Text carriedSoulsLabel;
     [SerializeField] private TMP_Text soulCapacityLabel;
     [SerializeField] private GameObject joystickUI;
+    private bool isVisible;
 
     private void OnEnable()
     {
@@ -61,7 +62,8 @@ public class HudController : MonoBehaviour
 
     public void ToggleJoystick(bool toggleOn)
     {
-        joystickUI.SetActive(toggleOn);
+        if(ui.activeSelf == toggleOn)
+            joystickUI.SetActive(toggleOn);
     }
     
 
