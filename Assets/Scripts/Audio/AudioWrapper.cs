@@ -13,6 +13,8 @@ namespace Audio
 
         private bool _dictionaryInitialised;
 
+        private Dictionary<string, AudioSourcePoolable> playingSounds;
+
         protected override void Awake()
         {
             base.Awake();
@@ -25,13 +27,14 @@ namespace Audio
             }
 
             _dictionaryInitialised = true;
+            playingSounds = new Dictionary<string, AudioSourcePoolable>();
         }
 
         public void PlaySound(string soundName)
         {
             if (_soundDict.TryGetValue(soundName, out SoundData sound))
             {
-                AudioManager.Instance.Play(sound.sound, sound.mixer, sound.loop);
+                playingSounds.TryAdd(sound.name, AudioManager.Instance.Play(sound.sound, sound.mixer, sound.loop));
             }
             else
             {
@@ -56,6 +59,15 @@ namespace Audio
             yield return new WaitForSeconds(delay);
 
             PlaySound(soundName);
+        }
+
+        public void StopSound(string soundName)
+        {
+            if (playingSounds.TryGetValue(soundName, out AudioSourcePoolable source))
+            {
+                AudioManager.Instance.TryStopSound(source);
+                playingSounds.Remove(soundName);
+            }
         }
     }
 }
