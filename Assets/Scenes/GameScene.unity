@@ -131,6 +131,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2847470636963782075, guid: b7fecf501ad0eb445a8f0f3041420a6c, type: 3}
+      propertyPath: _specialSoulChance
+      value: 0.08
+      objectReference: {fileID: 0}
     - target: {fileID: 7505229320891975304, guid: b7fecf501ad0eb445a8f0f3041420a6c, type: 3}
       propertyPath: m_Name
       value: SoulFactory
