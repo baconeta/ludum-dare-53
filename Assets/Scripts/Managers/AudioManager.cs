@@ -47,6 +47,14 @@ namespace Managers
             LoadVolumes();
         }
 
+        public void TryStopSound(AudioSourcePoolable source)
+        {
+            if (source != null && source.isActiveAndEnabled)
+            {
+                source.StopAudio();
+            }
+        }
+
         private AudioSourcePoolable GetAudioSourceFromPool()
         {
             return _audioSources.GetRecyclable<AudioSourcePoolable>();
