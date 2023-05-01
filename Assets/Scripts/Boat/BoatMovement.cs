@@ -114,10 +114,14 @@ public class BoatMovement : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-
+            
             //Set direction to left/right based on the current GameState
             switch (GameStateManager.Instance.CurrentState)
             {
+                //Edge case of start, may as well prime it for right.
+                case GameStateManager.GameStates.Start:
+                    currentDirection = Vector3.right;
+                    break;
                 case GameStateManager.GameStates.Ferrying:
                     currentDirection = Vector3.right;
                     break;
@@ -128,9 +132,7 @@ public class BoatMovement : MonoBehaviour
 
             //Reset Rotation (You've just launched!)
             transform.rotation = quaternion.Euler(0, 0, 0);
-
         }
-
     }
 
     public void DisableMovement()
