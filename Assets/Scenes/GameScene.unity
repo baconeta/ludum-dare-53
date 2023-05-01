@@ -2205,7 +2205,8 @@ PrefabInstance:
       value: Charon's Ferry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9129207758391570986, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
