@@ -1960,6 +1960,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: startingCapacity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: capacityRestoredOnSuccessfulFerry
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_Name
       value: Charon's Ferry
