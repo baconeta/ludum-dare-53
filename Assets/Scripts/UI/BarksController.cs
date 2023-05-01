@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 public class BarksController : MonoBehaviour
 {
+    [SerializeField] private SoulFactory soulFactory;
     [SerializeField] private BarkPopup barkPopupLeft;
     [SerializeField] private BarkPopup barkPopupRight;
     [SerializeField] private float minTimeBetweenBarks;
@@ -140,9 +141,9 @@ public class BarksController : MonoBehaviour
 
     private void ResponseDamageBark()
     {
-        // TODO get soul data
-        var soulName = "James";
-        var soulBark = "How dare you.";
+        Soul soul = soulFactory.GenerateRandomSoul();
+        var soulName = soul.Name;
+        var soulBark = soul.GetDamageBark();
 
         // TODO get charon response
         var charonBark = "Okay bro";
@@ -159,9 +160,9 @@ public class BarksController : MonoBehaviour
 
     private void SoulOnlyBark(bool hit = false)
     {
-        // TODO get soul bark
-        var soulName = "James";
-        var soulBark = "How dare you.";
+        Soul soul = soulFactory.GenerateRandomSoul();
+        var soulName = soul.Name;
+        var soulBark = hit ? soul.GetDamageBark() : soul.GetAmbienceBark();
 
         // calculate the bark time showing length
         var timeOnScreen = CalculateTimeOnScreen(soulBark);
