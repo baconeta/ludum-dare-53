@@ -2110,6 +2110,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eadd9d3248bb0514bb696b473ee5017f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skipContinueScreen: {fileID: 1199650788}
+  bgMusicStarter: {fileID: 1042749042}
 --- !u!4 &1375525508
 Transform:
   m_ObjectHideFlags: 0
