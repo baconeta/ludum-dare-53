@@ -1,4 +1,5 @@
 using Managers;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Spawnables
@@ -14,7 +15,8 @@ namespace Spawnables
         [Tooltip("The amount of time in seconds to spend idly going with the river flow")] [SerializeField]
         private float idleDuration = 1.0f;
 
-        private void Start() {
+        private new void Start() {
+            base.Start();
             // Get a lock on the player so we can follow them
             _target = GameObject.FindWithTag("Ferry");
         }
@@ -25,8 +27,8 @@ namespace Spawnables
             // If the target is null, find it
             //_target ??= GameObject.FindWithTag("Ferry");
 
-            var dir = new Vector3(0,0,90);
-            if (_target != null)
+            var dir = Vector3.forward;
+            if (_target is not null)
             {
                 // Rotate to face the target
                 dir = (_target.transform.position - transform.position).normalized;
