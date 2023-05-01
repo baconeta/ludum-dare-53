@@ -26,6 +26,9 @@ public class LeaderboardManager : MonoBehaviour
     private const string RetrieveScoresUri =
         "https://ludum-dare-53-score-server.herokuapp.com/api/scores";
 
+    private const string RetrieveGlobalScoresUri =
+        "https://ludum-dare-53-score-server.herokuapp.com/api/community";
+
     private string _defaultText =
         $"Loading...{Environment.NewLine}Loading...{Environment.NewLine}Loading...{Environment.NewLine}Loading...{Environment.NewLine}" +
         $"Loading...{Environment.NewLine}Loading...{Environment.NewLine}Loading...{Environment.NewLine}Loading...{Environment.NewLine}" +
