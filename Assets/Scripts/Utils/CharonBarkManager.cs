@@ -32,6 +32,7 @@ public class CharonBarkManager : MonoBehaviour
 
     private string GetCharonBark(TextAsset list, string prefix)
     {
+        // Load barks.
         string[] barks = list.text.Split(delimiter);
 
         // Check if all barks have been used. If they have been, reset them.
