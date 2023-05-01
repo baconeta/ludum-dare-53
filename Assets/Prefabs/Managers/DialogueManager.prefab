@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9051264444822484043
 MonoBehaviour:
@@ -70,9 +70,6 @@ MonoBehaviour:
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Charon
-        dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
@@ -128,9 +125,6 @@ MonoBehaviour:
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Charon
-        dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
       - name: Percephone
         dialogueSide: 1
         portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
@@ -146,6 +140,7 @@ MonoBehaviour:
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+  currentDialogueLine: 0
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
   inactiveSpeakerSize: 0.7
