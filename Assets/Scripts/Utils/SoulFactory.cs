@@ -39,8 +39,8 @@ public class SoulFactory : MonoBehaviour
             string[] items = pairs[i].Split(delimiter2);
             if (items.Length != 2)
                 continue;
-            soulData[i, 0] = items[0];
-            soulData[i, 1] = items[1];
+            soulData[i, 0] = items[0].Trim();
+            soulData[i, 1] = items[1].Trim();
         }
         // Save the result.
         specialSoulData = soulData;
