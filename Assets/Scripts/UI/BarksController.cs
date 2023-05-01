@@ -141,9 +141,9 @@ public class BarksController : MonoBehaviour
 
     private void ResponseDamageBark()
     {
-        // TODO get soul data
-        var soulName = "James";
-        var soulBark = "How dare you.";
+        Soul soul = soulFactory.GenerateRandomSoul();
+        var soulName = soul.Name;
+        var soulBark = soul.GetDamageBark();
 
         // TODO get charon response
         var charonBark = "Okay bro";
@@ -162,7 +162,7 @@ public class BarksController : MonoBehaviour
     {
         Soul soul = soulFactory.GenerateRandomSoul();
         var soulName = soul.Name;
-        var soulBark = soul.GetDamageBark();
+        var soulBark = hit ? soul.GetDamageBark() : soul.GetAmbienceBark();
 
         // calculate the bark time showing length
         var timeOnScreen = CalculateTimeOnScreen(soulBark);
