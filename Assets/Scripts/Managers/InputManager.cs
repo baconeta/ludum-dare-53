@@ -5,22 +5,40 @@ using System.Security.Cryptography;
 using Managers;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class InputManager : MonoBehaviour
 {
     public static InputManager Instance;
+    //Has to set in Editor because of execution orders.
     [SerializeField] private PlayerInput playerInput;
-    private string currentInput;
-    public float Steering { get; private set; }
+    [SerializeField]private string currentInput;
+    [SerializeField]private float _steering;
+    public float Steering
+    {
+        get { return _steering; }
+        private set { _steering = value; }
+    }
     private Vector2 tapPosition;
     public float tapSize = 1;
+    
+    [SerializeField] private float fingerDownDuration;
+    [SerializeField] private float durationToHold = 0.4f;
+    [Tooltip("0= no contact, 1 = contact")]
+    [SerializeField] private int touchContact;
+
+    private PointerEventData pointerID;
+
+    private bool isFingerDown;
 
     public static event Action onDialogueNext;
     public static event Action onLaunchVoyage;
     public static event Action<float> onSteering;
     public static event Action onPause;
     public static event Action<bool> onControlSchemeChange;
+
 
     private void Awake()
     {
@@ -30,46 +48,65 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-        currentInput = playerInput.currentControlScheme;
+        OnControlsChanged();
     }
 
+    private void Update()
+    {
+    }
+
+    //KBM via InputSystem. Mobile via OnTapLogic
     void OnDialogueNext()
     {
         onDialogueNext?.Invoke();
     }
 
+    //KBM via InputSystem. Mobile via OnTapLogic
     void OnLaunchVoyage()
     {
         onLaunchVoyage?.Invoke();
-
     }
-
+    
+    //Updates Steering from InputSystem
     void OnSteering(InputValue input)
     {
         Steering = input.Get<float>();
         onSteering?.Invoke(Steering);
     }
 
+    void OnSteeringMobile(InputValue input)
+    {
+        Vector2 joystick = input.Get<Vector2>();
+        Steering = joystick.y;
+        onSteering?.Invoke(Steering);
+    }
+
+    //Unimplemented. Pause via button only right now. Add bindings to controlScheme
     void OnPause()
     {
         onPause?.Invoke();
     }
-
+    
+    //OnTap is called if the touch was shorter than minDuration. Ie, runs after down and up finger.
     void OnTap()
     {
+        //Only on successful tap
         TapLogic();
     }
 
+    //Updated via input system
     void OnTapPosition(InputValue input)
     {
-        Debug.Log(tapPosition);
         tapPosition = input.Get<Vector2>();
     }
-
+    
+    //Tap checks against UI > Dialogue > Ship Launch > Other Objects.
     void TapLogic()
     {
+        //Is tapping
+        
         //Dialogue Inputs
-        if(DialogueManager.instance.isDialogueActive) onDialogueNext?.Invoke();
+        if(DialogueManager.instance.isDialogueActive) OnDialogueNext();
         else //World Inputs
         {
             Vector3 tapWorldPos = Camera.main.ScreenToWorldPoint(tapPosition);
@@ -81,33 +118,18 @@ public class InputManager : MonoBehaviour
                 if (hit2D.collider.CompareTag("Ferry"))
                 {
                     //Tapped Ferry, Launch. (Self checks for valid launches)
-                    onLaunchVoyage?.Invoke();
+                    OnLaunchVoyage();
                 }
-                else
-                {
-                    //Other objects?
-                    //Interactable Obstacles?
-                }
+                //Other objects, Interactable Obstacles?
             }
         }
     }
 
-    public void ToggleControlScheme()
-    {
-        if (currentInput == "KBM")
-        {
-            playerInput.SwitchCurrentControlScheme("Mobile");
-            //Enable Joystick UI
-        }
-        else if (currentInput == "Mobile")
-        {
-            playerInput.SwitchCurrentControlScheme("KBM");
-            //Disable Joystick UI
-        }
-    }
-
+    //Called via input system & UI Button.
+    //TODO Force Control Validation - Fix this. It will take you to the "correct" control scheme, but what if it has the wrong answer?
     public void OnControlsChanged()
     {
-        onControlSchemeChange?.Invoke(playerInput.currentControlScheme == "Mobile");
+        currentInput = playerInput.currentControlScheme;
+        onControlSchemeChange?.Invoke(currentInput == "Mobile");
     }
 }

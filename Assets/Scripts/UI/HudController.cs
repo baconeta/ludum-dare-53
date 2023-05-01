@@ -1,6 +1,9 @@
+using System;
 using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.OnScreen;
 
 public class HudController : MonoBehaviour
 {
@@ -12,13 +15,16 @@ public class HudController : MonoBehaviour
 
     private void OnEnable()
     {
+        //GameState Show/Hide Hud
         GameStateManager.OnDialogueEnter += HideHud;
         GameStateManager.OnPauseEnter += HideHud;
         GameStateManager.OnPauseExit += ShowHud;
         GameStateManager.OnFerryingEnter += ShowHud;
         GameStateManager.OnReturningEnter += ShowHud;
         GameStateManager.OnEndEnter += HideHud;
+        
         BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
+        
         InputManager.onControlSchemeChange += ToggleJoystick;
     }
 
@@ -30,9 +36,15 @@ public class HudController : MonoBehaviour
         GameStateManager.OnFerryingEnter -= ShowHud;
         GameStateManager.OnReturningEnter -= ShowHud;
         GameStateManager.OnEndEnter -= HideHud;
+        
         BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
+        
         InputManager.onControlSchemeChange -= ToggleJoystick;
 
+    }
+
+    private void Start()
+    {
     }
 
     private void ShowHud()
@@ -45,10 +57,10 @@ public class HudController : MonoBehaviour
     {
         ui.SetActive(false);
     }
+    
 
     public void ToggleJoystick(bool toggleOn)
     {
-        Debug.Log(toggleOn);
         joystickUI.SetActive(toggleOn);
     }
     

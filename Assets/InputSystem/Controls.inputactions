@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SteeringMobile",
+                    "type": "PassThrough",
+                    "id": "fcf581ec-ffc6-401f-a535-600a604d2552",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -139,39 +148,6 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "1D Axis",
-                    "id": "0fd728a8-6042-4d4d-b880-c85498ce9aae",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Steering",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "positive",
-                    "id": "0678c58e-2afc-4426-bd1d-4ac379eb3f2d",
-                    "path": "<Touchscreen>/delta/up",
-                    "interactions": "",
-                    "processors": "Clamp(min=-1,max=1)",
-                    "groups": "Mobile",
-                    "action": "Steering",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "negative",
-                    "id": "a1425b27-6edc-4402-aeea-e6bfad2cc1e9",
-                    "path": "<Touchscreen>/delta/down",
-                    "interactions": "",
-                    "processors": "Clamp(min=-1,max=1)",
-                    "groups": "Mobile",
-                    "action": "Steering",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "85722ca0-4554-46d0-b947-279adf58b9a7",
                     "path": "",
@@ -201,6 +177,17 @@
                     "processors": "",
                     "groups": "Mobile",
                     "action": "TapPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6b43bb4-b855-47f2-a4ad-7b153873c00f",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "SteeringMobile",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -747,6 +734,11 @@
                 {
                     "devicePath": "<Touchscreen>",
                     "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]
