@@ -33,4 +33,9 @@ public class PauseScreenController : MonoBehaviour
         HideUi();
         GameStateManager.Instance.Resume();
     }
+
+    public void QuitToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
 }
