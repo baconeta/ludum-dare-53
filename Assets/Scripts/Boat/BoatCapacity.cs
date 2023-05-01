@@ -6,6 +6,7 @@ using UnityEngine;
 public class BoatCapacity : MonoBehaviour
 {
     [Header("Variables")]
+
     [Tooltip("The amount of souls that can fit at the boat when the game starts.")]
     [SerializeField]
     private int startingCapacity = 50;
@@ -23,10 +24,22 @@ public class BoatCapacity : MonoBehaviour
     private bool doesLoseCapacityWhileContainsSouls = false;
 
 
+    [Header("Assets")]
+
+    [Tooltip("The sound to play when soul is damned.")]
+    [SerializeField]
+    private AudioSource damnedSFX = null;
+
+    [Tooltip("Delay between taking damage and the soul hitting the water.")]
+    [SerializeField]
+    private float damnedSFXDelay = 0.09f;
+
 
     [Header("Statistics")]
 
     [SerializeField] private int _currentCapacity;
+
+
     public int CurrentCapacity
     {
         get { return _currentCapacity; }
@@ -173,6 +186,9 @@ public class BoatCapacity : MonoBehaviour
 
     private int DecreaseSouls(int loadToRemove)
     {
+        // Queue the SFX.
+        damnedSFX.PlayDelayed(damnedSFXDelay);
+        // Reduce souls.
         if (CurrentLoad <= loadToRemove)
         {
             return UnloadAll();
