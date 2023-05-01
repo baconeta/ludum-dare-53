@@ -75,7 +75,7 @@ MonoBehaviour:
     sound: {fileID: 8300000, guid: 03f49e63d4703284bbd4f45fb1306ace, type: 3}
     mixer: {fileID: -2331718101565934472, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
     loop: 1
-    volume: 0.142
+    volume: 0.1
   - name: damned-soul-sfx
     sound: {fileID: 8300000, guid: ee5ff9d184db3da45b6b0d8787d06d42, type: 3}
     mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
@@ -101,3 +101,8 @@ MonoBehaviour:
     mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
     loop: 0
     volume: 0.178
+  - name: ui-button
+    sound: {fileID: 8300000, guid: b40c13264270841439e08cab90376d69, type: 3}
+    mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    loop: 0
+    volume: 0.177
