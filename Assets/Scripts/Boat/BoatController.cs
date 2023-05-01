@@ -29,9 +29,7 @@ public class BoatController : MonoBehaviour
     public static event Action OnVoyageComplete;
 
     public static event Action OnDamageTaken;
- 
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         _boatMovement = GetComponentInChildren<BoatMovement>();
@@ -131,7 +129,19 @@ public class BoatController : MonoBehaviour
             //Completed Ferrying - Dropped off all Souls.
             case GameStateManager.GameStates.Ferrying:
                 // Play delivery sound
-                AudioWrapper.Instance.PlaySound("deliver-single-soul");
+                switch (_boatCapacity.CurrentLoad)
+                {
+                    case 1:
+                        AudioWrapper.Instance.PlaySound("delivery-many-souls");
+                        break;
+                    case < 50: // TODO remove hardcoded value
+                        AudioWrapper.Instance.PlaySound("deliver-single-soul");
+                        break;
+                    default:
+                        AudioWrapper.Instance.PlaySound("deliver-all-dem-souls");
+                        break;
+                }
+                
                 currentDock = rightDock;
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Returning;
                 break;
@@ -174,6 +184,5 @@ public class BoatController : MonoBehaviour
                 _boatCapacity.DealDamageToBoat(other.GetComponent<Obstacle>().Damage);
             }
         }
-        
     }
 }
