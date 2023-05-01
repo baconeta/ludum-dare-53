@@ -4,17 +4,17 @@ using Random = UnityEngine.Random;
 
 public class BarkManager : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("The comma-separated list of damage-provoked barks to pull from.")]
+    [SerializeField] [Tooltip("The comma-separated list of damage-provoked barks to pull from.")]
     private TextAsset listOfDamageBarks;
-    [SerializeField]
-    [Tooltip("The comma-separated list of ambience-provoked barks to pull from.")]
+
+    [SerializeField] [Tooltip("The comma-separated list of ambience-provoked barks to pull from.")]
     private TextAsset listOfAmbienceBarks;
+
     [SerializeField]
     [Tooltip("The comma-separated list of DUET damage-provoked barks to pull from. These will be played with Charon.")]
     private TextAsset listOfDuetDamageBarks;
-    [SerializeField]
-    [Tooltip("The character sequence to use to split barks by.")]
+
+    [SerializeField] [Tooltip("The character sequence to use to split barks by.")]
     private string delimiter = ",";
 
     private string[] damageBarks;
@@ -35,7 +35,7 @@ public class BarkManager : MonoBehaviour
 
     public string GetAmbienceBark()
     {
-        return GetBark( ambienceBark, "Ambience");
+        return GetBark(ambienceBark, "Ambience");
     }
 
     public string GetDuetDamageBark()
@@ -49,15 +49,16 @@ public class BarkManager : MonoBehaviour
         int barksUsed = PlayerPrefs.GetInt(prefix + "BarksUsedCount");
         if (barksUsed >= barks.Length)
             ResetBarks(barks.Length, prefix);
-        
+
         int index;
         while (true)
         {
-            index = Random.Range(0, barks.Length);
             // Select a random bark.
+            index = Random.Range(0, barks.Length);
             // Check if it has been used.
             if (PlayerPrefs.GetInt(prefix + "BarkBeenUsed" + index) != 1) break;
         }
+
         // Increment the number of barks used.
         PlayerPrefs.SetInt(prefix + "BarksUsedCount", barksUsed + 1);
         // Mark the bark as being used.
@@ -73,5 +74,4 @@ public class BarkManager : MonoBehaviour
             PlayerPrefs.DeleteKey(prefix + "BarkBeenUsed" + i);
         }
     }
-
 }
