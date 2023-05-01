@@ -162,9 +162,9 @@ public class BoatCapacity : MonoBehaviour
     /// </summary>
     /// <param name="loadToAdd">How many units are we trying to add to the load.</param>
     /// <returns>The number of units that were not able to fit onto the boat due to load capacity limits.</returns>
-    private int IncreaseSouls(int loadToAdd = int.MaxValue)
+    private int IncreaseSouls(int loadToAdd = 1_000_000)
     {
-        CurrentLoad = loadToAdd;
+        CurrentLoad += loadToAdd;
         return ReduceLoadToFitCapacity();
     }
 
