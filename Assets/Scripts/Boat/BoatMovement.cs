@@ -139,6 +139,7 @@ public class BoatMovement : MonoBehaviour
     {
         //This check is to avoid double calls of DisableMovement.
         if (isMoving) isMoving = false;
+        currentSpeed = 0;
     }
 
     private void CalculateBoatMovement()

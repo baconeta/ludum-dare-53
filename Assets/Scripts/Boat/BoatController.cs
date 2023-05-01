@@ -10,20 +10,26 @@ using UnityEngine.UIElements;
 public class BoatController : MonoBehaviour
 {
     [Header("Components")]
+    public GameObject boatGameObject;
+    public GameObject scriptsGameObject;
     private BoatMovement _boatMovement;
     private BoatCapacity _boatCapacity;
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    public GameObject scriptsGameObject;
-    public GameObject animatorGameObject;
-
+    
+    [Header("Boat Animation")]
+    private Animator _boatAnimator;
+    private SpriteRenderer _boatSpriteRenderer;
+    
+    [Header("Charon Animation")]
+    public GameObject charonGameObject;
+    [SerializeField] private float charonRowSpeedMultiplier = 1;
+    [SerializeField] private AnimationCurve charonRowSpeedCurve;
+    private Animator _charonAnimator;
+    private SpriteRenderer _charonSpriteRenderer;
+    
     [Header("Dock/Shore Information")]
     public Transform currentDock;
     public Transform leftDock;
     public Transform rightDock;
-
-    [Header("Temp")]
-    public KeyCode voyageStartKey;
 
     public static event Action OnVoyageStart;
     public static event Action OnVoyageComplete;
@@ -34,8 +40,12 @@ public class BoatController : MonoBehaviour
     {
         _boatMovement = GetComponentInChildren<BoatMovement>();
         _boatCapacity = GetComponentInChildren<BoatCapacity>();
-        _animator = GetComponentInChildren<Animator>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        _boatAnimator = boatGameObject.GetComponent<Animator>();
+        _boatSpriteRenderer = boatGameObject.GetComponent<SpriteRenderer>();
+        
+        _charonAnimator = charonGameObject.GetComponent<Animator>();
+        _charonSpriteRenderer = charonGameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -90,19 +100,24 @@ public class BoatController : MonoBehaviour
         //TODO Animator bool is currently unused.
         if (_boatMovement.currentDirection == Vector3.left)
         {
-            _animator.SetBool("FlipX", true);
-            _spriteRenderer.flipX = true;
+            _charonSpriteRenderer.flipX = true;
+            _boatSpriteRenderer.flipX = true;
             //Flip angle to correct sprite
             angleNormalized *= -1;
         }
         else
         {
-            _animator.SetBool("FlipX", false);
-            _spriteRenderer.flipX = false;
+            _charonSpriteRenderer.flipX = false;
+            _boatSpriteRenderer.flipX = false;
+
         }
         
         //Update animator float so the animations change based on the boat angle.
-        _animator.SetFloat("BoatAngleNormalized", angleNormalized);
+        _boatAnimator.SetFloat("BoatAngleNormalized", angleNormalized);
+        
+        //Update charon's animation speed based on rowing speed.
+        float animSpeed = charonRowSpeedCurve.Evaluate(_boatMovement.currentSpeed / _boatMovement.maxSpeed);
+        _charonAnimator.SetFloat("RowSpeed", (animSpeed * charonRowSpeedMultiplier) * _boatMovement.currentSpeed);
     }
 
     void StartVoyage()
