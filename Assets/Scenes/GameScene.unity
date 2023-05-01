@@ -842,11 +842,6 @@ MonoBehaviour:
   rightLimit: 73.5
   bottomLimit: -27
   topLimit: 27
---- !u!1 &1074139798 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8248156846932926702, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-  m_PrefabInstance: {fileID: 7834597314647978772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1101165206 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4910189061814994329, guid: b7fecf501ad0eb445a8f0f3041420a6c, type: 3}
@@ -1464,11 +1459,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4563276923100218419, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
   m_PrefabInstance: {fileID: 1919165921}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1479772738 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2696243495684867631, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-  m_PrefabInstance: {fileID: 7834597314647978772}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1622767587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2008,6 +1998,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogueManager
       objectReference: {fileID: 0}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[0].DialogueStart.participants.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[1].DialogueStart.participants.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[0].DialogueStart.participants.Array.data[1].name
+      value: Percephone
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[1].DialogueStart.participants.Array.data[1].name
+      value: Percephone
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[0].DialogueStart.participants.Array.data[1].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[1].DialogueStart.participants.Array.data[1].portrait
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[0].DialogueStart.participants.Array.data[1].dialogueSide
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9051264444822484043, guid: 01fe978aef8089147b84d8d2ec493b74, type: 3}
+      propertyPath: DialogueGroups.Array.data[1].DialogueStart.participants.Array.data[1].dialogueSide
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2154,82 +2176,6 @@ PrefabInstance:
     - target: {fileID: 916150547409734876, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
       propertyPath: m_Name
       value: Dialogue
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370281857220485121, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370281857220485121, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370281857220485121, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370281857220485121, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1370281857220485121, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144666763350557509, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144666763350557509, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2144666763350557509, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3161586079707666293, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_text
-      value: Here lies the broken trunk of a Sudoowoodoo.
-      objectReference: {fileID: 0}
-    - target: {fileID: 3275255147900640322, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3275255147900640322, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3275255147900640322, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6035777878480789600, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: leftSide
-      value: 
-      objectReference: {fileID: 1074139798}
-    - target: {fileID: 6035777878480789600, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: rightSide
-      value: 
-      objectReference: {fileID: 1479772738}
-    - target: {fileID: 7633589452383036765, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7633589452383036765, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7633589452383036765, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7633589452383036765, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7633589452383036765, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
