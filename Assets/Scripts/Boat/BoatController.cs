@@ -26,6 +26,8 @@ public class BoatController : MonoBehaviour
 
     public static event Action OnVoyageStart;
     public static event Action OnVoyageComplete;
+
+    public static event Action OnDamageTaken;
  
 
     // Start is called before the first frame update
@@ -165,6 +167,7 @@ public class BoatController : MonoBehaviour
             }
             else if (other.gameObject.CompareTag("Obstacle"))
             {
+                OnDamageTaken?.Invoke();
                 _boatCapacity.DealDamageToBoat(other.GetComponent<Obstacle>().Damage);
             }
         }
