@@ -30,19 +30,20 @@ public class SoulFactory : MonoBehaviour
 
     public void Start()
     {
-        // James will fix this hehe TODO
-        // // Split the 2D delimited list once.
-        // string[] pairs = _specials.text.Split(delimiter1);
-        // string[,] soulData = new string[pairs.Length, 2];
-        // // Split each pair again.
-        // for (int i = 0; i < pairs.Length; i++)
-        // {
-        //     string[] items = pairs[i].Split(delimiter2);
-        //     soulData[i, 0] = items[0];
-        //     soulData[i, 1] = items[1];
-        // }
-        // // Save the result.
-        // specialSoulData = soulData;
+        // Split the 2D delimited list once.
+        string[] pairs = _specials.text.Split(delimiter1);
+        string[,] soulData = new string[pairs.Length, 2];
+        // Split each pair again.
+        for (int i = 0; i < pairs.Length; i++)
+        {
+            string[] items = pairs[i].Split(delimiter2);
+            if (items.Length != 2)
+                continue;
+            soulData[i, 0] = items[0];
+            soulData[i, 1] = items[1];
+        }
+        // Save the result.
+        specialSoulData = soulData;
     }
 
     public Soul GenerateRandomSoul()
