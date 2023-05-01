@@ -9,7 +9,6 @@ using UnityEngine;
 
 public class BoatMovement : MonoBehaviour
 {
-    public Transform PrefabTransform;
     [Tooltip("Boat Movement Speed in m/s")]
     public float maxSpeed;
 
@@ -41,18 +40,21 @@ public class BoatMovement : MonoBehaviour
     [Range(0, 10f)][Tooltip("When approaching a vertical limit, the rotational speed is multiplied by this to correct.")]
     public float limitRotationMultiplier = 2f;
 
+    public float outOfBoundsBumpForce;
+
     private Camera _mainCamera;
     private float _screenHeight;
+    private Rigidbody2D rigidbody2D;
 
     private void Awake()
     {
-        PrefabTransform = transform.root;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         _mainCamera = Camera.main;
+        rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
         SetVerticalBoundsBasedOnScreenSize();
     }
 
@@ -173,19 +175,17 @@ public class BoatMovement : MonoBehaviour
         //Zero out Z axis
         moveVector = (Vector2)moveVector;
         
-        //transform.Translate(currentSpeed * Time.deltaTime * currentDirection);
-        Rigidbody2D rb2d = transform.parent.GetComponent<Rigidbody2D>();
-           Debug.Log(rb2d);
-           rb2d.MovePosition(transform.position += moveVector);
-           // transform.position = Vector3.MoveTowards(transform.parent.position,
-           //     transform.parent.position += currentDirection, currentSpeed * Time.deltaTime);
-            
-           //Clamp transform.y to vertical limits
-            transform.position = new Vector3(transform.position.x,
-            Mathf.Clamp(transform.position.y, verticalLimit.x, verticalLimit.y),
-            transform.position.z);
+        rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
 
-        PrefabTransform.position += transform.localPosition;
+        rigidbody2D.MovePosition(transform.position += moveVector);
+
+        //Clamp transform.y to vertical limits
+        transform.position = new Vector3(transform.position.x,
+        Mathf.Clamp(transform.position.y, verticalLimit.x, verticalLimit.y),
+        transform.position.z);
+
+        //Add clamp changes
+        transform.parent.position += transform.localPosition;
     }
 
     private void CalculateBoatRotation()
@@ -230,5 +230,10 @@ public class BoatMovement : MonoBehaviour
         //Set rotation
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
 
+    }
+
+    public void ForceBump()
+    {
+        rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Impulse);
     }
 }

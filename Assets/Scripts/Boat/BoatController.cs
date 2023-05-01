@@ -196,6 +196,10 @@ public class BoatController : MonoBehaviour
             {
                 CompleteVoyage();
             }
+            else if (other.gameObject.CompareTag("OutOfBounds"))
+            {
+                _boatMovement.ForceBump();
+            }
             else if (other.gameObject.CompareTag("Obstacle"))
             {
                 OnDamageTaken?.Invoke();
