@@ -1,5 +1,3 @@
-using System;
-using Managers;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -112,12 +110,12 @@ public class DialogueUI : MonoBehaviour
             {
                 //Left side, get the current speaker.
                 case DialogueSides.Left:
-                    rightDialoguePanel.SetActive(false);
-                    leftDialoguePanel.SetActive(true);
                     if (nextLine.participantSpeaking >= leftSideParticipants.Count) break;
                     activeParticipant = leftSideParticipants[nextLine.participantSpeaking];
                     if (activeParticipant is not null)
                     {
+                        rightDialoguePanel.SetActive(false);
+                        leftDialoguePanel.SetActive(true);
                         //Set color to white (The original Colour)
                         activeParticipant.GetComponent<Image>().color = Color.white;
                         //Set active participant size to 1,1,1
@@ -129,12 +127,12 @@ public class DialogueUI : MonoBehaviour
 
                     break;
                 case DialogueSides.Right:
-                    rightDialoguePanel.SetActive(true);
-                    leftDialoguePanel.SetActive(false);
                     if (nextLine.participantSpeaking >= rightSideParticipants.Count) break;
                     activeParticipant = rightSideParticipants[nextLine.participantSpeaking];
                     if (activeParticipant is not null)
                     {
+                        rightDialoguePanel.SetActive(true);
+                        leftDialoguePanel.SetActive(false);
                         //Set color to white (The original Colour)
                         activeParticipant.GetComponent<Image>().color = Color.white;
                         //Set active participant size to 1,1,1
@@ -248,7 +246,6 @@ public class DialogueUI : MonoBehaviour
             switch (nextLine.dialogueSide)
             {
                 case DialogueSides.Right:
-
                     dialogueTextLeft.text = names + ": " + nextLine.line;
                     break;
                 case DialogueSides.Left:
