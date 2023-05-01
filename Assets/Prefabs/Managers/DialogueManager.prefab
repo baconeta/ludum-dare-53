@@ -113,7 +113,7 @@ MonoBehaviour:
       - line: Everything will be arranged for your vacation.
         dialogueSide: 0
         participantSpeaking: 1
-      - line: You just need to deliver 10000 souls and earn their obols.
+      - line: You just need to deliver 10,000 souls and earn their obols.
         dialogueSide: 0
         participantSpeaking: 1
       - line: It'll be child's play for you, dear. We'll let you get to it.
@@ -339,10 +339,1184 @@ MonoBehaviour:
       - name: Iris
         dialogueSide: 1
         portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: A fine day for delivering souls, don't you think?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I have to ask. Can your snake talk?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: It's up to him, really.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: So you're saying it's hisss choice.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: ???
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I don't know why I even try.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Asclepius
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: fe8fa0a8eff65c24895fd77133c96521, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Are you hurt, my sweet ferry prince?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Don't baby me, mom, I'm not 3000 years old.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You'll understand one day, when you have children.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Unlikely. Let me get cleaned up and try this again.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Nyx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey, Hecate, aren't you the goddess of boundaries?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Can't you like, bridge the gap between the realms or something?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Would make my job much easier.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I could, but then the dead would be able climb back out onto Gaia's
+          side.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Of course they would. I'll just do it manually then. One ferry at a
+          time.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Not tedious at all.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hecate
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9de12d81b02ee5e43820d046f893bca6, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Lord Hades, can I ask you something?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: What is it, son?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Do you ever wish you were on Olympus instead?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Not even a little bit. You want to know why?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yes, I do.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: The work-death balance here is fantastic.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Now buck up and get back to it.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hi honey, can I get you anything?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I'm good Lady Persephone, thank you.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: My lug of a husband better be visiting you regularly.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: He's doing his best.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Hmm. Anyway, good luck on this run. Go get 'em!
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Boat trouble, young man?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Too bad your medicine doesn't work on ferries.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: But speaking of, shouldn't you be hale and healthy? Why are you so
+          old?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Medicine isn't magic, my dear Charon.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: But I imagine spending aeons as a constellation has something to do
+          with it.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yikes, remind me never to cross Zeus.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Asclepius
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: fe8fa0a8eff65c24895fd77133c96521, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey there, champ, can you do me solid? Can you watch Cerberus for 50
+          years?
+        dialogueSide: 1
+        participantSpeaking: 1
+      - line: Um...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: He's clearly already overworked with the souls.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Is that how you feel, lad?
+        dialogueSide: 1
+        participantSpeaking: 1
+      - line: Uh...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Don't put him on the spot like that. Ask Zagreus to take care of the
+          dumb dog.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: And leave poor Charon alone.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Poor Charon, are you all right?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I'm not hurt, just my pride.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Have you tried going around the obstacles instead of straight into
+          them?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yes, Hecate, thank you. That advice is just as helpful as the last
+          time you gave it to me.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, silly me. You know how I forget things.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hecate
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9de12d81b02ee5e43820d046f893bca6, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: You know you only got this job cause of mom, right?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Because she's tight with Lady Persephone.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Hey, I work hard, okay?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Let's see what you do.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Styx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 4bfc2c0f931f5c443816cd2bd350f37f, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: I'm sorry Mr. Hades, sir.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Don't sweat it, sweetie. And you don't have to be so afraid of my husband.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: You know, he used to be terrified of your dad.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: My dad? Really?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I have never been terrified in my life.
+        dialogueSide: 1
+        participantSpeaking: 1
+      - line: Don't let him fool you. You just keep up the good work.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Oh, I thought you would've already set off.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I'm just about to. But hey, while I have you here, I have question.
+          Hera trusts you, right?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Why?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: No, I'm just curious if you've heard anything about the preparations
+          on Olympus for my visit.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Sorry, they only tell me important things.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Wow, rude.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Iris
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: I hope Styx isn't giving you too much trouble, dearie.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: She's so annoying. Maybe if she got a friend. Or a life.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Now, now. She's still your sister.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I'm sure next time will be better.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Can Hades really not leave the Underworld?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: No one really knows, but he likes it that way.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: And he seems to have taken a liking to you.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I don't think he actually knows my name.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I'm sure that's not true. You're doing so well.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Soon, everyone will know your name.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Nyx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Do you know why back hurts so much? Especially when my boat sinks.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Sounds to me like a herniated lumbar disc.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I like your funny words, magic man.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Asclepius
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: fe8fa0a8eff65c24895fd77133c96521, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: How's it going, sport?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Very good, Mr. Hades sir!
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: How many souls have you delivered so far?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: '[soul_count] souls and counting, sir!'
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Not bad. At this rate, you'll get to Olympus in no time.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: How are you not getting any better at this?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Hey, I am getting better!
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Whatever floats your boat.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Styx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 4bfc2c0f931f5c443816cd2bd350f37f, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Lady Persephone, I was wondering...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: What is it, love?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: What's Macaria like?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Aw, Charon, does someone have crush?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: What, no! I-I'm late, I should go pick up some souls.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: You're so brave, I would not be able to show my face anywhere if I
+          failed like that.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: You know, we're not so different, you and I.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You deliver messages, I deliver souls.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Except, I'm literally a rainbow and you...look like that.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Forget I said anything.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Iris
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Before I set sail, I have a question for you. How do you say your name?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Some people say <i>Hecate</i>, and others say <b>Hecate</b>. But it's
+          all the same to me honestly.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: That's literally the same name.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh right, we aren't voice acted, I forgot. Thanks, Josh.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: What a strange thing to say.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hecate
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9de12d81b02ee5e43820d046f893bca6, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Aren't you tired of just losing over and over again?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I don't see it as losing, I see it as improving.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Are you, really?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I heard Dionysus was looking for you.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, yeah, a couple of his ravers want to kill me.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Honestly, I can kinda relate.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Orpheus
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bd140f3395b21af40bf0e198fd8f20cd, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: What do you want to do on Olympus?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Have you thought about it?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I wanna try <i>everything</i>. Speaking of which...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I should go do my job that's going to pay for it.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Nyx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: What was it like when you used to do this, sir?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, things were very different, let me tell you.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Did you lose souls too?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Not a single one. But not everyone can be me.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: But you're doing great, chief, just hang in there.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Ahoy, skipper, how goes the ferrying?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I see you've delived [soul_count] souls, so far.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: And I'm not finished, I intend to keep going!
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: That's the spirit, kid.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: I'm sorry you had to see that, Lady Persephone.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, nonsense. You don't become Queen of the Underworld without seeing
+          a thing or two.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: But I can do better. I will do better.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Charon, what exactly did my father tell you when you met him?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: "Lord Zeus? Well, it was just the one time. But he said \xC1vgustos
+          is a beautiful time to vist Mount Olympus."
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Hmm. He's not wrong about that.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Is everything all right?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh yes, I was just curious. I'm sure you have things to do, souls to
+          deliver.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Ow, all this capsizing is not great for my lower back.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh my god, did I tell you about this new thing I found?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: It's called yoga, completely changed my life. Bye bye, back pain.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Has anyone told you you're a hippy?
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hecate
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9de12d81b02ee5e43820d046f893bca6, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey, you know a thing or two about witchcraft, right?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Macaria is really into it as an aesthetic.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Do you have any idea what she might like for her birthday?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Is this Macaria, daughter of Heracles or Macaria, daughter of Hades?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Hades, obviously.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, you sly dog. Wink.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: You don't have to <i>say</i> wink, Hecate, you can just do it. Just.
+          Never mind.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hecate
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9de12d81b02ee5e43820d046f893bca6, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Ugh, my socks are wet. Can you tell me about Olympus to cheer me up?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: The place itself is beautiful, but the people are questionable.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: That's it? Aren't you like a poet or something?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Aren't you like a professional ferryman or something?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: "Touch\xE9."
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Orpheus
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bd140f3395b21af40bf0e198fd8f20cd, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Is it true that your music can charm even lifeless rocks?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Maybe. Why do you ask?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: So you can move them out of my way.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: If I do, will you help me find Eurydice?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Never mind. I'd rather struggle than lose my job.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Orpheus
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bd140f3395b21af40bf0e198fd8f20cd, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: I've seen your boat sink more often than I've seen it float.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I deserve that. You here to fetch more water from the Styx?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Mmhm.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Isn't it incredibly corrosive? How do you manage it?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Using this novel concept called being good at my job.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Pfft. You're a glorified pigeon.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Iris
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey, Iris, you're a girl. Can you give me some advice?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Depends, are you going to be gross?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: No, it's just. I cannot read Macaria's vibe at all.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Yeah, no, I'm bored, goodbye.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Oh, I was heading out anyway, bye.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Iris
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Can you like, not drop so many souls in my river?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I'm trying, sis. You could make it easier, you know.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Or you could, idk, be better.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Styx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 4bfc2c0f931f5c443816cd2bd350f37f, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Do you mind going easy on me this time?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Sorry, no can do.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Why are you working so hard anyway?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Lord Zeus is arranging a vacation for me in Olympus.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: And I need to deliver enough souls to pay for it.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: A vacation on Mt. Olympus? In this economy?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Good luck with that.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Styx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 4bfc2c0f931f5c443816cd2bd350f37f, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: What if I fall in one of these times, would I die?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Psychopomps have interesting constitutions. I don't imagine you <i>can</i>
+          die.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: But you've died, and been brought back. How does it feel?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: It's rather unpleasant. Which is why I stopped trying to resurrect
+          mortals after my ascension.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Asclepius
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: fe8fa0a8eff65c24895fd77133c96521, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Do you like living on Olympus? I ask because I'll be visiting soon.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, I can't complain. It has all the comforts an old man like me needs.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: A young horse such as yourself might find it a restless place to live.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: But a vacation? I can't think of a better place.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I cannot deliver souls fast enough, I'm so excited.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Asclepius
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: fe8fa0a8eff65c24895fd77133c96521, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: It's okay sweetie, this happened to Hades all the time.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Really? Lord Hades lost souls in the Styx?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, so many souls, you don't even wanna know.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: "\U0001F633"
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: So don't feel too bad and just get back out there.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Nyx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey, you were married, can you teach me how to impress Macaria?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Have you tried writing her a poem? Witches love poetry.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Can you teach me?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: "You are\u2013what's the scientific term? Unteachable."
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: -_-
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Get off my boat. Some of us have to work for a living.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Orpheus
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bd140f3395b21af40bf0e198fd8f20cd, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Sometimes, this feels impossible.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Don't lose heart, kiddo. Rome wasn't built in a day,
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: What's a rome?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Good question, actually.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Someone's playing fast and loose with history.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Anyway, it's just practice, sweetie. Be patient.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Nyx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: I'm curious, what do you do with all the water you take from here?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: The Olympians use it to swear oaths.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: If they lie, or break promises made upon the water from Styx, they
+          sorta slip into a coma.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Wow, that is actually pretty cool. I hope I don't get any in my mouth.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Dude, that's your sister.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: You think I don't know that? Sheesh.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Iris
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Sir, I was wondering...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Spit it out, big guy.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Um, does Macaria, uh...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: What about my daughter?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: N-nothing. She's just really good at this.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You'll get there, bud. Just keep going.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey, have you heard anything from Macaria?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: What, since you took over her shift?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yeah, has she said anything about me?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: OMG, you are so lame. What a simp.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: (._.")
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You took over a 1000-year shift to impress a girl.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Well, also to earn enough obols for my vacation.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: And how is that going for you?
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Styx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 4bfc2c0f931f5c443816cd2bd350f37f, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: What's it like in the Hall of Hades?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Dreadfully boring. Trust me, capsizing your boat is far more exciting.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Well, I didn't do it on purpose.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I know, sugar. I know.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Persephone
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey doc, doing the rounds again?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Indeed, my dear boy.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Tell me something. Is it true that you let a snake lick your ears?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I was merely cleaning out some earwax.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yeah, but with a snake?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Shouldn't you be delivering souls, young man?
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Asclepius
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: fe8fa0a8eff65c24895fd77133c96521, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: '[sighs] There goes Boaty again.'
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You know, I can reanimate the souls you dropped into the river.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: No! They'll come back as ghouls and make my life harder.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: But...
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: No. Your necromancy never goes my way.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: I'll just try again. No reanimation.
+        dialogueSide: 0
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hecate
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 9de12d81b02ee5e43820d046f893bca6, type: 3}
   currentDialogueLine: 0
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
   inactiveSpeakerSize: 0
   overrideStoryElement: 1
-  element: 3
+  element: 25
   nextLine: 9
