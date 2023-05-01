@@ -738,6 +738,7 @@ GameObject:
   - component: {fileID: 5965351526578401325}
   - component: {fileID: 6734000369703571326}
   - component: {fileID: 8809235402412405917}
+  - component: {fileID: 7034761086504450638}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -848,6 +849,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7034761086504450638}
+        m_TargetAssemblyTypeName: Audio.BackToMenuAudio, Assembly-CSharp
+        m_MethodName: StopGameAudio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7187632280229299529}
         m_TargetAssemblyTypeName: Audio.MusicController, Assembly-CSharp
         m_MethodName: PlayManually
@@ -872,6 +885,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7034761086504450638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390112153652900428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2fcfe953c2401ba3dfbe46ed757421, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5735154508004332603
 GameObject:
   m_ObjectHideFlags: 0
