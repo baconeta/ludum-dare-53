@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7829409179361915423}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SeekerAttach
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,9 +42,8 @@ GameObject:
   - component: {fileID: 1456028615398406825}
   - component: {fileID: 4874206678262273539}
   - component: {fileID: 107123887606305647}
-  - component: {fileID: 6138671994358283724}
-  m_Layer: 0
-  m_Name: Boat
+  m_Layer: 6
+  m_Name: BoatAnim
   m_TagString: Ferry
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,51 +138,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &6138671994358283724
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3600664779857255258}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.61}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.88, y: 10.6}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7.83, y: 3.21}
-  m_EdgeRadius: 0
 --- !u!1 &6342380936143664203
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,8 +149,8 @@ GameObject:
   - component: {fileID: 3986926485552163793}
   - component: {fileID: 2979635721619655850}
   - component: {fileID: 9200908189072354683}
-  m_Layer: 0
-  m_Name: Charon
+  m_Layer: 6
+  m_Name: CharonAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,7 +256,8 @@ GameObject:
   - component: {fileID: 7914235876027768591}
   - component: {fileID: 6360086134822798650}
   - component: {fileID: 3606267885463947553}
-  m_Layer: 0
+  - component: {fileID: 4401676665610264884}
+  m_Layer: 6
   m_Name: Scripts
   m_TagString: Ferry
   m_Icon: {fileID: 0}
@@ -336,10 +291,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84a3cca6ecf4ed643bc141502a610396, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PrefabTransform: {fileID: 5955720895935086287}
   maxSpeed: 10
   currentSpeed: 0
-  acceleration: 10
+  acceleration: 4
   rotationSpeed: 50
   rotationLimits: {x: 10, y: -20}
   currentDirection: {x: 0, y: 0, z: 0}
@@ -347,8 +301,7 @@ MonoBehaviour:
   verticalLimit: {x: 0, y: 0}
   limitBorderPercentage: 0.9
   limitRotationMultiplier: 2
-  rotateUpwardsKeyCode: 119
-  rotateDownwardsKeyCode: 115
+  outOfBoundsBumpForce: 10000
 --- !u!114 &6360086134822798650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -385,6 +338,51 @@ MonoBehaviour:
   onClickEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!61 &4401676665610264884
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6926401740268917575}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -2.61}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 13.88, y: 10.6}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 7.83, y: 3.21}
+  m_EdgeRadius: 0
 --- !u!1 &8925401137294428039
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,8 +393,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5955720895935086287}
   - component: {fileID: 1111834849364648188}
-  - component: {fileID: 680462521803698966}
-  m_Layer: 0
+  - component: {fileID: 1451077684891610061}
+  m_Layer: 6
   m_Name: Charon's Ferry
   m_TagString: Ferry
   m_Icon: {fileID: 0}
@@ -418,6 +416,7 @@ Transform:
   - {fileID: 6350496679652475636}
   - {fileID: 1456028615398406825}
   - {fileID: 3986926485552163793}
+  - {fileID: 4551955813744901430}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -463,9 +462,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   currentDock: {fileID: 0}
-  leftDock: {fileID: 0}
+  leftShore: {fileID: 0}
   rightDock: {fileID: 0}
---- !u!50 &680462521803698966
+--- !u!50 &1451077684891610061
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -473,7 +472,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8925401137294428039}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -481,7 +480,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 57cbc29812bd02146b4392d2c3392668, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -491,4 +490,70 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
+--- !u!1001 &7541182444281762335
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5955720895935086287}
+    m_Modifications:
+    - target: {fileID: 384623949433580837, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_Name
+      value: SoulContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+--- !u!4 &4551955813744901430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6308525804579614505, guid: a1e411521764a0748a4a58b83e0ef2a2, type: 3}
+  m_PrefabInstance: {fileID: 7541182444281762335}
+  m_PrefabAsset: {fileID: 0}

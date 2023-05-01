@@ -3,7 +3,10 @@ guid: 1df618cafe2136c429dd44de9ec94e18
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - listOfDamageBarks: {fileID: 4900000, guid: 32f8b8ccabbfe944c83fd78b5ee92338, type: 3}
+  - listOfAmbienceBarks: {fileID: 4900000, guid: adce8837a20bff840a0e59742f0e7d55, type: 3}
+  - listOfDuetDamageBarks: {fileID: 4900000, guid: 9d209e64697471a4fb67ba50c21a390d, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

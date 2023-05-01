@@ -9,7 +9,6 @@ using UnityEngine;
 
 public class BoatMovement : MonoBehaviour
 {
-    public Transform PrefabTransform;
     [Tooltip("Boat Movement Speed in m/s")]
     public float maxSpeed;
 
@@ -18,7 +17,7 @@ public class BoatMovement : MonoBehaviour
 
     [Tooltip("Boat Acceleration in m/s")]
     public float acceleration;
-
+    
     [Tooltip("Boat rotational speed in degrees per second.")]
     public float rotationSpeed;
 
@@ -41,32 +40,37 @@ public class BoatMovement : MonoBehaviour
     [Range(0, 10f)][Tooltip("When approaching a vertical limit, the rotational speed is multiplied by this to correct.")]
     public float limitRotationMultiplier = 2f;
 
-    public KeyCode rotateUpwardsKeyCode;
-    public KeyCode rotateDownwardsKeyCode;
+    public float outOfBoundsBumpForce;
 
     private Camera _mainCamera;
     private float _screenHeight;
+    private Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
-        PrefabTransform = transform.root;
     }
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
         _mainCamera = Camera.main;
+        _rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
         SetVerticalBoundsBasedOnScreenSize();
     }
 
     private void OnEnable()
     {
         InputManager.onSteering += UpdateSteering;
+        BoatController.OnBorderHit += BorderHitBump;
     }
 
     private void OnDisable()
     {
         InputManager.onSteering -= UpdateSteering;
+        BoatController.OnBorderHit -= BorderHitBump;
+
 
     }
 
@@ -100,11 +104,22 @@ public class BoatMovement : MonoBehaviour
         //Is the game currently active? If not, break update.
         if (!GameStateManager.Instance.IsGameActive()) return;
 
+        //Only rotate if the current state is ferrying or returning
+        if (isMoving)
+        {
+            CalculateBoatRotation();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        //Is the game currently active? If not, break update.
+        if (!GameStateManager.Instance.IsGameActive()) return;
+
         //Only move if the current state is ferrying or returning
         if (isMoving)
         {
             CalculateBoatMovement();
-            CalculateBoatRotation();
         }
     }
 
@@ -153,21 +168,30 @@ public class BoatMovement : MonoBehaviour
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
         }
         transform.localPosition = Vector3.zero;
+        
+        //TODO Movement is currently in transform.Translate, which does not account for collision. Change to collision.
         //Move forwards 
-        transform.Translate(currentSpeed * Time.deltaTime * currentDirection);
+        Vector3 moveVector = currentDirection.normalized;
+
+        //Rotate moveVector by current angle.
+        moveVector = transform.rotation * moveVector;
+        //Multiply direction by a magnitude speed
+        moveVector *= currentSpeed * Time.deltaTime;
+        //Zero out Z axis
+        moveVector = (Vector2)moveVector;
+        
+        _rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
+
+        _rigidbody2D.MovePosition(transform.position += moveVector);
 
         //Clamp transform.y to vertical limits
-        transform.position = new Vector3(transform.position.x,
-            Mathf.Clamp(transform.position.y, verticalLimit.x, verticalLimit.y),
-            transform.position.z);
-
-        PrefabTransform.position += transform.localPosition;
+        transform.parent.position = new Vector3(transform.position.x,
+        Mathf.Clamp(transform.position.y, verticalLimit.x * limitBorderPercentage, verticalLimit.y * limitBorderPercentage),
+        transform.position.z);
     }
 
     private void CalculateBoatRotation()
     {
-        //Rotation From
-        Quaternion currentRotation = transform.rotation;
         //Rotation to
         Quaternion targetRotation = Quaternion.identity;
         //Rotation Speed with Calculations
@@ -206,7 +230,20 @@ public class BoatMovement : MonoBehaviour
         }
 
         //Set rotation
-        transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
 
     }
+
+    public void BorderHitBump()
+    {
+        _rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Force);
+        
+    }
+
+    public void DockNudge(Vector2 direction)
+    {
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.AddForce(direction * 1, ForceMode2D.Impulse);
+    }
+    
 }

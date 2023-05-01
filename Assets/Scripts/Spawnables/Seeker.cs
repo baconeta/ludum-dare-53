@@ -104,7 +104,7 @@ namespace Spawnables
         public void StartAttackAnimation(Transform attach)
         {
             isAttacking = true;
-            
+            GetComponent<CircleCollider2D>().enabled = false;
             spriteRenderer.sortingOrder = attackSortingOrder;
             animator.SetBool("IsAttacking", true);
             animator.SetFloat("AttackSpeed", 1);
@@ -115,6 +115,7 @@ namespace Spawnables
         {
             //Reset anims
             isAttacking = false;
+            GetComponent<CircleCollider2D>().enabled = true;
             spriteRenderer.sortingOrder = defaultSortingOrder;
             animator.SetBool("IsAttacking", false);
             animator.SetFloat("AttackSpeed", 0);

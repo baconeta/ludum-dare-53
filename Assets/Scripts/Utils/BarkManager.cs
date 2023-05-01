@@ -1,60 +1,69 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class BarkManager : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("The comma-separated list of damage-provoked barks to pull from.")]
+    [SerializeField] [Tooltip("The comma-separated list of damage-provoked barks to pull from.")]
     private TextAsset listOfDamageBarks;
-    [SerializeField]
-    [Tooltip("The comma-separated list of ambience-provoked barks to pull from.")]
+
+    [SerializeField] [Tooltip("The comma-separated list of ambience-provoked barks to pull from.")]
     private TextAsset listOfAmbienceBarks;
+
     [SerializeField]
     [Tooltip("The comma-separated list of DUET damage-provoked barks to pull from. These will be played with Charon.")]
     private TextAsset listOfDuetDamageBarks;
-    [SerializeField]
-    [Tooltip("The character sequence to use to split barks by.")]
+
+    [SerializeField] [Tooltip("The character sequence to use to split barks by.")]
     private string delimiter = ",";
+
+    private string[] damageBarks;
+    private string[] ambienceBark;
+    private string[] duetDamageBarks;
+
+    private void Start()
+    {
+        damageBarks = listOfAmbienceBarks.text.Split(delimiter);
+        ambienceBark = listOfDamageBarks.text.Split(delimiter);
+        duetDamageBarks = listOfDuetDamageBarks.text.Split(delimiter);
+    }
 
     public string GetDamageBark()
     {
-        return GetBark(listOfDamageBarks, "Damage");
+        return GetBark(damageBarks, "Damage");
     }
 
     public string GetAmbienceBark()
     {
-        return GetBark(listOfAmbienceBarks, "Ambience");
+        return GetBark(ambienceBark, "Ambience");
     }
 
     public string GetDuetDamageBark()
     {
-        return GetBark(listOfAmbienceBarks, "Ambience");
+        return GetBark(duetDamageBarks, "Ambience");
     }
 
-    private string GetBark(TextAsset list, string prefix)
+    private string GetBark(string[] barks, string prefix)
     {
-        string[] barks = list.text.Split(delimiter);
-
         // Check if all barks have been used. If they have been, reset them.
         int barksUsed = PlayerPrefs.GetInt(prefix + "BarksUsedCount");
         if (barksUsed >= barks.Length)
             ResetBarks(barks.Length, prefix);
 
+        int index;
         while (true)
         {
             // Select a random bark.
-            int index = Random.Range(0, barks.Length);
+            index = Random.Range(0, barks.Length);
             // Check if it has been used.
-            if (PlayerPrefs.GetInt(prefix + "BarkBeenUsed" + index) == 1)
-            {
-                // The bark has been used. Select another bark.
-                continue;
-            }
-            // Increment the number of barks used.
-            PlayerPrefs.SetInt("Charon" + prefix + "BarksUsedCount", barksUsed + 1);
-            // Mark the bark as being used.
-            PlayerPrefs.SetInt("Charon" + prefix + "BarkBeenUsed" + index, 1);
-            return barks[index];
+            if (PlayerPrefs.GetInt(prefix + "BarkBeenUsed" + index) != 1) break;
         }
+
+        // Increment the number of barks used.
+        PlayerPrefs.SetInt(prefix + "BarksUsedCount", barksUsed + 1);
+        // Mark the bark as being used.
+        PlayerPrefs.SetInt(prefix + "BarkBeenUsed" + index, 1);
+        return barks[index];
     }
 
     private void ResetBarks(int length, string prefix)
@@ -65,5 +74,4 @@ public class BarkManager : MonoBehaviour
             PlayerPrefs.DeleteKey(prefix + "BarkBeenUsed" + i);
         }
     }
-
 }
