@@ -15,7 +15,7 @@ namespace Spawnables
         private float _length;
         [ReadOnly] public float currentSpeed;
 
-        private void Start()
+        protected void Start()
         {
             currentSpeed = initialSpeed;
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
