@@ -91,8 +91,9 @@ namespace Managers
                     Random.Range(stoneSpawnArea.min.x, stoneSpawnArea.max.x),
                     Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y),
                     0.0f);
-                
-                while (stoneNoSpawnArea.Contains(stoneSpawnPoint))
+
+                while (stoneNoSpawnArea.Contains(stoneSpawnPoint) ||
+                       !IsOverlapping(stoneObject.GetComponent<Renderer>().bounds.size.x, stoneSpawnPoint))
                 {
                     stoneSpawnPoint = new Vector3(
                         Random.Range(stoneSpawnArea.min.x, stoneSpawnArea.max.x),
@@ -102,6 +103,16 @@ namespace Managers
                 
                 stoneObject.transform.position = stoneSpawnPoint;
             }    
+        }
+
+        /**
+         * Returns whether or not the given position is overlapping with another object with the given radius.
+         * Works best if the object you're trying to spawn has not yet been given a position in the scene.
+         */
+        private static bool IsOverlapping(float radius, Vector3 position)
+        {
+            var c = Physics2D.OverlapCircle(position, radius);
+            return c is not null;
         }
 
         /**
@@ -125,8 +136,15 @@ namespace Managers
             var length = spawnable.GetComponent<Renderer>().bounds.size.y;
             var topOffset = _topLimit + length / 2.0f;
             
-            // Set the object's position to a random position at the top of the screen
-            spawnable.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
+            // Set the object's position to a random position at the top of the screen and make sure it isn't overlapping
+            // with another object
+            Vector3 position;
+            do
+            {
+              position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
+            } while (IsOverlapping(spawnable.GetComponent<Renderer>().bounds.size.x, position));
+            
+            spawnable.transform.position = position;
             
             var obj = spawnable.GetComponent<Obstacle>();
             
