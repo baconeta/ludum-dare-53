@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebda73d80c42c38468443e9a85b16be0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trackToPlay: game-background-music
+  playOnStart: 1

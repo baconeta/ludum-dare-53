@@ -1,14 +1,27 @@
-using Audio;
-using Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Audio;
 
-public class MusicController : MonoBehaviour
+namespace Audio
 {
-    void Start()
+    public class MusicController : MonoBehaviour
     {
-        AudioWrapper.Instance.PlaySound("game-background-music");
+        [SerializeField] private string trackToPlay;
+        [SerializeField] private bool playOnStart = true;
+
+        private void Start()
+        {
+#if !UNITY_EDITOR && playOnStart
+                AudioWrapper.Instance.PlaySound(trackToPlay);
+#endif
+        }
+
+        public void PlayManually()
+        {
+            AudioWrapper.Instance.PlaySound(trackToPlay);
+        }
+
+        public void StopTrack()
+        {
+            AudioWrapper.Instance.StopSound(trackToPlay);
+        }
     }
 }
