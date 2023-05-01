@@ -14,22 +14,22 @@ public class BoatController : MonoBehaviour
     public GameObject scriptsGameObject;
     private BoatMovement _boatMovement;
     private BoatCapacity _boatCapacity;
+    
+    [Header("Boat Animation")]
     private Animator _boatAnimator;
     private SpriteRenderer _boatSpriteRenderer;
     
+    [Header("Charon Animation")]
     public GameObject charonGameObject;
+    [SerializeField] private float charonRowSpeedMultiplier = 1;
+    [SerializeField] private AnimationCurve charonRowSpeedCurve;
     private Animator _charonAnimator;
     private SpriteRenderer _charonSpriteRenderer;
     
-    
-
     [Header("Dock/Shore Information")]
     public Transform currentDock;
     public Transform leftDock;
     public Transform rightDock;
-
-    [Header("Temp")]
-    public KeyCode voyageStartKey;
 
     public static event Action OnVoyageStart;
     public static event Action OnVoyageComplete;
@@ -116,7 +116,8 @@ public class BoatController : MonoBehaviour
         _boatAnimator.SetFloat("BoatAngleNormalized", angleNormalized);
         
         //Update charon's animation speed based on rowing speed.
-        _charonAnimator.SetFloat("RowSpeed", _boatMovement.currentSpeed);
+        float animSpeed = charonRowSpeedCurve.Evaluate(_boatMovement.currentSpeed / _boatMovement.maxSpeed);
+        _charonAnimator.SetFloat("RowSpeed", (animSpeed * charonRowSpeedMultiplier) * _boatMovement.currentSpeed);
     }
 
     void StartVoyage()
