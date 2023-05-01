@@ -236,4 +236,11 @@ public class BoatMovement : MonoBehaviour
     {
         rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Impulse);
     }
+
+    public void DockNudge(Vector2 direction)
+    {
+        rigidbody2D.velocity = Vector2.zero;
+        rigidbody2D.AddForce(direction * 1, ForceMode2D.Impulse);
+    }
+    
 }

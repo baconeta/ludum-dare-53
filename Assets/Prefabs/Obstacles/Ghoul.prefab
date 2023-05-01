@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2347569106271627889}
   - component: {fileID: 1762214577521317568}
   - component: {fileID: 3201527789740469057}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Ghoul
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

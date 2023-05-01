@@ -29,7 +29,7 @@ public class BoatController : MonoBehaviour
     
     [Header("Dock/Shore Information")]
     public Transform currentDock;
-    public Transform leftDock;
+    public Transform leftShore;
     public Transform rightDock;
 
     public static event Action OnVoyageStart;
@@ -51,7 +51,7 @@ public class BoatController : MonoBehaviour
 
     private void Start()
     {
-        currentDock = leftDock;
+        currentDock = leftShore;
     }
     
     private void OnEnable()
@@ -139,6 +139,7 @@ public class BoatController : MonoBehaviour
     
     void CompleteVoyage()
     {
+        
         //Completes the current voyage
         
         //Informs the GameState that it has reached its destination
@@ -168,7 +169,7 @@ public class BoatController : MonoBehaviour
             case GameStateManager.GameStates.Returning:
                 // Play collection sound
                 AudioWrapper.Instance.PlaySound("soul-collection");
-                currentDock = leftDock;
+                currentDock = leftShore;
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Ferrying;
                 break;
         }
@@ -194,6 +195,7 @@ public class BoatController : MonoBehaviour
             //Arrived at the shore!
             if (other.gameObject.CompareTag("Shore"))
             {
+                _boatMovement.DockNudge((other.transform.position - transform.position).normalized);
                 CompleteVoyage();
             }
             else if (other.gameObject.CompareTag("OutOfBounds"))
