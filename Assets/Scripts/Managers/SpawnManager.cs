@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using ObjectPooling;
 using Spawnables;
 using UnityEngine;
@@ -19,6 +18,10 @@ namespace Managers
         [SerializeField] private GameObject seekerObject;
         [Tooltip("Percentage of the time that a seeker will spawn instead of an obstacle.")]
         [SerializeField][Range(0, 100)] private int seekerSpawnChance = 20;
+
+        [Tooltip("The maximum number of stones to spawn randomly in the river upon loading the game.")]
+        [SerializeField] [Range(1, 5)] private int stoneLimit = 3;
+        [SerializeField] private GameObject[] stones;
         
         [Header("Spawn Multipliers")]
         [SerializeField] private float speedMultiplier = 1.0f;
@@ -27,21 +30,27 @@ namespace Managers
         private ObjectPool _obstacles;
         private ObjectPool _seekers;
 
+        // Spawn limits
         private float _topLimit;
         private float _leftLimit;
         private float _rightLimit;
         private const float ShoreBuffer = 10.0f;
 
-        private void Awake() {
+        private void Awake()
+        {
             _obstacles = ObjectPool.Build(obstacleObject, simultaneousObstacleLimit, simultaneousObstacleLimit);
             _seekers = ObjectPool.Build(seekerObject, simultaneousSeekerLimit, simultaneousSeekerLimit);
         }
 
-        private void Start() {
+        private void Start()
+        {
             // Get the visual limits of the game scene
-            _topLimit = GameObject.Find("TopLimit").transform.position.y;
-            _leftLimit = GameObject.Find("Left Shore").transform.position.x + ShoreBuffer;
+            _topLimit   = GameObject.Find("TopLimit").transform.position.y;
+            _leftLimit  = GameObject.Find("Left Shore").transform.position.x + ShoreBuffer;
             _rightLimit = GameObject.Find("Right Shore").transform.position.x - ShoreBuffer;
+            
+            // Add a random number of stones to the scene
+            SpawnStonesRandomly();
 
             // Start spawning in response to game state changes
             GameStateManager.OnFerryingEnter += StartSpawn;
@@ -57,13 +66,42 @@ namespace Managers
             GameStateManager.OnEndEnter += StopSpawn;
         }
 
-        private void OnDestroy() {
+        private void OnDestroy()
+        {
             // Deregister all of the delegates
             GameStateManager.OnFerryingEnter -= StartSpawn;
             GameStateManager.OnDialogueEnter -= StopSpawn;
             GameStateManager.OnPauseEnter -= StopSpawn;
             GameStateManager.OnPauseExit -= StartSpawn;
             GameStateManager.OnEndEnter -= StopSpawn;
+        }
+
+        private void SpawnStonesRandomly()
+        {
+            var stoneSpawnArea    = GameObject.Find("StoneSpawnArea").GetComponent<Renderer>().bounds;
+            var stoneNoSpawnArea  = GameObject.Find("StoneNoSpawnArea").GetComponent<Renderer>().bounds;
+            var numStones = Random.Range(1, stoneLimit + 1);
+            for (var i = 0; i < numStones; ++i)
+            {
+                var stone = stones[Random.Range(0, stones.Length)];
+                var stoneObject = Instantiate(stone);
+                
+                // Select a random point within the spawn area that avoids the no-spawn area
+                var stoneSpawnPoint = new Vector3(
+                    Random.Range(stoneSpawnArea.min.x, stoneSpawnArea.max.x),
+                    Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y),
+                    0.0f);
+                
+                while (stoneNoSpawnArea.Contains(stoneSpawnPoint))
+                {
+                    stoneSpawnPoint = new Vector3(
+                        Random.Range(stoneSpawnArea.min.x, stoneSpawnArea.max.x),
+                        Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y),
+                        0.0f);
+                }
+                
+                stoneObject.transform.position = stoneSpawnPoint;
+            }    
         }
 
         /**
@@ -86,12 +124,14 @@ namespace Managers
 
             var length = spawnable.GetComponent<Renderer>().bounds.size.y;
             var topOffset = _topLimit + length / 2.0f;
-
+            
             // Set the object's position to a random position at the top of the screen
             spawnable.transform.position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
-            // Set the object's speed and damage multipliers
-            spawnable.GetComponent<Obstacle>().MultiplySpeed(speedMultiplier);
-            spawnable.GetComponent<Obstacle>().MultiplyDamage(damageMultiplier);
+            
+            var obj = spawnable.GetComponent<Obstacle>();
+            
+            obj.MultiplySpeed(speedMultiplier);
+            obj.MultiplyDamage(damageMultiplier);
         }
 
         /**
