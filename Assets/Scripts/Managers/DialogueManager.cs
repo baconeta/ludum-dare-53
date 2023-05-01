@@ -200,6 +200,9 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
     }
     public void NextLine()
     {
+        //If the line doesnt exist, dont do it.
+        if(currentDialogue.linesOfDialogue == null) return;
+        
         //Increment currentDialogueLine
         currentDialogueLine++;
         
