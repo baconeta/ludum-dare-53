@@ -1,5 +1,3 @@
-using System;
-using Managers;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -8,7 +6,10 @@ using UnityEngine.UI;
 public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject ui;
-    [SerializeField] private TextMeshProUGUI dialogueText;
+    [SerializeField] private TextMeshProUGUI dialogueTextRight;
+    [SerializeField] private TextMeshProUGUI dialogueTextLeft;
+    [SerializeField] private GameObject leftDialoguePanel;
+    [SerializeField] private GameObject rightDialoguePanel;
     [SerializeField] private GameObject leftSide;
     [SerializeField] private List<GameObject> leftSideParticipants;
     [SerializeField] private GameObject rightSide;
@@ -25,7 +26,6 @@ public class DialogueUI : MonoBehaviour
     {
         DialogueManager.OnDialogueStart -= ShowDialogue;
         DialogueManager.OnDialogueEnd -= HideDialogue;
-
     }
 
     private void Start()
@@ -50,11 +50,11 @@ public class DialogueUI : MonoBehaviour
                     newParticipantGO = Instantiate(CharacterPrefab, leftSide.transform);
                     leftSideParticipants.Add(newParticipantGO);
                     break;
-                
+
                 //Add Participant to Right Side
                 case DialogueSides.Right:
                     newParticipantGO = Instantiate(CharacterPrefab, rightSide.transform);
-                    
+
                     rightSideParticipants.Add(newParticipantGO);
                     break;
             }
@@ -68,6 +68,7 @@ public class DialogueUI : MonoBehaviour
                 newParticipantGO.GetComponent<Image>().sprite = participant.portrait;
             }
         }
+
         //Update the dialogue scene with the current line
         UpdateDialogueScene(DialogueManager.Instance.GetCurrentLine());
     }
@@ -88,6 +89,7 @@ public class DialogueUI : MonoBehaviour
             leftSideParticipants.Remove(participantGO);
             Destroy(participantGO);
         }
+
         while (rightSideParticipants.Count > 0)
         {
             GameObject participantGO = rightSideParticipants[0];
@@ -110,24 +112,39 @@ public class DialogueUI : MonoBehaviour
                 case DialogueSides.Left:
                     if (nextLine.participantSpeaking >= leftSideParticipants.Count) break;
                     activeParticipant = leftSideParticipants[nextLine.participantSpeaking];
+                    if (activeParticipant is not null)
+                    {
+                        rightDialoguePanel.SetActive(false);
+                        leftDialoguePanel.SetActive(true);
+                        //Set color to white (The original Colour)
+                        activeParticipant.GetComponent<Image>().color = Color.white;
+                        //Set active participant size to 1,1,1
+                        activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
+                        //Update the current text with the Syntax "~"Name: Text"
+                        dialogueTextRight.text = activeParticipant.name.ToUpper() + ":\n" + nextLine.line;
+                    }
+                    else dialogueTextRight.text = nextLine.line;
+
                     break;
                 case DialogueSides.Right:
                     if (nextLine.participantSpeaking >= rightSideParticipants.Count) break;
                     activeParticipant = rightSideParticipants[nextLine.participantSpeaking];
+                    if (activeParticipant is not null)
+                    {
+                        rightDialoguePanel.SetActive(true);
+                        leftDialoguePanel.SetActive(false);
+                        //Set color to white (The original Colour)
+                        activeParticipant.GetComponent<Image>().color = Color.white;
+                        //Set active participant size to 1,1,1
+                        activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
+                        //Update the current text with the Syntax "~"Name: Text"
+                        dialogueTextLeft.text = activeParticipant.name.ToUpper() + ":\n" + nextLine.line;
+                    }
+                    else dialogueTextLeft.text = nextLine.line;
+
                     break;
             }
 
-            if (activeParticipant is not null)
-            {
-                //Set color to white (The original Colour)
-                activeParticipant.GetComponent<Image>().color = Color.white;
-                //Set active participant size to 1,1,1
-                activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
-                //Update the current text with the Syntax "~"Name: Text"
-                dialogueText.text = activeParticipant.name + ": " + nextLine.line;
-            }
-            else dialogueText.text = nextLine.line;
-            
 
             //Deactivate all leftSideParticipants except activeParticipant
             foreach (GameObject participant in leftSideParticipants)
@@ -142,7 +159,7 @@ public class DialogueUI : MonoBehaviour
                 participant.GetComponent<RectTransform>().localScale =
                     Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
             }
-            
+
             //Deactivate all rightSideParticipants except activeParticipant
             foreach (GameObject participant in rightSideParticipants)
             {
@@ -176,7 +193,7 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one;
                     }
-                    
+
                     //Deactive all rightSideParticipants
                     foreach (GameObject participant in rightSideParticipants)
                     {
@@ -186,8 +203,9 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
                     }
+
                     break;
-                
+
                 case DialogueSides.Right:
                     activeParticipants = rightSideParticipants;
                     //Active all rightSideParticipants
@@ -199,6 +217,7 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one;
                     }
+
                     //Deactive all leftSideParticipants
                     foreach (GameObject participant in leftSideParticipants)
                     {
@@ -208,6 +227,7 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
                     }
+
                     break;
             }
 
@@ -221,9 +241,17 @@ public class DialogueUI : MonoBehaviour
                     names = names + " & " + participant.name;
                 }
             }
+
             //Update the current text with the Syntax "Name: Text"
-            dialogueText.text = names + ": " + nextLine.line;
+            switch (nextLine.dialogueSide)
+            {
+                case DialogueSides.Right:
+                    dialogueTextLeft.text = names + ": " + nextLine.line;
+                    break;
+                case DialogueSides.Left:
+                    dialogueTextRight.text = names + ": " + nextLine.line;
+                    break;
+            }
         }
-        
     }
 }
