@@ -26,6 +26,9 @@ public class BoatMovement : MonoBehaviour
              "\n***Different limits are currently unsupported due to flipping math.")]
     public Vector2 rotationLimits;
 
+    //A -1 to 1 value of the current onSteering<float> eventAction
+    private float currentSteering;
+
     public Vector3 currentDirection;
     [SerializeField] private bool isMoving = false;
 
@@ -54,6 +57,22 @@ public class BoatMovement : MonoBehaviour
     {
         _mainCamera = Camera.main;
         SetVerticalBoundsBasedOnScreenSize();
+    }
+
+    private void OnEnable()
+    {
+        InputManager.onSteering += UpdateSteering;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.onSteering -= UpdateSteering;
+
+    }
+
+    void UpdateSteering(float val)
+    {
+        currentSteering = val;
     }
 
     private void SetVerticalBoundsBasedOnScreenSize()
@@ -152,7 +171,7 @@ public class BoatMovement : MonoBehaviour
         float calculatedRotationSpeed = rotationSpeed;
 
         //Rotate towards bottom of screen
-        if (Input.GetKey(rotateDownwardsKeyCode))
+        if (currentSteering < 0)
         {
             //Allow this rotation if the vertical limit has not been met.
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.
@@ -168,7 +187,7 @@ public class BoatMovement : MonoBehaviour
         }
 
         //Rotate towards top of screen
-        if (Input.GetKey(rotateUpwardsKeyCode))
+        if (currentSteering > 0)
         {
             //Allow this rotation if the vertical limit has not been met
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.

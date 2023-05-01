@@ -11,7 +11,7 @@
                     "id": "98ce29ca-cd56-4f8f-8bf7-4e20c7651271",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -20,7 +20,7 @@
                     "id": "33959b6d-d669-4c89-85da-6635f276affc",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -38,7 +38,7 @@
                     "id": "fa621730-dd1c-43ed-9c0a-3ce36ef5c138",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "",
+                    "interactions": "Press",
                     "initialStateCheck": false
                 },
                 {
@@ -46,6 +46,15 @@
                     "type": "PassThrough",
                     "id": "6b69e5cc-97c6-43e1-9701-f46393147690",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TapPosition",
+                    "type": "PassThrough",
+                    "id": "8513ae2f-0f8a-4766-b2e2-fc1cc19cd368",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -145,7 +154,7 @@
                     "id": "0678c58e-2afc-4426-bd1d-4ac379eb3f2d",
                     "path": "<Touchscreen>/delta/up",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "Mobile",
                     "action": "Steering",
                     "isComposite": false,
@@ -156,7 +165,7 @@
                     "id": "a1425b27-6edc-4402-aeea-e6bfad2cc1e9",
                     "path": "<Touchscreen>/delta/down",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Clamp(min=-1,max=1)",
                     "groups": "Mobile",
                     "action": "Steering",
                     "isComposite": false,
@@ -177,10 +186,21 @@
                     "name": "",
                     "id": "c27e4a7c-2df1-47a8-be24-04b336f57e1d",
                     "path": "<Touchscreen>/primaryTouch/tap",
-                    "interactions": "Tap",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Mobile",
                     "action": "Tap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a040745-1a72-4160-80da-912572960bec",
+                    "path": "<Touchscreen>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mobile",
+                    "action": "TapPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

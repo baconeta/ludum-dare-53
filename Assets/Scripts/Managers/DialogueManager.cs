@@ -80,6 +80,7 @@ public class DialogueManager : MonoBehaviour
     public float inactiveSpeakerSize;
 
     public KeyCode nextLine;
+    private DialogueUI _dialogueUI;
 
     public static event Action OnDialogueStart;
     public static event Action OnDialogueEnd;
@@ -88,6 +89,8 @@ public class DialogueManager : MonoBehaviour
     {
         if (!instance) instance = this;
         else Destroy(this);
+
+        _dialogueUI = FindObjectOfType<DialogueUI>();
     }
 
     private void OnEnable()
@@ -97,6 +100,8 @@ public class DialogueManager : MonoBehaviour
         //GameStateManager.OnFerryingEnter += StartDialogue;
         GameStateManager.OnReturningEnter += StartDialogue;
         GameStateManager.OnEndEnter += StartDialogue;
+
+        InputManager.onDialogueNext += NextLineAction;
     }
 
     private void OnDisable()
@@ -174,9 +179,9 @@ public class DialogueManager : MonoBehaviour
         //Set the current dialogue line to 0
         currentDialogueLine = 0;
 
+        isDialogueActive = true;
         //Show UI/Update Text
         OnDialogueStart?.Invoke();
-        isDialogueActive = true;
     }
 
     public List<Participant> GetCurrentParticipants()
@@ -189,6 +194,10 @@ public class DialogueManager : MonoBehaviour
         return (currentDialogue.linesOfDialogue[currentDialogueLine]);
     }
 
+    public void NextLineAction()
+    {
+        NextLine();
+    }
     public DialogueLine NextLine()
     {
         //Increment currentDialogueLine
@@ -200,15 +209,17 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return new DialogueLine();
         }
+
+        _dialogueUI.UpdateDialogueScene(GetCurrentLine());
         //return the current line
         return GetCurrentLine();
     }
 
     public void EndDialogue()
     {
+        isDialogueActive = false;
         //Hide UI
         OnDialogueEnd?.Invoke();
-        isDialogueActive = false;
     }
 
     public bool IsDialogueActive()

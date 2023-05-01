@@ -47,13 +47,17 @@ public class BoatController : MonoBehaviour
         //Subscribe to Loss Condition Events
         BoatCapacity.OnBoatDestroyed += VoyageLost;
         BoatCapacity.OnAllSoulsLost += VoyageLost;
+        //Subscribe to launch voyage input
+        InputManager.onLaunchVoyage += StartVoyage;
+        
     }
     
     private void OnDisable()
     {
-        //Subscribe to Loss Condition Events
         BoatCapacity.OnBoatDestroyed -= VoyageLost;
         BoatCapacity.OnAllSoulsLost -= VoyageLost;
+        InputManager.onLaunchVoyage -= StartVoyage;
+
     }
     
     void Update()
@@ -62,15 +66,8 @@ public class BoatController : MonoBehaviour
         if (!GameStateManager.Instance.IsGameActive()) return;
 
         UpdateAnimations();
-        
-        //If Not docked, don't check for launches.
-        if (currentDock is null) return;
-        
-        if (Input.GetKeyDown(voyageStartKey))
-        {
-            StartVoyage();
-        }
     }
+    
 
     private void UpdateAnimations()
     {
@@ -109,6 +106,11 @@ public class BoatController : MonoBehaviour
 
     void StartVoyage()
     {
+        if (DialogueManager.instance.isDialogueActive) return;
+        
+        //Not docked, cannot launch from nothing!
+        if (currentDock is null) return;
+
         //Starts Going from current dock
         currentDock = null;
         

@@ -96,30 +96,7 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Pause / Resume game when Escape is pressed
-    /// </summary>
-    void OnGUI()
-    {
-        //Don't process if UI is not active
-        if (!ui.activeSelf) return;
-        
-        //TODO Add Any Key to continue dialogue
-        Event e = Event.current;
-        if (!e.isKey || e.type != EventType.KeyUp || e.keyCode != DialogueManager.instance.nextLine) return;
-
-        //Update text with the new line
-        DialogueLine nextLine = DialogueManager.instance.NextLine();
-        
-        //If the dialogue is exhausted (Empty DialogueLine), close dialogue.
-        if(nextLine.Equals(new DialogueLine())) HideDialogue();
-        else //Use nextLine to update the Dialogue Scene
-        {
-            UpdateDialogueScene(nextLine);
-        }
-    }
-
-    private void UpdateDialogueScene(DialogueLine nextLine)
+    public void UpdateDialogueScene(DialogueLine nextLine)
     {
         GameObject activeParticipant = null;
 
