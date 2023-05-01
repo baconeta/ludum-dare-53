@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9051264444822484043
 MonoBehaviour:
@@ -194,4 +194,6 @@ MonoBehaviour:
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
   inactiveSpeakerSize: 0
+  overrideStoryElement: 0
+  element: 0
   nextLine: 9
