@@ -121,7 +121,7 @@ public class DialogueUI : MonoBehaviour
                         //Set active participant size to 1,1,1
                         activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
                         //Update the current text with the Syntax "~"Name: Text"
-                        dialogueTextRight.text = activeParticipant.name + ": " + nextLine.line;
+                        dialogueTextRight.text = activeParticipant.name.ToUpper() + ":\n" + nextLine.line;
                     }
                     else dialogueTextRight.text = nextLine.line;
 
@@ -138,7 +138,7 @@ public class DialogueUI : MonoBehaviour
                         //Set active participant size to 1,1,1
                         activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
                         //Update the current text with the Syntax "~"Name: Text"
-                        dialogueTextLeft.text = activeParticipant.name + ": " + nextLine.line;
+                        dialogueTextLeft.text = activeParticipant.name.ToUpper() + ":\n" + nextLine.line;
                     }
                     else dialogueTextLeft.text = nextLine.line;
 

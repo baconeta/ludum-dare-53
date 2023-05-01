@@ -107,13 +107,13 @@ MonoBehaviour:
         participantSpeaking: 0
       - line: Oh? And what do you tell them?
         dialogueSide: 1
-        participantSpeaking: 1
+        participantSpeaking: 0
       - line: I tell them you have over 20 children.
         dialogueSide: 0
         participantSpeaking: 0
       - line: Some people are into that ;)
         dialogueSide: 1
-        participantSpeaking: 1
+        participantSpeaking: 0
       - line: Oh my god, mom, go away, I have work to do.
         dialogueSide: 0
         participantSpeaking: 0
@@ -147,6 +147,6 @@ MonoBehaviour:
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
   currentDialogueLine: 0
   isDialogueActive: 0
-  inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
-  inactiveSpeakerSize: 0.7
+  inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
+  inactiveSpeakerSize: 0
   nextLine: 9
