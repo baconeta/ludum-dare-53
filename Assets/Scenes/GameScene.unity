@@ -751,6 +751,91 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5257897951344812538, guid: 463456eac6fa7514b89787261229bffb, type: 3}
   m_PrefabInstance: {fileID: 8209956121800968267}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1279302039
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].name
+      value: damned-soul-sfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].mixer
+      value: 
+      objectReference: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].sound
+      value: 
+      objectReference: {fileID: 8300000, guid: ee5ff9d184db3da45b6b0d8787d06d42, type: 3}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].volume
+      value: 0.178
+      objectReference: {fileID: 0}
+    - target: {fileID: 4629262566429204678, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_Name
+      value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 580.2599
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 276.891
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.4307985
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7496676111824786933, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
 --- !u!1001 &1293623786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1055,7 +1140,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1420548495 stripped
 Transform:
@@ -1734,7 +1819,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &68470561802482807 stripped
 Transform:
