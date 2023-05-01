@@ -36,6 +36,7 @@ public class BoatController : MonoBehaviour
     public static event Action OnVoyageComplete;
 
     public static event Action OnDamageTaken;
+    public static event Action OnBorderHit;
     
     void Awake()
     {
@@ -198,10 +199,6 @@ public class BoatController : MonoBehaviour
                 _boatMovement.DockNudge((other.transform.position - transform.position).normalized);
                 CompleteVoyage();
             }
-            else if (other.gameObject.CompareTag("OutOfBounds"))
-            {
-                _boatMovement.ForceBump();
-            }
             else if (other.gameObject.CompareTag("Obstacle"))
             {
                 OnDamageTaken?.Invoke();
@@ -213,6 +210,15 @@ public class BoatController : MonoBehaviour
 
 
             }
+        }
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("OutOfBounds"))
+        {
+            OnBorderHit?.Invoke();
+            OnDamageTaken?.Invoke();
         }
     }
 }

@@ -44,28 +44,33 @@ public class BoatMovement : MonoBehaviour
 
     private Camera _mainCamera;
     private float _screenHeight;
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D _rigidbody2D;
 
     private void Awake()
     {
     }
+    
+    
 
     // Start is called before the first frame update
     void Start()
     {
         _mainCamera = Camera.main;
-        rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
+        _rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
         SetVerticalBoundsBasedOnScreenSize();
     }
 
     private void OnEnable()
     {
         InputManager.onSteering += UpdateSteering;
+        BoatController.OnBorderHit += BorderHitBump;
     }
 
     private void OnDisable()
     {
         InputManager.onSteering -= UpdateSteering;
+        BoatController.OnBorderHit -= BorderHitBump;
+
 
     }
 
@@ -175,17 +180,14 @@ public class BoatMovement : MonoBehaviour
         //Zero out Z axis
         moveVector = (Vector2)moveVector;
         
-        rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
+        _rigidbody2D = transform.parent.GetComponent<Rigidbody2D>();
 
-        rigidbody2D.MovePosition(transform.position += moveVector);
+        _rigidbody2D.MovePosition(transform.position += moveVector);
 
         //Clamp transform.y to vertical limits
-        transform.position = new Vector3(transform.position.x,
-        Mathf.Clamp(transform.position.y, verticalLimit.x, verticalLimit.y),
+        transform.parent.position = new Vector3(transform.position.x,
+        Mathf.Clamp(transform.position.y, verticalLimit.x * limitBorderPercentage, verticalLimit.y * limitBorderPercentage),
         transform.position.z);
-
-        //Add clamp changes
-        transform.parent.position += transform.localPosition;
     }
 
     private void CalculateBoatRotation()
@@ -232,15 +234,16 @@ public class BoatMovement : MonoBehaviour
 
     }
 
-    public void ForceBump()
+    public void BorderHitBump()
     {
-        rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Impulse);
+        _rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Force);
+        
     }
 
     public void DockNudge(Vector2 direction)
     {
-        rigidbody2D.velocity = Vector2.zero;
-        rigidbody2D.AddForce(direction * 1, ForceMode2D.Impulse);
+        _rigidbody2D.velocity = Vector2.zero;
+        _rigidbody2D.AddForce(direction * 1, ForceMode2D.Impulse);
     }
     
 }

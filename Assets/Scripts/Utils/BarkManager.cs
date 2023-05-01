@@ -55,7 +55,6 @@ public class BarkManager : MonoBehaviour
         {
             index = Random.Range(0, barks.Length);
             // Select a random bark.
-            Debug.Log(barks.Length + " | " + index);
             // Check if it has been used.
             if (PlayerPrefs.GetInt(prefix + "BarkBeenUsed" + index) != 1) break;
         }

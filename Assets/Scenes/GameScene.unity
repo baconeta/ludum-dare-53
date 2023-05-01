@@ -463,7 +463,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 1.36}
@@ -477,7 +477,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 600, y: 6.26}
+  m_Size: {x: 600, y: 11}
   m_EdgeRadius: 0
 --- !u!1001 &570159256
 PrefabInstance:
@@ -2321,7 +2321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7914235876027768591, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: outOfBoundsBumpForce
-      value: 500
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_Name
