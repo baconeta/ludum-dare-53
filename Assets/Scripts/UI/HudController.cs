@@ -62,8 +62,8 @@ public class HudController : MonoBehaviour
 
     public void ToggleJoystick(bool toggleOn)
     {
-        if(ui.activeSelf == toggleOn)
-            joystickUI.SetActive(toggleOn);
+       
+        joystickUI.SetActive(toggleOn);
     }
     
 
