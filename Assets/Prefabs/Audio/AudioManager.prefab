@@ -81,3 +81,23 @@ MonoBehaviour:
     mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
     loop: 0
     volume: 0.178
+  - name: deliver-single-soul
+    sound: {fileID: 8300000, guid: 59efe71fad1a6374b98da77fc51bf540, type: 3}
+    mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    loop: 0
+    volume: 0.178
+  - name: deliver-many-souls
+    sound: {fileID: 8300000, guid: 06c56430169a01b48a089e3cc4003c86, type: 3}
+    mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    loop: 0
+    volume: 0.178
+  - name: deliver-all-dem-souls
+    sound: {fileID: 8300000, guid: 8be1922515c106d4788a2acf14be44ae, type: 3}
+    mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    loop: 0
+    volume: 0.178
+  - name: soul-collection
+    sound: {fileID: 8300000, guid: 1950443819168bc488b39b062bb685ee, type: 3}
+    mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    loop: 0
+    volume: 0.178

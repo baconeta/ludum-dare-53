@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using Managers;
 using Spawnables;
 using UnityEngine;
@@ -129,12 +130,16 @@ public class BoatController : MonoBehaviour
         {
             //Completed Ferrying - Dropped off all Souls.
             case GameStateManager.GameStates.Ferrying:
+                // Play delivery sound
+                AudioWrapper.Instance.PlaySound("deliver-single-soul");
                 currentDock = rightDock;
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Returning;
                 break;
             
             //Completed Returning - Picking up new Souls.
             case GameStateManager.GameStates.Returning:
+                // Play collection sound
+                AudioWrapper.Instance.PlaySound("soul-collection");
                 currentDock = leftDock;
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Ferrying;
                 break;
