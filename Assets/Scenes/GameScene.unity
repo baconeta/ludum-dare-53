@@ -761,6 +761,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8248156846932926702, guid: a385191d3f9e225408cd3f9d01b5bde2, type: 3}
   m_PrefabInstance: {fileID: 7834597314647978772}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1101165206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4910189061814994329, guid: b7fecf501ad0eb445a8f0f3041420a6c, type: 3}
+  m_PrefabInstance: {fileID: 24438739}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0f68b6404c333942af8bbaf39f5bbbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1101165209 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2847470636963782075, guid: b7fecf501ad0eb445a8f0f3041420a6c, type: 3}
@@ -1751,9 +1762,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1101165209}
     - target: {fileID: 8906751614042367217, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
-      propertyPath: percentChanceToBeSoloBark
-      value: 50
-      objectReference: {fileID: 0}
+      propertyPath: charonBarkManager
+      value: 
+      objectReference: {fileID: 1101165206}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
