@@ -759,6 +759,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].name
+      value: damned-soul-sfx
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].mixer
+      value: 
+      objectReference: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].sound
+      value: 
+      objectReference: {fileID: 8300000, guid: ee5ff9d184db3da45b6b0d8787d06d42, type: 3}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[1].volume
+      value: 0.178
+      objectReference: {fileID: 0}
     - target: {fileID: 4629262566429204678, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
       propertyPath: m_Name
       value: AudioManager
