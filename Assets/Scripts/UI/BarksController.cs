@@ -7,6 +7,7 @@ using Random = UnityEngine.Random;
 public class BarksController : MonoBehaviour
 {
     [SerializeField] private SoulFactory soulFactory;
+    [SerializeField] private CharonBarkManager charonBarkManager;
     [SerializeField] private BarkPopup barkPopupLeft;
     [SerializeField] private BarkPopup barkPopupRight;
     [SerializeField] private float minTimeBetweenBarks;
@@ -145,8 +146,7 @@ public class BarksController : MonoBehaviour
         var soulName = soul.Name;
         var soulBark = soul.GetDamageBark();
 
-        // TODO get charon response
-        var charonBark = "Okay bro";
+        var charonBark = charonBarkManager.GetCharonDuetDamageBark();
 
         // calculate the bark time showing length
         var timeOnScreen = Math.Max(CalculateTimeOnScreen(charonBark), CalculateTimeOnScreen(soulBark));
@@ -174,14 +174,13 @@ public class BarksController : MonoBehaviour
 
     private void CharonOnlyBark(bool hit = false)
     {
-        // TODO get charon bark
-        var bark = "How dare you.";
+        var charonBark = hit ? charonBarkManager.GetCharonDamageBark() : charonBarkManager.GetCharonAmbienceBark();
 
         // calculate the bark time showing length
-        var timeOnScreen = CalculateTimeOnScreen(bark);
+        var timeOnScreen = CalculateTimeOnScreen(charonBark);
 
         // Set up bark popups and show it on screen
-        SetLeftSpeaker("Charon", bark);
+        SetLeftSpeaker("Charon", charonBark);
         StartCoroutine(ShowPopup(barkPopupLeft, timeOnScreen));
     }
 
