@@ -9,13 +9,9 @@ namespace Audio
 
         private void Start()
         {
-// #if !UNITY_EDITOR && playOnStart
-            if (playOnStart)
-            {
+#if !UNITY_EDITOR && playOnStart
                 AudioWrapper.Instance.PlaySound(trackToPlay);
-            }
-
-// #endif
+#endif
         }
 
         public void PlayManually()
