@@ -131,4 +131,9 @@ public class Soul
         }
         return BarkManager.GetAmbienceBark();
     }
+
+    public string GetDuetDamageBark()
+    {
+        return BarkManager.GetDuetDamageBark();
+    }
 }
