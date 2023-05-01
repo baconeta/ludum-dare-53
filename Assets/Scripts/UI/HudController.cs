@@ -8,6 +8,7 @@ public class HudController : MonoBehaviour
     [SerializeField] private TMP_Text totalSoulsLabel;
     [SerializeField] private TMP_Text carriedSoulsLabel;
     [SerializeField] private TMP_Text soulCapacityLabel;
+    [SerializeField] private GameObject joystickUI;
 
     private void OnEnable()
     {
@@ -18,6 +19,7 @@ public class HudController : MonoBehaviour
         GameStateManager.OnReturningEnter += ShowHud;
         GameStateManager.OnEndEnter += HideHud;
         BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
+        InputManager.onControlSchemeChange += ToggleJoystick;
     }
 
     private void OnDisable()
@@ -29,17 +31,27 @@ public class HudController : MonoBehaviour
         GameStateManager.OnReturningEnter -= ShowHud;
         GameStateManager.OnEndEnter -= HideHud;
         BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
+        InputManager.onControlSchemeChange -= ToggleJoystick;
+
     }
 
     private void ShowHud()
     {
         ui.SetActive(true);
+        
     }
 
     private void HideHud()
     {
         ui.SetActive(false);
     }
+
+    public void ToggleJoystick(bool toggleOn)
+    {
+        Debug.Log(toggleOn);
+        joystickUI.SetActive(toggleOn);
+    }
+    
 
     public void PauseGame()
     {
