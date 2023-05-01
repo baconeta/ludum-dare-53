@@ -23,15 +23,6 @@ public class InputManager : MonoBehaviour
     }
     private Vector2 tapPosition;
     public float tapSize = 1;
-    
-    [SerializeField] private float fingerDownDuration;
-    [SerializeField] private float durationToHold = 0.4f;
-    [Tooltip("0= no contact, 1 = contact")]
-    [SerializeField] private int touchContact;
-
-    private PointerEventData pointerID;
-
-    private bool isFingerDown;
 
     public static event Action onDialogueNext;
     public static event Action onLaunchVoyage;
@@ -58,7 +49,8 @@ public class InputManager : MonoBehaviour
     //KBM via InputSystem. Mobile via OnTapLogic
     void OnDialogueNext()
     {
-        onDialogueNext?.Invoke();
+        if(DialogueManager.Instance.isDialogueActive)
+            onDialogueNext?.Invoke();
     }
 
     //KBM via InputSystem. Mobile via OnTapLogic
@@ -106,7 +98,7 @@ public class InputManager : MonoBehaviour
         //Is tapping
         
         //Dialogue Inputs
-        if(DialogueManager.instance.isDialogueActive) OnDialogueNext();
+        if(DialogueManager.Instance.isDialogueActive) OnDialogueNext();
         else //World Inputs
         {
             Vector3 tapWorldPos = Camera.main.ScreenToWorldPoint(tapPosition);

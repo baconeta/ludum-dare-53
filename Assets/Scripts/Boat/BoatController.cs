@@ -108,7 +108,7 @@ public class BoatController : MonoBehaviour
 
     void StartVoyage()
     {
-        if (DialogueManager.instance.isDialogueActive) return;
+        if (DialogueManager.Instance.isDialogueActive) return;
         
         //Not docked, cannot launch from nothing!
         if (currentDock is null) return;

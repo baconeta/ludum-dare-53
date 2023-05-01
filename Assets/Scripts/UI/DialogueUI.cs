@@ -40,7 +40,7 @@ public class DialogueUI : MonoBehaviour
 
         //TODO Replace with object pooling /  Participant Builder 
         //Add all participants to the scene
-        foreach (Participant participant in DialogueManager.instance.GetCurrentParticipants())
+        foreach (Participant participant in DialogueManager.Instance.GetCurrentParticipants())
         {
             GameObject newParticipantGO = null;
             switch (participant.dialogueSide)
@@ -69,7 +69,7 @@ public class DialogueUI : MonoBehaviour
             }
         }
         //Update the dialogue scene with the current line
-        UpdateDialogueScene(DialogueManager.instance.GetCurrentLine());
+        UpdateDialogueScene(DialogueManager.Instance.GetCurrentLine());
     }
 
     private void HideDialogue()
@@ -108,21 +108,26 @@ public class DialogueUI : MonoBehaviour
             {
                 //Left side, get the current speaker.
                 case DialogueSides.Left:
+                    if (nextLine.participantSpeaking >= leftSideParticipants.Count) break;
                     activeParticipant = leftSideParticipants[nextLine.participantSpeaking];
                     break;
                 case DialogueSides.Right:
+                    if (nextLine.participantSpeaking >= rightSideParticipants.Count) break;
                     activeParticipant = rightSideParticipants[nextLine.participantSpeaking];
                     break;
             }
 
-            //Set color to white (The original Colour)
-            activeParticipant.GetComponent<Image>().color = Color.white;
-            //Set active participant size to 1,1,1
-            activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
-
-
-            //Update the current text with the Syntax "~"Name: Text"
-            dialogueText.text = activeParticipant.name + ": " + nextLine.line;
+            if (activeParticipant is not null)
+            {
+                //Set color to white (The original Colour)
+                activeParticipant.GetComponent<Image>().color = Color.white;
+                //Set active participant size to 1,1,1
+                activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
+                //Update the current text with the Syntax "~"Name: Text"
+                dialogueText.text = activeParticipant.name + ": " + nextLine.line;
+            }
+            else dialogueText.text = nextLine.line;
+            
 
             //Deactivate all leftSideParticipants except activeParticipant
             foreach (GameObject participant in leftSideParticipants)
@@ -132,10 +137,10 @@ public class DialogueUI : MonoBehaviour
 
                 //Inactive participants
                 //Set colour to inactive
-                participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                participant.GetComponent<Image>().color = DialogueManager.Instance.inactiveSpeakerColor;
                 //Set size to inactive size
                 participant.GetComponent<RectTransform>().localScale =
-                    Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+                    Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
             }
             
             //Deactivate all rightSideParticipants except activeParticipant
@@ -146,10 +151,10 @@ public class DialogueUI : MonoBehaviour
 
                 //Inactive participants
                 //Set colour to inactive
-                participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                participant.GetComponent<Image>().color = DialogueManager.Instance.inactiveSpeakerColor;
                 //Set size to inactive size
                 participant.GetComponent<RectTransform>().localScale =
-                    Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+                    Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
             }
         }
         else //All of one side speaking case
@@ -176,10 +181,10 @@ public class DialogueUI : MonoBehaviour
                     foreach (GameObject participant in rightSideParticipants)
                     {
                         //Set colour to inactive
-                        participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                        participant.GetComponent<Image>().color = DialogueManager.Instance.inactiveSpeakerColor;
                         //Set size to inactive size
                         participant.GetComponent<RectTransform>().localScale =
-                            Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+                            Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
                     }
                     break;
                 
@@ -198,10 +203,10 @@ public class DialogueUI : MonoBehaviour
                     foreach (GameObject participant in leftSideParticipants)
                     {
                         //Set colour to inactive
-                        participant.GetComponent<Image>().color = DialogueManager.instance.inactiveSpeakerColor;
+                        participant.GetComponent<Image>().color = DialogueManager.Instance.inactiveSpeakerColor;
                         //Set size to inactive size
                         participant.GetComponent<RectTransform>().localScale =
-                            Vector3.one * DialogueManager.instance.inactiveSpeakerSize;
+                            Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
                     }
                     break;
             }

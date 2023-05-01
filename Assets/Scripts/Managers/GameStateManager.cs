@@ -172,7 +172,7 @@ namespace Managers
             if (isActive)
             {
                 //Check if dialogue is open, if so, pause game.
-                if (DialogueManager.instance.isDialogueActive) isActive = false;
+                if (DialogueManager.Instance.isDialogueActive) isActive = false;
             }
 
             return isActive;
