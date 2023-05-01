@@ -101,3 +101,8 @@ MonoBehaviour:
     mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
     loop: 0
     volume: 0.178
+  - name: ui-button
+    sound: {fileID: 8300000, guid: b40c13264270841439e08cab90376d69, type: 3}
+    mixer: {fileID: -8016216726190809901, guid: c07848ed783d97c40b4556f64af32af1, type: 2}
+    loop: 0
+    volume: 0.177
