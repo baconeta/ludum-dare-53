@@ -340,7 +340,7 @@ MonoBehaviour:
   maxSpeed: 10
   currentSpeed: 0
   acceleration: 10
-  rotationSpeed: 10
+  rotationSpeed: 50
   rotationLimits: {x: 10, y: -20}
   currentDirection: {x: 0, y: 0, z: 0}
   isMoving: 0
