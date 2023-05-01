@@ -26,6 +26,9 @@ public class BoatMovement : MonoBehaviour
              "\n***Different limits are currently unsupported due to flipping math.")]
     public Vector2 rotationLimits;
 
+    //A -1 to 1 value of the current onSteering<float> eventAction
+    private float currentSteering;
+
     public Vector3 currentDirection;
     [SerializeField] private bool isMoving = false;
 
@@ -54,6 +57,22 @@ public class BoatMovement : MonoBehaviour
     {
         _mainCamera = Camera.main;
         SetVerticalBoundsBasedOnScreenSize();
+    }
+
+    private void OnEnable()
+    {
+        InputManager.onSteering += UpdateSteering;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.onSteering -= UpdateSteering;
+
+    }
+
+    void UpdateSteering(float val)
+    {
+        currentSteering = val;
     }
 
     private void SetVerticalBoundsBasedOnScreenSize()
@@ -95,10 +114,14 @@ public class BoatMovement : MonoBehaviour
         if (!isMoving)
         {
             isMoving = true;
-
+            
             //Set direction to left/right based on the current GameState
             switch (GameStateManager.Instance.CurrentState)
             {
+                //Edge case of start, may as well prime it for right.
+                case GameStateManager.GameStates.Start:
+                    currentDirection = Vector3.right;
+                    break;
                 case GameStateManager.GameStates.Ferrying:
                     currentDirection = Vector3.right;
                     break;
@@ -109,9 +132,7 @@ public class BoatMovement : MonoBehaviour
 
             //Reset Rotation (You've just launched!)
             transform.rotation = quaternion.Euler(0, 0, 0);
-
         }
-
     }
 
     public void DisableMovement()
@@ -152,7 +173,7 @@ public class BoatMovement : MonoBehaviour
         float calculatedRotationSpeed = rotationSpeed;
 
         //Rotate towards bottom of screen
-        if (Input.GetKey(rotateDownwardsKeyCode))
+        if (currentSteering < 0)
         {
             //Allow this rotation if the vertical limit has not been met.
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.
@@ -168,7 +189,7 @@ public class BoatMovement : MonoBehaviour
         }
 
         //Rotate towards top of screen
-        if (Input.GetKey(rotateUpwardsKeyCode))
+        if (currentSteering > 0)
         {
             //Allow this rotation if the vertical limit has not been met
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.

@@ -3,6 +3,7 @@ using Managers;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Utils;
 using Random = UnityEngine.Random;
 
 [Serializable][Tooltip("The side the dialogue will appear on")]
@@ -61,9 +62,8 @@ public struct DialogueGroup
     public DialogueStruct DialogueEnd;
 }
 
-public class DialogueManager : MonoBehaviour
+public class DialogueManager : EverlastingSingleton<DialogueManager>
 {
-    public static DialogueManager instance;
 
     [Tooltip("Groups of dialogue that are selected at game start." +
              "\nElement 0 is played on the Player's very first run" +
@@ -74,20 +74,20 @@ public class DialogueManager : MonoBehaviour
     private DialogueStruct DialogueMid;
     private DialogueStruct DialogueEnd;
     private DialogueStruct currentDialogue = new DialogueStruct();
-    private int currentDialogueLine;
+    public int currentDialogueLine;
     public bool isDialogueActive;
     public Color inactiveSpeakerColor;
     public float inactiveSpeakerSize;
 
     public KeyCode nextLine;
+    private DialogueUI _dialogueUI;
 
     public static event Action OnDialogueStart;
     public static event Action OnDialogueEnd;
 
     private void Awake()
     {
-        if (!instance) instance = this;
-        else Destroy(this);
+        _dialogueUI = FindObjectOfType<DialogueUI>();
     }
 
     private void OnEnable()
@@ -97,6 +97,8 @@ public class DialogueManager : MonoBehaviour
         //GameStateManager.OnFerryingEnter += StartDialogue;
         GameStateManager.OnReturningEnter += StartDialogue;
         GameStateManager.OnEndEnter += StartDialogue;
+
+        InputManager.onDialogueNext += NextLineAction;
     }
 
     private void OnDisable()
@@ -105,6 +107,11 @@ public class DialogueManager : MonoBehaviour
         //GameStateManager.OnFerryingEnter -= StartDialogue;
         GameStateManager.OnReturningEnter -= StartDialogue;
         GameStateManager.OnEndEnter -= StartDialogue;
+    }
+
+    private void Start()
+    {
+        if(!_dialogueUI) _dialogueUI = FindObjectOfType<DialogueUI>();
     }
 
     private void SelectDialogueGroup()
@@ -128,16 +135,17 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue()
     {
+        GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
+        GameStateManager.GameStates currentState = GameStateManager.Instance.CurrentState;
+
         //On Start, Get a new Dialogue Group
-        if (GameStateManager.Instance.CurrentState == GameStateManager.GameStates.Start)
+        if (currentState == GameStateManager.GameStates.Start)
             SelectDialogueGroup();
 
         //Clear current dialogue.
         currentDialogue = new DialogueStruct();
-
-        GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
-        GameStateManager.GameStates currentState = GameStateManager.Instance.CurrentState;
-
+        currentDialogueLine = 0;
+        
         //If the game is not ending
         if (currentState != GameStateManager.GameStates.End)
         {
@@ -171,12 +179,9 @@ public class DialogueManager : MonoBehaviour
         //If a dialogue wasn't selected/IsEmpty, abort StartDialogue.
         if (currentDialogue.linesOfDialogue is null) return;
 
-        //Set the current dialogue line to 0
-        currentDialogueLine = 0;
-
+        isDialogueActive = true;
         //Show UI/Update Text
         OnDialogueStart?.Invoke();
-        isDialogueActive = true;
     }
 
     public List<Participant> GetCurrentParticipants()
@@ -189,26 +194,34 @@ public class DialogueManager : MonoBehaviour
         return (currentDialogue.linesOfDialogue[currentDialogueLine]);
     }
 
-    public DialogueLine NextLine()
+    public void NextLineAction()
     {
+        NextLine();
+    }
+    public void NextLine()
+    {
+        //If the line doesnt exist, dont do it.
+        if(currentDialogue.linesOfDialogue == null) return;
+        
         //Increment currentDialogueLine
         currentDialogueLine++;
+        
         //Has it passed the last line?
         if (currentDialogueLine >= currentDialogue.linesOfDialogue.Count)
         {
             //Yes, dialogue exhausted. End Dialogue.
             EndDialogue();
-            return new DialogueLine();
+            return;
         }
-        //return the current line
-        return GetCurrentLine();
+
+        _dialogueUI.UpdateDialogueScene(GetCurrentLine());
     }
 
     public void EndDialogue()
     {
+        isDialogueActive = false;
         //Hide UI
         OnDialogueEnd?.Invoke();
-        isDialogueActive = false;
     }
 
     public bool IsDialogueActive()

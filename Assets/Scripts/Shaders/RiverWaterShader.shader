@@ -53,7 +53,6 @@ Shader "Custom/RiverWater" {
                 uv += float2(0, sin(_CustomTime.y * _WaveSpeed + IN.worldPos.x) * _WaveAmplitude);
             }
             
-
             // Sample the texture at the offset coordinate and use the red channel as height
             float noise = tex2D(_MainTex, uv).r;
 
