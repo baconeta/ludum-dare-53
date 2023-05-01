@@ -55,9 +55,7 @@ namespace Managers
 
         //Game Ended / Ship Destroyed
         public static event Action OnEndEnter;
-
-
-
+        
         private void Awake()
         {
             if (!Instance) Instance = this;
@@ -66,13 +64,14 @@ namespace Managers
 
         private void OnEnable()
         {
-            DialogueManager.OnDialogueEnd += GameStart;
+            DialogueManager.OnDialogueEnd += VoyageBegins;
+            InputManager.onPause += Pause;
         }
 
         private void OnDisable()
         {
-            DialogueManager.OnDialogueEnd -= GameStart;
-
+            DialogueManager.OnDialogueEnd -= VoyageBegins;
+            InputManager.onPause -= Pause;
         }
 
         private void Start()
@@ -86,10 +85,15 @@ namespace Managers
             OnStartEnter?.Invoke();
         }
 
-        private void GameStart()
+        private void VoyageBegins()
         {
             if (_currentState == GameStates.Start)
                 ChangeState(GameStates.Ferrying);
+        }
+
+        public void Pause()
+        {
+            ChangeState(GameStates.Pause);
         }
 
 
@@ -168,7 +172,7 @@ namespace Managers
             if (isActive)
             {
                 //Check if dialogue is open, if so, pause game.
-                if (DialogueManager.instance.isDialogueActive) isActive = false;
+                if (DialogueManager.Instance.isDialogueActive) isActive = false;
             }
 
             return isActive;

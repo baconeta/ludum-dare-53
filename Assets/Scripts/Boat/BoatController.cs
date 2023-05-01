@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using Managers;
 using Spawnables;
 using UnityEngine;
@@ -9,34 +10,42 @@ using UnityEngine.UIElements;
 public class BoatController : MonoBehaviour
 {
     [Header("Components")]
+    public GameObject boatGameObject;
+    public GameObject scriptsGameObject;
     private BoatMovement _boatMovement;
     private BoatCapacity _boatCapacity;
-    private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
-    public GameObject scriptsGameObject;
-    public GameObject animatorGameObject;
-
+    
+    [Header("Boat Animation")]
+    private Animator _boatAnimator;
+    private SpriteRenderer _boatSpriteRenderer;
+    
+    [Header("Charon Animation")]
+    public GameObject charonGameObject;
+    [SerializeField] private float charonRowSpeedMultiplier = 1;
+    [SerializeField] private AnimationCurve charonRowSpeedCurve;
+    private Animator _charonAnimator;
+    private SpriteRenderer _charonSpriteRenderer;
+    
     [Header("Dock/Shore Information")]
     public Transform currentDock;
     public Transform leftDock;
     public Transform rightDock;
 
-    [Header("Temp")]
-    public KeyCode voyageStartKey;
-
     public static event Action OnVoyageStart;
     public static event Action OnVoyageComplete;
 
     public static event Action OnDamageTaken;
- 
-
-    // Start is called before the first frame update
+    
     void Awake()
     {
         _boatMovement = GetComponentInChildren<BoatMovement>();
         _boatCapacity = GetComponentInChildren<BoatCapacity>();
-        _animator = GetComponentInChildren<Animator>();
-        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        
+        _boatAnimator = boatGameObject.GetComponent<Animator>();
+        _boatSpriteRenderer = boatGameObject.GetComponent<SpriteRenderer>();
+        
+        _charonAnimator = charonGameObject.GetComponent<Animator>();
+        _charonSpriteRenderer = charonGameObject.GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -49,13 +58,17 @@ public class BoatController : MonoBehaviour
         //Subscribe to Loss Condition Events
         BoatCapacity.OnBoatDestroyed += VoyageLost;
         BoatCapacity.OnAllSoulsLost += VoyageLost;
+        //Subscribe to launch voyage input
+        InputManager.onLaunchVoyage += StartVoyage;
+        
     }
     
     private void OnDisable()
     {
-        //Subscribe to Loss Condition Events
         BoatCapacity.OnBoatDestroyed -= VoyageLost;
         BoatCapacity.OnAllSoulsLost -= VoyageLost;
+        InputManager.onLaunchVoyage -= StartVoyage;
+
     }
     
     void Update()
@@ -64,15 +77,8 @@ public class BoatController : MonoBehaviour
         if (!GameStateManager.Instance.IsGameActive()) return;
 
         UpdateAnimations();
-        
-        //If Not docked, don't check for launches.
-        if (currentDock is null) return;
-        
-        if (Input.GetKeyDown(voyageStartKey))
-        {
-            StartVoyage();
-        }
     }
+    
 
     private void UpdateAnimations()
     {
@@ -94,23 +100,33 @@ public class BoatController : MonoBehaviour
         //TODO Animator bool is currently unused.
         if (_boatMovement.currentDirection == Vector3.left)
         {
-            _animator.SetBool("FlipX", true);
-            _spriteRenderer.flipX = true;
+            _charonSpriteRenderer.flipX = true;
+            _boatSpriteRenderer.flipX = true;
             //Flip angle to correct sprite
             angleNormalized *= -1;
         }
         else
         {
-            _animator.SetBool("FlipX", false);
-            _spriteRenderer.flipX = false;
+            _charonSpriteRenderer.flipX = false;
+            _boatSpriteRenderer.flipX = false;
+
         }
         
         //Update animator float so the animations change based on the boat angle.
-        _animator.SetFloat("BoatAngleNormalized", angleNormalized);
+        _boatAnimator.SetFloat("BoatAngleNormalized", angleNormalized);
+        
+        //Update charon's animation speed based on rowing speed.
+        float animSpeed = charonRowSpeedCurve.Evaluate(_boatMovement.currentSpeed / _boatMovement.maxSpeed);
+        _charonAnimator.SetFloat("RowSpeed", (animSpeed * charonRowSpeedMultiplier) * _boatMovement.currentSpeed);
     }
 
     void StartVoyage()
     {
+        if (DialogueManager.Instance.isDialogueActive) return;
+        
+        //Not docked, cannot launch from nothing!
+        if (currentDock is null) return;
+
         //Starts Going from current dock
         currentDock = null;
         
@@ -129,12 +145,28 @@ public class BoatController : MonoBehaviour
         {
             //Completed Ferrying - Dropped off all Souls.
             case GameStateManager.GameStates.Ferrying:
+                // Play delivery sound
+                switch (_boatCapacity.CurrentLoad)
+                {
+                    case 1:
+                        AudioWrapper.Instance.PlaySound("delivery-many-souls");
+                        break;
+                    case < 50: // TODO remove hardcoded value
+                        AudioWrapper.Instance.PlaySound("deliver-single-soul");
+                        break;
+                    default:
+                        AudioWrapper.Instance.PlaySound("deliver-all-dem-souls");
+                        break;
+                }
+                
                 currentDock = rightDock;
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Returning;
                 break;
             
             //Completed Returning - Picking up new Souls.
             case GameStateManager.GameStates.Returning:
+                // Play collection sound
+                AudioWrapper.Instance.PlaySound("soul-collection");
                 currentDock = leftDock;
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Ferrying;
                 break;
@@ -169,6 +201,5 @@ public class BoatController : MonoBehaviour
                 _boatCapacity.DealDamageToBoat(other.GetComponent<Obstacle>().Damage);
             }
         }
-        
     }
 }

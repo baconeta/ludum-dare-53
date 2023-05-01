@@ -1,6 +1,9 @@
+using System;
 using Managers;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.OnScreen;
 
 public class HudController : MonoBehaviour
 {
@@ -8,16 +11,22 @@ public class HudController : MonoBehaviour
     [SerializeField] private TMP_Text totalSoulsLabel;
     [SerializeField] private TMP_Text carriedSoulsLabel;
     [SerializeField] private TMP_Text soulCapacityLabel;
+    [SerializeField] private GameObject joystickUI;
+    private bool isVisible;
 
     private void OnEnable()
     {
+        //GameState Show/Hide Hud
         GameStateManager.OnDialogueEnter += HideHud;
         GameStateManager.OnPauseEnter += HideHud;
         GameStateManager.OnPauseExit += ShowHud;
         GameStateManager.OnFerryingEnter += ShowHud;
         GameStateManager.OnReturningEnter += ShowHud;
         GameStateManager.OnEndEnter += HideHud;
+        
         BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
+        
+        InputManager.onControlSchemeChange += ToggleJoystick;
     }
 
     private void OnDisable()
@@ -28,18 +37,35 @@ public class HudController : MonoBehaviour
         GameStateManager.OnFerryingEnter -= ShowHud;
         GameStateManager.OnReturningEnter -= ShowHud;
         GameStateManager.OnEndEnter -= HideHud;
+        
         BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
+        
+        InputManager.onControlSchemeChange -= ToggleJoystick;
+
+    }
+
+    private void Start()
+    {
     }
 
     private void ShowHud()
     {
         ui.SetActive(true);
+        
     }
 
     private void HideHud()
     {
         ui.SetActive(false);
     }
+    
+
+    public void ToggleJoystick(bool toggleOn)
+    {
+       
+        joystickUI.SetActive(toggleOn);
+    }
+    
 
     public void PauseGame()
     {
