@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9051264444822484043
 MonoBehaviour:
@@ -89,16 +89,46 @@ MonoBehaviour:
         portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
     DialogueMid:
       linesOfDialogue:
-      - line: This is the middle story
+      - line: He's a natural! Look at all these poor souls.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Well done, champ.
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: '[Charon is too pale to blush, but he does so anyway]'
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: 'Listen, I''ve spoken to my brother. '
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: He's excited for you to visit Olympus.
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: Really?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Of course he is.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Everything will be arranged for your vacation.
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: You just need to deliver 10000 souls and earn their obols.
+        dialogueSide: 0
+        participantSpeaking: 1
+      - line: It'll be child's play for you, dear. We'll let you get to it.
         dialogueSide: 0
         participantSpeaking: 0
       participants:
-      - name: Charon
+      - name: Persephone
         dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Percephone
-        dialogueSide: 1
         portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+      - name: Charon
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
     DialogueEnd:
       linesOfDialogue:
       - line: Game over! No souls left
