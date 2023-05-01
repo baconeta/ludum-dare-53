@@ -738,7 +738,7 @@ MonoBehaviour:
       - line: How many souls have you delivered so far?
         dialogueSide: 1
         participantSpeaking: 0
-      - line: '[soul_count] souls and counting, sir!'
+      - line: '{{TOTAL_SOULS}} souls and counting, sir!'
         dialogueSide: 0
         participantSpeaking: 0
       - line: Not bad. At this rate, you'll get to Olympus in no time.
@@ -932,7 +932,7 @@ MonoBehaviour:
       - line: Ahoy, skipper, how goes the ferrying?
         dialogueSide: 1
         participantSpeaking: 0
-      - line: I see you've delived [soul_count] souls, so far.
+      - line: I see you've delived {{TOTAL_SOULS}} souls, so far.
         dialogueSide: 1
         participantSpeaking: 0
       - line: And I'm not finished, I intend to keep going!
