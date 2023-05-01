@@ -140,6 +140,8 @@ MonoBehaviour:
   stones:
   - {fileID: 5646802508109994502, guid: bb3420cf8f2ef2c49ba6517f52b811c0, type: 3}
   - {fileID: 5794485889600203970, guid: ab6b05f26ba7a3343a9f75dd2e16029d, type: 3}
+  - {fileID: 5794485889600203970, guid: 8fcc0abbbece0d341a82bd2e0337555c, type: 3}
+  - {fileID: 5794485889600203970, guid: 4010d58fbab8a41409be3e7daf1f0b27, type: 3}
   speedMultiplier: 1
   damageMultiplier: 1
 --- !u!1 &7717602589261682881
