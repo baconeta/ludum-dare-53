@@ -922,6 +922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3200759352879853606}
+  - component: {fileID: 5543739837234030869}
   m_Layer: 0
   m_Name: SoulContainer
   m_TagString: Untagged
@@ -949,3 +950,22 @@ Transform:
   m_Father: {fileID: 5955720895935086287}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5543739837234030869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9129207758391570986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e8050563ba439abd55c117dd74e9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSouls:
+  - {fileID: 3508536545787932137}
+  - {fileID: 252233705304586229}
+  - {fileID: 2906704674489137244}
+  - {fileID: 7352070974902162537}
+  - {fileID: 4568496671892172150}
+  numberOfSoulsPerVisual: 4
