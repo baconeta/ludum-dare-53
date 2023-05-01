@@ -36,7 +36,8 @@ public class CharonBarkManager : MonoBehaviour
         string[] barks = list.text.Split(delimiter);
 
         // Check if all barks have been used. If they have been, reset them.
-        if (PlayerPrefs.GetInt("Charon" + prefix + "BarksUsedCount") >= barks.Length)
+        int barksUsed = PlayerPrefs.GetInt("Charon" + prefix + "BarksUsedCount");
+        if (barksUsed >= barks.Length)
             ResetBarks(barks.Length, prefix);
 
         while (true)
@@ -49,6 +50,10 @@ public class CharonBarkManager : MonoBehaviour
                 // The bark has been used. Select another bark.
                 continue;
             }
+            // Increment the number of barks used.
+            PlayerPrefs.SetInt("Charon" + prefix + "BarksUsedCount", barksUsed + 1);
+            // Mark the bark as being used.
+            PlayerPrefs.SetInt("Charon" + prefix + "BarkBeenUsed" + index, 1);
             return barks[index];
         }
     }
