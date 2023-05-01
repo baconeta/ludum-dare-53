@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.36}
 --- !u!114 &7420436445539448903
 MonoBehaviour:
@@ -53,6 +53,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1762214577521317568}
   animator: {fileID: 3201527789740469057}
   isAttacking: 0
+  attackSortingOrder: 4
   seekDuration: 1
   idleDuration: 1
 --- !u!58 &2347569106271627889
@@ -131,15 +132,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5a770ffc76eaae54c8a7f28029308cd4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ea1a69c179cee6b4583832220d33a46b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.9333333, y: 2.7033334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &3201527789740469057

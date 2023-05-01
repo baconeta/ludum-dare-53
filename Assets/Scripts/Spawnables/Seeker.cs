@@ -13,6 +13,8 @@ namespace Spawnables
         private Transform attackAttach;
         private const float RotationSpeed = 5.0f;
         [SerializeField] private bool isAttacking;
+        [SerializeField]private int attackSortingOrder;
+        private int defaultSortingOrder;
 
         [Tooltip("The amount of time in seconds to spend seeking the target.")] [SerializeField]
         private float seekDuration = 1.0f;
@@ -23,7 +25,8 @@ namespace Spawnables
         private new void Start()
         {
             base.Start();
-            
+            //cache sorting order.
+            defaultSortingOrder = spriteRenderer.sortingOrder;
             if (!animator) animator = GetComponentInChildren<Animator>();
             if (!spriteRenderer) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             
@@ -101,8 +104,8 @@ namespace Spawnables
         public void StartAttackAnimation(Transform attach)
         {
             isAttacking = true;
-            //TODO replace with correct sorting order. I think the boat/Charon is on 3?
-            spriteRenderer.sortingOrder = 4;
+            
+            spriteRenderer.sortingOrder = attackSortingOrder;
             animator.SetBool("IsAttacking", true);
             animator.SetFloat("AttackSpeed", 1);
             attackAttach = attach;
@@ -110,6 +113,12 @@ namespace Spawnables
 
         public void EndAttackAnimation()
         {
+            //Reset anims
+            isAttacking = false;
+            spriteRenderer.sortingOrder = defaultSortingOrder;
+            animator.SetBool("IsAttacking", false);
+            animator.SetFloat("AttackSpeed", 0);
+            
             RemoveFromScene();
         }
     }
