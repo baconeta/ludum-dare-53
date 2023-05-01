@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9051264444822484043
 MonoBehaviour:
@@ -131,69 +131,218 @@ MonoBehaviour:
         portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
     DialogueEnd:
       linesOfDialogue:
-      - line: Game over! No souls left
+      - line: Sooo, how did it go? Did you meet them?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yeah, Lady Persephone was really nice.
         dialogueSide: 0
+        participantSpeaking: 0
+      - line: Then why the long face, my little ferryman?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Look at my boat, I got it all banged up.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Oh, that's nothing, honey.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Boaty will be right as rain whenever you need her.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Yeah, I guess.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Listen, you'll be getting a lot more visitors soon.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: So, chin up and keep at it.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: You'll be sipping Olympian nectar & wine in no time.
+        dialogueSide: 1
         participantSpeaking: 0
       participants:
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Nyx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
   - DialogueStart:
       linesOfDialogue:
-      - line: I am Charon, the Ferryman of the River Styx.
+      - line: Mom, you gotta stop showing up here.
         dialogueSide: 0
         participantSpeaking: 0
-      - line: I am... ALSO CHARON, the other Ferryman of the River Styx. Did you
-          think there was just one of us?
+      - line: The souls keep asking me if you're single.
         dialogueSide: 0
-        participantSpeaking: 1
-      - line: I am Persephone, Queen of the Underworld!
+        participantSpeaking: 0
+      - line: Oh? And what do you tell them?
         dialogueSide: 1
         participantSpeaking: 0
-      - line: Conversation can flow in any direction
+      - line: I tell them you have over 20 children.
         dialogueSide: 0
-        participantSpeaking: 1
-      - line: And the current speaker will be highlighted
+        participantSpeaking: 0
+      - line: Some people are into that ;)
         dialogueSide: 1
         participantSpeaking: 0
-      - line: And we can even both speak at once!
-        dialogueSide: 0
-        participantSpeaking: -1
-      - line: 'These narratives occur at OnStartEnter, OnFirstFerry, and OnEndEnter. '
+      - line: Oh my god, mom, go away, I have work to do.
         dialogueSide: 0
         participantSpeaking: 0
       participants:
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Percephone
+      - name: Nyx
         dialogueSide: 1
-        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+        portrait: {fileID: 21300000, guid: bb97e30c16f337a439b41233067ebcdd, type: 3}
     DialogueMid:
-      linesOfDialogue:
-      - line: This is the middle story
-        dialogueSide: 0
-        participantSpeaking: 0
-      participants:
-      - name: Charon
-        dialogueSide: 0
-        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
-      - name: Percephone
-        dialogueSide: 1
-        portrait: {fileID: 21300000, guid: 9a933e9f22615f2448835348a33f976b, type: 3}
+      linesOfDialogue: []
+      participants: []
     DialogueEnd:
       linesOfDialogue:
-      - line: Game over! No souls left
+      - line: Choppy waters?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: You again. You don't give up, do you?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You're one to talk.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Eurydice is long gone, you won't find her.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Give up your foolish quest.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: No, u.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Orpheus
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bd140f3395b21af40bf0e198fd8f20cd, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: Hey there, hotshot.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: It's all right, Lord Hades, you don't have to do this.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: The thing is, junior...
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I won't say a word to Lady Persephone.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Ah. Well see you later then, ace. Good luck and such.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Hades
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 5cea4dafc49cda74090a982a300aed48, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Has anyone told you that you suck at this?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Shut up.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You know you're adopted, right?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Shut UP. I'll show you next time.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Ooo, I'm scared.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Styx
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: 4bfc2c0f931f5c443816cd2bd350f37f, type: 3}
+  - DialogueStart:
+      linesOfDialogue:
+      - line: You know what's strange?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: What?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: This place is so depressing, but...
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: ...people are just dying to get in.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: ...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: :D
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: ...
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: Goodbye.
         dialogueSide: 0
         participantSpeaking: 0
       participants:
       - name: Charon
         dialogueSide: 0
         portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Orpheus
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: bd140f3395b21af40bf0e198fd8f20cd, type: 3}
+    DialogueMid:
+      linesOfDialogue: []
+      participants: []
+    DialogueEnd:
+      linesOfDialogue:
+      - line: Once you're done fishing your boat out of the water, can you ask your
+          sister when she's free to hang out?
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: I can't keep track of when you guys are fighting and when you've made
+          up.
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: It's not my fault you don't have any friends.
+        dialogueSide: 1
+        participantSpeaking: 0
+      - line: Tell me, how many colours is a rainbow supposed to have again?
+        dialogueSide: 0
+        participantSpeaking: 0
+      - line: You can be such a cyclops sometimes. Just ask your sister and let me
+          know.
+        dialogueSide: 1
+        participantSpeaking: 0
+      participants:
+      - name: Charon
+        dialogueSide: 0
+        portrait: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
+      - name: Iris
+        dialogueSide: 1
+        portrait: {fileID: 21300000, guid: a3db2f1e520961440a5cffe85229cf2f, type: 3}
   currentDialogueLine: 0
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
   inactiveSpeakerSize: 0
-  overrideStoryElement: 0
-  element: 0
+  overrideStoryElement: 1
+  element: 3
   nextLine: 9
