@@ -29,11 +29,11 @@ Transform:
   m_GameObject: {fileID: 5794485889600203970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.3, y: 15.2, z: 0}
-  m_LocalScale: {x: 6, y: 6, z: 6}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3076462433027442508
 SpriteRenderer:
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d51370fb05c65e4290f44c8ba658105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bumpForce: 2
 --- !u!60 &7990570166855386595
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class BoatMovement : MonoBehaviour
 
     [Tooltip("Boat Acceleration in m/s")]
     public float acceleration;
-
+    
     [Tooltip("Boat rotational speed in degrees per second.")]
     public float rotationSpeed;
 
@@ -40,9 +40,6 @@ public class BoatMovement : MonoBehaviour
 
     [Range(0, 10f)][Tooltip("When approaching a vertical limit, the rotational speed is multiplied by this to correct.")]
     public float limitRotationMultiplier = 2f;
-
-    public KeyCode rotateUpwardsKeyCode;
-    public KeyCode rotateDownwardsKeyCode;
 
     private Camera _mainCamera;
     private float _screenHeight;
@@ -100,11 +97,22 @@ public class BoatMovement : MonoBehaviour
         //Is the game currently active? If not, break update.
         if (!GameStateManager.Instance.IsGameActive()) return;
 
+        //Only rotate if the current state is ferrying or returning
+        if (isMoving)
+        {
+            CalculateBoatRotation();
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        //Is the game currently active? If not, break update.
+        if (!GameStateManager.Instance.IsGameActive()) return;
+
         //Only move if the current state is ferrying or returning
         if (isMoving)
         {
             CalculateBoatMovement();
-            CalculateBoatRotation();
         }
     }
 
@@ -153,11 +161,27 @@ public class BoatMovement : MonoBehaviour
             currentSpeed = Mathf.Min(currentSpeed, maxSpeed);
         }
         transform.localPosition = Vector3.zero;
+        
+        //TODO Movement is currently in transform.Translate, which does not account for collision. Change to collision.
         //Move forwards 
-        transform.Translate(currentSpeed * Time.deltaTime * currentDirection);
+        Vector3 moveVector = currentDirection.normalized;
 
-        //Clamp transform.y to vertical limits
-        transform.position = new Vector3(transform.position.x,
+        //Rotate moveVector by current angle.
+        moveVector = transform.rotation * moveVector;
+        //Multiply direction by a magnitude speed
+        moveVector *= currentSpeed * Time.deltaTime;
+        //Zero out Z axis
+        moveVector = (Vector2)moveVector;
+        
+        //transform.Translate(currentSpeed * Time.deltaTime * currentDirection);
+        Rigidbody2D rb2d = transform.parent.GetComponent<Rigidbody2D>();
+           Debug.Log(rb2d);
+           rb2d.MovePosition(transform.position += moveVector);
+           // transform.position = Vector3.MoveTowards(transform.parent.position,
+           //     transform.parent.position += currentDirection, currentSpeed * Time.deltaTime);
+            
+           //Clamp transform.y to vertical limits
+            transform.position = new Vector3(transform.position.x,
             Mathf.Clamp(transform.position.y, verticalLimit.x, verticalLimit.y),
             transform.position.z);
 
@@ -166,8 +190,6 @@ public class BoatMovement : MonoBehaviour
 
     private void CalculateBoatRotation()
     {
-        //Rotation From
-        Quaternion currentRotation = transform.rotation;
         //Rotation to
         Quaternion targetRotation = Quaternion.identity;
         //Rotation Speed with Calculations
@@ -206,7 +228,7 @@ public class BoatMovement : MonoBehaviour
         }
 
         //Set rotation
-        transform.rotation = Quaternion.RotateTowards(currentRotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, calculatedRotationSpeed * Time.deltaTime);
 
     }
 }

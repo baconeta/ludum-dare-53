@@ -186,7 +186,7 @@ public class BoatController : MonoBehaviour
         GameStateManager.Instance.CurrentState = GameStateManager.GameStates.End;
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+    public void OnCollisionEnter2D(Collision2D other)
     {
         //If not docked docked, then check for collisions
         if (currentDock is null)
@@ -199,7 +199,7 @@ public class BoatController : MonoBehaviour
             else if (other.gameObject.CompareTag("Obstacle"))
             {
                 OnDamageTaken?.Invoke();
-                _boatCapacity.DealDamageToBoat(other.GetComponent<Obstacle>().Damage);
+                _boatCapacity.DealDamageToBoat(other.transform.GetComponent<Obstacle>().Damage);
 
                 var seeker = other.gameObject.GetComponent<Seeker>();
                 if (seeker != null)
