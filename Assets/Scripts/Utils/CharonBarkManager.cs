@@ -4,17 +4,18 @@ using Random = UnityEngine.Random;
 
 public class CharonBarkManager : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("The comma-separated list of damage-provoked barks to pull from. Charon is cool.")]
+    [SerializeField] [Tooltip("The comma-separated list of damage-provoked barks to pull from. Charon is cool.")]
     private TextAsset listOfDamageBarks;
-    [SerializeField]
-    [Tooltip("The comma-separated list of ambience-provoked barks to pull from. Charon is great.")]
+
+    [SerializeField] [Tooltip("The comma-separated list of ambience-provoked barks to pull from. Charon is great.")]
     private TextAsset listOfAmbienceBarks;
+
     [SerializeField]
-    [Tooltip("The comma-separated list of DUET damage-provoked barks to pull from. These will be played with a soul. Charon is epic.")]
+    [Tooltip(
+        "The comma-separated list of DUET damage-provoked barks to pull from. These will be played with a soul. Charon is epic.")]
     private TextAsset listOfDuetDamageBarks;
-    [SerializeField]
-    [Tooltip("The character sequence to use to split barks by. Charon is the best.")]
+
+    [SerializeField] [Tooltip("The character sequence to use to split barks by. Charon is the best.")]
     private string delimiter = ",";
 
     private string[] ambienceBarks;
@@ -54,12 +55,12 @@ public class CharonBarkManager : MonoBehaviour
         int index;
         while (true)
         {
-            index = Random.Range(0, barks.Length);
             // Select a random bark.
-            Debug.Log(barks.Length + " | " + index);
+            index = Random.Range(0, barks.Length);
             // Check if it has been used.
             if (PlayerPrefs.GetInt("Charon" + prefix + "BarkBeenUsed" + index) != 1) break;
         }
+
         // Increment the number of barks used.
         PlayerPrefs.SetInt("Charon" + prefix + "BarksUsedCount", barksUsed + 1);
         // Mark the bark as being used.
@@ -75,5 +76,4 @@ public class CharonBarkManager : MonoBehaviour
             PlayerPrefs.DeleteKey("Charon" + prefix + "BarkBeenUsed" + i);
         }
     }
-
 }
