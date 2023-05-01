@@ -1,5 +1,7 @@
+using System;
 using System.Text;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 
 public class NameGenerator : MonoBehaviour
@@ -19,6 +21,15 @@ public class NameGenerator : MonoBehaviour
     [Tooltip("The character sequence to add between the adjective and the noun.")]
     private string separator = "";
 
+    private string[] adjectivesList;
+    private string[] nounsList;
+
+    private void Start()
+    {
+        adjectivesList = listOfAdjectives.text.Split(delimiter);
+        nounsList =listOfNouns.text.Split(delimiter);
+    }
+
     public string GenerateName()
     {
         // Get random name
@@ -32,13 +43,12 @@ public class NameGenerator : MonoBehaviour
 
     private string GetRandomAdjectiveFromFile()
     {
-        string[] words = listOfAdjectives.text.Split(delimiter);
-        return words[Random.Range(0, words.Length)];
+        return adjectivesList[Random.Range(0, adjectivesList.Length)];
     }
 
     private string GetRandomNounFromFile()
     {
-        string[] words = listOfNouns.text.Split(delimiter);
-        return words[Random.Range(0, words.Length)];
+
+        return nounsList[Random.Range(0, nounsList.Length)];
     }
 }

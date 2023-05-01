@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CharonBarkManager : MonoBehaviour
 {
@@ -15,47 +17,54 @@ public class CharonBarkManager : MonoBehaviour
     [Tooltip("The character sequence to use to split barks by. Charon is the best.")]
     private string delimiter = ",";
 
+    private string[] ambienceBarks;
+    private string[] CharonBark;
+    private string[] DamageBarks;
+
+    private void Start()
+    {
+        ambienceBarks = listOfAmbienceBarks.text.Split(delimiter);
+        CharonBark = listOfAmbienceBarks.text.Split(delimiter);
+        DamageBarks = listOfDamageBarks.text.Split(delimiter);
+    }
+
     public string GetCharonDamageBark()
     {
-        return GetCharonBark(listOfDamageBarks, "Damage");
+        return GetCharonBark(DamageBarks, "Damage");
     }
 
     public string GetCharonAmbienceBark()
     {
-        return GetCharonBark(listOfAmbienceBarks, "Ambience");
+        return GetCharonBark(CharonBark, "Ambience");
     }
 
     public string GetCharonDuetDamageBark()
     {
-        return GetCharonBark(listOfAmbienceBarks, "DuetDamage");
+        return GetCharonBark(ambienceBarks, "DuetDamage");
     }
 
-    private string GetCharonBark(TextAsset list, string prefix)
+    private string GetCharonBark(string[] barks, string prefix)
     {
         // Load barks.
-        string[] barks = list.text.Split(delimiter);
-
         // Check if all barks have been used. If they have been, reset them.
         int barksUsed = PlayerPrefs.GetInt("Charon" + prefix + "BarksUsedCount");
         if (barksUsed >= barks.Length)
             ResetBarks(barks.Length, prefix);
 
+        int index;
         while (true)
         {
+            index = Random.Range(0, barks.Length);
             // Select a random bark.
-            int index = Random.Range(0, barks.Length);
+            Debug.Log(barks.Length + " | " + index);
             // Check if it has been used.
-            if (PlayerPrefs.GetInt("Charon" + prefix + "BarkBeenUsed" + index) == 1)
-            {
-                // The bark has been used. Select another bark.
-                continue;
-            }
-            // Increment the number of barks used.
-            PlayerPrefs.SetInt("Charon" + prefix + "BarksUsedCount", barksUsed + 1);
-            // Mark the bark as being used.
-            PlayerPrefs.SetInt("Charon" + prefix + "BarkBeenUsed" + index, 1);
-            return barks[index];
+            if (PlayerPrefs.GetInt("Charon" + prefix + "BarkBeenUsed" + index) != 1) break;
         }
+        // Increment the number of barks used.
+        PlayerPrefs.SetInt("Charon" + prefix + "BarksUsedCount", barksUsed + 1);
+        // Mark the bark as being used.
+        PlayerPrefs.SetInt("Charon" + prefix + "BarkBeenUsed" + index, 1);
+        return barks[index];
     }
 
     private void ResetBarks(int length, string prefix)
