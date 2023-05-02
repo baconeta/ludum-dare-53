@@ -93,6 +93,7 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
 
     private void Awake()
     {
+        base.Awake();
         _dialogueUI = FindObjectOfType<DialogueUI>();
     }
 

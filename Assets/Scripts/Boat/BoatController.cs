@@ -62,7 +62,6 @@ public class BoatController : MonoBehaviour
         BoatCapacity.OnAllSoulsLost += VoyageLost;
         //Subscribe to launch voyage input
         InputManager.onLaunchVoyage += StartVoyage;
-        
     }
     
     private void OnDisable()
