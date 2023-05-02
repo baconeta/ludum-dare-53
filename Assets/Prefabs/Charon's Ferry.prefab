@@ -320,6 +320,7 @@ MonoBehaviour:
   lostCapacityOnDamage: 1
   doesStartLoaded: 0
   doesLoseCapacityWhileContainsSouls: 0
+  perSoulDamage: 30
   _currentCapacity: 0
   _currentLoad: 0
   _soulsSaved: 0
