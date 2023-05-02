@@ -1823,6 +1823,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1802936434}
     m_Modifications:
+    - target: {fileID: 1057402561377204124, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3330392648339135595, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
       propertyPath: m_Name
       value: BarksContainer
@@ -1869,6 +1873,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4081218319016412354, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5381191166547175011, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8906751614042367217, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
