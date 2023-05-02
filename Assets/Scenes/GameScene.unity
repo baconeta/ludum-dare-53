@@ -1180,45 +1180,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4729720632475238087, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729720632475238087, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729720632475238087, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729720632475238087, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4729720632475238087, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6878436381113255269, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669261750294808434, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669261750294808434, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669261750294808434, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7669261750294808434, guid: 075364a39eea99d40ba7887bbae52abe, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1788,7 +1752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: capacityRestoredOnSuccessfulFerry
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7914235876027768591, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: rotationLimits.y
