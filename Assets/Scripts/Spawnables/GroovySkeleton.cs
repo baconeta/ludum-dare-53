@@ -1,8 +1,4 @@
 using Managers;
-using Spawnables;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Spawnables
@@ -15,8 +11,7 @@ namespace Spawnables
         public GameObject throwPrefab;
         public Transform throwStartPoint;
         public bool triggerOnce;
-        [Tooltip("Only if TriggerOnce=False")]
-        public float triggerCooldown;
+        [Tooltip("Only if TriggerOnce=False")] public float triggerCooldown;
         public float cooldown;
 
         // Start is called before the first frame update
@@ -36,12 +31,11 @@ namespace Spawnables
                     if (triggerOnce)
                     {
                         if (!hasThrown)
-                            ///TODO Replace with animation event
+                            //TODO Replace with animation event
                             Throw();
                     }
                     else if (cooldown <= 0)
                     {
-
                         Throw();
                     }
                 }
@@ -51,9 +45,6 @@ namespace Spawnables
                     cooldown -= Time.deltaTime;
                     if (cooldown < 0) cooldown = 0;
                 }
-
-
-
             }
         }
 
