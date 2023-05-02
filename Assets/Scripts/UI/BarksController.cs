@@ -16,6 +16,8 @@ public class BarksController : MonoBehaviour
     [SerializeField] private Sprite soulImage;
     [SerializeField] private float responseDelaySeconds = 1f;
     [SerializeField] private int percentChanceToBeSoloBark = 50;
+    [SerializeField] private float minTimeBarkOnScreen = 3f; // 16 chars
+    [SerializeField] private float maxTimeBarkOnScreen = 5f; // 72 chars
 
     private bool _isBarkOnScreen;
     private float _timeLastBarkClosed;
@@ -104,7 +106,9 @@ public class BarksController : MonoBehaviour
 
     private float CalculateTimeOnScreen(string text)
     {
-        return 3f;
+        var normalizedValue = Mathf.InverseLerp(16, 72, text.Length);
+        var mappedValue = Mathf.Lerp(minTimeBarkOnScreen, maxTimeBarkOnScreen, normalizedValue);
+        return mappedValue;
     }
 
     private Sprite GetSpeakerSprite(string speaker)
