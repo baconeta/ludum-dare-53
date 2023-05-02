@@ -5,6 +5,7 @@ namespace Spawnables {
     public class Yeet : Obstacle {
         private GameObject _target;
         public float speed;
+        public float leadMultiplier = 3;
         public Vector3 _direction;
         private Vector3 _end;
         private bool _triggered;
@@ -33,7 +34,7 @@ namespace Spawnables {
             _circleCollider2D = GetComponent<CircleCollider2D>();
             _target = GameObject.FindWithTag("Ferry");
 
-            _direction = _target.transform.position + (Vector3)_target.GetComponent<Rigidbody2D>().velocity * 10 - transform.position;
+            _direction = _target.transform.position + (Vector3)_target.GetComponent<Rigidbody2D>().velocity * leadMultiplier - transform.position;
             _end = _target.transform.position;
 
             _triggered = true;
