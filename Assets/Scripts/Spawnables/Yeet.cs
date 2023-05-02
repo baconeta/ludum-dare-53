@@ -9,8 +9,8 @@ namespace Spawnables {
         private Vector3 _end;
         private bool _triggered;
         public float disabledDuration;
-        private CircleCollider2D _circleCollider2D;
-        private Rigidbody2D _Rigidbody2D;
+        public CircleCollider2D _circleCollider2D;
+        public Rigidbody2D _Rigidbody2D;
 
         private void Start() {
             _Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -40,7 +40,7 @@ namespace Spawnables {
             StartCoroutine(enableCollision());
 
             if (!_Rigidbody2D) _Rigidbody2D = GetComponent<Rigidbody2D>();
-            _Rigidbody2D.AddForce(_direction.normalized * speed);
+            _Rigidbody2D.AddForce(_direction.normalized * speed, ForceMode2D.Impulse);
             // Calculate end once based on where the target is
         }
 
