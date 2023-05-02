@@ -27,6 +27,8 @@ public class BarksController : MonoBehaviour
         BoatController.OnDamageTaken += HitSomething;
         BoatController.OnVoyageStart += StartBarkTimers;
         BoatController.OnVoyageComplete += StopBarkTimers;
+        BoatCapacity.OnBoatDestroyed += StopBarkTimers;
+        BoatCapacity.OnAllSoulsLost += StopBarkTimers;
         GameStateManager.OnPauseEnter += StopBarkTimers;
         GameStateManager.OnPauseExit += StartBarkTimers;
         DialogueManager.OnDialogueStart += CloseAllPopups;
@@ -37,6 +39,8 @@ public class BarksController : MonoBehaviour
         BoatController.OnDamageTaken -= HitSomething;
         BoatController.OnVoyageStart -= StartBarkTimers;
         BoatController.OnVoyageComplete -= StopBarkTimers;
+        BoatCapacity.OnBoatDestroyed -= StopBarkTimers;
+        BoatCapacity.OnAllSoulsLost -= StopBarkTimers;
         GameStateManager.OnPauseEnter -= StopBarkTimers;
         GameStateManager.OnPauseExit -= StartBarkTimers;
         DialogueManager.OnDialogueStart -= CloseAllPopups;
@@ -110,7 +114,7 @@ public class BarksController : MonoBehaviour
 
     public void HitSomething()
     {
-
+        if (!_canBark) return;
         TryBark(true);
     }
 
