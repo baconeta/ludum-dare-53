@@ -242,7 +242,7 @@ Transform:
   m_Children:
   - {fileID: 6033720904199250484}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1708205306265590225
 MonoBehaviour:
@@ -257,6 +257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 7926596075252342901}
+  soulsCount: {fileID: 5075706131137698362}
+  boatCapacity: {fileID: 0}
 --- !u!1 &1316714779761170191
 GameObject:
   m_ObjectHideFlags: 0

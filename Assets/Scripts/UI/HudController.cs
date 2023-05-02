@@ -1,9 +1,6 @@
-using System;
 using Managers;
 using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.OnScreen;
 
 public class HudController : MonoBehaviour
 {
@@ -12,7 +9,11 @@ public class HudController : MonoBehaviour
     [SerializeField] private TMP_Text carriedSoulsLabel;
     [SerializeField] private TMP_Text soulCapacityLabel;
     [SerializeField] private GameObject joystickUI;
-    private bool isVisible;
+    private bool _isVisible;
+
+    [SerializeField] private Animator capacityAnimator;
+    [SerializeField] private Animator totalAnimator;
+    private static readonly int SoulsUpdated = Animator.StringToHash("SoulsUpdated");
 
     private void OnEnable()
     {
@@ -27,6 +28,9 @@ public class HudController : MonoBehaviour
         BoatCapacity.OnSoulsChanged += UpdateSoulDisplays;
         
         InputManager.onControlSchemeChange += ToggleJoystick;
+
+        BoatController.OnVoyageComplete += UpdateTotal;
+        BoatController.OnDamageTaken += UpdateCapacity;
     }
 
     private void OnDisable()
@@ -41,11 +45,9 @@ public class HudController : MonoBehaviour
         BoatCapacity.OnSoulsChanged -= UpdateSoulDisplays;
         
         InputManager.onControlSchemeChange -= ToggleJoystick;
-
-    }
-
-    private void Start()
-    {
+        
+        BoatController.OnVoyageComplete -= UpdateTotal;
+        BoatController.OnDamageTaken -= UpdateCapacity;
     }
 
     private void ShowHud()
@@ -87,6 +89,19 @@ public class HudController : MonoBehaviour
         {
             PauseGame();
         }
+    }
+
+    private void UpdateTotal() {
+        // We check for returning here because the state is changed before the event is fired
+        if (GameStateManager.Instance.CurrentState != GameStateManager.GameStates.Returning) return;
+        
+        totalAnimator.SetTrigger(SoulsUpdated);
+    }
+
+    private void UpdateCapacity() {
+        if (!GameStateManager.Instance.IsGameActive()) return;
+        
+        capacityAnimator.SetTrigger(SoulsUpdated);
     }
 
     private void UpdateSoulDisplays(SoulAmounts soulAmounts)

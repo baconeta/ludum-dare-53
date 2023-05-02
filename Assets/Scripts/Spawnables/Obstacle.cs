@@ -2,6 +2,7 @@ using CustomEditor;
 using Managers;
 using ObjectPooling;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Spawnables
 {
@@ -21,6 +22,8 @@ namespace Spawnables
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
             _poolable = GetComponent<Poolable>();
             _length = GetComponent<Renderer>().bounds.size.y;
+
+            SceneManager.activeSceneChanged += (_,_) => RemoveFromScene(); //Hack to force removal at end of game
         }
 
         private void Update()
@@ -75,10 +78,11 @@ namespace Spawnables
         {
             currentSpeed = initialSpeed;
             damage = 1;
+            transform.position = new Vector3(-1000, -1000);
             if (_poolable)
                 _poolable.Recycle();
             else
                 Destroy(gameObject);
+            }
         }
     }
-}

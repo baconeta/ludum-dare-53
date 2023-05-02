@@ -62,7 +62,6 @@ public class BoatController : MonoBehaviour
         BoatCapacity.OnAllSoulsLost += VoyageLost;
         //Subscribe to launch voyage input
         InputManager.onLaunchVoyage += StartVoyage;
-        
     }
     
     private void OnDisable()
@@ -201,14 +200,15 @@ public class BoatController : MonoBehaviour
             }
             else if (other.gameObject.CompareTag("Obstacle"))
             {
+                // Play obstacle hit sound
+                AudioWrapper.Instance.PlaySound("ship-hit");
+                
                 OnDamageTaken?.Invoke();
                 _boatCapacity.DealDamageToBoat(other.transform.GetComponent<Obstacle>().Damage);
 
                 var seeker = other.gameObject.GetComponent<Seeker>();
                 if (seeker != null)
                     seeker.StartAttackAnimation(seekerAttach);
-
-
             }
         }
     }
