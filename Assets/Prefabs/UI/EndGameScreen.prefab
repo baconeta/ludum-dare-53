@@ -257,6 +257,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ui: {fileID: 7926596075252342901}
+  soulsCount: {fileID: 5075706131137698362}
+  boatCapacity: {fileID: 0}
 --- !u!1 &1316714779761170191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,7 +1622,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6033720904199250484
 RectTransform:
   m_ObjectHideFlags: 0

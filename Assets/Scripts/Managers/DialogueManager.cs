@@ -5,25 +5,26 @@ using UnityEngine;
 using Utils;
 using Random = UnityEngine.Random;
 
-[Serializable][Tooltip("The side the dialogue will appear on")]
+[Serializable]
+[Tooltip("The side the dialogue will appear on")]
 public enum DialogueSides
 {
     Left = 0,
     Right = 1,
-
 }
+
 [Serializable]
 public struct Participant
 {
     public string name;
-    [Tooltip("0 = Left, 1 = Right")]
-    public DialogueSides dialogueSide;
+    [Tooltip("0 = Left, 1 = Right")] public DialogueSides dialogueSide;
     public Sprite portrait;
 }
 
-[Serializable][Tooltip("A line of Dialogue made up of:" +
-                       "\nA string line that is delivered" +
-                       "\nThe participant saying the line.")]
+[Serializable]
+[Tooltip("A line of Dialogue made up of:" +
+         "\nA string line that is delivered" +
+         "\nThe participant saying the line.")]
 public struct DialogueLine
 {
     public bool IsEqual(DialogueLine lineToTestAgainst)
@@ -35,6 +36,7 @@ public struct DialogueLine
 
     public string line;
     public DialogueSides dialogueSide;
+
     [Tooltip("-1 = All on side" +
              "\n0 = Left-most Participant" +
              "\n1 = 2nd, 2 = 3rd, etc...")]
@@ -45,6 +47,7 @@ public struct DialogueLine
 public struct DialogueStruct
 {
     public List<DialogueLine> linesOfDialogue;
+
     [Tooltip("Element 0 is the left portrait. Element 1 is the right portrait.")]
     public List<Participant> participants;
 }
@@ -54,16 +57,17 @@ public struct DialogueGroup
 {
     [Tooltip("DialogueStart is ran on Game Start")]
     public DialogueStruct DialogueStart;
+
     [Tooltip("DialogueMid is only used in Element 0 of DialogueGroups (Player's very first run)" +
              "/n DialogueMid is ran on First Ferry")]
     public DialogueStruct DialogueMid;
+
     [Tooltip("DialogueStart is ran on Game End")]
     public DialogueStruct DialogueEnd;
 }
 
 public class DialogueManager : EverlastingSingleton<DialogueManager>
 {
-
     [Tooltip("Groups of dialogue that are selected at game start." +
              "\nElement 0 is played on the Player's very first run" +
              "\nOther elements are selected at random")]
@@ -77,6 +81,9 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
     public bool isDialogueActive;
     public Color inactiveSpeakerColor;
     public float inactiveSpeakerSize;
+
+    public bool overrideStoryElement;
+    public int element;
 
     public KeyCode nextLine;
     private DialogueUI _dialogueUI;
@@ -111,7 +118,7 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
 
     private void Start()
     {
-        if(!_dialogueUI) _dialogueUI = FindObjectOfType<DialogueUI>();
+        if (!_dialogueUI) _dialogueUI = FindObjectOfType<DialogueUI>();
     }
 
     private void SelectDialogueGroup()
@@ -126,13 +133,21 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
         else
         {
             // Get a random dialogue group (Excluding element 0). 
-            newDialogueGroup = DialogueGroups[Random.Range(1, DialogueGroups.Count)];
+            if (overrideStoryElement)
+            {
+                newDialogueGroup = DialogueGroups[element];
+            }
+            else
+            {
+                newDialogueGroup = DialogueGroups[Random.Range(1, DialogueGroups.Count)];
+            }
         }
 
         DialogueStart = newDialogueGroup.DialogueStart;
         DialogueMid = newDialogueGroup.DialogueMid;
         DialogueEnd = newDialogueGroup.DialogueEnd;
     }
+
     public void StartDialogue()
     {
         GameStateManager.GameStates previousState = GameStateManager.Instance.PreviousState;
@@ -145,7 +160,7 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
         //Clear current dialogue.
         currentDialogue = new DialogueStruct();
         currentDialogueLine = 0;
-        
+
         //If the game is not ending
         if (currentState != GameStateManager.GameStates.End)
         {
@@ -198,14 +213,15 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
     {
         NextLine();
     }
+
     public void NextLine()
     {
         //If the line doesnt exist, dont do it.
-        if(currentDialogue.linesOfDialogue == null) return;
-        
+        if (currentDialogue.linesOfDialogue == null) return;
+
         //Increment currentDialogueLine
         currentDialogueLine++;
-        
+
         //Has it passed the last line?
         if (currentDialogueLine >= currentDialogue.linesOfDialogue.Count)
         {
@@ -228,5 +244,4 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
     {
         return isDialogueActive;
     }
-
 }
