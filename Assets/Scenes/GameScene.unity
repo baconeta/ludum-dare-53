@@ -999,7 +999,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
       propertyPath: allSoundData.Array.data[9].name
-      value: 'ship-hit '
+      value: ship-hit
       objectReference: {fileID: 0}
     - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
       propertyPath: allSoundData.Array.data[9].mixer
@@ -1010,8 +1010,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: da21ecd9a86a698419b556b18eb9eb32, type: 3}
     - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
+      propertyPath: allSoundData.Array.data[0].volume
+      value: 0.346
+      objectReference: {fileID: 0}
+    - target: {fileID: 783654535267997578, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
       propertyPath: allSoundData.Array.data[9].volume
-      value: 0.177
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 4629262566429204678, guid: 17f4b0f6aa0dcea41a71ca43a789d2fe, type: 3}
       propertyPath: m_Name
