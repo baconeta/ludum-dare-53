@@ -255,8 +255,7 @@ GameObject:
   - component: {fileID: 6350496679652475636}
   - component: {fileID: 7914235876027768591}
   - component: {fileID: 6360086134822798650}
-  - component: {fileID: 3606267885463947553}
-  - component: {fileID: 4401676665610264884}
+  - component: {fileID: 8634361829531875814}
   m_Layer: 6
   m_Name: Scripts
   m_TagString: Ferry
@@ -295,14 +294,14 @@ MonoBehaviour:
   currentSpeed: 0
   acceleration: 4
   rotationSpeed: 50
-  rotationLimits: {x: 10, y: -20}
+  rotationLimits: {x: 10, y: -30}
   alwaysRotateToBottom: 0
   currentDirection: {x: 0, y: 0, z: 0}
   isMoving: 0
   verticalLimit: {x: 0, y: 0}
-  limitBorderPercentage: 0.9
+  limitBorderPercentage: 0.919
   limitRotationMultiplier: 2
-  outOfBoundsBumpForce: 3000
+  outOfBoundsBumpForce: 5000
 --- !u!114 &6360086134822798650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,30 +316,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingCapacity: 20
   capacityRestoredOnSuccessfulFerry: 0
+  loseObstacleDamageOnCollision: 1
+  lostCapacityOnDamage: 1
   doesStartLoaded: 0
   doesLoseCapacityWhileContainsSouls: 0
   _currentCapacity: 0
   _currentLoad: 0
   _soulsSaved: 0
   _soulsDamned: 0
---- !u!114 &3606267885463947553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926401740268917575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7661df05fb6e95741b0e79b12936dcfe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonLabel: Press to Test Event
-  onClickEvent:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!61 &4401676665610264884
-BoxCollider2D:
+--- !u!70 &8634361829531875814
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -371,19 +356,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.61}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 13.88, y: 10.6}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 7.83, y: 3.21}
-  m_EdgeRadius: 0
+  m_Offset: {x: 0, y: -2.56}
+  m_Size: {x: 7.97, y: 2.34}
+  m_Direction: 1
 --- !u!1 &8925401137294428039
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,18 +419,18 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0

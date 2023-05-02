@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2847470636963782075
 MonoBehaviour:
@@ -52,7 +52,7 @@ MonoBehaviour:
   delimiter1: ;
   delimiter2: ':'
   _specials: {fileID: 4900000, guid: aa28f747843b74240b15fa0176b9f514, type: 3}
-  _specialSoulChance: 0
+  _specialSoulChance: 0.05
 --- !u!114 &3707989494779104516
 MonoBehaviour:
   m_ObjectHideFlags: 0
