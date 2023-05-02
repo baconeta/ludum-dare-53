@@ -15,6 +15,12 @@ public class BoatCapacity : MonoBehaviour
     [Tooltip("The amount of capacity restored upon ferrying souls successfully.")]
     [SerializeField]
     private int capacityRestoredOnSuccessfulFerry = 1;
+    
+    public bool loseObstacleDamageOnCollision;
+    [Tooltip("IF loseObstacleDamageOnCollision is false." +
+        "\nThe amount of capacity lost upon hitting an obstacle with no souls.")]
+    [SerializeField]
+    private int lostCapacityOnDamage = 1;
 
     [Tooltip("**Currently Disabled: See Start Method** Does the boat start loaded to capacity? or does it start empty?")]
     [SerializeField] [ReadOnlyAttribute]
@@ -133,7 +139,8 @@ public class BoatCapacity : MonoBehaviour
         // If we have no souls on the ferry, and the game is still running, we must be Returning.
         if (CurrentLoad == 0)
         {
-            DecreaseCapacity();
+            if (loseObstacleDamageOnCollision) damageToTake = lostCapacityOnDamage;
+            DecreaseCapacity(damageToTake);
         }
         // Otherwise, we must be Ferrying.
         else

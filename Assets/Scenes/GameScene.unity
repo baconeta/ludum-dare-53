@@ -459,9 +459,25 @@ PrefabInstance:
       value: SpawnManager
       objectReference: {fileID: 0}
     - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.size
-      value: 4
+      propertyPath: stoneLimit
+      value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
+      propertyPath: spawnInterval
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
+      propertyPath: speedMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
+      propertyPath: stones.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
+      propertyPath: stones.Array.data[4]
+      value: 
+      objectReference: {fileID: 3379933513473169060, guid: 8a763ab14f849974db28e8024d32db42, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1088,87 +1104,16 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.685, y: -5.16}
-      - {x: 0.655, y: -5.12}
-      - {x: 0.59499997, y: -5.0699997}
-      - {x: 0.555, y: -5}
-      - {x: 0.49499997, y: -4.91}
-      - {x: 0.465, y: -4.8399997}
-      - {x: 0.345, y: -4.72}
-      - {x: 0.385, y: -4.7}
-      - {x: 0.465, y: -4.64}
-      - {x: 0.42499998, y: -4.56}
-      - {x: 0.39499998, y: -4.5699997}
-      - {x: 0.325, y: -4.6}
-      - {x: 0.24499999, y: -4.46}
-      - {x: 0.155, y: -4.36}
-      - {x: 0.114999995, y: -4.25}
-      - {x: 0.095, y: -4.13}
-      - {x: 0.085, y: -4.13}
-      - {x: 0.095, y: -3.83}
-      - {x: 0.13499999, y: -3.77}
-      - {x: 0.125, y: -3.6999998}
-      - {x: 0.155, y: -3.6499999}
-      - {x: 0.155, y: -3.49}
-      - {x: 0.205, y: -3.32}
-      - {x: 0.265, y: -3.1599998}
-      - {x: 0.60499996, y: -2.31}
-      - {x: 0.715, y: -2.05}
-      - {x: 0.765, y: -1.89}
-      - {x: 0.85499996, y: -1.56}
-      - {x: 0.865, y: -1.43}
-      - {x: 0.91499996, y: -1.0799999}
-      - {x: 0.92499995, y: -0.90999997}
-      - {x: 0.935, y: -0.62}
-      - {x: 0.955, y: -0.52}
-      - {x: 0.955, y: -0.14999999}
-      - {x: 0.945, y: -0.07}
-      - {x: 0.91499996, y: 0.19999999}
-      - {x: 0.875, y: 0.35}
-      - {x: 0.885, y: 0.35999998}
-      - {x: 0.875, y: 0.41}
-      - {x: 0.815, y: 0.56}
-      - {x: 0.705, y: 0.79999995}
-      - {x: 0.635, y: 0.95}
-      - {x: 0.585, y: 1.04}
-      - {x: 0.545, y: 1.1}
-      - {x: 0.545, y: 1.17}
-      - {x: 0.515, y: 1.18}
-      - {x: 0.465, y: 1.17}
-      - {x: 0.435, y: 1.27}
-      - {x: 0.405, y: 1.35}
-      - {x: 0.285, y: 1.51}
-      - {x: 0.255, y: 1.56}
-      - {x: 0.225, y: 1.62}
-      - {x: 0.16499999, y: 1.77}
-      - {x: 0.145, y: 1.88}
-      - {x: 0.074999996, y: 2.1}
-      - {x: 0.005, y: 2.3799999}
-      - {x: -0.044999998, y: 2.62}
-      - {x: -0.074999996, y: 2.73}
-      - {x: -0.105, y: 2.96}
-      - {x: -0.085, y: 3.02}
-      - {x: -0.055, y: 3.1}
-      - {x: -0.065, y: 3.24}
-      - {x: -0.085, y: 3.31}
-      - {x: -0.125, y: 3.3799999}
-      - {x: -0.074999996, y: 3.83}
-      - {x: -0.055, y: 3.9299998}
-      - {x: 0.035, y: 4.24}
-      - {x: 0.065, y: 4.2999997}
-      - {x: 0.16499999, y: 4.49}
-      - {x: 0.255, y: 4.63}
-      - {x: 0.45499998, y: 4.9}
-      - {x: 0.545, y: 5.0099998}
-      - {x: 0.615, y: 5.14}
-      - {x: 0.715, y: 5.35}
-      - {x: 0.72499996, y: 5.4}
-      - {x: -1.775, y: 5.4}
-      - {x: -1.775, y: -5.4}
-      - {x: 0.72499996, y: -5.4}
-      - {x: 0.73499995, y: -5.3599997}
-      - {x: 0.66499996, y: -5.21}
-      - {x: 0.685, y: -5.18}
+    - - {x: 0.052410007, y: 2.1261168}
+      - {x: 0.91135603, y: 0.20801735}
+      - {x: 0.8774221, y: -1.5107142}
+      - {x: 0.3456664, y: -3.126911}
+      - {x: 0.1773076, y: -4.1705647}
+      - {x: 0.7686968, y: -5.3819556}
+      - {x: -1.7573774, y: -5.402149}
+      - {x: -1.8053375, y: 5.4318905}
+      - {x: 0.71036893, y: 5.3875113}
+      - {x: -0.059887886, y: 3.6796725}
   m_UseDelaunayMesh: 0
 --- !u!1 &1328956107
 GameObject:
@@ -1424,67 +1369,21 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -1.9699999, y: 5.4}
+    - - {x: -1.621508, y: 3.6510248}
+      - {x: -0.8314466, y: 3.0603826}
+      - {x: -0.28392887, y: 1.9266224}
+      - {x: -0.2812227, y: 0.43090373}
+      - {x: 0.45512986, y: -1.0869513}
+      - {x: 0.39503586, y: -2.0569773}
+      - {x: -0.22556555, y: -3.475859}
+      - {x: -0.19065511, y: -4.220178}
+      - {x: 0.047151685, y: -4.9928846}
+      - {x: 2.1197464, y: -5.4123755}
+      - {x: 2.085329, y: 5.413346}
       - {x: -1.9799999, y: 5.3599997}
       - {x: -2, y: 5.21}
       - {x: -2, y: 4.91}
       - {x: -1.9399999, y: 4.5699997}
-      - {x: -1.92, y: 4.46}
-      - {x: -1.8299999, y: 4.24}
-      - {x: -1.64, y: 3.9499998}
-      - {x: -1.5999999, y: 3.8799999}
-      - {x: -1.51, y: 3.73}
-      - {x: -1.4, y: 3.61}
-      - {x: -1.16, y: 3.3799999}
-      - {x: -0.96999997, y: 3.21}
-      - {x: -0.74, y: 2.99}
-      - {x: -0.62, y: 2.84}
-      - {x: -0.48999998, y: 2.6699998}
-      - {x: -0.42, y: 2.55}
-      - {x: -0.29999998, y: 2.24}
-      - {x: -0.28, y: 2.11}
-      - {x: -0.26, y: 2.11}
-      - {x: -0.26, y: 1.79}
-      - {x: -0.29, y: 1.74}
-      - {x: -0.31, y: 1.65}
-      - {x: -0.31, y: 1.2099999}
-      - {x: -0.29999998, y: 1.0799999}
-      - {x: -0.25, y: 0.7}
-      - {x: -0.25, y: 0.44}
-      - {x: -0.19999999, y: 0.32}
-      - {x: -0.14999999, y: 0.22}
-      - {x: 0.07, y: -0.19}
-      - {x: 0.19, y: -0.39999998}
-      - {x: 0.38, y: -0.76}
-      - {x: 0.39999998, y: -0.84}
-      - {x: 0.5, y: -1.16}
-      - {x: 0.52, y: -1.27}
-      - {x: 0.53, y: -1.4399999}
-      - {x: 0.52, y: -1.76}
-      - {x: 0.5, y: -1.9}
-      - {x: 0.45, y: -2.07}
-      - {x: 0.37, y: -2.27}
-      - {x: 0.32, y: -2.36}
-      - {x: 0.17999999, y: -2.6299999}
-      - {x: 0.06, y: -2.82}
-      - {x: -0.01, y: -2.9199998}
-      - {x: -0.089999996, y: -3.1}
-      - {x: -0.19999999, y: -3.3899999}
-      - {x: -0.24, y: -3.62}
-      - {x: -0.25, y: -3.82}
-      - {x: -0.25, y: -3.97}
-      - {x: -0.24, y: -4.3399997}
-      - {x: -0.22, y: -4.5699997}
-      - {x: -0.17999999, y: -4.65}
-      - {x: -0.089999996, y: -4.81}
-      - {x: 0.06, y: -4.95}
-      - {x: 0.12, y: -4.98}
-      - {x: 0.25, y: -5.04}
-      - {x: 0.45999998, y: -5.13}
-      - {x: 0.75, y: -5.24}
-      - {x: 1.11, y: -5.4}
-      - {x: 2.1, y: -5.4}
-      - {x: 2.1, y: 5.4}
   m_UseDelaunayMesh: 0
 --- !u!1 &1707495882
 GameObject:
@@ -1884,7 +1783,8 @@ PrefabInstance:
       propertyPath: charonBarkManager
       value: 
       objectReference: {fileID: 1101165206}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 482286615933334566, guid: 14d0c9371fa13e943bb34b3753678c00, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -1904,6 +1804,10 @@ PrefabInstance:
     - target: {fileID: 2924123038260138566, guid: b4501c6c71eba1047adbab463bd43a0d, type: 3}
       propertyPath: m_Size.y
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2924123038260138566, guid: b4501c6c71eba1047adbab463bd43a0d, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.85
       objectReference: {fileID: 0}
     - target: {fileID: 8018975286022295571, guid: b4501c6c71eba1047adbab463bd43a0d, type: 3}
       propertyPath: m_RootOrder
@@ -2185,6 +2089,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: loseObstacleDamageOnCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: capacityRestoredOnSuccessfulFerry
       value: 1
       objectReference: {fileID: 0}
@@ -2195,6 +2103,10 @@ PrefabInstance:
     - target: {fileID: 7914235876027768591, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: alwaysRotateToBottom
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7914235876027768591, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: outOfBoundsBumpForce
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_Name
@@ -2252,6 +2164,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -2.86}
-  m_Size: {x: 6.93, y: 2.34}
+  m_Offset: {x: 0, y: -2.56}
+  m_Size: {x: 7.97, y: 2.34}
   m_Direction: 1

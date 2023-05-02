@@ -128,6 +128,9 @@ public class BoatController : MonoBehaviour
         //Not docked, cannot launch from nothing!
         if (currentDock is null) return;
 
+        //Enable current dock collision
+        StartCoroutine(EnableDockCollisionAfterDuration(currentDock));
+
         //Starts Going from current dock
         currentDock = null;
         
@@ -135,6 +138,13 @@ public class BoatController : MonoBehaviour
         _boatMovement.EnableMovement();
         
         OnVoyageStart?.Invoke();
+    }
+
+    IEnumerator EnableDockCollisionAfterDuration(Transform dock)
+    {
+        yield return new WaitForSeconds(5f);
+        dock.GetComponent<PolygonCollider2D>().enabled = true;
+        yield return null;
     }
     
     void CompleteVoyage()
@@ -173,6 +183,8 @@ public class BoatController : MonoBehaviour
                 GameStateManager.Instance.CurrentState = GameStateManager.GameStates.Ferrying;
                 break;
         }
+        //Disable current dock collision
+        currentDock.GetComponent<PolygonCollider2D>().enabled = false;
         
         //Disable movement
         _boatMovement.DisableMovement();
@@ -195,7 +207,6 @@ public class BoatController : MonoBehaviour
             //Arrived at the shore!
             if (other.gameObject.CompareTag("Shore"))
             {
-                _boatMovement.DockNudge((other.transform.position - transform.position).normalized);
                 CompleteVoyage();
             }
             else if (other.gameObject.CompareTag("Obstacle"))
@@ -226,6 +237,7 @@ public class BoatController : MonoBehaviour
         {
             OnBorderHit?.Invoke();
             OnDamageTaken?.Invoke();
+            _boatCapacity.DealDamageToBoat(1);
         }
     }
 }

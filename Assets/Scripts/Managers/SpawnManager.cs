@@ -11,7 +11,7 @@ namespace Managers
         [Header("Spawn Settings")]
         [SerializeField][Min(5)] private int simultaneousObstacleLimit = 20;
         [SerializeField][Min(5)] private int simultaneousSeekerLimit = 20;
-        [SerializeField][Min(5)] private float spawnInterval = 5.0f;
+        [SerializeField][Min(1)] private float spawnInterval = 5.0f;
         
         [Tooltip("The obstacle that is be spawned in the game scene.")]
         [SerializeField] private GameObject obstacleObject;
