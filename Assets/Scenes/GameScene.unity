@@ -1444,6 +1444,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1707495884}
   - component: {fileID: 1707495883}
+  - component: {fileID: 1707495885}
   m_Layer: 0
   m_Name: GameState
   m_TagString: Untagged
@@ -1481,6 +1482,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1707495885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707495882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7661df05fb6e95741b0e79b12936dcfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonLabel: Die
+  onClickEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8249115434510323196}
+        m_TargetAssemblyTypeName: BoatCapacity, Assembly-CSharp
+        m_MethodName: DealDamageToBoat
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 100
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1802936433
 GameObject:
   m_ObjectHideFlags: 0
@@ -1977,3 +2006,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+--- !u!114 &8249115434510323196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+  m_PrefabInstance: {fileID: 8249115434510323195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be0dd6e0864c004b9f93728ec858e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
