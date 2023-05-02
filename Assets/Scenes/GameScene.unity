@@ -1843,6 +1843,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EndGameScreen
       objectReference: {fileID: 0}
+    - target: {fileID: 1708205306265590225, guid: 463456eac6fa7514b89787261229bffb, type: 3}
+      propertyPath: boatCapacity
+      value: 
+      objectReference: {fileID: 8249115434510323196}
     - target: {fileID: 5257897951344812538, guid: 463456eac6fa7514b89787261229bffb, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -1993,3 +1997,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+--- !u!114 &8249115434510323196 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+  m_PrefabInstance: {fileID: 8249115434510323195}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9be0dd6e0864c004b9f93728ec858e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
