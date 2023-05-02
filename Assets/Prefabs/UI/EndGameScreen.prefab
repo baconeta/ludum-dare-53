@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Leaderboard
+  m_text: Leaderboard (coming soon)
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b0be128655ebf345b41d2e80e36530e, type: 2}
   m_sharedMaterial: {fileID: 5821315659982027653, guid: 3b0be128655ebf345b41d2e80e36530e, type: 2}
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -2.0056, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -243,7 +243,7 @@ Transform:
   - {fileID: 6033720904199250484}
   - {fileID: 4056455723891324962}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1708205306265590225
 MonoBehaviour:
@@ -1680,7 +1680,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -22, y: 47}
-  m_SizeDelta: {x: 400, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5883123102419581774
 CanvasRenderer:
@@ -1745,7 +1745,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.52156866, g: 0.08235294, b: 0.3647059, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.1254902, g: 0.11764706, b: 0.15686275, a: 0.5882353}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -1759,7 +1759,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3636318282601593271}
   m_OnClick:
     m_PersistentCalls:
@@ -1794,7 +1794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6033720904199250484
 RectTransform:
   m_ObjectHideFlags: 0
