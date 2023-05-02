@@ -12,7 +12,6 @@ namespace Managers
         public enum GameStates
         {
             Start,
-            Dialogue,
             Ferrying,
             Returning,
             Pause,
