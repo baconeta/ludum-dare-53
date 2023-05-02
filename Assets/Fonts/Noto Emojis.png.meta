@@ -770,7 +770,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_31
+      name: 1F616
       rect:
         serializedVersion: 2
         x: 2046
@@ -1946,7 +1946,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_87
+      name: 1F617
       rect:
         serializedVersion: 2
         x: 2046
@@ -3122,7 +3122,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_143
+      name: 1F618
       rect:
         serializedVersion: 2
         x: 2046
@@ -4298,7 +4298,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_199
+      name: 1F619
       rect:
         serializedVersion: 2
         x: 2046
@@ -5474,7 +5474,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_255
+      name: 1F61A
       rect:
         serializedVersion: 2
         x: 2046
@@ -6650,11 +6650,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_311
+      name: 1F61B
       rect:
         serializedVersion: 2
-        x: 2046
-        y: 3366
+        x: 2045
+        y: 3368
         width: 66
         height: 66
       alignment: 0
@@ -7826,7 +7826,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_367
+      name: 1F61C
       rect:
         serializedVersion: 2
         x: 2046
@@ -9002,7 +9002,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_423
+      name: 1F61D
       rect:
         serializedVersion: 2
         x: 2046
@@ -10178,11 +10178,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_479
+      name: 1F61
       rect:
         serializedVersion: 2
-        x: 2046
-        y: 3168
+        x: 2047
+        y: 3169
         width: 66
         height: 66
       alignment: 0
@@ -11354,7 +11354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_535
+      name: 1F61F
       rect:
         serializedVersion: 2
         x: 2046
@@ -14840,7 +14840,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_703
+      name: 1F622
       rect:
         serializedVersion: 2
         x: 2046
@@ -15071,11 +15071,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_714
+      name: 1F97A
       rect:
         serializedVersion: 2
         x: 2772
-        y: 2904
+        y: 2905
         width: 66
         height: 66
       alignment: 0
@@ -16016,7 +16016,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_759
+      name: 1F623
       rect:
         serializedVersion: 2
         x: 2046
@@ -18347,7 +18347,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_871
+      name: 1F625
       rect:
         serializedVersion: 2
         x: 2046
@@ -19796,7 +19796,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_941
+      name: 1F9D0
       rect:
         serializedVersion: 2
         x: 2970
@@ -22988,7 +22988,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1095
+      name: 1F629
       rect:
         serializedVersion: 2
         x: 2046
@@ -24164,7 +24164,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1151
+      name: 1F62A
       rect:
         serializedVersion: 2
         x: 2046
@@ -25340,11 +25340,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1207
+      name: 1F62B
       rect:
         serializedVersion: 2
         x: 2046
-        y: 2310
+        y: 2311
         width: 66
         height: 66
       alignment: 0
@@ -26516,7 +26516,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1263
+      name: 1F62C
       rect:
         serializedVersion: 2
         x: 2046
@@ -27692,7 +27692,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1319
+      name: 1F62D
       rect:
         serializedVersion: 2
         x: 2046
@@ -28868,7 +28868,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1375
+      name: 1F62E
       rect:
         serializedVersion: 2
         x: 2046
@@ -30044,7 +30044,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1431
+      name: 1F62F
       rect:
         serializedVersion: 2
         x: 2046
@@ -33530,7 +33530,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1599
+      name: 1F632
       rect:
         serializedVersion: 2
         x: 2046
@@ -35861,7 +35861,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1711
+      name: 1F634
       rect:
         serializedVersion: 2
         x: 2046
@@ -40565,7 +40565,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1935
+      name: 1F638
       rect:
         serializedVersion: 2
         x: 2046
@@ -44051,7 +44051,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_2103
+      name: 1F63B
       rect:
         serializedVersion: 2
         x: 2046
@@ -45227,7 +45227,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_2159
+      name: 1F63C
       rect:
         serializedVersion: 2
         x: 2046
@@ -49910,7 +49910,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_2383
+      name: 1F640
       rect:
         serializedVersion: 2
         x: 2046
@@ -51086,7 +51086,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_2439
+      name: 1F641
       rect:
         serializedVersion: 2
         x: 2046
@@ -52262,7 +52262,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_2495
+      name: 1F642
       rect:
         serializedVersion: 2
         x: 2046
@@ -66668,7 +66668,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_591
+      name: 1F620
       rect:
         serializedVersion: 2
         x: 2046
@@ -66689,7 +66689,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_647
+      name: 1F621
       rect:
         serializedVersion: 2
         x: 2046
@@ -66710,7 +66710,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_815
+      name: 1F624
       rect:
         serializedVersion: 2
         x: 2046
@@ -66731,7 +66731,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_927
+      name: 1F626
       rect:
         serializedVersion: 2
         x: 2046
@@ -66752,7 +66752,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_983
+      name: 1F627
       rect:
         serializedVersion: 2
         x: 2046
@@ -66773,7 +66773,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1039
+      name: 1F628
       rect:
         serializedVersion: 2
         x: 2046
@@ -66794,10 +66794,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1487
+      name: 1F630
       rect:
         serializedVersion: 2
-        x: 2046
+        x: 2047
         y: 1980
         width: 66
         height: 66
@@ -66815,7 +66815,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1543
+      name: 1F631
       rect:
         serializedVersion: 2
         x: 2046
@@ -66836,7 +66836,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_1655
+      name: 1F633
       rect:
         serializedVersion: 2
         x: 2046
@@ -66920,7 +66920,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: google-emoji-spritesheet_2551
+      name: 1F643
       rect:
         serializedVersion: 2
         x: 2046
@@ -66992,20 +66992,60 @@ TextureImporter:
       1F60D: 1091789693
       1F60E: 480075215
       1F60F: -1960591129
+      1F61: 945756818
       1F610: -741629462
       1F611: -839618921
       1F612: -297495266
       1F613: 1055145598
       1F615: -1086691152
+      1F616: -1198696761
+      1F617: -992861291
+      1F618: -701784945
+      1F619: 859741994
+      1F61A: 1754987750
+      1F61B: -1694269083
+      1F61C: 1616607197
+      1F61D: -1122345394
       1F61E: -998251878
+      1F61F: 1855226672
+      1F620: 319099723
+      1F621: -1027299932
+      1F622: 1426740054
+      1F623: 1141221267
+      1F624: -1556449325
+      1F625: -967435774
+      1F626: -441029171
+      1F627: -1464730220
+      1F628: -1667154683
+      1F629: -1879905261
+      1F62A: 1569404649
+      1F62B: -708488373
+      1F62C: 978664969
+      1F62D: -497834673
+      1F62E: -1563619057
+      1F62F: -1711754541
+      1F630: 796368268
+      1F631: -1002670766
+      1F632: -1711754541
+      1F633: 2067838182
+      1F634: 822226531
       1F635: -1090251808
       1F636: 744602780
       1F637: 1330344616
+      1F638: 1077638561
+      1F63B: 860993846
+      1F63C: 984125657
       1F63D: 242922450
       1F63E: 10996760
       1F63F: 1641458597
+      1F640: -325406438
+      1F641: 304504087
+      1F642: 1883730572
+      1F643: -1915655592
       1F644: -1624727914
       1F645: -607484070
+      1F97A: 2111338036
+      1F9D0: -477038919
       google-emoji-spritesheet_0: -1181648038
       google-emoji-spritesheet_1: 421040847
       google-emoji-spritesheet_10: 674679999
@@ -67052,7 +67092,6 @@ TextureImporter:
       google-emoji-spritesheet_1036: 461542084
       google-emoji-spritesheet_1037: -1139928541
       google-emoji-spritesheet_1038: -1387274848
-      google-emoji-spritesheet_1039: -1667154683
       google-emoji-spritesheet_104: 1054755868
       google-emoji-spritesheet_1040: 1552213500
       google-emoji-spritesheet_1041: 851550893
@@ -67114,7 +67153,6 @@ TextureImporter:
       google-emoji-spritesheet_1092: 488466004
       google-emoji-spritesheet_1093: -1696836346
       google-emoji-spritesheet_1094: 983836162
-      google-emoji-spritesheet_1095: -1879905261
       google-emoji-spritesheet_1096: -2038680834
       google-emoji-spritesheet_1097: -1856170472
       google-emoji-spritesheet_1098: -1647236345
@@ -67177,7 +67215,6 @@ TextureImporter:
       google-emoji-spritesheet_1149: 1405268489
       google-emoji-spritesheet_115: 1042897356
       google-emoji-spritesheet_1150: -1615456929
-      google-emoji-spritesheet_1151: 1569404649
       google-emoji-spritesheet_1152: -2050110477
       google-emoji-spritesheet_1153: -1627018558
       google-emoji-spritesheet_1154: 1184025956
@@ -67239,7 +67276,6 @@ TextureImporter:
       google-emoji-spritesheet_1204: -1353068003
       google-emoji-spritesheet_1205: 629542694
       google-emoji-spritesheet_1206: 1945202146
-      google-emoji-spritesheet_1207: -708488373
       google-emoji-spritesheet_1208: 322917403
       google-emoji-spritesheet_1209: -711118262
       google-emoji-spritesheet_121: 1618734854
@@ -67301,7 +67337,6 @@ TextureImporter:
       google-emoji-spritesheet_1260: 1538255392
       google-emoji-spritesheet_1261: 2127487951
       google-emoji-spritesheet_1262: 47823555
-      google-emoji-spritesheet_1263: 978664969
       google-emoji-spritesheet_1264: 421952843
       google-emoji-spritesheet_1265: -1461702030
       google-emoji-spritesheet_1266: 109089066
@@ -67363,7 +67398,6 @@ TextureImporter:
       google-emoji-spritesheet_1316: -1767132470
       google-emoji-spritesheet_1317: 1422609937
       google-emoji-spritesheet_1318: -60791392
-      google-emoji-spritesheet_1319: -497834673
       google-emoji-spritesheet_132: -2007625783
       google-emoji-spritesheet_1320: 1693029442
       google-emoji-spritesheet_1321: -1881941038
@@ -67425,7 +67459,6 @@ TextureImporter:
       google-emoji-spritesheet_1372: 1927995049
       google-emoji-spritesheet_1373: 611850435
       google-emoji-spritesheet_1374: -393066557
-      google-emoji-spritesheet_1375: -1563619057
       google-emoji-spritesheet_1376: -1854849857
       google-emoji-spritesheet_1377: -1269405535
       google-emoji-spritesheet_1378: -1428359138
@@ -67486,9 +67519,7 @@ TextureImporter:
       google-emoji-spritesheet_1427: 28037475
       google-emoji-spritesheet_1428: 1409604340
       google-emoji-spritesheet_1429: 1786184944
-      google-emoji-spritesheet_143: -701784945
       google-emoji-spritesheet_1430: -2082557857
-      google-emoji-spritesheet_1431: -1711754541
       google-emoji-spritesheet_1432: 747320364
       google-emoji-spritesheet_1433: 404708717
       google-emoji-spritesheet_1434: 1656943280
@@ -67548,7 +67579,6 @@ TextureImporter:
       google-emoji-spritesheet_1484: -22418791
       google-emoji-spritesheet_1485: -10132032
       google-emoji-spritesheet_1486: -1553192427
-      google-emoji-spritesheet_1487: 796368268
       google-emoji-spritesheet_1488: -1618755289
       google-emoji-spritesheet_1489: -844631533
       google-emoji-spritesheet_149: 733321777
@@ -67611,7 +67641,6 @@ TextureImporter:
       google-emoji-spritesheet_1540: -1637392963
       google-emoji-spritesheet_1541: 2125603298
       google-emoji-spritesheet_1542: -826358423
-      google-emoji-spritesheet_1543: -1002670766
       google-emoji-spritesheet_1544: 277855174
       google-emoji-spritesheet_1545: -1208169023
       google-emoji-spritesheet_1546: 837336356
@@ -67672,7 +67701,6 @@ TextureImporter:
       google-emoji-spritesheet_1596: 1173967636
       google-emoji-spritesheet_1597: -1147990863
       google-emoji-spritesheet_1598: 1177295830
-      google-emoji-spritesheet_1599: 1396396908
       google-emoji-spritesheet_16: 1523392856
       google-emoji-spritesheet_160: -910051738
       google-emoji-spritesheet_1600: -1724047363
@@ -67735,7 +67763,6 @@ TextureImporter:
       google-emoji-spritesheet_1652: -446152875
       google-emoji-spritesheet_1653: 1700019070
       google-emoji-spritesheet_1654: 1906385848
-      google-emoji-spritesheet_1655: 2067838182
       google-emoji-spritesheet_1656: -1884626865
       google-emoji-spritesheet_1657: -285774942
       google-emoji-spritesheet_1658: -273878998
@@ -67798,7 +67825,6 @@ TextureImporter:
       google-emoji-spritesheet_1709: 2031704572
       google-emoji-spritesheet_171: -1972948447
       google-emoji-spritesheet_1710: -1209982906
-      google-emoji-spritesheet_1711: 822226531
       google-emoji-spritesheet_1712: 801292548
       google-emoji-spritesheet_1713: -1324177655
       google-emoji-spritesheet_1714: 902545000
@@ -68043,7 +68069,6 @@ TextureImporter:
       google-emoji-spritesheet_1932: 279840464
       google-emoji-spritesheet_1933: -409678366
       google-emoji-spritesheet_1934: 1730128334
-      google-emoji-spritesheet_1935: 1077638561
       google-emoji-spritesheet_1936: -694665009
       google-emoji-spritesheet_1937: -1845306684
       google-emoji-spritesheet_1938: 77571516
@@ -68103,7 +68128,6 @@ TextureImporter:
       google-emoji-spritesheet_1987: -103631783
       google-emoji-spritesheet_1988: -297514096
       google-emoji-spritesheet_1989: -1852947876
-      google-emoji-spritesheet_199: 859741994
       google-emoji-spritesheet_1991: -1404388272
       google-emoji-spritesheet_1992: 504336753
       google-emoji-spritesheet_1993: 858855764
@@ -68228,7 +68252,6 @@ TextureImporter:
       google-emoji-spritesheet_210: -232823790
       google-emoji-spritesheet_2100: -1738787071
       google-emoji-spritesheet_2101: 504318101
-      google-emoji-spritesheet_2103: 860993846
       google-emoji-spritesheet_2104: 200494212
       google-emoji-spritesheet_2105: -1536338019
       google-emoji-spritesheet_2106: -939310570
@@ -68288,7 +68311,6 @@ TextureImporter:
       google-emoji-spritesheet_2155: -907985180
       google-emoji-spritesheet_2156: 1676004418
       google-emoji-spritesheet_2157: -822415532
-      google-emoji-spritesheet_2159: 984125657
       google-emoji-spritesheet_216: 1283575848
       google-emoji-spritesheet_2160: -1499970246
       google-emoji-spritesheet_2161: 1583851615
@@ -68530,7 +68552,6 @@ TextureImporter:
       google-emoji-spritesheet_238: -321226549
       google-emoji-spritesheet_2380: 2121955589
       google-emoji-spritesheet_2381: 1599096611
-      google-emoji-spritesheet_2383: -325406438
       google-emoji-spritesheet_2384: 1961590973
       google-emoji-spritesheet_2385: 287922103
       google-emoji-spritesheet_2386: 882556153
@@ -68591,7 +68612,6 @@ TextureImporter:
       google-emoji-spritesheet_2435: -1277779192
       google-emoji-spritesheet_2436: -152899862
       google-emoji-spritesheet_2437: 1983184348
-      google-emoji-spritesheet_2439: 304504087
       google-emoji-spritesheet_244: -2116135296
       google-emoji-spritesheet_2440: -2952000
       google-emoji-spritesheet_2441: 764229140
@@ -68651,7 +68671,6 @@ TextureImporter:
       google-emoji-spritesheet_2491: -1858971198
       google-emoji-spritesheet_2492: -1315082904
       google-emoji-spritesheet_2493: -662834335
-      google-emoji-spritesheet_2495: 1883730572
       google-emoji-spritesheet_2496: -249859120
       google-emoji-spritesheet_2497: -1258684149
       google-emoji-spritesheet_2498: 1888698560
@@ -68712,8 +68731,6 @@ TextureImporter:
       google-emoji-spritesheet_2547: 3555540
       google-emoji-spritesheet_2548: 1849167450
       google-emoji-spritesheet_2549: -374199243
-      google-emoji-spritesheet_255: 1754987750
-      google-emoji-spritesheet_2551: -1915655592
       google-emoji-spritesheet_2552: -1988393961
       google-emoji-spritesheet_2553: -1072200479
       google-emoji-spritesheet_2554: 898712705
@@ -69309,7 +69326,6 @@ TextureImporter:
       google-emoji-spritesheet_3097: 126735543
       google-emoji-spritesheet_3098: -1632308398
       google-emoji-spritesheet_3099: 2093099649
-      google-emoji-spritesheet_31: -1198696761
       google-emoji-spritesheet_310: -1016053234
       google-emoji-spritesheet_3100: -1251583095
       google-emoji-spritesheet_3101: -1778174300
@@ -69320,7 +69336,6 @@ TextureImporter:
       google-emoji-spritesheet_3107: -117792528
       google-emoji-spritesheet_3108: -430859096
       google-emoji-spritesheet_3109: -1443953061
-      google-emoji-spritesheet_311: -1694269083
       google-emoji-spritesheet_3110: 238685821
       google-emoji-spritesheet_3111: 383712020
       google-emoji-spritesheet_3112: -448229983
@@ -69453,7 +69468,6 @@ TextureImporter:
       google-emoji-spritesheet_364: 69672656
       google-emoji-spritesheet_365: 1228897215
       google-emoji-spritesheet_366: 1755850362
-      google-emoji-spritesheet_367: 1616607197
       google-emoji-spritesheet_368: 1293661171
       google-emoji-spritesheet_369: -1665075877
       google-emoji-spritesheet_37: 1450438808
@@ -69516,7 +69530,6 @@ TextureImporter:
       google-emoji-spritesheet_420: 2028123912
       google-emoji-spritesheet_421: 1134132752
       google-emoji-spritesheet_422: -696926526
-      google-emoji-spritesheet_423: -1122345394
       google-emoji-spritesheet_424: -649233290
       google-emoji-spritesheet_425: -1237904365
       google-emoji-spritesheet_426: -208460583
@@ -69577,7 +69590,6 @@ TextureImporter:
       google-emoji-spritesheet_476: -1267890871
       google-emoji-spritesheet_477: -462404957
       google-emoji-spritesheet_478: 1309301386
-      google-emoji-spritesheet_479: 945756818
       google-emoji-spritesheet_48: 1124896429
       google-emoji-spritesheet_480: 561730188
       google-emoji-spritesheet_481: 1625407523
@@ -69640,7 +69652,6 @@ TextureImporter:
       google-emoji-spritesheet_532: -1657073177
       google-emoji-spritesheet_533: -2112519845
       google-emoji-spritesheet_534: -753886174
-      google-emoji-spritesheet_535: 1855226672
       google-emoji-spritesheet_536: -812676734
       google-emoji-spritesheet_537: 816787685
       google-emoji-spritesheet_538: 1745196228
@@ -69702,7 +69713,6 @@ TextureImporter:
       google-emoji-spritesheet_589: -829075197
       google-emoji-spritesheet_59: -1085904545
       google-emoji-spritesheet_590: 2000610772
-      google-emoji-spritesheet_591: 319099723
       google-emoji-spritesheet_592: 2009079426
       google-emoji-spritesheet_593: -804343656
       google-emoji-spritesheet_594: -26005717
@@ -69764,7 +69774,6 @@ TextureImporter:
       google-emoji-spritesheet_644: 18508466
       google-emoji-spritesheet_645: -613230617
       google-emoji-spritesheet_646: -1806107601
-      google-emoji-spritesheet_647: -1027299932
       google-emoji-spritesheet_648: 336929624
       google-emoji-spritesheet_649: -1862916480
       google-emoji-spritesheet_65: 915429648
@@ -69827,7 +69836,6 @@ TextureImporter:
       google-emoji-spritesheet_700: 127559224
       google-emoji-spritesheet_701: 2017881880
       google-emoji-spritesheet_702: -495694555
-      google-emoji-spritesheet_703: 1426740054
       google-emoji-spritesheet_704: -608070165
       google-emoji-spritesheet_705: 2130599789
       google-emoji-spritesheet_706: -334928265
@@ -69839,7 +69847,6 @@ TextureImporter:
       google-emoji-spritesheet_711: -814054573
       google-emoji-spritesheet_712: -1171078352
       google-emoji-spritesheet_713: -546564145
-      google-emoji-spritesheet_714: 2111338036
       google-emoji-spritesheet_715: -666533412
       google-emoji-spritesheet_716: -1835857469
       google-emoji-spritesheet_717: 2052129090
@@ -69888,7 +69895,6 @@ TextureImporter:
       google-emoji-spritesheet_756: 1692878480
       google-emoji-spritesheet_757: 578201119
       google-emoji-spritesheet_758: -1515024986
-      google-emoji-spritesheet_759: 1141221267
       google-emoji-spritesheet_76: -1135895791
       google-emoji-spritesheet_760: 349662638
       google-emoji-spritesheet_761: 245661151
@@ -69951,7 +69957,6 @@ TextureImporter:
       google-emoji-spritesheet_812: -1170293220
       google-emoji-spritesheet_813: -1867651758
       google-emoji-spritesheet_814: 1077887383
-      google-emoji-spritesheet_815: -1556449325
       google-emoji-spritesheet_816: -709748016
       google-emoji-spritesheet_817: -1524795403
       google-emoji-spritesheet_818: -491179419
@@ -70011,9 +70016,7 @@ TextureImporter:
       google-emoji-spritesheet_867: -1434050239
       google-emoji-spritesheet_868: -671149717
       google-emoji-spritesheet_869: 1763955737
-      google-emoji-spritesheet_87: -992861291
       google-emoji-spritesheet_870: -1088539
-      google-emoji-spritesheet_871: -967435774
       google-emoji-spritesheet_872: 1174851918
       google-emoji-spritesheet_873: 1741167324
       google-emoji-spritesheet_874: -1487515010
@@ -70075,7 +70078,6 @@ TextureImporter:
       google-emoji-spritesheet_924: 1800054820
       google-emoji-spritesheet_925: 1966008712
       google-emoji-spritesheet_926: 1511878000
-      google-emoji-spritesheet_927: -441029171
       google-emoji-spritesheet_928: -1789033304
       google-emoji-spritesheet_929: 1533029729
       google-emoji-spritesheet_93: 1156281327
@@ -70091,7 +70093,6 @@ TextureImporter:
       google-emoji-spritesheet_939: 776799932
       google-emoji-spritesheet_94: -950124001
       google-emoji-spritesheet_940: 939402033
-      google-emoji-spritesheet_941: -477038919
       google-emoji-spritesheet_942: -214105054
       google-emoji-spritesheet_943: 1395129725
       google-emoji-spritesheet_944: -1294933880
@@ -70137,7 +70138,6 @@ TextureImporter:
       google-emoji-spritesheet_980: 88582563
       google-emoji-spritesheet_981: 2096641558
       google-emoji-spritesheet_982: 1392012119
-      google-emoji-spritesheet_983: -1464730220
       google-emoji-spritesheet_984: -1515662438
       google-emoji-spritesheet_985: 854089985
       google-emoji-spritesheet_986: -2025509672
