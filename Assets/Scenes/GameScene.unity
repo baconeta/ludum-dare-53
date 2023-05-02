@@ -453,30 +453,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: spawnInterval
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[0]
-      value: 
-      objectReference: {fileID: 3379933513473169060, guid: 8a763ab14f849974db28e8024d32db42, type: 3}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[1]
-      value: 
-      objectReference: {fileID: 5646802508109994502, guid: bb3420cf8f2ef2c49ba6517f52b811c0, type: 3}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[2]
-      value: 
-      objectReference: {fileID: 5794485889600203970, guid: ab6b05f26ba7a3343a9f75dd2e16029d, type: 3}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[3]
-      value: 
-      objectReference: {fileID: 5794485889600203970, guid: 8fcc0abbbece0d341a82bd2e0337555c, type: 3}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[4]
-      value: 
-      objectReference: {fileID: 5794485889600203970, guid: 4010d58fbab8a41409be3e7daf1f0b27, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
