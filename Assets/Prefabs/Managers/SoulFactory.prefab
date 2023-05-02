@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _soulNameGenerator: {fileID: 3707989494779104516}
   _barkManager: {fileID: 7795256661903044910}
-  delimiter1: ;
+  delimiter1: ',,'
   delimiter2: ':'
   _specials: {fileID: 4900000, guid: aa28f747843b74240b15fa0176b9f514, type: 3}
   _specialSoulChance: 0
