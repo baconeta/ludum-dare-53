@@ -101,7 +101,6 @@ public class DialogueUI : MonoBehaviour
     public void UpdateDialogueScene(DialogueLine nextLine)
     {
         GameObject activeParticipant = null;
-        nextLine.line = nextLine.line.Replace("{{TOTAL_SOULS}}", PlayerPrefs.GetInt("TotalSoulsSaved", 0).ToString());
 
         //Single speaker cases
         if (nextLine.participantSpeaking >= 0)
