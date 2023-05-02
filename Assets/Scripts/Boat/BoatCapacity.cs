@@ -30,6 +30,8 @@ public class BoatCapacity : MonoBehaviour
     [SerializeField]
     private bool doesLoseCapacityWhileContainsSouls = false;
 
+    [Tooltip("Every X souls you collect, the damage of everything increases by 1")] [SerializeField]
+    private float perSoulDamage = 30f; 
 
     [Header("Statistics")]
 
@@ -138,6 +140,7 @@ public class BoatCapacity : MonoBehaviour
     /// <param name="damageToTake">How many souls or how much capacity the boat should lose.</param>
     public void DealDamageToBoat(int damageToTake)
     {
+        damageToTake += Mathf.FloorToInt(_soulsSaved / perSoulDamage);
         // If we have no souls on the ferry, and the game is still running, we must be Returning.
         if (CurrentLoad == 0)
         {
