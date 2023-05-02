@@ -39,20 +39,18 @@ public class GroovySkeleton : MonoBehaviour
                 }
                 else if (cooldown <= 0)
                 {
-                    cooldown = triggerCooldown;
+                  
                     Throw();
                 }
-                else
-                {
-                    cooldown -= Time.deltaTime;
-                    if (cooldown < 0) triggerCooldown = 0;
-                }
             }
-            else
+
+            if(cooldown > 0)
             {
                 cooldown -= Time.deltaTime;
-                if (cooldown < 0) triggerCooldown = 0;
+                if (cooldown < 0) cooldown = 0;
             }
+                
+            
             
         }
     }
@@ -61,6 +59,8 @@ public class GroovySkeleton : MonoBehaviour
     {
         if(triggerOnce)
             hasThrown = true;
+        else 
+            cooldown = triggerCooldown;
         //Need to instantiate on animation event.
         Yeet newYeet = Instantiate(throwPrefab, transform).GetComponent<Yeet>();
         newYeet.transform.position = throwStartPoint.position;
