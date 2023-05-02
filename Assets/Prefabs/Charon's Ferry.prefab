@@ -302,7 +302,7 @@ MonoBehaviour:
   verticalLimit: {x: 0, y: 0}
   limitBorderPercentage: 0.9
   limitRotationMultiplier: 2
-  outOfBoundsBumpForce: 10000
+  outOfBoundsBumpForce: 3000
 --- !u!114 &6360086134822798650
 MonoBehaviour:
   m_ObjectHideFlags: 0
