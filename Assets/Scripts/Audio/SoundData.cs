@@ -11,6 +11,6 @@ namespace Audio
         public AudioClip sound;
         public AudioMixerGroup mixer;
         public bool loop;
-        [Range(0.1f, 1.0f)] public float volume;
+        [Range(0.01f, 1.0f)] public float volume;
     }
 }
