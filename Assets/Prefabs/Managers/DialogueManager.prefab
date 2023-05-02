@@ -1517,6 +1517,6 @@ MonoBehaviour:
   isDialogueActive: 0
   inactiveSpeakerColor: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 0}
   inactiveSpeakerSize: 0
-  overrideStoryElement: 1
+  overrideStoryElement: 0
   element: 25
   nextLine: 9
