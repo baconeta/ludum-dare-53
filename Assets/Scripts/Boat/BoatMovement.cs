@@ -25,6 +25,8 @@ public class BoatMovement : MonoBehaviour
              "\n***Different limits are currently unsupported due to flipping math.")]
     public Vector2 rotationLimits;
 
+    public bool alwaysRotateToBottom = false;
+
     //A -1 to 1 value of the current onSteering<float> eventAction
     private float currentSteering;
 
@@ -192,8 +194,16 @@ public class BoatMovement : MonoBehaviour
 
     private void CalculateBoatRotation()
     {
-        //Rotation to
         Quaternion targetRotation = Quaternion.identity;
+        if(alwaysRotateToBottom)
+        {
+            //Rotation to face down river
+            if (currentDirection == Vector3.right)
+                targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
+            else
+                targetRotation = Quaternion.Euler(0f, 0f, -rotationLimits.y);
+        } //Else return to 0 rotation
+
         //Rotation Speed with Calculations
         float calculatedRotationSpeed = rotationSpeed;
 
@@ -204,11 +214,15 @@ public class BoatMovement : MonoBehaviour
             //Vertical Limit is Multiplied by borderPercentage to avoid edge cases.
             if (transform.position.y > verticalLimit.x)
             {
-                //Flip rotations based on direction, this ensures that controls stay the same depending on direction.
-                if (currentDirection == Vector3.right)
-                    targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
-                else
-                    targetRotation = Quaternion.Euler(0f, 0f, -rotationLimits.y);
+                if(!alwaysRotateToBottom)
+                {
+                    //Flip rotations based on direction, this ensures that controls stay the same depending on direction.
+                    if (currentDirection == Vector3.right)
+                        targetRotation = Quaternion.Euler(0f, 0f, rotationLimits.y);
+                    else
+                        targetRotation = Quaternion.Euler(0f, 0f, -rotationLimits.y);
+                }
+                
             }
             else calculatedRotationSpeed *= limitRotationMultiplier;
         }
@@ -237,7 +251,6 @@ public class BoatMovement : MonoBehaviour
     public void BorderHitBump()
     {
         _rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Force);
-        
     }
 
     public void DockNudge(Vector2 direction)
