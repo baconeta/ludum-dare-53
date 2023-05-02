@@ -66,14 +66,19 @@ public class BoatMovement : MonoBehaviour
     {
         InputManager.onSteering += UpdateSteering;
         BoatController.OnBorderHit += BorderHitBump;
+        GameStateManager.OnEndEnter += TurnOffPhysics;
+    }
+
+    private void TurnOffPhysics()
+    {
+        _rigidbody2D.bodyType = RigidbodyType2D.Static;
     }
 
     private void OnDisable()
     {
         InputManager.onSteering -= UpdateSteering;
         BoatController.OnBorderHit -= BorderHitBump;
-
-
+        GameStateManager.OnEndEnter -= TurnOffPhysics;
     }
 
     void UpdateSteering(float val)

@@ -16,16 +16,18 @@ public class EndGameController : MonoBehaviour
 
     private void OnEnable()
     {
-        GameStateManager.OnEndEnter += ShowUi;
+        DialogueManager.OnDialogueEnd += ShowUi;
     }
 
     private void OnDisable()
     {
-        GameStateManager.OnEndEnter -= ShowUi;
+        DialogueManager.OnDialogueEnd -= ShowUi;
     }
 
     private void ShowUi()
     {
+        if (GameStateManager.Instance.CurrentState != GameStateManager.GameStates.End) return;
+        
         ui.SetActive(true);
         soulsCount.SetText(boatCapacity.SoulsSaved.ToString());
         PlayerPrefs.SetInt("TotalSoulsSaved", PlayerPrefs.GetInt("TotalSoulsSaved", 0) + boatCapacity.SoulsSaved);

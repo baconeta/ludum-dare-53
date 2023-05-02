@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 3
-  damage: 5
+  damage: 4
   currentSpeed: 0
   spriteRenderer: {fileID: 1762214577521317568}
   animator: {fileID: 3201527789740469057}

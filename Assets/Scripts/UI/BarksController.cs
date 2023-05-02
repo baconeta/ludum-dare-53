@@ -16,6 +16,8 @@ public class BarksController : MonoBehaviour
     [SerializeField] private Sprite soulImage;
     [SerializeField] private float responseDelaySeconds = 1f;
     [SerializeField] private int percentChanceToBeSoloBark = 50;
+    [SerializeField] private float minTimeBarkOnScreen = 3f; // 16 chars
+    [SerializeField] private float maxTimeBarkOnScreen = 5.5f; // 72 chars
 
     private bool _isBarkOnScreen;
     private float _timeLastBarkClosed;
@@ -27,6 +29,8 @@ public class BarksController : MonoBehaviour
         BoatController.OnDamageTaken += HitSomething;
         BoatController.OnVoyageStart += StartBarkTimers;
         BoatController.OnVoyageComplete += StopBarkTimers;
+        BoatCapacity.OnBoatDestroyed += StopBarkTimers;
+        BoatCapacity.OnAllSoulsLost += StopBarkTimers;
         GameStateManager.OnPauseEnter += StopBarkTimers;
         GameStateManager.OnPauseExit += StartBarkTimers;
         DialogueManager.OnDialogueStart += CloseAllPopups;
@@ -37,6 +41,8 @@ public class BarksController : MonoBehaviour
         BoatController.OnDamageTaken -= HitSomething;
         BoatController.OnVoyageStart -= StartBarkTimers;
         BoatController.OnVoyageComplete -= StopBarkTimers;
+        BoatCapacity.OnBoatDestroyed -= StopBarkTimers;
+        BoatCapacity.OnAllSoulsLost -= StopBarkTimers;
         GameStateManager.OnPauseEnter -= StopBarkTimers;
         GameStateManager.OnPauseExit -= StartBarkTimers;
         DialogueManager.OnDialogueStart -= CloseAllPopups;
@@ -100,7 +106,11 @@ public class BarksController : MonoBehaviour
 
     private float CalculateTimeOnScreen(string text)
     {
-        return 3f;
+        if (text == null) return 2f;
+        
+        var normalizedValue = Mathf.InverseLerp(16, 90, text.Length);
+        var mappedValue = Mathf.Lerp(minTimeBarkOnScreen, maxTimeBarkOnScreen, normalizedValue);
+        return mappedValue;
     }
 
     private Sprite GetSpeakerSprite(string speaker)
@@ -110,6 +120,7 @@ public class BarksController : MonoBehaviour
 
     public void HitSomething()
     {
+        if (!_canBark) return;
         TryBark(true);
     }
 
@@ -149,7 +160,7 @@ public class BarksController : MonoBehaviour
         var charonBark = charonBarkManager.GetCharonDuetDamageBark();
 
         // Calculate the bark time showing length
-        var timeOnScreen = Math.Max(CalculateTimeOnScreen(charonBark), CalculateTimeOnScreen(soulBark));
+        var timeOnScreen = Math.Max(CalculateTimeOnScreen("Charon" + charonBark), CalculateTimeOnScreen(soul.Name + soulBark));
 
         // Set up bark popups and show it on screen
         SetLeftSpeaker(soulName, soulBark);
@@ -165,7 +176,7 @@ public class BarksController : MonoBehaviour
         var soulBark = hit ? soul.GetDamageBark() : soul.GetAmbienceBark();
 
         // calculate the bark time showing length
-        var timeOnScreen = CalculateTimeOnScreen(soulBark);
+        var timeOnScreen = CalculateTimeOnScreen(soul.Name + soulBark);
 
         // Set up bark popups and show it on screen
         SetLeftSpeaker(soulName, soulBark);

@@ -3,28 +3,26 @@ using UnityEngine;
 public class SoulFactory : MonoBehaviour
 {
     [Header("Managers")]
-
     [Tooltip("The name generator that is to be used to generate names for normal souls.")]
-    [SerializeField] private NameGenerator _soulNameGenerator;
+    [SerializeField]
+    private NameGenerator _soulNameGenerator;
 
-    [Tooltip("The bark manager that is to be used to generate barks.")]
-    [SerializeField] private BarkManager _barkManager;
+    [Tooltip("The bark manager that is to be used to generate barks.")] [SerializeField]
+    private BarkManager _barkManager;
 
-    [Header("Delimiters")]
+    [Header("Delimiters")] [Tooltip("The pair-pair delimiter.")] [SerializeField]
+    private string delimiter1 = ",";
 
-    [Tooltip("The pair-pair delimiter.")]
-    [SerializeField] private string delimiter1 = ",";
-    
-    [Tooltip("The name-bark delimiter.")]
-    [SerializeField] private string delimiter2 = ",";
+    [Tooltip("The name-bark delimiter.")] [SerializeField]
+    private string delimiter2 = ",";
 
     [Header("Other")]
-
     [Tooltip("The 2D delimited list of name-bark pairs to generate special souls from.")]
-    [SerializeField] private TextAsset _specials;
+    [SerializeField]
+    private TextAsset _specials;
 
-    [Tooltip("The comma-separated list of descriptors to generate names from.")]
-    [SerializeField] private double _specialSoulChance = 0.05;
+    [Tooltip("The comma-separated list of descriptors to generate names from.")] [SerializeField]
+    private double _specialSoulChance = 0.05;
 
     private string[,] specialSoulData;
 
@@ -42,6 +40,7 @@ public class SoulFactory : MonoBehaviour
             soulData[i, 0] = items[0].Trim();
             soulData[i, 1] = items[1].Trim();
         }
+
         // Save the result.
         specialSoulData = soulData;
     }
@@ -51,7 +50,7 @@ public class SoulFactory : MonoBehaviour
         System.Random random = new System.Random();
         if (random.NextDouble() < _specialSoulChance)
         {
-            return GenerateSpecialSoul(); 
+            return GenerateSpecialSoul();
         }
         else
         {
@@ -65,27 +64,31 @@ public class SoulFactory : MonoBehaviour
         if (PlayerPrefs.GetInt("SpecialSoulUsedCount") >= specialSoulData.GetLength(0))
             ResetSouls(specialSoulData.GetLength(0));
 
+        int index;
         while (true)
         {
             // Select a random special soul pair.
-            int index = Random.Range(0, specialSoulData.GetLength(0));
+            index = Random.Range(0, specialSoulData.GetLength(0));
             // Check if it has been used.
-            if (PlayerPrefs.GetInt("SpecialSoulBeenUsed" + index) == 1)
+            if (PlayerPrefs.GetInt("SpecialSoulBeenUsed" + index) != 1)
             {
-                // The special soul has been used. Select another one.
-                continue;
+                break;
             }
-            // Extract data for special soul.
-            string name = specialSoulData[index,0];
-            string ambienceBark = specialSoulData[index,1];
-
-            // Replace special name with player name.
-            if (name == "%player_name%")
-                name = PlayerPrefs.GetString("Name");
-            name = (name == "") ? "You" : name;
-
-            return new Soul(name, true, _barkManager, ambienceBark);
+            // Otherwise, the special soul has been used. Select another one.
         }
+
+        // Extract data for special soul.
+        string name = specialSoulData[index, 0];
+        string ambienceBark = specialSoulData[index, 1];
+
+        // Replace special name with player name.
+        if (name == "%player_name%")
+            name = PlayerPrefs.GetString("Name");
+        name = (name == "") ? "You" : name;
+        
+        PlayerPrefs.SetInt("SpecialSoulUsedCount", PlayerPrefs.GetInt("SpecialSoulUsedCount", 0) + 1);
+        PlayerPrefs.SetInt("SpecialSoulBeenUsed" + index, 1);
+        return new Soul(name, true, _barkManager, ambienceBark);
     }
 
     public Soul GenerateNormalSoul()
@@ -129,6 +132,7 @@ public class Soul
         {
             return AmbienceBarkOverride;
         }
+
         return BarkManager.GetAmbienceBark();
     }
 

@@ -11,7 +11,7 @@ namespace Managers
         [Header("Spawn Settings")]
         [SerializeField][Min(5)] private int simultaneousObstacleLimit = 20;
         [SerializeField][Min(5)] private int simultaneousSeekerLimit = 20;
-        [SerializeField][Min(5)] private float spawnInterval = 5.0f;
+        [SerializeField][Min(1)] private float spawnInterval = 5.0f;
         
         [Tooltip("The obstacle that is be spawned in the game scene.")]
         [SerializeField] private GameObject obstacleObject;
@@ -86,7 +86,12 @@ namespace Managers
             var numStones = Random.Range(1, stoneLimit + 1);
             for (var i = 0; i < numStones; ++i)
             {
-                var stone = stones[Random.Range(0, stones.Length)];
+
+                GameObject stone;
+                //Always spawn 1 thrower
+                if (i == 0) stone = stones[0];
+                //Other stones are not throwers
+                else stone = stones[Random.Range(1, stones.Length)];
                 var stoneObject = Instantiate(stone);
                 
                 // Select a random point within the spawn area that avoids the no-spawn area

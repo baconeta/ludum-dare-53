@@ -15,6 +15,12 @@ public class BoatCapacity : MonoBehaviour
     [Tooltip("The amount of capacity restored upon ferrying souls successfully.")]
     [SerializeField]
     private int capacityRestoredOnSuccessfulFerry = 1;
+    
+    public bool loseObstacleDamageOnCollision;
+    [Tooltip("IF loseObstacleDamageOnCollision is false." +
+        "\nThe amount of capacity lost upon hitting an obstacle with no souls.")]
+    [SerializeField]
+    private int lostCapacityOnDamage = 1;
 
     [Tooltip("**Currently Disabled: See Start Method** Does the boat start loaded to capacity? or does it start empty?")]
     [SerializeField] [ReadOnlyAttribute]
@@ -62,6 +68,8 @@ public class BoatCapacity : MonoBehaviour
     public static event Action OnBoatDestroyed;
     public static event Action OnAllSoulsLost;
     public static event SoulsChanged OnSoulsChanged;
+    public static event Action OnCapacityChange;
+    public static event Action OnSoulChange;
 
     private void OnEnable()
     {
@@ -104,7 +112,7 @@ public class BoatCapacity : MonoBehaviour
         IncreaseCapacity(capacityRestoredOnSuccessfulFerry);
     }
 
-    private int DecreaseCapacity(int amount = 1)
+    private int DecreaseCapacity(int amount)
     {
         CurrentCapacity -= amount;
         if (CurrentCapacity <= 0)
@@ -133,13 +141,16 @@ public class BoatCapacity : MonoBehaviour
         // If we have no souls on the ferry, and the game is still running, we must be Returning.
         if (CurrentLoad == 0)
         {
-            DecreaseCapacity();
+            if (!loseObstacleDamageOnCollision) damageToTake = lostCapacityOnDamage;
+            DecreaseCapacity(damageToTake);
+            OnCapacityChange?.Invoke();
         }
         // Otherwise, we must be Ferrying.
         else
         {
             //Add the Souls Lost to the SoulsDamned statistic
             SoulsDamned = DecreaseSouls(damageToTake);
+            OnSoulChange?.Invoke();
 
             // If we reduce the number of souls to zero by taking damage, end the game.
             if (CurrentLoad <= 0) { OnAllSoulsLost?.Invoke(); }
@@ -147,6 +158,7 @@ public class BoatCapacity : MonoBehaviour
             if (doesLoseCapacityWhileContainsSouls)
             {
                 DecreaseCapacity(damageToTake);
+                OnCapacityChange?.Invoke();
             }
         }
         NotifySoulsChanged();
@@ -188,6 +200,7 @@ public class BoatCapacity : MonoBehaviour
             CurrentLoad -= loadToRemove;
             return loadToRemove;
         }
+
     }
 
     //This is run via the event Action GameStateManager.OnReturningEnter
