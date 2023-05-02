@@ -86,7 +86,12 @@ namespace Managers
             var numStones = Random.Range(1, stoneLimit + 1);
             for (var i = 0; i < numStones; ++i)
             {
-                var stone = stones[Random.Range(0, stones.Length)];
+
+                GameObject stone;
+                //Always spawn 1 thrower
+                if (i == 0) stone = stones[0];
+                //Other stones are not throwers
+                else stone = stones[Random.Range(1, stones.Length)];
                 var stoneObject = Instantiate(stone);
                 
                 // Select a random point within the spawn area that avoids the no-spawn area

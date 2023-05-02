@@ -116,7 +116,7 @@ Transform:
   - {fileID: 8332841972178617235}
   - {fileID: 6047079715702877265}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7059613079801024216
 MonoBehaviour:
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simultaneousObstacleLimit: 30
   simultaneousSeekerLimit: 20
-  spawnInterval: 3
+  spawnInterval: 5
   obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
   seekerObject: {fileID: 7031394477568430888, guid: 159c7a3bb8cfe8f40b20f2f56d4c093a, type: 3}
   seekerSpawnChance: 20
