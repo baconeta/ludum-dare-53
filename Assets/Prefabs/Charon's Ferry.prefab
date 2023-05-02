@@ -296,6 +296,7 @@ MonoBehaviour:
   acceleration: 4
   rotationSpeed: 50
   rotationLimits: {x: 10, y: -20}
+  alwaysRotateToBottom: 0
   currentDirection: {x: 0, y: 0, z: 0}
   isMoving: 0
   verticalLimit: {x: 0, y: 0}
@@ -314,8 +315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9be0dd6e0864c004b9f93728ec858e57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingCapacity: 50
-  capacityRestoredOnSuccessfulFerry: 1
+  startingCapacity: 20
+  capacityRestoredOnSuccessfulFerry: 0
   doesStartLoaded: 0
   doesLoseCapacityWhileContainsSouls: 0
   _currentCapacity: 0
