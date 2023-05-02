@@ -87,6 +87,7 @@ public class SoulFactory : MonoBehaviour
         name = (name == "") ? "You" : name;
         
         PlayerPrefs.SetInt("SpecialSoulUsedCount", PlayerPrefs.GetInt("SpecialSoulUsedCount", 0) + 1);
+        PlayerPrefs.SetInt("SpecialSoulBeenUsed" + index, 1);
         return new Soul(name, true, _barkManager, ambienceBark);
     }
 
