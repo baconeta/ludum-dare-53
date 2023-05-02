@@ -65,8 +65,8 @@ public class BarksController : MonoBehaviour
             if (Random.Range(0, 100) < percentChanceToBarkPerSecond)
             {
                 TryBark(false);
-                _secondTimer = 0f;
             }
+            _secondTimer = 0f;
         }
     }
 
