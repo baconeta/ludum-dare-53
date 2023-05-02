@@ -76,7 +76,6 @@ namespace Spawnables
 
         protected void RemoveFromScene()
         {
-            Debug.Log("Removing");
             currentSpeed = initialSpeed;
             damage = 1;
             transform.position = new Vector3(-1000, -1000);
