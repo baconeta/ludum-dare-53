@@ -706,7 +706,6 @@ GameObject:
   - component: {fileID: 8695575583930754015}
   - component: {fileID: 5965351526578401325}
   - component: {fileID: 8809235402412405917}
-  - component: {fileID: 7034761086504450638}
   m_Layer: 0
   m_Name: ExitButton
   m_TagString: Untagged
@@ -787,7 +786,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7034761086504450638}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Audio.BackToMenuAudio, Assembly-CSharp
         m_MethodName: StopGameAudio
         m_Mode: 1
@@ -823,18 +822,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &7034761086504450638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5390112153652900428}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d2fcfe953c2401ba3dfbe46ed757421, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &5735154508004332603
 GameObject:
   m_ObjectHideFlags: 0
