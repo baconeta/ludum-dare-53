@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 namespace Spawnables {
-    public class Yeet : MonoBehaviour {
+    public class Yeet : Obstacle {
         private GameObject _target;
         public float speed;
         public Vector3 _direction;
@@ -33,7 +33,7 @@ namespace Spawnables {
             _circleCollider2D = GetComponent<CircleCollider2D>();
             _target = GameObject.FindWithTag("Ferry");
 
-            _direction = _target.transform.position - transform.position;
+            _direction = _target.transform.position + (Vector3)_target.GetComponent<Rigidbody2D>().velocity * 10 - transform.position;
             _end = _target.transform.position;
 
             _triggered = true;
@@ -44,6 +44,11 @@ namespace Spawnables {
             // Calculate end once based on where the target is
         }
 
-        
+        public void DestroySkull()
+        {
+            Destroy(gameObject, 0.1f);
+        }
+
+
     }
 }

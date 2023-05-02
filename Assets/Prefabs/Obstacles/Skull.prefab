@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4befe8cc2805745489a5daa528199de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 20
   _direction: {x: 0, y: 0, z: 0}
-  disabledDuration: 1.5
+  disabledDuration: 0.3
   _circleCollider2D: {fileID: 8105048866319502212}
   _Rigidbody2D: {fileID: 5492500136094672375}
