@@ -209,6 +209,12 @@ public class BoatController : MonoBehaviour
                 var seeker = other.gameObject.GetComponent<Seeker>();
                 if (seeker != null)
                     seeker.StartAttackAnimation(seekerAttach);
+
+                var skull = other.gameObject.GetComponent<Yeet>();
+                if(skull != null)
+                {
+                    skull.DestroySkull();
+                }
             }
         }
     }

@@ -63,8 +63,8 @@ public class GroovySkeleton : MonoBehaviour
             cooldown = triggerCooldown;
         //Need to instantiate on animation event.
         Yeet newYeet = Instantiate(throwPrefab, transform).GetComponent<Yeet>();
-        newYeet.YeetethMySkull();
         newYeet.transform.position = throwStartPoint.position;
+        newYeet.YeetethMySkull();
     }
 
     private void OnDrawGizmos()
