@@ -32,7 +32,7 @@ Transform:
   - {fileID: 2829962592067683131}
   - {fileID: 7153819744903942852}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8906751614042367217
 MonoBehaviour:
@@ -51,11 +51,11 @@ MonoBehaviour:
   barkPopupLeft: {fileID: 4612427180419555860}
   barkPopupRight: {fileID: 289304363337905131}
   minTimeBetweenBarks: 3
-  percentChanceToBarkPerSecond: 5
+  percentChanceToBarkPerSecond: 4
   charonImage: {fileID: 21300000, guid: d801319f91a418c43965494d0bf54a71, type: 3}
   soulImage: {fileID: 21300000, guid: ffbfd7ac331c29d40a6fb71435437471, type: 3}
   responseDelaySeconds: 1
-  percentChanceToBeSoloBark: 100
+  percentChanceToBeSoloBark: 65
   minTimeBarkOnScreen: 2.5
   maxTimeBarkOnScreen: 5
 --- !u!1001 &2992120995288875478
@@ -163,22 +163,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4081218319016412354}
     m_Modifications:
-    - target: {fileID: 1683532449939199478, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_fontColor.b
-      value: 0.16078432
-      objectReference: {fileID: 0}
-    - target: {fileID: 1683532449939199478, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_fontColor.g
-      value: 0.13725491
-      objectReference: {fileID: 0}
-    - target: {fileID: 1683532449939199478, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_fontColor.r
-      value: 0.13725491
-      objectReference: {fileID: 0}
-    - target: {fileID: 1683532449939199478, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4280886051
-      objectReference: {fileID: 0}
     - target: {fileID: 2822209093674432074, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
       propertyPath: m_Name
       value: BarksPopupLeft
@@ -190,18 +174,6 @@ PrefabInstance:
     - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
       propertyPath: m_RootOrder
       value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5386691181482758930, guid: 3195602674636d44b8aa64c3872af5b4, type: 3}
       propertyPath: m_LocalPosition.x

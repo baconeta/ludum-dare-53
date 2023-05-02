@@ -15,6 +15,7 @@ public class BarkPopup : MonoBehaviour
 
     public void SetText(string text)
     {
+        barkText.alignment = text.Contains("sprite") ? TextAlignmentOptions.Top : TextAlignmentOptions.TopLeft;
         barkText.SetText(text);
     }
     
