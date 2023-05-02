@@ -1,3 +1,4 @@
+using System;
 using Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,6 +7,7 @@ namespace Spawnables
 {
     public class Seeker : Obstacle
     {
+        [SerializeField] private float maxSpeed;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private Animator animator;
         private GameObject _target;
@@ -61,9 +63,18 @@ namespace Spawnables
                 RotateTowardTarget(dir);
                 Move(dir);
             }
-            
         }
-        
+
+        private void OnEnable()
+        {
+            BoatController.OnVoyageComplete += IncreaseSpeed;
+        }
+
+        private void OnDisable()
+        {
+            BoatController.OnVoyageComplete -= IncreaseSpeed;
+        }
+
         /**
          * Rotate to look toward the target.
          */
@@ -123,6 +134,15 @@ namespace Spawnables
             animator.SetFloat(AttackSpeed, 0);
             
             RemoveFromScene();
+        }
+
+        private void IncreaseSpeed()
+        {
+            currentSpeed += 0.1f;
+            if (currentSpeed >= maxSpeed)
+            {
+                currentSpeed = maxSpeed;
+            }
         }
     }
     
