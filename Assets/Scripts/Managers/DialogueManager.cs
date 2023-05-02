@@ -123,6 +123,7 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
 
     private void SelectDialogueGroup()
     {
+        if (!_dialogueUI) _dialogueUI = FindObjectOfType<DialogueUI>();
         DialogueGroup newDialogueGroup;
 
         //If its their first play-through, choose the first DialogueGroup
