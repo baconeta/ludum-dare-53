@@ -490,6 +490,8 @@ MonoBehaviour:
   throwDistance: 13.68
   throwPrefab: {fileID: 679295361170235722, guid: fe8b05f6c3c57914eb92914eb669157e, type: 3}
   throwStartPoint: {fileID: 1224457055}
+  triggerOnce: 0
+  triggerCooldown: 4
 --- !u!1 &1048162674
 GameObject:
   m_ObjectHideFlags: 0

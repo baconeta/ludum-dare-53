@@ -12,11 +12,16 @@ public class GroovySkeleton : MonoBehaviour
     public float throwDistance;
     public GameObject throwPrefab;
     public Transform throwStartPoint;
+    public bool triggerOnce;
+    [Tooltip("Only if TriggerOnce=False")]
+    public float triggerCooldown;
+    public float cooldown;
 
     // Start is called before the first frame update
     void Start()
     {
         _target = GameObject.FindWithTag("Ferry").transform;
+        cooldown = triggerCooldown;
     }
 
     // Update is called once per frame
@@ -26,16 +31,36 @@ public class GroovySkeleton : MonoBehaviour
         {
             if(Vector3.Distance(transform.position, _target.position) < throwDistance)
             {
-                if(!hasThrown)
-                    ///TODO Replace with animation event
+                if (triggerOnce)
+                {
+                    if (!hasThrown)
+                        ///TODO Replace with animation event
+                        Throw();
+                }
+                else if (cooldown <= 0)
+                {
+                    cooldown = triggerCooldown;
                     Throw();
+                }
+                else
+                {
+                    cooldown -= Time.deltaTime;
+                    if (cooldown < 0) triggerCooldown = 0;
+                }
             }
+            else
+            {
+                cooldown -= Time.deltaTime;
+                if (cooldown < 0) triggerCooldown = 0;
+            }
+            
         }
     }
 
     void Throw()
     {
-        hasThrown = true;
+        if(triggerOnce)
+            hasThrown = true;
         //Need to instantiate on animation event.
         Yeet newYeet = Instantiate(throwPrefab, transform).GetComponent<Yeet>();
         newYeet.transform.position = throwStartPoint.position;
