@@ -3129,22 +3129,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: VolumeSettings
       objectReference: {fileID: 0}
-    - target: {fileID: 1418596843768023420, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.699997
-      objectReference: {fileID: 0}
-    - target: {fileID: 1418596843768023420, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1418596843768023420, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.699997
-      objectReference: {fileID: 0}
-    - target: {fileID: 4682759776988474479, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_FillRect
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 4815496377204248718, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3228,38 +3212,6 @@ PrefabInstance:
     - target: {fileID: 4815496377204248718, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6686685597055440139, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_FillRect
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085449459412037678, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.499995
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085449459412037678, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8085449459412037678, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.499995
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101846007052383782, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.699997
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101846007052383782, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101846007052383782, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.699997
-      objectReference: {fileID: 0}
-    - target: {fileID: 8965623150018680739, guid: 27bb67c845520fe4dadfc5129948ad64, type: 3}
-      propertyPath: m_FillRect
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
