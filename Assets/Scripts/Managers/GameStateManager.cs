@@ -25,6 +25,8 @@ namespace Managers
             set { ChangeState(value); }
         }
 
+        public int voyagesCompletedThisRound;
+
         public bool firstFerryCompleted = false;
 
         [SerializeField] private GameStates _previousState;
@@ -119,6 +121,7 @@ namespace Managers
             {
                 //Initial State, start of game.
                 case GameStates.Start:
+                    voyagesCompletedThisRound = 0;
                     //OnStartEnter.Invoke Occurs in GameStateManager Start()
                     break;
                 //Upon reaching the shore of Gaia/Over-world/Living/Left/Pickup
@@ -135,6 +138,7 @@ namespace Managers
                         OnFirstFerry?.Invoke();
                     }
                     //Increment successful ferries.
+                    voyagesCompletedThisRound += 1;
                     Debug.Log(PlayerPrefs.GetInt("Successful Ferries"));
                     PlayerPrefs.SetInt("Successful Ferries", PlayerPrefs.GetInt("Successful Ferries") + 1);
                     break;

@@ -138,7 +138,7 @@ namespace Spawnables
 
         private void IncreaseSpeed()
         {
-            currentSpeed += 0.1f;
+            currentSpeed += 0.075f * GameStateManager.Instance.voyagesCompletedThisRound;
             if (currentSpeed >= maxSpeed)
             {
                 currentSpeed = maxSpeed;
