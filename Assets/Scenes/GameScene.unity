@@ -383,18 +383,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpawnManager
       objectReference: {fileID: 0}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[2]
-      value: 
-      objectReference: {fileID: 5794485889600203970, guid: 8fcc0abbbece0d341a82bd2e0337555c, type: 3}
-    - target: {fileID: 7059613079801024216, guid: bf19b3c3036663849b25b5def65824dd, type: 3}
-      propertyPath: stones.Array.data[3]
-      value: 
-      objectReference: {fileID: 5794485889600203970, guid: 4010d58fbab8a41409be3e7daf1f0b27, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1970,6 +1958,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5955720895935086287, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: startingCapacity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6360086134822798650, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
+      propertyPath: capacityRestoredOnSuccessfulFerry
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8925401137294428039, guid: db7915cefe1ad2449bb66f56a2d2650c, type: 3}
