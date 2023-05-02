@@ -112,7 +112,7 @@ public class BoatCapacity : MonoBehaviour
         IncreaseCapacity(capacityRestoredOnSuccessfulFerry);
     }
 
-    private int DecreaseCapacity(int amount = 1)
+    private int DecreaseCapacity(int amount)
     {
         CurrentCapacity -= amount;
         if (CurrentCapacity <= 0)
@@ -141,7 +141,7 @@ public class BoatCapacity : MonoBehaviour
         // If we have no souls on the ferry, and the game is still running, we must be Returning.
         if (CurrentLoad == 0)
         {
-            if (loseObstacleDamageOnCollision) damageToTake = lostCapacityOnDamage;
+            if (!loseObstacleDamageOnCollision) damageToTake = lostCapacityOnDamage;
             DecreaseCapacity(damageToTake);
             OnCapacityChange?.Invoke();
         }

@@ -214,8 +214,8 @@ public class BoatController : MonoBehaviour
                 // Play obstacle hit sound
                 AudioWrapper.Instance.PlaySound("ship-hit");
                 
+                _boatCapacity.DealDamageToBoat(other.gameObject.GetComponent<Obstacle>().Damage);
                 OnDamageTaken?.Invoke();
-                _boatCapacity.DealDamageToBoat(other.transform.GetComponent<Obstacle>().Damage);
 
                 var seeker = other.gameObject.GetComponent<Seeker>();
                 if (seeker != null)
