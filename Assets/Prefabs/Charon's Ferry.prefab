@@ -295,7 +295,7 @@ MonoBehaviour:
   acceleration: 4
   rotationSpeed: 50
   rotationLimits: {x: 10, y: -30}
-  alwaysRotateToBottom: 1
+  alwaysRotateToBottom: 0
   currentDirection: {x: 0, y: 0, z: 0}
   isMoving: 0
   verticalLimit: {x: 0, y: 0}
