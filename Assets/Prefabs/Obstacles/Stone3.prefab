@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 437585192215791653}
   - component: {fileID: 8907863776517384476}
   - component: {fileID: 7990570166855386595}
+  - component: {fileID: 2504465423558257454}
   m_Layer: 7
   m_Name: Stone3
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -190,3 +191,18 @@ PolygonCollider2D:
       - {x: 0.3841407, y: -0.24938786}
       - {x: 0.5813801, y: -0.25874344}
   m_UseDelaunayMesh: 0
+--- !u!114 &2504465423558257454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794485889600203970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07d0218e9b7bba449fcde74ba69656f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialSpeed: 3
+  damage: 5
+  currentSpeed: 0

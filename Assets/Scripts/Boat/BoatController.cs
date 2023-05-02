@@ -215,6 +215,7 @@ public class BoatController : MonoBehaviour
                 {
                     skull.DestroySkull();
                 }
+
             }
         }
     }
