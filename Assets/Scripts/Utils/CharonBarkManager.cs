@@ -25,7 +25,7 @@ public class CharonBarkManager : MonoBehaviour
     private void Start()
     {
         ambienceBarks = listOfAmbienceBarks.text.Split(delimiter);
-        CharonBark = listOfAmbienceBarks.text.Split(delimiter);
+        CharonBark = listOfDuetDamageBarks.text.Split(delimiter);
         DamageBarks = listOfDamageBarks.text.Split(delimiter);
     }
 
@@ -36,12 +36,12 @@ public class CharonBarkManager : MonoBehaviour
 
     public string GetCharonAmbienceBark()
     {
-        return GetCharonBark(CharonBark, "Ambience");
+        return GetCharonBark(ambienceBarks, "Ambience");
     }
 
     public string GetCharonDuetDamageBark()
     {
-        return GetCharonBark(ambienceBarks, "DuetDamage");
+        return GetCharonBark(CharonBark, "DuetDamage");
     }
 
     private string GetCharonBark(string[] barks, string prefix)

@@ -23,8 +23,8 @@ public class BarkManager : MonoBehaviour
 
     private void Start()
     {
-        damageBarks = listOfAmbienceBarks.text.Split(delimiter);
-        ambienceBark = listOfDamageBarks.text.Split(delimiter);
+        damageBarks = listOfDamageBarks.text.Split(delimiter);
+        ambienceBark = listOfAmbienceBarks.text.Split(delimiter);
         duetDamageBarks = listOfDuetDamageBarks.text.Split(delimiter);
     }
 
