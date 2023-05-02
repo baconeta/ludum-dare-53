@@ -5,6 +5,12 @@ using UnityEngine.SceneManagement;
 public class PauseScreenController : MonoBehaviour
 {
     [SerializeField] private GameObject ui;
+    private ScenesManager _scenesManager;
+
+    private void Start()
+    {
+        _scenesManager = GameObject.Find("SceneManager").GetComponent<ScenesManager>();
+    }
 
     private void OnEnable()
     {
@@ -36,6 +42,6 @@ public class PauseScreenController : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        _scenesManager.NavigateHome();
     }
 }
