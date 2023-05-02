@@ -2799,19 +2799,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Joshua Pearson       Brayden Cooke
-
-    Veera Villgren       Amruth Varshan
-
-    Adele
-    Illustration  James Coburn
-
-    Tomas Morton       Jakob Eriksson
-
-    John Daniels          
-    Tanya Kremer
-
-    Saad Billah              Luke Chandler   '
+  m_text: "Joshua Pearson       Brayden Cooke\nVeera Villgren       Amruth Varshan\nAdele
+    Illustration  James Coburn\nTomas Morton       Tessa Power\nJakob Eriksson      
+    John Daniels\nTanya Kremer       Saad Billah\n                Luke Chandler   "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3b0be128655ebf345b41d2e80e36530e, type: 2}
   m_sharedMaterial: {fileID: 5821315659982027653, guid: 3b0be128655ebf345b41d2e80e36530e, type: 2}
