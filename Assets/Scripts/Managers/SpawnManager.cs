@@ -1,5 +1,6 @@
 using ObjectPooling;
 using Spawnables;
+using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -35,6 +36,8 @@ namespace Managers
         private float _leftLimit;
         private float _rightLimit;
         private const float ShoreBuffer = 10.0f;
+
+        private bool _isSpawning;
 
         private void Awake()
         {
@@ -120,6 +123,9 @@ namespace Managers
          */
         private void StartSpawn()
         {
+            if (_isSpawning) return;
+
+            _isSpawning = true;
             InvokeRepeating(nameof(Spawn), 0.0f, spawnInterval);
         }
 
@@ -157,6 +163,9 @@ namespace Managers
          */
         private void StopSpawn()
         {
+            if (!_isSpawning) return;
+
+            _isSpawning = false;
             CancelInvoke(nameof(Spawn));
         }
 
