@@ -68,6 +68,8 @@ public class BoatCapacity : MonoBehaviour
     public static event Action OnBoatDestroyed;
     public static event Action OnAllSoulsLost;
     public static event SoulsChanged OnSoulsChanged;
+    public static event Action OnCapacityChange;
+    public static event Action OnSoulChange;
 
     private void OnEnable()
     {
@@ -141,12 +143,14 @@ public class BoatCapacity : MonoBehaviour
         {
             if (loseObstacleDamageOnCollision) damageToTake = lostCapacityOnDamage;
             DecreaseCapacity(damageToTake);
+            OnCapacityChange?.Invoke();
         }
         // Otherwise, we must be Ferrying.
         else
         {
             //Add the Souls Lost to the SoulsDamned statistic
             SoulsDamned = DecreaseSouls(damageToTake);
+            OnSoulChange?.Invoke();
 
             // If we reduce the number of souls to zero by taking damage, end the game.
             if (CurrentLoad <= 0) { OnAllSoulsLost?.Invoke(); }
@@ -154,6 +158,7 @@ public class BoatCapacity : MonoBehaviour
             if (doesLoseCapacityWhileContainsSouls)
             {
                 DecreaseCapacity(damageToTake);
+                OnCapacityChange?.Invoke();
             }
         }
         NotifySoulsChanged();
@@ -195,6 +200,7 @@ public class BoatCapacity : MonoBehaviour
             CurrentLoad -= loadToRemove;
             return loadToRemove;
         }
+
     }
 
     //This is run via the event Action GameStateManager.OnReturningEnter

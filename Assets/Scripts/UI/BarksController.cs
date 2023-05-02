@@ -110,6 +110,7 @@ public class BarksController : MonoBehaviour
 
     public void HitSomething()
     {
+
         TryBark(true);
     }
 

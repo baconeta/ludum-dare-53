@@ -11,6 +11,7 @@ public class HudController : MonoBehaviour
     [SerializeField] private GameObject joystickUI;
     private bool _isVisible;
 
+    [SerializeField] private Animator soulAnimator;
     [SerializeField] private Animator capacityAnimator;
     [SerializeField] private Animator totalAnimator;
     private static readonly int SoulsUpdated = Animator.StringToHash("SoulsUpdated");
@@ -29,8 +30,9 @@ public class HudController : MonoBehaviour
         
         InputManager.onControlSchemeChange += ToggleJoystick;
 
-        BoatController.OnVoyageComplete += UpdateTotal;
-        BoatController.OnDamageTaken += UpdateCapacity;
+        BoatController.OnVoyageComplete += OnUpdateTotal;
+        BoatCapacity.OnCapacityChange += OnUpdateCapacity;
+        BoatCapacity.OnSoulChange += OnUpdateSoul;
     }
 
     private void OnDisable()
@@ -46,8 +48,9 @@ public class HudController : MonoBehaviour
         
         InputManager.onControlSchemeChange -= ToggleJoystick;
         
-        BoatController.OnVoyageComplete -= UpdateTotal;
-        BoatController.OnDamageTaken -= UpdateCapacity;
+        BoatController.OnVoyageComplete -= OnUpdateTotal;
+        BoatCapacity.OnCapacityChange -= OnUpdateCapacity;
+        BoatCapacity.OnSoulChange -= OnUpdateSoul;
     }
 
     private void ShowHud()
@@ -91,18 +94,28 @@ public class HudController : MonoBehaviour
         }
     }
 
-    private void UpdateTotal() {
+    private void OnUpdateTotal() {
         // We check for returning here because the state is changed before the event is fired
         if (GameStateManager.Instance.CurrentState != GameStateManager.GameStates.Returning) return;
-        
-        totalAnimator.SetTrigger(SoulsUpdated);
+            totalAnimator.SetTrigger(SoulsUpdated);
+
+        OnUpdateCapacity();
+        OnUpdateSoul();
     }
 
-    private void UpdateCapacity() {
+    private void OnUpdateCapacity() {
+
         if (!GameStateManager.Instance.IsGameActive()) return;
-        
-        capacityAnimator.SetTrigger(SoulsUpdated);
+            capacityAnimator.SetTrigger(SoulsUpdated);
     }
+
+    private void OnUpdateSoul()
+    {
+
+        if (!GameStateManager.Instance.IsGameActive()) return;
+            soulAnimator.SetTrigger(SoulsUpdated);
+    }
+
 
     private void UpdateSoulDisplays(SoulAmounts soulAmounts)
     {
