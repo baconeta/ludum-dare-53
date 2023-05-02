@@ -7,7 +7,9 @@ public class DialogueUI : MonoBehaviour
 {
     [SerializeField] private GameObject ui;
     [SerializeField] private TextMeshProUGUI dialogueTextRight;
+    [SerializeField] private TextMeshProUGUI dialogueNameRight;
     [SerializeField] private TextMeshProUGUI dialogueTextLeft;
+    [SerializeField] private TextMeshProUGUI dialogueNameLeft;
     [SerializeField] private GameObject leftDialoguePanel;
     [SerializeField] private GameObject rightDialoguePanel;
     [SerializeField] private GameObject leftSide;
@@ -122,7 +124,8 @@ public class DialogueUI : MonoBehaviour
                         //Set active participant size to 1,1,1
                         activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
                         //Update the current text with the Syntax "~"Name: Text"
-                        dialogueTextRight.text = activeParticipant.name.ToUpper() + ":\n" + nextLine.line;
+                        dialogueNameRight.text = activeParticipant.name.ToUpper() + ":";
+                        dialogueTextRight.text = nextLine.line;
                     }
                     else dialogueTextRight.text = nextLine.line;
 
@@ -139,7 +142,8 @@ public class DialogueUI : MonoBehaviour
                         //Set active participant size to 1,1,1
                         activeParticipant.GetComponent<RectTransform>().localScale = Vector3.one;
                         //Update the current text with the Syntax "~"Name: Text"
-                        dialogueTextLeft.text = activeParticipant.name.ToUpper() + ":\n" + nextLine.line;
+                        dialogueNameLeft.text = activeParticipant.name.ToUpper() + ":";
+                        dialogueTextLeft.text = nextLine.line;
                     }
                     else dialogueTextLeft.text = nextLine.line;
 
