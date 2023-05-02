@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 3
-  damage: 5
+  damage: 3
   currentSpeed: 0
 --- !u!70 &3741103505995689802
 CapsuleCollider2D:
