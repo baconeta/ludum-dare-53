@@ -179,6 +179,51 @@ public class DialogueUI : MonoBehaviour
                     Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
             }
         }
+        //No speaker case - Tutorial special case
+        else if (nextLine.participantSpeaking == -2)
+        {
+            if (CheckIfTutorialPlayed()) // Skip the tutorial if it has been completed already
+            {
+                FindObjectOfType<DialogueManager>().NextLineAction();
+                return;
+            }
+            
+            rightDialoguePanel.SetActive(false);
+            leftDialoguePanel.SetActive(true);
+            //Update the current active speaker
+            switch (nextLine.dialogueSide)
+            {
+                case DialogueSides.Left:
+                    dialogueTextRight.text = nextLine.line;
+                    break;
+                case DialogueSides.Right:
+                    dialogueTextLeft.text = nextLine.line;
+                    break;
+            }
+
+
+            //Deactivate all leftSideParticipants except activeParticipant
+            foreach (GameObject participant in leftSideParticipants)
+            {
+                //Inactive participants
+                //Set colour to inactive
+                participant.GetComponent<Image>().color = DialogueManager.Instance.inactiveSpeakerColor / 2;
+                //Set size to inactive size
+                participant.GetComponent<RectTransform>().localScale =
+                    Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
+            }
+
+            //Deactivate all rightSideParticipants except activeParticipant
+            foreach (GameObject participant in rightSideParticipants)
+            {
+                //Inactive participants
+                //Set colour to inactive
+                participant.GetComponent<Image>().color = DialogueManager.Instance.inactiveSpeakerColor / 2;
+                //Set size to inactive size
+                participant.GetComponent<RectTransform>().localScale =
+                    Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
+            }
+        }
         else //All of one side speaking case
         {
             List<GameObject> activeParticipants = new List<GameObject>();
@@ -247,16 +292,25 @@ public class DialogueUI : MonoBehaviour
                 }
             }
 
-            //Update the current text with the Syntax "Name: Text"
-            switch (nextLine.dialogueSide)
+            if (nextLine.participantSpeaking != -2)
             {
-                case DialogueSides.Right:
-                    dialogueTextLeft.text = names + ": " + nextLine.line;
-                    break;
-                case DialogueSides.Left:
-                    dialogueTextRight.text = names + ": " + nextLine.line;
-                    break;
+                //Update the current text with the Syntax "Name: Text"
+                switch (nextLine.dialogueSide)
+                {
+                    case DialogueSides.Right:
+                        dialogueTextLeft.text = names + ": " + nextLine.line;
+                        break;
+                    case DialogueSides.Left:
+                        dialogueTextRight.text = names + ": " + nextLine.line;
+                        break;
+                }
             }
+            
         }
+    }
+
+    private bool CheckIfTutorialPlayed()
+    {
+        return PlayerPrefs.GetInt("TutorialSeen", 0) == 1;
     }
 }

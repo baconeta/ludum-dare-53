@@ -47,6 +47,38 @@ MonoBehaviour:
   DialogueGroups:
   - DialogueStart:
       linesOfDialogue:
+      - line: Welcome to Styx and Stones! [Tap] or [Press Any Key] to continue.
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: As expected due to human stupidity, souls are constantly pouring into
+          the Underworld, and your job is to deliver them from eternal damnation.
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: Refer to the top right to see your souls carried/soul capacity, and
+          your total souls saved.
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: Save souls by taking them across the River Styx. But be careful, who
+          knows what lies in the river that wants your souls. Best avoid them to
+          keep your souls!
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: When returning to pick up more souls, crashing causes you to not be
+          able to carry as many souls. Don't let your boat sink!
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: You can launch your boat from the shore by [Tapping on the boat] or
+          pressing [Space]
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: You can steer the boat upwards and downwards by using the [Joystick]
+          or [W/S/Up/Down]
+        dialogueSide: 0
+        participantSpeaking: -2
+      - line: Now its time to save some souls. But first, Persephone and Hades are
+          here to speak with you.
+        dialogueSide: 0
+        participantSpeaking: -2
       - line: Charon, sweetheart, sorry it took us so long to visit!
         dialogueSide: 0
         participantSpeaking: 0
