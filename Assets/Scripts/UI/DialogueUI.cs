@@ -189,10 +189,10 @@ public class DialogueUI : MonoBehaviour
             {
                 //Left side, get the current speaker.
                 case DialogueSides.Left:
-                    dialogueTextRight.text = nextLine.line;
+                    dialogueTextRight.text = nextLine.line.Replace("\\n", "\n");
                     break;
                 case DialogueSides.Right:
-                    dialogueTextLeft.text = nextLine.line;
+                    dialogueTextLeft.text = nextLine.line.Replace("\\n", "\n");
                     break;
             }
 

@@ -47,7 +47,7 @@ MonoBehaviour:
   DialogueGroups:
   - DialogueStart:
       linesOfDialogue:
-      - line: Welcome to Styx and Stones! [Tap] or [Press Any Key] to continue.
+      - line: Welcome to Styx and Stones!\n[Tap] or [Press Any Key] to continue.
         dialogueSide: 0
         participantSpeaking: -2
       - line: As expected due to human stupidity, souls are constantly pouring into
