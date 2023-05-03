@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Spawnables
 {
-    public class GroovySkeleton : Obstacle
+    public class GroovySkeleton : StoneObstacle
     {
         private Transform _target;
         private bool hasThrown;
@@ -60,8 +60,9 @@ namespace Spawnables
             newYeet.YeetethMySkull();
         }
 
-        private void OnDrawGizmos()
+        protected void OnDrawGizmos()
         {
+
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, throwDistance);
         }

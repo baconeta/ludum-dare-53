@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5467073032660837758}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: ThrowStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,9 +44,9 @@ GameObject:
   - component: {fileID: 4619178782134576865}
   - component: {fileID: 5870350820589442764}
   - component: {fileID: 4854111745699591469}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GroovySkeleton
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022f2c42a77cfe94fa7c50e9d9419d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwDistance: 13.68
+  initialSpeed: 3
+  damage: 5
+  currentSpeed: 0
+  distanceBetweenRocks: 0
+  throwDistance: 26
   throwPrefab: {fileID: 679295361170235722, guid: fe8b05f6c3c57914eb92914eb669157e, type: 3}
   throwStartPoint: {fileID: 5467073032660837758}
   triggerOnce: 0

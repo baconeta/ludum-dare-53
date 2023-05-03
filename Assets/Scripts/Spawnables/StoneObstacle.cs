@@ -13,12 +13,5 @@ namespace Spawnables
             initialSpeed = 0;
             base.Start();
         }
-        
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, Mathf.Max(GetComponent<Renderer>().bounds.size.x,
-                GetComponent<Renderer>().bounds.size.y));
-        }
     }
 }
