@@ -65,7 +65,7 @@ Transform:
   m_Children:
   - {fileID: 5467073032660837758}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6790140910948777784
 SpriteRenderer:
@@ -222,7 +222,7 @@ MonoBehaviour:
   damage: 5
   currentSpeed: 0
   distanceBetweenRocks: 0
-  throwDistance: 26
+  throwDistance: 20
   throwPrefab: {fileID: 679295361170235722, guid: fe8b05f6c3c57914eb92914eb669157e, type: 3}
   throwStartPoint: {fileID: 5467073032660837758}
   triggerOnce: 0
