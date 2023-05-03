@@ -54,7 +54,7 @@ MonoBehaviour:
           the Underworld, and your job is to deliver them from eternal damnation.
         dialogueSide: 0
         participantSpeaking: -2
-      - line: Refer to the lower right to see your souls carried/soul capacity, and
+      - line: Refer to the top right to see your souls carried/soul capacity, and
           your total souls saved.
         dialogueSide: 0
         participantSpeaking: -2
