@@ -236,6 +236,7 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
 
     public void EndDialogue()
     {
+        PlayerPrefs.SetInt("TutorialSeen", 1); // We always assume since we show the tutorial first, that it has been seen
         isDialogueActive = false;
         //Hide UI
         OnDialogueEnd?.Invoke();

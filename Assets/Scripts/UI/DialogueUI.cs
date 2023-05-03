@@ -179,15 +179,20 @@ public class DialogueUI : MonoBehaviour
                     Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
             }
         }
-        //No speaker case
+        //No speaker case - Tutorial special case
         else if (nextLine.participantSpeaking == -2)
         {
+            if (CheckIfTutorialPlayed()) // Skip the tutorial if it has been completed already
+            {
+                FindObjectOfType<DialogueManager>().NextLineAction();
+                return;
+            }
+            
             rightDialoguePanel.SetActive(false);
             leftDialoguePanel.SetActive(true);
             //Update the current active speaker
             switch (nextLine.dialogueSide)
             {
-                //Left side, get the current speaker.
                 case DialogueSides.Left:
                     dialogueTextRight.text = nextLine.line.Replace("\\n", "\n");
                     break;
@@ -302,5 +307,10 @@ public class DialogueUI : MonoBehaviour
             }
             
         }
+    }
+
+    private bool CheckIfTutorialPlayed()
+    {
+        return PlayerPrefs.GetInt("TutorialSeen", 0) == 1;
     }
 }
