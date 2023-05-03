@@ -1,6 +1,5 @@
 # Ludum Dare 53 - Styx and Stones
-![image](https://user-images.githubusercontent.com/36744690/236013742-4460a3cb-66a1-4042-a22d-2a958a90885f.png)
-
+![image](https://user-images.githubusercontent.com/36744690/236013949-e5447613-5c27-4328-b59f-7e1642d5cc15.png)
 Brave the deathly waters of Styx and ferry lost souls to their deliverance in this endless river crossing romp. 
 Pick up souls on Gaia and deliver them to the Underworld while avoiding all manner of ghoulish obstacles in the current.
 
