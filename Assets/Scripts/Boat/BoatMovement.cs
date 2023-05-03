@@ -128,6 +128,7 @@ public class BoatMovement : MonoBehaviour
         {
             CalculateBoatMovement();
         }
+        else if(_rigidbody2D.velocity .magnitude > 0) _rigidbody2D.velocity = Vector2.zero;
     }
 
     public void EnableMovement()
@@ -258,10 +259,5 @@ public class BoatMovement : MonoBehaviour
         _rigidbody2D.AddForce(Vector2.up * outOfBoundsBumpForce, ForceMode2D.Force);
     }
 
-    public void DockNudge(Vector2 direction)
-    {
-        _rigidbody2D.velocity = Vector2.zero;
-        _rigidbody2D.AddForce(direction * 1, ForceMode2D.Impulse);
-    }
     
 }
