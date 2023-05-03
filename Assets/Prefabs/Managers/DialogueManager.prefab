@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9051264444822484043
 MonoBehaviour:
@@ -67,8 +67,7 @@ MonoBehaviour:
           able to carry as many souls. Don't let your boat sink!
         dialogueSide: 0
         participantSpeaking: -2
-      - line: You can launch your boat from the shore by [Tapping on the boat] or
-          pressing [Space]
+      - line: You can launch your boat from the shore by [Tapping] or [Spacebar]
         dialogueSide: 0
         participantSpeaking: -2
       - line: You can steer the boat upwards and downwards by using the [Joystick]

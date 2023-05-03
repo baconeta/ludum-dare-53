@@ -109,11 +109,16 @@ public class InputManager : MonoBehaviour
             {
                 if (hit2D.collider.CompareTag("Ferry"))
                 {
-                    //Tapped Ferry, Launch. (Self checks for valid launches)
-                    OnLaunchVoyage();
+                    
                 }
                 //Other objects, Interactable Obstacles?
             }
+            else //Tapped Ferry, Launch. (Self checks for valid launches)
+                OnLaunchVoyage();
+                
+                
+            
+            
         }
     }
 
