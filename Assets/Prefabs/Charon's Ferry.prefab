@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingCapacity: 20
-  capacityRestoredOnSuccessfulFerry: 0
+  capacityRestoredOnSuccessfulFerry: 2
   loseObstacleDamageOnCollision: 1
   lostCapacityOnDamage: 1
   doesStartLoaded: 0
@@ -395,7 +395,7 @@ Transform:
   - {fileID: 3986926485552163793}
   - {fileID: 4551955813744901430}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1111834849364648188
 MonoBehaviour:
