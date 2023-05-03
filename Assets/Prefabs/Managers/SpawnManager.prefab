@@ -25,8 +25,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371730540417233665}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.3, y: -3.1999998, z: 0}
-  m_LocalScale: {x: 92, y: 50, z: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 69.483, y: 40.03699, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 988697748950722950}
@@ -136,7 +136,8 @@ MonoBehaviour:
   obstacleObject: {fileID: 8924909380092680929, guid: d5685fca27ed28c4586e6a3ac0ff9862, type: 3}
   seekerObject: {fileID: 7031394477568430888, guid: 159c7a3bb8cfe8f40b20f2f56d4c093a, type: 3}
   seekerSpawnChance: 20
-  stoneLimit: 3
+  stoneLimit: 4
+  stoneOverlapRangeMultiplier: 2.5
   stones:
   - {fileID: 3379933513473169060, guid: 8a763ab14f849974db28e8024d32db42, type: 3}
   - {fileID: 5646802508109994502, guid: bb3420cf8f2ef2c49ba6517f52b811c0, type: 3}
@@ -170,8 +171,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7717602589261682881}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.8, y: 6.5, z: 0}
-  m_LocalScale: {x: 30, y: 20, z: 1}
+  m_LocalPosition: {x: -34.2, y: 7.2, z: 0}
+  m_LocalScale: {x: 33.820312, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 988697748950722950}

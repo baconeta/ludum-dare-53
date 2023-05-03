@@ -1,6 +1,7 @@
 using ObjectPooling;
 using Spawnables;
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,6 +23,9 @@ namespace Managers
 
         [Tooltip("The maximum number of stones to spawn randomly in the river upon loading the game.")]
         [SerializeField] [Range(1, 5)] private int stoneLimit = 3;
+        [Tooltip("Stones cannot spawn on top of each other. Overlaps check for spriteSize * value")]
+        [Min(1)]
+        [SerializeField] private float stoneOverlapRangeMultiplier = 1.0f;
         [SerializeField] private GameObject[] stones;
         
         [Header("Spawn Multipliers")]
@@ -33,9 +37,11 @@ namespace Managers
 
         // Spawn limits
         private float _topLimit;
+        private float _bottomLimit;
         private float _leftLimit;
         private float _rightLimit;
         private const float ShoreBuffer = 10.0f;
+        private const float VerticalBuffer = 10.0f;
 
         private bool _isSpawning;
 
@@ -48,7 +54,8 @@ namespace Managers
         private void Start()
         {
             // Get the visual limits of the game scene
-            _topLimit   = GameObject.Find("TopLimit").transform.position.y;
+            _topLimit   = GameObject.Find("TopLimit").transform.position.y - VerticalBuffer;
+            _bottomLimit   = GameObject.Find("BottomLimit").transform.position.y + VerticalBuffer;
             _leftLimit  = GameObject.Find("Left Shore").transform.position.x + ShoreBuffer;
             _rightLimit = GameObject.Find("Right Shore").transform.position.x - ShoreBuffer;
             
@@ -100,8 +107,12 @@ namespace Managers
                     Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y),
                     0.0f);
 
+                //largest of spriteSize X or Y
+                float overlapRadius = Mathf.Max(stoneObject.GetComponent<Renderer>().bounds.size.x,
+                    stoneObject.GetComponent<Renderer>().bounds.size.y);
+                
                 while (stoneNoSpawnArea.Contains(stoneSpawnPoint) ||
-                       !IsOverlapping(stoneObject.GetComponent<Renderer>().bounds.size.x, stoneSpawnPoint))
+                       !IsOverlapping(overlapRadius * stoneOverlapRangeMultiplier, stoneSpawnPoint))
                 {
                     stoneSpawnPoint = new Vector3(
                         Random.Range(stoneSpawnArea.min.x, stoneSpawnArea.max.x),
@@ -197,5 +208,7 @@ namespace Managers
         {
             damageMultiplier = multiplier;
         }
+
+        
     }
 }
