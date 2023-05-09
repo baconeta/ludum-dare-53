@@ -1,4 +1,3 @@
-using System;
 using Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,12 +13,12 @@ namespace Spawnables
         private Transform _attackAttach;
         private const float RotationSpeed = 5.0f;
         [SerializeField] private bool isAttacking;
-        [SerializeField]private int attackSortingOrder;
+        [SerializeField] private int attackSortingOrder;
         private int _defaultSortingOrder;
 
         [Tooltip("The amount of time in seconds to spend seeking the target.")] [SerializeField]
         private float seekDuration = 1.0f;
-        
+
         [Tooltip("The amount of time in seconds to spend idly going with the river flow")] [SerializeField]
         private float idleDuration = 1.0f;
 
@@ -37,16 +36,16 @@ namespace Spawnables
             _defaultSortingOrder = spriteRenderer.sortingOrder;
             if (!animator) animator = GetComponentInChildren<Animator>();
             if (!spriteRenderer) spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            
+
             // Get a lock on the player so we can follow them
             _target = GameObject.FindWithTag("Ferry");
-            
+
             // Add random jitter to stop all instance from moving in sync
             _jitter = Random.Range(0.0f, MaxJitter);
         }
-        
-        private void Update() {
-            
+
+        private void Update()
+        {
             if (!GameStateManager.Instance.IsGameActive() || !active) return;
             //Is boat is docked, dont attack.
             if (isAttacking)
@@ -56,12 +55,9 @@ namespace Spawnables
             }
             else //Not attacking - Move/Rotate
             {
-                var dir = Vector3.forward;
-                if (_target is not null)
-                {
-                    dir = (_target.transform.position - transform.position).normalized;
-                }
+                if (_target is null) return;
 
+                Vector3 dir = (_target.transform.position - transform.position).normalized;
                 if (_target.GetComponent<BoatController>().currentDock != null)
                     dir = Vector3.down;
                 RotateTowardTarget(dir);
@@ -100,8 +96,8 @@ namespace Spawnables
         /**
          * Move toward the target in a stepwise fashion.
          */
-        private void Move(Vector3 dir) {
-            
+        private void Move(Vector3 dir)
+        {
             // Figure out amount to move this frame
             var step = currentSpeed * Time.deltaTime;
             var animSpeed = 0.0f;
@@ -117,6 +113,7 @@ namespace Spawnables
                 transform.position += dir * step;
                 animSpeed = 1.0f;
             }
+
             animator.SetFloat(SwimSpeed, animSpeed);
         }
 
@@ -138,7 +135,7 @@ namespace Spawnables
             spriteRenderer.sortingOrder = _defaultSortingOrder;
             animator.SetBool(IsAttacking, false);
             animator.SetFloat(AttackSpeed, 0);
-            
+
             RemoveFromScene();
         }
 
@@ -151,5 +148,4 @@ namespace Spawnables
             }
         }
     }
-    
 }

@@ -15,40 +15,38 @@ namespace Spawnables
         public float cooldown;
 
         // Start is called before the first frame update
-        void Start()
+        protected override void Start()
         {
             _target = GameObject.FindWithTag("Ferry").transform;
             cooldown = triggerCooldown;
+            base.Start();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void Update()
         {
-            if (GameStateManager.Instance.IsGameActive())
+            if (!GameStateManager.Instance.IsGameActive() || !active) return;
+            if (Vector3.Distance(transform.position, _target.position) < throwDistance)
             {
-                if (Vector3.Distance(transform.position, _target.position) < throwDistance)
+                if (triggerOnce)
                 {
-                    if (triggerOnce)
-                    {
-                        if (!hasThrown)
-                            //TODO Replace with animation event
-                            Throw();
-                    }
-                    else if (cooldown <= 0)
-                    {
+                    if (!hasThrown)
+                        //TODO Replace with animation event
                         Throw();
-                    }
                 }
-
-                if (cooldown > 0)
+                else if (cooldown <= 0)
                 {
-                    cooldown -= Time.deltaTime;
-                    if (cooldown < 0) cooldown = 0;
+                    Throw();
                 }
+            }
+
+            if (cooldown > 0)
+            {
+                cooldown -= Time.deltaTime;
+                if (cooldown < 0) cooldown = 0;
             }
         }
 
-        void Throw()
+        private void Throw()
         {
             if (triggerOnce)
                 hasThrown = true;
@@ -62,7 +60,6 @@ namespace Spawnables
 
         protected void OnDrawGizmos()
         {
-
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, throwDistance);
         }

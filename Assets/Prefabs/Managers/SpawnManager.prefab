@@ -116,7 +116,7 @@ Transform:
   - {fileID: 8332841972178617235}
   - {fileID: 6047079715702877265}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7059613079801024216
 MonoBehaviour:
@@ -137,7 +137,7 @@ MonoBehaviour:
   seekerObject: {fileID: 7031394477568430888, guid: 159c7a3bb8cfe8f40b20f2f56d4c093a, type: 3}
   seekerSpawnChance: 20
   stoneLimit: 4
-  stoneOverlapRangeMultiplier: 2.5
+  stoneOverlapRange: 1
   stones:
   - {fileID: 3379933513473169060, guid: 8a763ab14f849974db28e8024d32db42, type: 3}
   - {fileID: 5646802508109994502, guid: bb3420cf8f2ef2c49ba6517f52b811c0, type: 3}
@@ -146,6 +146,8 @@ MonoBehaviour:
   - {fileID: 5794485889600203970, guid: 4010d58fbab8a41409be3e7daf1f0b27, type: 3}
   speedMultiplier: 1
   damageMultiplier: 1
+  ShoreBuffer: 10
+  VerticalBuffer: 10
 --- !u!1 &7717602589261682881
 GameObject:
   m_ObjectHideFlags: 0

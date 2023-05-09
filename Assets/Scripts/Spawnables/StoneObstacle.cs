@@ -8,7 +8,7 @@ namespace Spawnables
     public class StoneObstacle : Obstacle
     {
         public float distanceBetweenRocks;
-        private void Start()
+        protected override void Start()
         {
             initialSpeed = 0;
             base.Start();
