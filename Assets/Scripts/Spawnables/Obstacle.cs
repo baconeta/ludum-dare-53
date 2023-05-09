@@ -23,7 +23,7 @@ namespace Spawnables
             _poolable = GetComponent<Poolable>();
             _length = GetComponent<Renderer>().bounds.size.y;
 
-            SceneManager.activeSceneChanged += (_,_) => RemoveFromScene(); //Hack to force removal at end of game
+            SceneManager.activeSceneChanged += (_, _) => RemoveFromScene(); //Hack to force removal at end of game
         }
 
         private void Update()
@@ -81,8 +81,10 @@ namespace Spawnables
             transform.position = new Vector3(-1000, -1000);
             if (_poolable)
                 _poolable.Recycle();
-            else
+            else if (gameObject != null)
+            {
                 Destroy(gameObject);
             }
         }
     }
+}

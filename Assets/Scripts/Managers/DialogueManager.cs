@@ -182,8 +182,12 @@ public class DialogueManager : EverlastingSingleton<DialogueManager>
                     //Only occurs once on first successful ferry
                     if (GameStateManager.Instance.firstFerryCompleted) return;
                     //Play mid-game dialogue
-                    currentDialogue = DialogueMid;
-                    break;
+                    if (DialogueMid.linesOfDialogue.Count > 0)
+                    {
+                        currentDialogue = DialogueMid;
+                        break;
+                    }
+                    return;
             }
         }
         else
