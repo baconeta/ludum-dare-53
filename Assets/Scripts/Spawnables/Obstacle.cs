@@ -1,28 +1,24 @@
-using System;
 using CustomEditor;
 using Managers;
-using ObjectPooling;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Spawnables
 {
-    public class Obstacle : MonoBehaviour, IPoolableExecution
+    public class Obstacle : MonoBehaviour
     {
         [SerializeField] protected float initialSpeed = 3.0f;
         [SerializeField] private int damage = 5;
 
         private float _bottomBound;
-        private Poolable _poolable;
         private float _length;
         [ReadOnly] public float currentSpeed;
         protected bool active;
 
-        protected void Start()
+        protected virtual void Start()
         {
             currentSpeed = initialSpeed;
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
-            _poolable = GetComponent<Poolable>();
             _length = GetComponent<Renderer>().bounds.size.y;
             active = true;
         }
@@ -80,10 +76,6 @@ namespace Spawnables
          */
         public int Damage => damage;
 
-        public void PoolableExecution(Poolable p)
-        {
-            _poolable = p;
-        }
 
         protected void RemoveFromScene()
         {
@@ -91,9 +83,7 @@ namespace Spawnables
             damage = 1;
             transform.position = new Vector3(-1000, -1000);
             active = false;
-            if (_poolable)
-                _poolable.Recycle();
-            else if (gameObject != null)
+            if (gameObject != null)
             {
                 Destroy(gameObject);
             }

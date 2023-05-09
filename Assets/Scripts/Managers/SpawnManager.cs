@@ -33,8 +33,6 @@ namespace Managers
         [SerializeField] private float speedMultiplier = 1.0f;
         [SerializeField] private float damageMultiplier = 1.0f;
 
-        private ObjectPool _obstacles;
-        private ObjectPool _seekers;
         private List<GameObject> _stones = new List<GameObject>();
 
         // Spawn limits
@@ -46,12 +44,6 @@ namespace Managers
         public float VerticalBuffer = 10.0f;
 
         private bool _isSpawning;
-
-        private void Awake()
-        {
-            _obstacles = ObjectPool.Build(obstacleObject, simultaneousObstacleLimit, simultaneousObstacleLimit);
-            _seekers = ObjectPool.Build(seekerObject, simultaneousSeekerLimit, simultaneousSeekerLimit);
-        }
 
         private void Start()
         {
@@ -150,21 +142,21 @@ namespace Managers
          */
         private void Spawn()
         {
-            // TODO This is fragile! What happens if I pop the last object from the pool?
-            var spawnable = Random.Range(0, 100) > seekerSpawnChance
-                ? _obstacles.GetRecyclable()
-                : _seekers.GetRecyclable();
+            GameObject spawnable = Random.Range(0, 100) < seekerSpawnChance
+                ? Instantiate(seekerObject)
+                : Instantiate(obstacleObject);
 
             var length = spawnable.GetComponent<Renderer>().bounds.size.y;
             var topOffset = _topLimit + length / 2.0f;
             
             // Set the object's position to a random position at the top of the screen and make sure it isn't overlapping
             // with another object
+            Renderer r = spawnable.GetComponent<Renderer>();
             Vector3 position;
             do
             {
               position = new Vector3(Random.Range(_leftLimit, _rightLimit), topOffset, 0.0f);
-            } while (IsOverlapping(spawnable.GetComponent<Renderer>().bounds.size.x, position));
+            } while (IsOverlapping(r.bounds.size.x, position));
             
             spawnable.transform.position = position;
             

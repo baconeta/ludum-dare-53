@@ -1,8 +1,10 @@
 using System.Collections;
 using UnityEngine;
 
-namespace Spawnables {
-    public class Yeet : Obstacle {
+namespace Spawnables
+{
+    public class Yeet : Obstacle
+    {
         private GameObject _target;
         public float speed;
         public float leadMultiplier = 3;
@@ -13,15 +15,15 @@ namespace Spawnables {
         public CircleCollider2D _circleCollider2D;
         public Rigidbody2D _Rigidbody2D;
 
-        // Update is called once per frame
-        private void FixedUpdate() {
+        private void FixedUpdate()
+        {
             if (!_triggered) return;
-            
+
             // Move the object towards the target
             //_Rigidbody2D.MovePosition(transform.position + _direction.normalized * speed * Time.fixedDeltaTime);
         }
 
-        private IEnumerator enableCollision()
+        private IEnumerator EnableCollision()
         {
             yield return new WaitForSeconds(disabledDuration);
             _circleCollider2D.enabled = true;
@@ -29,16 +31,18 @@ namespace Spawnables {
         }
 
         //On Spawn
-        public void YeetethMySkull() {
+        public void YeetethMySkull()
+        {
             _Rigidbody2D = GetComponent<Rigidbody2D>();
             _circleCollider2D = GetComponent<CircleCollider2D>();
             _target = GameObject.FindWithTag("Ferry");
 
-            _direction = _target.transform.position + (Vector3)_target.GetComponent<Rigidbody2D>().velocity * leadMultiplier - transform.position;
+            _direction = _target.transform.position +
+                (Vector3) _target.GetComponent<Rigidbody2D>().velocity * leadMultiplier - transform.position;
             _end = _target.transform.position;
 
             _triggered = true;
-            StartCoroutine(enableCollision());
+            StartCoroutine(EnableCollision());
 
             if (!_Rigidbody2D) _Rigidbody2D = GetComponent<Rigidbody2D>();
             _Rigidbody2D.AddForce(_direction.normalized * speed, ForceMode2D.Impulse);
@@ -49,7 +53,5 @@ namespace Spawnables {
         {
             Destroy(gameObject, 0.1f);
         }
-
-
     }
 }
