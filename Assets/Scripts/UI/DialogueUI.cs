@@ -39,8 +39,7 @@ public class DialogueUI : MonoBehaviour
     private void ShowDialogue()
     {
         ui.SetActive(true);
-
-        //TODO Replace with object pooling /  Participant Builder 
+        
         //Add all participants to the scene
         foreach (Participant participant in DialogueManager.Instance.GetCurrentParticipants())
         {
@@ -85,18 +84,31 @@ public class DialogueUI : MonoBehaviour
     //Safely removes all participants from the screen.
     private void RemoveParticipantGameObjects()
     {
+        var count = 0;
         while (leftSideParticipants.Count > 0)
         {
+            count += 1;
             GameObject participantGO = leftSideParticipants[0];
-            leftSideParticipants.Remove(participantGO);
-            Destroy(participantGO);
+            if (participantGO is not null)
+            {
+                leftSideParticipants.Remove(participantGO);
+                Destroy(participantGO);
+            }
+
+            if (count >= 10) break;
         }
 
+        count = 0;
         while (rightSideParticipants.Count > 0)
         {
+            count += 1;
             GameObject participantGO = rightSideParticipants[0];
-            rightSideParticipants.Remove(participantGO);
-            Destroy(participantGO);
+            if (participantGO is not null)
+            {
+                rightSideParticipants.Remove(participantGO);
+                Destroy(participantGO);
+            }
+            if (count >= 10) break;
         }
     }
 
@@ -184,7 +196,8 @@ public class DialogueUI : MonoBehaviour
         {
             if (CheckIfTutorialPlayed()) // Skip the tutorial if it has been completed already
             {
-                FindObjectOfType<DialogueManager>().NextLineAction();
+                var dm = FindObjectOfType<DialogueManager>();
+                if (dm != null) dm.NextLineAction();
                 return;
             }
             
@@ -194,10 +207,10 @@ public class DialogueUI : MonoBehaviour
             switch (nextLine.dialogueSide)
             {
                 case DialogueSides.Left:
-                    dialogueTextRight.text = nextLine.line;
+                    dialogueTextRight.text = nextLine.line.Replace("\\n", "\n");
                     break;
                 case DialogueSides.Right:
-                    dialogueTextLeft.text = nextLine.line;
+                    dialogueTextLeft.text = nextLine.line.Replace("\\n", "\n");
                     break;
             }
 
@@ -225,9 +238,10 @@ public class DialogueUI : MonoBehaviour
             }
         }
         else //All of one side speaking case
-        {
+        { // Disabled for bug fixing purposes
+            return;
             List<GameObject> activeParticipants = new List<GameObject>();
-
+            
             //Update the current active speaker
             switch (nextLine.dialogueSide)
             {
@@ -243,7 +257,7 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one;
                     }
-
+            
                     //Deactive all rightSideParticipants
                     foreach (GameObject participant in rightSideParticipants)
                     {
@@ -253,9 +267,9 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
                     }
-
+            
                     break;
-
+            
                 case DialogueSides.Right:
                     activeParticipants = rightSideParticipants;
                     //Active all rightSideParticipants
@@ -267,7 +281,7 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one;
                     }
-
+            
                     //Deactive all leftSideParticipants
                     foreach (GameObject participant in leftSideParticipants)
                     {
@@ -277,10 +291,10 @@ public class DialogueUI : MonoBehaviour
                         participant.GetComponent<RectTransform>().localScale =
                             Vector3.one * DialogueManager.Instance.inactiveSpeakerSize;
                     }
-
+            
                     break;
             }
-
+            
             string names = "";
             foreach (GameObject participant in activeParticipants)
             {
@@ -291,7 +305,7 @@ public class DialogueUI : MonoBehaviour
                     names = names + " & " + participant.name;
                 }
             }
-
+            
             if (nextLine.participantSpeaking != -2)
             {
                 //Update the current text with the Syntax "Name: Text"
@@ -305,7 +319,6 @@ public class DialogueUI : MonoBehaviour
                         break;
                 }
             }
-            
         }
     }
 

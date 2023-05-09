@@ -7,6 +7,7 @@ namespace Spawnables
 {
     public class StoneObstacle : Obstacle
     {
+        public float distanceBetweenRocks;
         private void Start()
         {
             initialSpeed = 0;

@@ -1,6 +1,8 @@
 using ObjectPooling;
 using Spawnables;
 using System;
+using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -22,6 +24,9 @@ namespace Managers
 
         [Tooltip("The maximum number of stones to spawn randomly in the river upon loading the game.")]
         [SerializeField] [Range(1, 5)] private int stoneLimit = 3;
+        [Tooltip("Stones cannot spawn on top of each other. Overlaps check for spriteSize * value")]
+        [Min(1)]
+        [SerializeField] private float stoneOverlapRange = 1.0f;
         [SerializeField] private GameObject[] stones;
         
         [Header("Spawn Multipliers")]
@@ -30,12 +35,15 @@ namespace Managers
 
         private ObjectPool _obstacles;
         private ObjectPool _seekers;
+        private List<GameObject> _stones = new List<GameObject>();
 
         // Spawn limits
         private float _topLimit;
+        private float _bottomLimit;
         private float _leftLimit;
         private float _rightLimit;
-        private const float ShoreBuffer = 10.0f;
+        public float ShoreBuffer = 10.0f;
+        public float VerticalBuffer = 10.0f;
 
         private bool _isSpawning;
 
@@ -48,7 +56,7 @@ namespace Managers
         private void Start()
         {
             // Get the visual limits of the game scene
-            _topLimit   = GameObject.Find("TopLimit").transform.position.y;
+            _topLimit   = GameObject.Find("TopLimit").transform.position.y - VerticalBuffer;
             _leftLimit  = GameObject.Find("Left Shore").transform.position.x + ShoreBuffer;
             _rightLimit = GameObject.Find("Right Shore").transform.position.x - ShoreBuffer;
             
@@ -83,8 +91,7 @@ namespace Managers
         {
             var stoneSpawnArea    = GameObject.Find("StoneSpawnArea").GetComponent<Renderer>().bounds;
             var stoneNoSpawnArea  = GameObject.Find("StoneNoSpawnArea").GetComponent<Renderer>().bounds;
-            var numStones = Random.Range(1, stoneLimit + 1);
-            for (var i = 0; i < numStones; ++i)
+            for (var i = 0; i < stoneLimit; i++)
             {
 
                 GameObject stone;
@@ -92,7 +99,6 @@ namespace Managers
                 if (i == 0) stone = stones[0];
                 //Other stones are not throwers
                 else stone = stones[Random.Range(1, stones.Length)];
-                var stoneObject = Instantiate(stone);
                 
                 // Select a random point within the spawn area that avoids the no-spawn area
                 var stoneSpawnPoint = new Vector3(
@@ -100,16 +106,20 @@ namespace Managers
                     Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y),
                     0.0f);
 
+                //TODO I literally don't know why this isn't working. Still getting overlaps.
                 while (stoneNoSpawnArea.Contains(stoneSpawnPoint) ||
-                       !IsOverlapping(stoneObject.GetComponent<Renderer>().bounds.size.x, stoneSpawnPoint))
+                       IsOverlapping(stoneOverlapRange, stoneSpawnPoint))
                 {
-                    stoneSpawnPoint = new Vector3(
+                    stoneSpawnPoint = new Vector2(
                         Random.Range(stoneSpawnArea.min.x, stoneSpawnArea.max.x),
-                        Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y),
-                        0.0f);
+                        Random.Range(stoneSpawnArea.min.y, stoneSpawnArea.max.y));
                 }
                 
+                var stoneObject = Instantiate(stone);
+                _stones.Add(stoneObject);
+                
                 stoneObject.transform.position = stoneSpawnPoint;
+                
             }    
         }
 
@@ -120,6 +130,7 @@ namespace Managers
         private static bool IsOverlapping(float radius, Vector3 position)
         {
             var c = Physics2D.OverlapCircle(position, radius);
+            Debug.Log(c == null);
             return c is not null;
         }
 
@@ -196,6 +207,13 @@ namespace Managers
         public void IncreaseDamage(float multiplier)
         {
             damageMultiplier = multiplier;
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            foreach(var stone in _stones)
+                Gizmos.DrawWireSphere(stone.transform.position, stoneOverlapRange);
         }
     }
 }

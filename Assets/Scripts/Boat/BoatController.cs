@@ -196,6 +196,7 @@ public class BoatController : MonoBehaviour
     {
         //When a lose condition is met.
         //Calls the OnEndEnter event Action. 
+        _charonAnimator.SetFloat("RowSpeed", 0f);
         GameStateManager.Instance.CurrentState = GameStateManager.GameStates.End;
     }
 

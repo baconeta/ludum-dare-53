@@ -1,3 +1,4 @@
+using System;
 using CustomEditor;
 using Managers;
 using ObjectPooling;
@@ -15,6 +16,7 @@ namespace Spawnables
         private Poolable _poolable;
         private float _length;
         [ReadOnly] public float currentSpeed;
+        protected bool active;
 
         protected void Start()
         {
@@ -22,13 +24,22 @@ namespace Spawnables
             _bottomBound = GameObject.Find("BottomLimit").transform.position.y;
             _poolable = GetComponent<Poolable>();
             _length = GetComponent<Renderer>().bounds.size.y;
+            active = true;
+        }
 
-            SceneManager.activeSceneChanged += (_,_) => RemoveFromScene(); //Hack to force removal at end of game
+        protected virtual void OnEnable()
+        {
+            SceneManager.activeSceneChanged += SceneManagerOnActiveSceneChanged; //Hack to force removal at end of game
+        }
+
+        protected virtual void OnDisable()
+        {
+            SceneManager.activeSceneChanged -= SceneManagerOnActiveSceneChanged; //Hack to force removal at end of game
         }
 
         private void Update()
         {
-            if (!GameStateManager.Instance.IsGameActive()) return;
+            if (!GameStateManager.Instance.IsGameActive() || !active) return;
 
             // Slowly move the obstacle down the screen
             transform.position += Vector3.down * (currentSpeed * Time.deltaTime);
@@ -79,10 +90,18 @@ namespace Spawnables
             currentSpeed = initialSpeed;
             damage = 1;
             transform.position = new Vector3(-1000, -1000);
+            active = false;
             if (_poolable)
                 _poolable.Recycle();
-            else
+            else if (gameObject != null)
+            {
                 Destroy(gameObject);
             }
         }
+        private void SceneManagerOnActiveSceneChanged(Scene scene, Scene scene1)
+        {
+            RemoveFromScene();
+        }
+        
     }
+}

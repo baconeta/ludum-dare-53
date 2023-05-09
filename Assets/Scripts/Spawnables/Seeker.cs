@@ -47,7 +47,8 @@ namespace Spawnables
         
         private void Update() {
             
-            if (!GameStateManager.Instance.IsGameActive()) return;
+            if (!GameStateManager.Instance.IsGameActive() || !active) return;
+            //Is boat is docked, dont attack.
             if (isAttacking)
             {
                 transform.position = _attackAttach.position;
@@ -60,18 +61,23 @@ namespace Spawnables
                 {
                     dir = (_target.transform.position - transform.position).normalized;
                 }
+
+                if (_target.GetComponent<BoatController>().currentDock != null)
+                    dir = Vector3.down;
                 RotateTowardTarget(dir);
                 Move(dir);
             }
         }
 
-        private void OnEnable()
+        protected override void OnEnable()
         {
+            base.OnEnable();
             BoatController.OnVoyageComplete += IncreaseSpeed;
         }
 
-        private void OnDisable()
+        protected override void OnDisable()
         {
+            base.OnDisable();
             BoatController.OnVoyageComplete -= IncreaseSpeed;
         }
 

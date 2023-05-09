@@ -47,7 +47,7 @@ MonoBehaviour:
   DialogueGroups:
   - DialogueStart:
       linesOfDialogue:
-      - line: Welcome to Styx and Stones! [Tap] or [Press Any Key] to continue.
+      - line: Welcome to Styx and Stones!\n[Tap] or [Press Any Key] to continue.
         dialogueSide: 0
         participantSpeaking: -2
       - line: As expected due to human stupidity, souls are constantly pouring into
@@ -67,8 +67,7 @@ MonoBehaviour:
           able to carry as many souls. Don't let your boat sink!
         dialogueSide: 0
         participantSpeaking: -2
-      - line: You can launch your boat from the shore by [Tapping on the boat] or
-          pressing [Space]
+      - line: You can launch your boat from the shore by [Tapping] or [Spacebar]
         dialogueSide: 0
         participantSpeaking: -2
       - line: You can steer the boat upwards and downwards by using the [Joystick]
@@ -145,7 +144,7 @@ MonoBehaviour:
       - line: Everything will be arranged for your vacation.
         dialogueSide: 0
         participantSpeaking: 1
-      - line: You just need to deliver 10,000 souls and earn their obols.
+      - line: You just need to deliver 1,000 souls and earn their obols.
         dialogueSide: 0
         participantSpeaking: 1
       - line: It'll be child's play for you, dear. We'll let you get to it.
